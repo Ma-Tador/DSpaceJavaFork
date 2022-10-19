@@ -1,0 +1,35 @@
+## E-mail sent to DSpace users when they register for an account
+##
+## Parameters: {0} is expanded to a special registration URL
+##
+## See org.dspace.core.Email for information on the format of this file.
+##
+#set($subject = "${config.get('dspace.name')} Account Registration")
+#set($phone = ${config.get('mail.message.helpdesk.telephone')})
+To complete registration for a Test-FAU-Repository account, please click the link
+below:
+
+  ${params[0]}
+
+If you need assistance with your account, please email
+
+  ${config.get("mail.admin")}
+#if( $phone )
+
+or call us at ${phone}.
+#end
+
+The FAU Repository Team
+
+
+-----------------------------------------------------------------------------------------
+
+
+Um die Registrierung für ein Test-FAU-Repository-Konto abzuschließen, klicken Sie bitte auf den folgenden Link:
+
+   ${params[0]}
+
+Wenn Sie Hilfe bei Ihrem Konto benötigen, senden Sie bitte eine E-Mail
+${config.get("mail.admin")}.
+
+Das Repositorium-Team der FAU
