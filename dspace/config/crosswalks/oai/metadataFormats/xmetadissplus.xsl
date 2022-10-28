@@ -67,7 +67,7 @@
                     </dc:creator>
                 </xsl:when>
                 <xsl:otherwise>
-             <!--   <dc:creator xsi:type="pc:MetaPers">
+                <dc:creator xsi:type="pc:MetaPers">
                         <pc:person>
                             <pc:name type="nameUsedByThePerson">
                                 <pc:foreName>
@@ -78,7 +78,7 @@
                                 </pc:surName>
                             </pc:name>
                         </pc:person>
-                    </dc:creator>  -->
+                    </dc:creator> 
                 </xsl:otherwise>
                 </xsl:choose>
             </xsl:for-each>
@@ -183,7 +183,7 @@
                     </dc:contributor>
                 </xsl:when>
                 <xsl:otherwise>
-           <!--    <dc:contributor xsi:type="pc:Contributor" thesis:role="advisor">
+               <dc:contributor xsi:type="pc:Contributor" thesis:role="advisor">
                         <pc:person>
                             <pc:name type="nameUsedByThePerson">
                                 <pc:foreName>
@@ -194,7 +194,7 @@
                                 </pc:surName>
                             </pc:name>
                         </pc:person>
-                    </dc:contributor>    -->
+                    </dc:contributor>   
                 </xsl:otherwise>
                 </xsl:choose>
             </xsl:for-each>
@@ -218,7 +218,7 @@
                     </dc:contributor>
                 </xsl:when>
                 <xsl:otherwise>
-             <!--   <dc:contributor xsi:type="pc:Contributor" thesis:role="referee">
+              <dc:contributor xsi:type="pc:Contributor" thesis:role="referee">
                         <pc:person>
                             <pc:name type="nameUsedByThePerson">
                                 <pc:foreName>
@@ -229,7 +229,7 @@
                                 </pc:surName>
                             </pc:name>
                         </pc:person>
-                    </dc:contributor>    -->
+                    </dc:contributor>    
                 </xsl:otherwise>
                </xsl:choose>
             </xsl:for-each>
@@ -253,7 +253,7 @@
                     </dc:contributor>
                 </xsl:when>
                 <xsl:otherwise>
-       <!--         <dc:contributor xsi:type="pc:Contributor" thesis:role="editor">
+                <dc:contributor xsi:type="pc:Contributor" thesis:role="editor">
                         <pc:person>
                             <pc:name type="nameUsedByThePerson">
                                 <pc:foreName>
@@ -264,7 +264,7 @@
                                 </pc:surName>
                             </pc:name>
                         </pc:person>
-                    </dc:contributor>   -->
+                    </dc:contributor>  
                 </xsl:otherwise>
                </xsl:choose>
             </xsl:for-each>

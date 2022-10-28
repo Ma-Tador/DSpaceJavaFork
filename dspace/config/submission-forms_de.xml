@@ -173,13 +173,15 @@
                     <dc-schema>dc</dc-schema>
                     <dc-element>title</dc-element>
                     <dc-qualifier></dc-qualifier>
-                    <repeatable>false</repeatable>
+                    <repeatable>true</repeatable>
                     <label>Titel des Dokuments</label>
+                    <language value-pairs-name="common_iso_languages">true</language>
                     <input-type>onebox</input-type>
                     <hint></hint>
                     <required>Sie müssen einen Titel für diesen Artikel eingeben.</required>
                 </field>
             </row>
+            
             <row>
                 <field>
                     <dc-schema>dc</dc-schema>
@@ -215,6 +217,7 @@
                     <dc-qualifier>abstract</dc-qualifier>
                     <repeatable>true</repeatable>
                     <label>Zusammenfassung</label>
+                    <language value-pairs-name="common_iso_languages">true</language>
                     <input-type>textarea</input-type>
                     <hint>Geben Sie die Zusammenfassung des Artikels ein</hint>
                     <required></required>
@@ -287,7 +290,7 @@
                   <dc-qualifier>mapping</dc-qualifier>
                   <repeatable>false</repeatable>
                   <label>Schriftenreihe</label>
-                  <type-bind>book,bookpart,doctoralthesis,habilitation,masterthesis,bachelorthesis,other</type-bind>
+                  <type-bind>book,bookpart,doctoralthesis,habilitation,masterthesis,bachelorthesis,other,periodicalpart</type-bind>
                   <input-type value-pairs-name="series_list_dropdown">dropdown</input-type>
                   <hint>Geben Sie eine Schriftenreihe ein, wenn zutreffend.</hint>
                   <required></required>
@@ -302,7 +305,7 @@
 		<dc-qualifier>number</dc-qualifier>
            	<repeatable>false</repeatable>
 		<label>Bandnummer</label>
-		<type-bind>book,bookpart,doctoralthesis,habilitation,masterthesis,bachelorthesis,other</type-bind>
+		<type-bind>book,bookpart,doctoralthesis,habilitation,masterthesis,bachelorthesis,other,periodicalpart</type-bind>
 		<input-type>onebox</input-type>
 		<hint>Geben Sie ein Bandnummer für das Dokument ein.</hint>
 		<required></required> 
@@ -2515,7 +2518,7 @@
 	     <pair>                                                                                                                                                                                                                             
 		<displayed-value>1 - Akademische Reden und Kolloquien | Friedrich-Alexander-Universität Erlangen-Nürnberg</displayed-value>
                 <!-- UUID of Serie to map the item to. DO NOT USE HANDLE, because it will generate errors -->                                                                                                                      
-		<stored-value>25fdf6a0-0662-469f-9544-4ab3cd84e9c3</stored-value>                                                                       
+		<stored-value>bce15039-6f83-4c86-aefe-4bf49af3154e</stored-value>                                                                       
 	     </pair>                                                                                                                                                                                                                    
 	     <pair>                                                                                                                                                                                                                            
 		<displayed-value>2 - Alles Buch | Studien der Erlanger Buchwissenschaft</displayed-value>                                                                                                                                                        

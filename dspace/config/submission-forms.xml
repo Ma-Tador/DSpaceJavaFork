@@ -171,18 +171,22 @@
                 </field>
             </row>
 
-            <row>
+
+<row>
                 <field>
                     <dc-schema>dc</dc-schema>
                     <dc-element>title</dc-element>
                     <dc-qualifier></dc-qualifier>
-                    <repeatable>false</repeatable>
+                    <repeatable>true</repeatable>
                     <label>Title</label>
+                    <language value-pairs-name="common_iso_languages">true</language>
                     <input-type>onebox</input-type>
                     <hint>Enter the main title of the item.</hint>
                     <required>You must enter a main title for this item.</required>
                 </field>
             </row>
+            
+            
             <row>
                 <field>
                     <dc-schema>dc</dc-schema>
@@ -217,6 +221,7 @@
                     <dc-qualifier>abstract</dc-qualifier>
                     <repeatable>true</repeatable>
                     <label>Abstract</label>
+                    <language value-pairs-name="common_iso_languages">true</language>
                     <input-type>textarea</input-type>
                     <hint>Enter the abstract of the item.</hint>
                     <required></required>
@@ -286,7 +291,7 @@
                   <dc-qualifier>mapping</dc-qualifier>
                   <repeatable>false</repeatable>
                   <label>Series</label>
-                  <type-bind>book,bookpart,doctoralthesis,habilitation,masterthesis,bachelorthesis,other</type-bind>
+                  <type-bind>book,bookpart,doctoralthesis,habilitation,masterthesis,bachelorthesis,other,periodicalpart</type-bind>
                   <input-type value-pairs-name="series_list_dropdown">dropdown</input-type>
                   <hint>Select the series for this item, if applicable.</hint>
                   <required></required>
@@ -301,7 +306,7 @@
 		<dc-qualifier>number</dc-qualifier>
            	<repeatable>false</repeatable>
 		<label>Series' Number</label>
-		<type-bind>book,bookpart,doctoralthesis,habilitation,masterthesis,bachelorthesis,other</type-bind>
+		<type-bind>book,bookpart,doctoralthesis,habilitation,masterthesis,bachelorthesis,other,periodicalpart</type-bind>
 		<input-type>onebox</input-type>
 		<hint>Select the series' number for this item, if applicable.</hint>
 		<required></required> 
@@ -2431,7 +2436,7 @@ q            <pair>
 	     <pair>                                                                                                                                                                                                                             
 		<displayed-value>1 - Akademische Reden und Kolloquien | Friedrich-Alexander-Universität Erlangen-Nürnberg</displayed-value>
                 <!-- UUID of Serie to map the item to. DO NOT USE HANDLE, because it will generate errors -->                                                                                                                      
-		<stored-value>f72f2690-9adf-4b65-912a-706f30c9f88f</stored-value>                                                                       
+		<stored-value>bce15039-6f83-4c86-aefe-4bf49af3154e</stored-value>                                                                       
 	     </pair>                                                                                                                                                                                                                    
 	     <pair>                                                                                                                                                                                                                            
 		<displayed-value>2 - Alles Buch | Studien der Erlanger Buchwissenschaft</displayed-value>                                                                                                                                                        

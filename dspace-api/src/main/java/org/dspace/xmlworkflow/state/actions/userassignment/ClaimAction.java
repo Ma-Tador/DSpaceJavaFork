@@ -29,6 +29,9 @@ import org.dspace.xmlworkflow.state.Step;
 import org.dspace.xmlworkflow.state.actions.ActionResult;
 import org.dspace.xmlworkflow.storedcomponents.XmlWorkflowItem;
 
+// @Steli
+import org.dspace.workflow.factory.WorkflowServiceFactory;
+
 /**
  * Processing class for an action where x number of users
  * have to accept a task from a designated pool
@@ -93,7 +96,9 @@ public class ClaimAction extends UserSelectionAction {
                     submitterName,
                     //TODO: message
                     "New task available.",
-                    xmlWorkflowService.getMyDSpaceLink()
+                    //xmlWorkflowService.getMyDSpaceLink(),  //ORG 
+                    //modified to send the workflowItemID for direct access @Steli
+                    "https://repotest.ub.fau.de/workflowitems/" + wfi.getID() + "/view"  
             );
         } catch (MessagingException e) {
             log.info(LogHelper.getHeader(c, "error emailing user(s) for claimed task",
@@ -156,3 +161,4 @@ public class ClaimAction extends UserSelectionAction {
     }
 
 }
+

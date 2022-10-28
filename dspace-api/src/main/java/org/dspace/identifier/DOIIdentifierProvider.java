@@ -68,9 +68,12 @@ public class DOIIdentifierProvider extends FilteredIdentifierProvider {
 
     // Metadata field name elements
     // TODO: move these to MetadataSchema or some such?
-    public static final String MD_SCHEMA = "dc";
+    //public static final String MD_SCHEMA = "dc";
+    public static final String MD_SCHEMA = "local"; //"dc";
     public static final String DOI_ELEMENT = "identifier";
-    public static final String DOI_QUALIFIER = "uri";
+    //public static final String DOI_QUALIFIER = "uri";
+     public static final String DOI_QUALIFIER = "doi"; // "uri";
+    
 
     public static final Integer TO_BE_REGISTERED = 1;
     public static final Integer TO_BE_RESERVED = 2;
@@ -543,7 +546,7 @@ public class DOIIdentifierProvider extends FilteredIdentifierProvider {
 
         if (DELETED.equals(doiRow.getStatus()) || TO_BE_DELETED.equals(doiRow.getStatus())) {
             throw new DOIIdentifierException("You tried to update the metadata"
-                    + " of a DOI that is marked as DELETED.",
+                    + "of a DOI that is marked as DELETED.",
                     DOIIdentifierException.DOI_IS_DELETED);
         }
 

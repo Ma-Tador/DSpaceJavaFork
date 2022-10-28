@@ -15,7 +15,9 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.dspace.content.Item;
 import org.dspace.content.MetadataValue;
+import org.dspace.content.factory.ContentServiceFactory;
 import org.dspace.content.logic.LogicalStatementException;
+import org.dspace.content.service.ItemService;
 import org.dspace.core.Context;
 
 /**
@@ -39,7 +41,7 @@ public class MetadataValueMatchCondition extends AbstractCondition {
      */
     @Override
     public boolean getResult(Context context, Item item) throws LogicalStatementException {
-        String field = (String)getParameters().get("field");
+        String field = (String)getParameters().get("field");            
         if (field == null) {
             return false;
         }
@@ -48,13 +50,36 @@ public class MetadataValueMatchCondition extends AbstractCondition {
         String schema = (fieldParts.length > 0 ? fieldParts[0] : null);
         String element = (fieldParts.length > 1 ? fieldParts[1] : null);
         String qualifier = (fieldParts.length > 2 ? fieldParts[2] : null);
-
+        
+        //added steli
+        if(fieldParts.equals("dc.identifier.uri")){
+            log.info("Steli ******** dc.identifier.uri here truncated as: " + schema + "." +element + "." + qualifier);
+        }
+        if(itemService == null){
+            log.info("Steli *********************** itemService is null");
+            itemService = ContentServiceFactory.getInstance().getItemService();
+        }
+        log.info("Steli ********************* itemService is NOT null");
+        
+        
         List<MetadataValue> values = itemService.getMetadata(item, schema, element, qualifier, Item.ANY);
+        
+        //added Steli
+        //if(values != null){
+        //if(values.size() > 0){
+        
         for (MetadataValue value : values) {
+              	       	
             if (getParameters().get("pattern") instanceof String) {
-                String pattern = (String)getParameters().get("pattern");
+                String pattern = (String)getParameters().get("pattern");              
+                
                 log.debug("logic for " + item.getHandle() + ": pattern passed is " + pattern
                     + ", checking value " + value.getValue());
+                
+                if(value.getValue() == null || value.getValue().isEmpty() ){
+                	return false;
+                }
+                
                 Pattern p = Pattern.compile(pattern);
                 Matcher m = p.matcher(value.getValue());
                 if (m.find()) {
@@ -62,6 +87,9 @@ public class MetadataValueMatchCondition extends AbstractCondition {
                 }
             }
         }
+        
+        //}}//added steli
+        
         return false;
     }
 }

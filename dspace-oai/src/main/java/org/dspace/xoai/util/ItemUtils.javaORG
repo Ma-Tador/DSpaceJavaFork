@@ -1,3 +1,10 @@
+/**
+ * The contents of this file are subject to the license and copyright
+ * detailed in the LICENSE and NOTICE files at the root of the source
+ * tree and available online at
+ *
+ * http://www.dspace.org/license/
+ */
 package org.dspace.xoai.util;
 
 import java.io.ByteArrayOutputStream;
@@ -30,18 +37,6 @@ import org.dspace.core.Utils;
 import org.dspace.services.ConfigurationService;
 import org.dspace.services.factory.DSpaceServicesFactory;
 import org.dspace.xoai.data.DSpaceItem;
-import org.dspace.authorize.ResourcePolicy;
-import org.dspace.authorize.factory.AuthorizeServiceFactory;
-import org.dspace.authorize.service.ResourcePolicyService;
-import org.dspace.embargo.factory.EmbargoServiceFactory;
-import org.dspace.embargo.service.EmbargoService;
-import org.dspace.eperson.Group;
-import org.dspace.eperson.factory.EPersonServiceFactory;
-import org.dspace.eperson.service.GroupService;
-import java.util.Date;
-import org.dspace.content.DCDate;
-//import org.dspace.core.ConfigurationManager;  //obsolete import
-
 
 /**
  * @author Lyncode Development Team (dspace at lyncode dot com)
@@ -50,25 +45,20 @@ import org.dspace.content.DCDate;
 public class ItemUtils {
     private static final Logger log = LogManager.getLogger(ItemUtils.class);
 
-    private static final MetadataExposureService metadataExposureService = UtilServiceFactory.getInstance().getMetadataExposureService();
+    private static final MetadataExposureService metadataExposureService
+            = UtilServiceFactory.getInstance().getMetadataExposureService();
 
-    private static final ItemService itemService = ContentServiceFactory.getInstance().getItemService();
+    private static final ItemService itemService
+            = ContentServiceFactory.getInstance().getItemService();
 
-    private static final RelationshipService relationshipService = ContentServiceFactory.getInstance().getRelationshipService();
+    private static final RelationshipService relationshipService
+            = ContentServiceFactory.getInstance().getRelationshipService();
 
-    private static final BitstreamService bitstreamService = ContentServiceFactory.getInstance().getBitstreamService();
+    private static final BitstreamService bitstreamService
+            = ContentServiceFactory.getInstance().getBitstreamService();
 
-    private static final ConfigurationService configurationService = DSpaceServicesFactory.getInstance().getConfigurationService();
-
-    //added for embargo openAccess  Steli
-    private static final ResourcePolicyService resourcePolicyService = AuthorizeServiceFactory.getInstance().getResourcePolicyService();
-
-    private static final GroupService groupService = EPersonServiceFactory.getInstance().getGroupService();
-
-    private static final EmbargoService embargoService = EmbargoServiceFactory.getInstance().getEmbargoService();
-
-
-
+    private static final ConfigurationService configurationService
+            = DSpaceServicesFactory.getInstance().getConfigurationService();
     /**
      * Default constructor
      */
@@ -81,6 +71,7 @@ public class ItemUtils {
                 return e;
             }
         }
+
         return null;
     }
 
@@ -96,8 +87,6 @@ public class ItemUtils {
         e.setName(name);
         return e;
     }
-
-
 
     private static Element createBundlesElement(Context context, Item item) throws SQLException {
         Element bundles = create("bundles");
@@ -119,8 +108,7 @@ public class ItemUtils {
                 String url = "";
                 String bsName = bit.getName();
                 String sid = String.valueOf(bit.getSequenceID());
-                //String baseUrl = configurationService.getProperty("oai.bitstream.baseUrl");
-                //System.out.println(baseUrl);
+                String baseUrl = configurationService.getProperty("oai.bitstream.baseUrl");
                 String handle = null;
                 // get handle of parent Item of this bitstream, if there
                 // is one:
@@ -131,8 +119,7 @@ public class ItemUtils {
                         handle = bi.get(0).getHandle();
                     }
                 }
-                //url = baseUrl + "/bitstreams/" + bit.getID().toString() + "/download";
-		url = "https://repotest.ub.fau.de/bitstreams/" + bit.getID().toString() + "/download";
+                url = baseUrl + "/bitstreams/" + bit.getID().toString() + "/download";
 
                 String cks = bit.getChecksum();
                 String cka = bit.getChecksumAlgorithm();
@@ -161,9 +148,6 @@ public class ItemUtils {
         return bundles;
     }
 
-
-
-
     private static Element createLicenseElement(Context context, Item item)
             throws SQLException, AuthorizeException, IOException {
         Element license = create("license");
@@ -180,13 +164,11 @@ public class ItemUtils {
                 ByteArrayOutputStream out = new ByteArrayOutputStream();
                 Utils.bufferedCopy(in, out);
                 license.getField().add(createValue("bin", Base64Utils.encode(out.toString())));
+
             }
         }
         return license;
     }
-
-
-
 
     /**
      * This method will add all sub-elements to a top element, like: dc, or dcterms, ...     *
@@ -244,10 +226,6 @@ public class ItemUtils {
         }
     }
 
-
-
-
-
     /**
      * Utility method to retrieve a structured XML in XOAI format
      * @param context
@@ -255,132 +233,49 @@ public class ItemUtils {
      * @return Structured XML Metadata in XOAI format
      */
     public static Metadata retrieveMetadata(Context context, Item item) {
+        Metadata metadata;
+
         // read all metadata into Metadata Object
-        Metadata metadata = new Metadata();
-        Date bitstreamMinEmbargoDate = null;
-        Date bitstreamMaxEmbargoDate = null;
+        metadata = new Metadata();
+
         List<MetadataValue> vals = itemService.getMetadata(item, Item.ANY, Item.ANY, Item.ANY, Item.ANY);
-        
-        for(MetadataValue val : vals) {
+        for (MetadataValue val : vals) {
             MetadataField field = val.getMetadataField();
             try {
                 // Don't expose fields that are hidden by configuration
-                if (metadataExposureService.isHidden(context, field.getMetadataSchema().getName(), field.getElement(),field.getQualifier())) {
+                if (metadataExposureService.isHidden(context, field.getMetadataSchema().getName(), field.getElement(),
+                        field.getQualifier())) {
                     continue;
                 }
-                //get metadata schema ex.dcterms
+
                 Element schema = getElement(metadata.getElement(), field.getMetadataSchema().getName());
                 if (schema == null) {
                     schema = create(field.getMetadataSchema().getName());
                     metadata.getElement().add(schema);
                 }
+
                 fillSchemaElement(schema, val);
             } catch (SQLException se) {
                 throw new RuntimeException(se);
             }
         }
+
         // Done! Metadata has been read!
         // Now adding bitstream info
         try {
-            //ORG Element bundles = createBundlesElement(context, item);
-	    //ORG metadata.getElement().add(bundles);
-            	//added steli as in P.Becker config for OAI-PMH embargo
-		Element bundles = create("bundles");
-		metadata.getElement().add(bundles);
-		List<Bundle> bs = item.getBundles();		
-		Group groupAnonymous = groupService.findByName(context, Group.ANONYMOUS);
-
-		for (Bundle b : bs){
-                  Element bundle = create("bundle");
-                  bundles.getElement().add(bundle);
-                  bundle.getField().add(createValue("name", b.getName()));
-		  Element bitstreams = create("bitstreams");
-                  bundle.getElement().add(bitstreams);
-                  List<Bitstream> bits = b.getBitstreams();
-                  for (Bitstream bit : bits){
-		    Element bitstream = create("bitstream");
-                    bitstreams.getElement().add(bitstream);
-                    String url = "";
-                    String bsName = bit.getName();
-                    String sid = String.valueOf(bit.getSequenceID());
-                    //String baseUrl = configurationService.getProperty("oai","bitstream.baseUrl");
-                    String handle = null;
-		    // get handle of parent Item of this bitstream, if there is one
-		    List<Bundle> bn = bit.getBundles();
-                    if (!bn.isEmpty()){
-                        List<Item> bi = bn.get(0).getItems();
-                        if (!bi.isEmpty()){
-                            handle = bi.get(0).getHandle();
-                        }
-                    }
-		    //url = baseUrl + "/bitstreams/" + bit.getID().toString() + "/download";  //org
-		    url = "https://repotest.ub.fau.de/bitstreams/" + bit.getID().toString() + "/download";
-		    
-		    // Find Embargo end date of the bitstream (if there is one)
-		    Date embargoEndDate = null;
-		    //ORG, cant find function signature, maybe obsolete -> List<ResourcePolicy> policies = resourcePolicyService.find( context, bit, groupAnonymous, Constants.READ, -1);
-                    List<ResourcePolicy> policies = resourcePolicyService.find( context, bit, groupAnonymous, Constants.READ);
-		    // There should be at most one policy for this group, action and bitstream. If startDate exists, it means embargo date is startDate
-		    for (ResourcePolicy policy : policies){
-                        if (policy.getStartDate() != null){
-                            embargoEndDate = policy.getStartDate();
-                            break;
-                        }
-                    } 
-		    String cks = bit.getChecksum();
-                    String cka = bit.getChecksumAlgorithm();
-                    String oname = bit.getSource();
-                    String name = bit.getName();
-                    String description = bit.getDescription();
-		    
-		    if (name != null){ bitstream.getField().add( createValue("name", name)); }
-		    if (oname != null){ bitstream.getField().add( createValue("originalName", name)); }
-		    if (description != null){ bitstream.getField().add( createValue("description", description));  }
-		    
-		    bitstream.getField().add( createValue("format", bit.getFormat(context).getMIMEType()));
-		    bitstream.getField().add( createValue("size", "" + bit.getSizeBytes()));
-                    bitstream.getField().add( createValue("url", url));
-                    bitstream.getField().add( createValue("checksum", cks));
-                    bitstream.getField().add( createValue("checksumAlgorithm", cka));
-                    bitstream.getField().add( createValue("sid", bit.getSequenceID() + ""));
-		    if (embargoEndDate != null){
-                        bitstream.getField().add( createValue("embargoEndDate", embargoEndDate.toString()));
-                        if (bitstreamMinEmbargoDate == null || embargoEndDate.before(bitstreamMinEmbargoDate)){
-                            bitstreamMinEmbargoDate = embargoEndDate;
-                        }
-                        if (bitstreamMaxEmbargoDate == null || embargoEndDate.after(bitstreamMaxEmbargoDate)){
-                            bitstreamMaxEmbargoDate = embargoEndDate; 
-                        }
-                    }
-		}//end for bitstreams
-	    }//end for bundles
-        } 
-	catch (SQLException e) {
+            Element bundles = createBundlesElement(context, item);
+            metadata.getElement().add(bundles);
+        } catch (SQLException e) {
             log.warn(e.getMessage(), e);
         }
-        // add Other info and embargo
+
+        // Other info
         Element other = create("others");
+
         other.getField().add(createValue("handle", item.getHandle()));
         other.getField().add(createValue("identifier", DSpaceItem.buildIdentifier(item.getHandle())));
         other.getField().add(createValue("lastModifyDate", item.getLastModified().toString()));
-	//added steli for embargo for OpenAire and DNB OAI-PMH, see P/Becker github -->
-	if (bitstreamMaxEmbargoDate != null){
-            other.getField().add( createValue("bitstreamMaxEmbargoEnd", bitstreamMaxEmbargoDate.toString()));
-        }
-        if (bitstreamMinEmbargoDate != null){
-            other.getField().add( createValue("bitstreamMinEmbargoEnd", bitstreamMinEmbargoDate.toString()));
-        }
-        try {
-            DCDate itemEmbargo = null;
-            if ((itemEmbargo = embargoService.getEmbargoTermsAsDate(context, item)) != null) {
-                other.getField().add(  createValue("itemEmbargoEnd", itemEmbargo.toString()));
-            }
-        }
-        catch (SQLException | AuthorizeException e){
-            log.warn("Unable to get item embargo: " + e, e);
-        }
-	//end added steli
-	metadata.getElement().add(other);
+        metadata.getElement().add(other);
 
         // Repository Info
         Element repository = create("repository");
@@ -396,6 +291,7 @@ public class ItemUtils {
         } catch (AuthorizeException | IOException | SQLException e) {
             log.warn(e.getMessage(), e);
         }
+
         return metadata;
     }
 }
