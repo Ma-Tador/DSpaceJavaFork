@@ -21,8 +21,6 @@
 
     <context:annotation-config /> <!-- allows us to use spring annotations in beans -->
 
-	<!-- added DOI pre-registration @Steli -->
-	<bean id="always_true_filter" class="org.dspace.content.logic.TrueFilter"/>
 
     <!-- DEFINE CONDITIONS
         Define condition beans below for use as sub-statements in operator and filter beans
@@ -204,20 +202,6 @@
             </map>
         </property>
     </bean>
-    
-    
-    <!-- added DOI pre-registrataion @Steli -->
-    <bean id="is-archived_condition" class="org.dspace.content.logic.condition.IsArchivedCondition">
-        <property name="parameters">
-            <map></map>
-        </property>
-    </bean>
-    <bean id="is-withdrawn_condition" class="org.dspace.content.logic.condition.IsWithdrawnCondition">
-        <property name="parameters">
-            <map></map>
-        </property>
-    </bean>
-    
 
     <!-- DEFINE OPERATORS
         Operators can be defined too, if a particular AND or OR statement needs to be re-used a lot, though
@@ -262,12 +246,6 @@
                                 <ref bean="local-identifier-doi-contains-doi_condition"/>
                         </property>                      
                      	</bean> 
-                     	
-                     	 <!-- For DOI pre-registration @Steli. If the item is archived and not withdrawn, register it.-->
-                        <ref bean="is-archived_condition"/>
-                        <bean class="org.dspace.content.logic.operator.Not">
-                            <property name="statements" ref="is-withdrawn_condition"/>
-                        </bean>
                         
                      	
                      	<!-- Bec we have DOIs saved in local.identifier.doi and dc.identifier.doi,check also that dc.identifier.doi is empty(filter returns false by empty, so use NOT)    -->  

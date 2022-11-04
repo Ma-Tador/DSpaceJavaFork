@@ -24,6 +24,8 @@ import org.dspace.authorize.AuthorizeException;
 import org.dspace.authorize.ResourcePolicy;
 import org.dspace.authorize.service.AuthorizeService;
 import org.dspace.content.dao.WorkspaceItemDAO;
+import org.dspace.content.logic.Filter;
+import org.dspace.content.logic.FilterUtils;
 import org.dspace.content.service.CollectionService;
 import org.dspace.content.service.ItemService;
 import org.dspace.content.service.WorkspaceItemService;
@@ -32,6 +34,13 @@ import org.dspace.core.Context;
 import org.dspace.core.LogHelper;
 import org.dspace.eperson.EPerson;
 import org.dspace.event.Event;
+import org.dspace.identifier.DOI;
+import org.dspace.identifier.DOIIdentifierProvider;
+import org.dspace.identifier.Identifier;
+import org.dspace.identifier.IdentifierException;
+import org.dspace.identifier.factory.IdentifierServiceFactory;
+import org.dspace.identifier.service.DOIService;
+import org.dspace.services.factory.DSpaceServicesFactory;
 import org.dspace.workflow.WorkflowItem;
 import org.dspace.workflow.WorkflowService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -58,6 +67,8 @@ public class WorkspaceItemServiceImpl implements WorkspaceItemService {
     protected ItemService itemService;
     @Autowired(required = true)
     protected WorkflowService workflowService;
+    @Autowired(required = true)
+    protected DOIService doiService;
 
 
     protected WorkspaceItemServiceImpl() {
@@ -160,6 +171,26 @@ public class WorkspaceItemServiceImpl implements WorkspaceItemService {
         }
 
         itemService.update(context, item);
+
+        // If configured, register identifiers (eg handle, DOI) now. This is typically used with the Show Identifiers
+        // submission step which previews minted handles and DOIs during the submission process. Default: false
+        if (DSpaceServicesFactory.getInstance().getConfigurationService()
+                .getBooleanProperty("identifiers.submission.register", false)) {
+            try {
+                // Get map of filters to use for identifier types
+                Map<Class<? extends Identifier>, Filter> filters = FilterUtils.getIdentifierFilters("workspace");
+                IdentifierServiceFactory.getInstance().getIdentifierService().register(context, item, filters);
+                // Look for a DOI and move it to PENDING
+                DOI doi = doiService.findDOIByDSpaceObject(context, item);
+                if (doi != null) {
+                    doi.setStatus(DOIIdentifierProvider.PENDING);
+                    doiService.update(context, doi);
+                }
+            } catch (IdentifierException e) {
+                log.error("Could not register identifier(s) for item {}: {}", item.getID(), e.getMessage());
+            }
+        }
+
         workspaceItem.setItem(item);
 
         log.info(LogHelper.getHeader(context, "create_workspace_item",
@@ -253,7 +284,6 @@ public class WorkspaceItemServiceImpl implements WorkspaceItemService {
          * Authorisation is a special case. The submitter won't have REMOVE
          * permission on the collection, so our policy is this: Only the
          * original submitter or an administrator can delete a workspace item.
-
          */
         Item item = workspaceItem.getItem();
         if (!authorizeService.isAdmin(context)

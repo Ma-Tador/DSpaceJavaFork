@@ -58,22 +58,11 @@
     </bean>
     -->
     
-   <!-- added DOI Filter Steli 
+   <!-- added DOI Filter Steli -->
     <bean id="org.dspace.identifier.DOIIdentifierProvider" class="org.dspace.identifier.DOIIdentifierProvider" scope="singleton">
         <property name="configurationService" ref="org.dspace.services.ConfigurationService" />
         <property name="DOIConnector" ref="org.dspace.identifier.doi.DOIConnector" />
         <property name="filterService" ref="doi_filter" />
-    </bean>
-    -->
-    
-    <!-- added DOI pre-registration @Steli -->
-     <bean id="org.dspace.identifier.DOIIdentifierProvider" class="org.dspace.identifier.DOIIdentifierProvider" 
-        scope="singleton">
-        <property name="configurationService"
-            ref="org.dspace.services.ConfigurationService" />
-        <property name="DOIConnector"
-            ref="org.dspace.identifier.doi.DOIConnector" />
-        <property name="filter" ref="doi_filter" />
     </bean>
    
    
@@ -92,8 +81,6 @@
         <property name="filterService" ref="doi_filter" />
     </bean>
     -->
-    
-
 
     
     <!-- The DOIConnector will handle the API calls to your DOI registration
