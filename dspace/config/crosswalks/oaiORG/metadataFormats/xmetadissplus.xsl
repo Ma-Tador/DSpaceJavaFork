@@ -50,6 +50,7 @@
 
             <!-- 3. Urheber dc.contributor.author to dc:creator xsi:type="pc:MetaPers" -->
             <xsl:for-each select="doc:metadata/doc:element[@name='dc']/doc:element[@name='contributor']/doc:element[@name='author']/doc:element/doc:field[@name='value']">
+                <!-- only persons with forename and surname -->
                 <xsl:choose>
                 <xsl:when test="contains(., ',') = 'true' ">
                     <dc:creator xsi:type="pc:MetaPers">
@@ -65,8 +66,8 @@
                         </pc:person>
                     </dc:creator>
                 </xsl:when>
-                <xsl:when test="contains(., ' ') = 'true' ">
-                    <dc:creator xsi:type="pc:MetaPers">
+                <xsl:otherwise>
+                <dc:creator xsi:type="pc:MetaPers">
                         <pc:person>
                             <pc:name type="nameUsedByThePerson">
                                 <pc:foreName>
@@ -77,18 +78,7 @@
                                 </pc:surName>
                             </pc:name>
                         </pc:person>
-                    </dc:creator>
-                </xsl:when>
-                <xsl:otherwise>
-               <dc:creator xsi:type="pc:MetaPers">
-                        <pc:person>
-                            <pc:name type="otherName">
-                                <pc:personEnteredUnderGivenName>
-                                    	<xsl:value-of select="."/>
-                                </pc:personEnteredUnderGivenName>                            
-                            </pc:name>
-                        </pc:person>
-                    </dc:creator>
+                    </dc:creator> 
                 </xsl:otherwise>
                 </xsl:choose>
             </xsl:for-each>
@@ -177,6 +167,7 @@
             <!-- 8. Betreuer / Gutachter / Prüfungskommission dc.contributor.advisor to dc:contributor pc:Contributor thesis:role=advisor -->
             <xsl:for-each select="doc:metadata/doc:element[@name='dc']/doc:element[@name='contributor']/doc:element[@name='advisor']/doc:element/doc:field[@name='value']">
             <xsl:choose>
+                <!-- only persons with forename and surname -->
                 <xsl:when test="contains(., ',') = 'true' ">
                     <dc:contributor xsi:type="pc:Contributor" thesis:role="advisor">
                         <pc:person>
@@ -191,8 +182,8 @@
                         </pc:person>
                     </dc:contributor>
                 </xsl:when>
-                <xsl:when test="contains(., ' ') = 'true' ">
-                <dc:contributor xsi:type="pc:Contributor" thesis:role="advisor">
+                <xsl:otherwise>
+               <dc:contributor xsi:type="pc:Contributor" thesis:role="advisor">
                         <pc:person>
                             <pc:name type="nameUsedByThePerson">
                                 <pc:foreName>
@@ -203,18 +194,7 @@
                                 </pc:surName>
                             </pc:name>
                         </pc:person>
-                    </dc:contributor>
-                </xsl:when>
-                <xsl:otherwise>
-                <dc:contributor xsi:type="pc:Contributor" thesis:role="advisor">
-                        <pc:person>
-                            <pc:name type="otherName">
-                                <pc:personEnteredUnderGivenName>
-                                    	<xsl:value-of select="."/>
-                                </pc:personEnteredUnderGivenName>                            
-                            </pc:name>
-                        </pc:person>
-                    </dc:contributor>
+                    </dc:contributor>   
                 </xsl:otherwise>
                 </xsl:choose>
             </xsl:for-each>
@@ -222,6 +202,7 @@
             <!-- 8. Betreuer / Gutachter / Prüfungskommission dc.contributor to dc:contributor pc:Contributor thesis:role=referee -->
             <xsl:for-each select="doc:metadata/doc:element[@name='dc']/doc:element[@name='contributor']/doc:element/doc:field[@name='value']">
               <xsl:choose>
+                <!-- only persons with forename and surname -->
                 <xsl:when test="contains(., ',') = 'true' ">
                     <dc:contributor xsi:type="pc:Contributor" thesis:role="referee">
                         <pc:person>
@@ -236,8 +217,8 @@
                         </pc:person>
                     </dc:contributor>
                 </xsl:when>
-                <xsl:when test="contains(., ' ') = 'true' ">
-                <dc:contributor xsi:type="pc:Contributor" thesis:role="referee">
+                <xsl:otherwise>
+              <dc:contributor xsi:type="pc:Contributor" thesis:role="referee">
                         <pc:person>
                             <pc:name type="nameUsedByThePerson">
                                 <pc:foreName>
@@ -248,18 +229,7 @@
                                 </pc:surName>
                             </pc:name>
                         </pc:person>
-                    </dc:contributor> 
-                </xsl:when>
-                <xsl:otherwise>
-               <dc:contributor xsi:type="pc:Contributor" thesis:role="referee">
-                        <pc:person>
-                            <pc:name type="otherName">
-                                <pc:personEnteredUnderGivenName>
-                                    	<xsl:value-of select="."/>
-                                </pc:personEnteredUnderGivenName>                            
-                            </pc:name>
-                        </pc:person>
-                    </dc:contributor> 
+                    </dc:contributor>    
                 </xsl:otherwise>
                </xsl:choose>
             </xsl:for-each>
@@ -267,6 +237,7 @@
             <!-- 8. Betreuer / Gutachter / Prüfungskommission dc.contributor.editor to dc:contributor pc:Contributor thesis:role=editor -->
             <xsl:for-each select="doc:metadata/doc:element[@name='dc']/doc:element[@name='contributor']/doc:element[@name='editor']/doc:element/doc:field[@name='value']">
               <xsl:choose>
+                <!-- only persons with forename and surname -->
                 <xsl:when test="contains(., ',') = 'true' ">
                     <dc:contributor xsi:type="pc:Contributor" thesis:role="editor">
                         <pc:person>
@@ -281,7 +252,7 @@
                         </pc:person>
                     </dc:contributor>
                 </xsl:when>
-                <xsl:when test="contains(., ' ') = 'true' ">
+                <xsl:otherwise>
                 <dc:contributor xsi:type="pc:Contributor" thesis:role="editor">
                         <pc:person>
                             <pc:name type="nameUsedByThePerson">
@@ -291,17 +262,6 @@
                                 <pc:surName>
                                 	<xsl:value-of select="normalize-space(substring-after(., ' '))"/>                                  
                                 </pc:surName>
-                            </pc:name>
-                        </pc:person>
-                    </dc:contributor>  
-                </xsl:when>
-                <xsl:otherwise>
-               <dc:contributor xsi:type="pc:Contributor" thesis:role="editor">
-                        <pc:person>
-                            <pc:name type="otherName">
-                                <pc:personEnteredUnderGivenName>
-                                    	<xsl:value-of select="."/>
-                                </pc:personEnteredUnderGivenName>                            
                             </pc:name>
                         </pc:person>
                     </dc:contributor>  

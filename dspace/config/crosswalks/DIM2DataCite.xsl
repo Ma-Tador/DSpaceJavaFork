@@ -236,12 +236,13 @@
                 </xsl:element>
             </xsl:if>
 
-<!-- Added to search also in the local identifiers @Steli -->
+<!-- Added to search also in the local identifiers @Steli
 <xsl:if test="//dspace:field[@mdschema='local' and @element='identifier' and @qualifier and not(starts-with(., concat('http://dx.doi.org/', $prefix)))]">
 <xsl:element name="alternateIdentifiers">
-<xsl:apply-templates select="//dspace:field[@mdschema='local' and @element='identifier' and @qualifier and not(starts-with(., concat('http://dx.doi.org/', $prefix)))]" />
+<xsl:apply-templates select="//dspace:field[@mdschema='dc' and @element='identifier' and @qualifier and not(starts-with(., concat('http://dx.doi.org/', $prefix)))]" />
 </xsl:element>
 </xsl:if>
+-->
 
             <!--
                 DataCite (12)
@@ -528,7 +529,7 @@
         </xsl:element>
     </xsl:template>
 
-<xsl:template match="//dspace:field[@mdschema='local' and @element='identifier' and @qualifier and not(starts-with(., concat('http://dx.doi.org/', $prefix)))]">
+<xsl:template match="//dspace:field[@mdschema='dc' and @element='identifier' and @qualifier and not(starts-with(., concat('http://dx.doi.org/', $prefix)))]">
 <xsl:element name="alternateIdentifier">
 <xsl:if test="@qualifier">
 <xsl:attribute name="alternateIdentifierType"><xsl:value-of select="@qualifier" /></xsl:attribute>

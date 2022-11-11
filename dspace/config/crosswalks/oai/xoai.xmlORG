@@ -1,44 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- 
-    The contents of this file are subject to the license and copyright
-    detailed in the LICENSE and NOTICE files at the root of the source
-    tree and available online at
-    http://www.dspace.org/license/
-	Developed by DSpace @ Lyncode <dspace@lyncode.com>
- -->
-<Configuration indented="true" maxListIdentifiersSize="200" maxListRecordsSize="200"
-               maxListSetsSize="200" stylesheet="static/style.xsl"
-               xmlns="http://www.lyncode.com/XOAIConfiguration">
+<Configuration indented="false" maxListIdentifiersSize="100" maxListRecordsSize="100"
+    maxListSetsSize="100" stylesheet="static/style.xsl" xmlns="http://www.lyncode.com/XOAIConfiguration">
 
     <Contexts>
+    
+    <!--
         <Context baseurl="request" name="Default Context">
-            <!-- Restrict access to hidden items by default -->
             <Filter ref="defaultFilter"/>
+
             <Format ref="oaidc"/>
-            <Format ref="qdc"/>
             <Format ref="mets"/>
-            <Format ref="mods"/>
-            <Format ref="marc"/>
-            <Format ref="ore"/>
+            <Format ref="xoai"/>
             <Format ref="didl"/>
             <Format ref="dim"/>
-            <!-- Deactivated mappings:
-            <Format ref="xoai"/>
+            <Format ref="ore"/>
             <Format ref="rdf"/>
             <Format ref="etdms"/>
+            <Format ref="mods"/>
+            <Format ref="qdc"/>
+            <Format ref="marc"/>
             <Format ref="uketd_dc"/>
-            -->
-            <!--<Format ref="junii2" />-->
             <Description>
                 This is the default context of the DSpace OAI-PMH data provider.
             </Description>
         </Context>
+        -->
 
         <!--
             Driver Guidelines:
-            - http://www.driver-support.eu/documents/DRIVER_Guidelines_v2_Final_2008-11-13.pdf
-            Page 57 - 58
-            https://guidelines.openaire.eu/en/latest/literature/use_of_oai_pmh.html
+
+            - https://guidelines.openaire.eu/en/latest/literature/use_of_oai_pmh.html
          -->
         <Context baseurl="driver" name="Driver Context">
             <!-- Date format, field prefixes, etc are ensured by the transformer -->
@@ -55,11 +46,38 @@
                 This context complies with Driver rules.
             </Description>
         </Context>
-        
+
+        <!--
+            OpenAIRE Guidelines 3.0:
+
+            - https://guidelines.openaire.eu/
+
+            There is a limitation over the embargoedEndDate parameter:
+
+            - Predefined DSpace fields don't allow to set this up with a default.
+         -->
+        <Context baseurl="openaire" name="OpenAIRE Context">
+            <!-- Date format, field prefixes, etc are ensured by the transformer -->
+            <Transformer ref="openaireTransformer"/>
+            <!-- OpenAIRE filter -->
+            <Filter ref="openAireFilter"/>
+            <!-- Just an alias, in fact it returns all items within the driver context -->
+            <Set ref="openaireSet"/>
+            <!-- Metadata Formats -->
+            <Format ref="oaidc"/>
+            <Format ref="mets"/>
+            <Description>
+                This contexts complies with OpenAIRE Guidelines for Literature Repositories v3.0.
+            </Description>
+        </Context>
+
         <!--
             OpenAIRE Guidelines 4.0:
+
             - https://openaire-guidelines-for-literature-repository-managers.readthedocs.io/en/v4.0.0/
+
             There is a limitation over the embargoedEndDate parameter:
+
             - Predefined DSpace fields don't allow to set this up with a default.
          -->
         <Context baseurl="openaire4" name="OpenAIRE 4 Context">
@@ -74,71 +92,30 @@
             </Description>
         </Context>
         
-
-        <!--
-            OpenAIRE Guidelines 3.0:
-            - https://guidelines.openaire.eu/
-            There is a limitation over the embargoedEndDate parameter:
-            - Predefined DSpace fields don't allow to set this up with a default.
-         -->
-        <Context baseurl="openaire" name="OpenAIRE Context">
-            <!-- Date format, field prefixes, etc are ensured by the transformer 
-            	<Transformer ref="openaireTransformer"/>
-            -->
-            <Transformer ref="tubOpenaireTransformer"/>
-            <!-- OpenAIRE filter 
-            	<Filter ref="openAireFilter"/>
-            -->
-            <Filter ref="tubOpenAireFilter"/>
-            <!-- Just an alias, in fact it returns all items within the driver context -->
-            <Set ref="openaireSet"/>
-            <!-- Metadata Formats 
-            	<Format ref="oaidc"/>
-            -->
-            <Format ref="oaidc_tub"/>
-            <Format ref="mets"/>
-            <Description>
-                This contexts complies with OpenAIRE Guidelines for Literature Repositories v3.0.
-            </Description>
-        </Context>
-
-        <!--
-            Context for DNB
-        -->
-        <Context baseurl="dnb" name="DNB Context">
+        <Context baseurl="steli" name="Steli Context">
             <!-- There is no transformer needed for DNB, the complete logic is in the format xmetadissplus.xsl -->
             <!--Transformer ref="dnbTransformer"/-->
             <!-- DNB filter -->
-            <Filter ref="dnbFilter"/>
+            <Filter ref="defaultFilter"/>
             <!-- Just an alias, in fact it returns all items within the dnb context -->
+            <!--
             <Set ref="dnbSet"/>
+            -->
             <!-- Metadata Formats -->
             <Format ref="oaidc"/>
+            <!--
             <Format ref="xMetaDissPlus"/>
+            -->
             <Description>
                 This contexts complies with DNB Guidelines, particularly xMetaDissPlus
             </Description>
         </Context>
         
+
     </Contexts>
 
 
     <Formats>
-    	<!--  for OPEN-AIRE3, almost same as oai_dc. Renamed to persist in config, when move to new DSpace system  -->
-        <Format id="oaidc_tub">
-            <Prefix>oai_dc</Prefix>
-            <XSLT>metadataFormats/tub_oai_dc.xsl</XSLT>
-            <Namespace>http://www.openarchives.org/OAI/2.0/oai_dc/</Namespace>
-            <SchemaLocation>http://www.openarchives.org/OAI/2.0/oai_dc.xsd</SchemaLocation>
-        </Format>
-        <!-- format Metadata for DNB -->
-        <Format id="xMetaDissPlus">
-            <Prefix>xMetaDissPlus</Prefix>
-            <XSLT>metadataFormats/xmetadissplus.xsl</XSLT>
-            <Namespace>http://www.d-nb.de/standards/xmetadissplus</Namespace>
-            <SchemaLocation>http://files.dnb.de/standards/xmetadissplus/xmetadissplus.xsd</SchemaLocation>
-        </Format>
-        
         <Format id="oaidc">
             <Prefix>oai_dc</Prefix>
             <XSLT>metadataFormats/oai_dc.xsl</XSLT>
@@ -220,6 +197,9 @@
             <Namespace>http://irdb.nii.ac.jp/oai</Namespace>
             <SchemaLocation>http://irdb.nii.ac.jp/oai/junii2-3-1.xsd</SchemaLocation>
         </Format>
+        <!-- Metadata format based on the OpenAIRE 4.0 guidelines
+             https://openaire-guidelines-for-literature-repository-managers.readthedocs.io/en/v4.0.0/use_of_oai_pmh.html
+        -->
         <Format id="oaiopenaire">
             <Prefix>oai_openaire</Prefix>
             <XSLT>metadataFormats/oai_openaire.xsl</XSLT>
@@ -229,9 +209,6 @@
     </Formats>
 
     <Transformers>
-    	<Transformer id="tubOpenaireTransformer">
-            <XSLT>transformers/tub_openaire.xsl</XSLT>
-        </Transformer>
         <Transformer id="driverTransformer">
             <XSLT>transformers/driver.xsl</XSLT>
         </Transformer>
@@ -293,8 +270,7 @@
                 </And>
             </Definition>
         </Filter>
-        
-        
+
         <!-- OpenAIRE filter for records returned by OAI-PMH.
              By default, return an Item record:
                * If a Title & Author field both exist
@@ -351,86 +327,10 @@
             </Definition>
         </Filter>
 
-        <!-- TUB OpenAIRE filter.
-             Return an Item record:
-               * If a Title & Author field both exist
-               * AND Item is either publicly accessible OR Withdrawn (for tombstones)
-               * AND a valid document type for publications exists
-             This filter is only used in the OpenAIRE context ([oai]/openaire).
-        -->
-        <Filter id="tubOpenAireFilter">
-            <Definition>
-                <And>
-                    <LeftCondition>
-                        <Or>
-                            <LeftCondition>
-                                <Custom ref="itemAccessCondition"/>
-                            </LeftCondition>
-                            <RightCondition>
-                                <Custom ref="itemWithdrawnCondition"/>
-                            </RightCondition>
-                        </Or>
-                    </LeftCondition>
-                    <RightCondition>
-                        <And>
-                            <LeftCondition>
-                                <And>
-                                    <LeftCondition>
-                                        <Custom ref="titleExistsCondition"/>
-                                    </LeftCondition>
-                                    <RightCondition>
-                                        <Custom ref="authorExistsCondition"/>
-                                    </RightCondition>
-                                </And>
-                            </LeftCondition>
-                            <RightCondition>
-                                <Custom ref="tubPublicationDocumentTypeCondition"/>
-                            </RightCondition>
-                        </And>
-                    </RightCondition>
-                </And>
-            </Definition>
-        </Filter>
-
-
-	<!-- If item can be accessed OR is withdrawn(to display a thombstone),
-		AND is a Publication type defined in tubPubType 
-		AND has NOT a dnbAccessCondition (aka local.toDnb is not = to embargoed or blocked) 
-	-->
-        <Filter id="dnbFilter">
-            <Definition>
-                <And>
-                    <LeftCondition>
-                        <Or>
-                            <LeftCondition>
-                                <Custom ref="itemAccessCondition"/>
-                            </LeftCondition>
-                            <RightCondition>
-                                <Custom ref="itemWithdrawnCondition"/>
-                            </RightCondition>
-                        </Or>
-                    </LeftCondition>
-                    <RightCondition>
-                        <And>
-                            <LeftCondition>
-                                <Custom ref="tubPublicationDocumentTypeCondition"/>
-                            </LeftCondition>
-                            <RightCondition>
-                                <Not>
-                                    <Condition>
-                                        <Custom ref="dnbAccessCondition"/>
-                                    </Condition>
-                                </Not>
-                            </RightCondition>
-                        </And>
-                    </RightCondition>
-                </And>
-            </Definition>
-        </Filter>
-
         <!-- UKETD Filter for records returned by OAI-PMH.
              By default, return an Item record:
                 * If it is a "thesis"
+
              This filter is appended to any existing filter
              when "metadataPrefix=uketd_dc" is specified.
         -->
@@ -439,7 +339,7 @@
                 <Custom ref="thesisDocumentTypeCondition"/>
             </Definition>
         </Filter>
-        
+
         <!-- OpenAIRE4 filter for records returned by OAI-PMH.
              By default, return an Item record:
                 * If it is publicly accessible
@@ -480,7 +380,6 @@
             </Definition>
         </Filter>
 
-
         <!-- Default filter for records returned by OAI-PMH.
              By default, return an Item record:
                 * If it is publicly accessible
@@ -496,7 +395,7 @@
                     <LeftCondition>
                         <Or>
                             <LeftCondition>
-				<Custom ref="itemAccessCondition"/>
+                                <Custom ref="itemAccessCondition"/>
                             </LeftCondition>
                             <RightCondition>
                                 <Custom ref="itemWithdrawnCondition"/>
@@ -520,49 +419,6 @@
                 </And>
             </Definition>
         </Filter>
-        
-        
-        <!-- TUB Condition for publications only (no research data). 
-        	If dc.type for an Item is equals to one of the defined values in the list, then return item => filter passed -->
-        <CustomCondition id="tubPublicationDocumentTypeCondition">
-            <Class>org.dspace.xoai.filter.DSpaceAtLeastOneMetadataFilter</Class>
-            <Configuration>
-                <string name="field">dc.type</string>
-                <string name="operator">equal</string>
-                <list name="values">
-                    <string>article</string>
-		    <string>bachelorthesis</string>
-                    <string>book</string>
-                    <string>bookpart</string>
-                    <string>conferenceobject</string>
-                    <string>doctoralthesis</string>
-		    <string>journalissue</string>
-                    <string>masterthesis</string>
-                    <string>periodicalpart</string>
-                    <string>preprint</string>
-		    <string>postprint</string>
-                    <string>habilitation</string>
-                    <string>report</string>
-                    <string>studythesis</string>
-		    <string>workingpaper</string>
-                    <string>other</string>
-                </list>
-            </Configuration>
-        </CustomCondition>
-
-        <!-- DNB access rights condition (no items in embargo or blocked) -->
-        <CustomCondition id="dnbAccessCondition">
-            <Class>org.dspace.xoai.filter.DSpaceAtLeastOneMetadataFilter</Class>
-            <Configuration>
-                <string name="field">local.sendToDnb</string>
-                <string name="operator">equal</string>
-                <list name="values">
-                    <string>embargoed</string>
-                    <string>blocked</string>
-                </list>
-            </Configuration>
-        </CustomCondition>
-
 
         <!-- This condition determines if an Item has a "dc.type" field
              which contains "Thesis". -->
@@ -571,7 +427,7 @@
             <Configuration>
                 <string name="field">dc.type</string>
                 <string name="operator">contains</string>
-                <string name="value">thesis</string>
+                <string name="value">Thesis</string>
             </Configuration>
         </CustomCondition>
 
@@ -619,7 +475,6 @@
                 </list>
             </Configuration>
         </CustomCondition>
-        
 
         <!-- This condition determines if an Item has a "dc.rights" field
              specifying "open access", which is required for DRIVER
@@ -658,7 +513,7 @@
                 <string name="value">info:eu-repo/grantAgreement/</string>
             </Configuration>
         </CustomCondition>
-        
+
         <!-- This condition determines if an Item has a "dspace.entity.type" -->
         <CustomCondition id="relationshipTypeExistsCondition">
             <Class>org.dspace.xoai.filter.DSpaceMetadataExistsFilter</Class>
@@ -681,6 +536,7 @@
                 </list>
             </Configuration>
         </CustomCondition>
+
     </Filters>
 
     <Sets>
@@ -692,11 +548,6 @@
         <Set id="openaireSet">
             <Spec>openaire</Spec>
             <Name>OpenAIRE</Name>
-            <!-- Just an alias -->
-        </Set>
-        <Set id="dnbSet">
-            <Spec>dnb</Spec>
-            <Name>DNB</Name>
             <!-- Just an alias -->
         </Set>
     </Sets>

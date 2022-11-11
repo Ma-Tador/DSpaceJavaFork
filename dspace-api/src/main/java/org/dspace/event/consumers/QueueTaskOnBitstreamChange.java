@@ -84,6 +84,10 @@ public class QueueTaskOnBitstreamChange extends QueueTaskOnEvent {
      */
     @Override
     boolean isApplicableEvent(Context ctx, Event event) throws SQLException {
+        //if an event happens to be null, then dont queue event @Steli
+        if(event == null){
+            return false; 
+        }
         // Get bundles to ignore
         String[] ignoreBundlesProp = configurationService.getArrayProperty(
                 "custom-events.queue.bitstreamchange.ignore_bundles", new String[]{"TEXT", "THUMBNAIL"});

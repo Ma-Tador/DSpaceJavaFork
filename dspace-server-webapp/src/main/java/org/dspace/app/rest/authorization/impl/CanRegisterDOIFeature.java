@@ -36,11 +36,10 @@ public class CanRegisterDOIFeature implements AuthorizationFeature {
     @Override
     @SuppressWarnings("rawtypes")
     public boolean isAuthorized(Context context, BaseObjectRest object) throws SQLException {
-        //if (object instanceof ItemRest) {
-        //    return authorizeServiceRestUtil.authorizeActionBoolean(context, object, DSpaceRestPermission.ADMIN);
-        //}
-        //return false;
-        return true;
+        if (object instanceof ItemRest) {
+            return authorizeServiceRestUtil.authorizeActionBoolean(context, object, DSpaceRestPermission.ADMIN);
+        }
+        return false;
     }
     
 

@@ -461,7 +461,7 @@
             </row>
             <row>
                 <field>
-                    <dc-schema>local</dc-schema>
+                    <dc-schema>dc</dc-schema>
                     <dc-element>identifier</dc-element>
                     <dc-qualifier></dc-qualifier>
                     <!-- An input-type of qualdrop_value MUST be marked as repeatable -->

@@ -46,7 +46,7 @@
     </bean>
    
     
-    <!-- Added steli. Checks if local.identifier.doi is empty. If Empty returns false, if not empty returns true. -->
+    <!-- Added steli. Checks if local.identifier.doi is empty. If Empty returns false, if not empty returns true.
     <bean id="local-identifier-doi-contains-doi_condition"
           class="org.dspace.content.logic.condition.MetadataValueMatchCondition">
         <property name="parameters">
@@ -56,6 +56,7 @@
             </map>
         </property>
     </bean>
+    -->
     
       <!-- Added Steli. Checks if dc.identifier.uri is not empty. -->
        <bean id="dc-identifier-uri-contains-doi_condition" class="org.dspace.content.logic.condition.MetadataValueMatchCondition">
@@ -256,21 +257,23 @@
                         <!-- Create DOIs for items only that do have at least one bitstream. -->
                         <ref bean="has-at-least-one-bitstream_condition"/>
                         
-                        <!-- Added Steli. Bec we have DOI saved in local.identifier.doi and dc.identifier.doi,check also local.identifier.doi is empty(filter returns false by empty, so use NOT)    -->
+                        <!-- Added Steli. Bec we have DOI saved in local.identifier.doi and dc.identifier.doi,check also local.identifier.doi is empty(filter returns false by empty, so use NOT)    
                         <bean class="org.dspace.content.logic.operator.Not">
                         <property name="statements">
                                 <ref bean="local-identifier-doi-contains-doi_condition"/>
                         </property>                      
                      	</bean> 
+                     	-->
                      	
-                     	 <!-- For DOI pre-registration @Steli. If the item is archived and not withdrawn, register it.-->
+                     	 <!-- For DOI pre-registration @Steli. If the item is archived and not withdrawn, register it.
                         <ref bean="is-archived_condition"/>
                         <bean class="org.dspace.content.logic.operator.Not">
                             <property name="statements" ref="is-withdrawn_condition"/>
                         </bean>
+                        -->
                         
                      	
-                     	<!-- Bec we have DOIs saved in local.identifier.doi and dc.identifier.doi,check also that dc.identifier.doi is empty(filter returns false by empty, so use NOT)    -->  
+                     	<!-- Bec we have DOIs saved in dc.identifier.doi and dc.identifier.doi,check also that dc.identifier.doi is empty(filter returns false by empty, so use NOT)    -->  
                      	<bean class="org.dspace.content.logic.operator.Not">
                         <property name="statements">
                                 <ref bean="dc-identifier-doi-contains-doi_condition"/>
@@ -283,6 +286,7 @@
             </bean>
         </property>
     </bean>
+    
 
     <bean id="type_filter" class="org.dspace.content.logic.DefaultFilter">
         <property name="statement">

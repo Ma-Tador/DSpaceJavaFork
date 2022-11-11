@@ -278,9 +278,121 @@
   <dc-type>
 	<schema>dc</schema>
     <element>identifier</element>
-    <qualifier>uri</qualifier>
-    <scope_note>Uniform Resource Identifier</scope_note>
+    <qualifier>handle</qualifier>
+    <scope_note>Handle Identifier</scope_note>
   </dc-type>
+  
+  <!-- Used by system: do not remove -->
+  <dc-type>
+	<schema>dc</schema>
+    <element>identifier</element>
+    <qualifier>uri</qualifier>
+    <scope_note>URI as Identifier</scope_note>
+  </dc-type>
+  
+  
+  
+  <!-- ************************** Added from OPUS4 ************************** -->
+  <dc-type>
+	<schema>dc</schema>
+    <element>identifier</element>
+    <qualifier>eugrant</qualifier>
+    <scope_note>EU-Grant as Identifier</scope_note>
+  </dc-type>
+  
+  <dc-type>
+	<schema>dc</schema>
+    <element>identifier</element>
+    <qualifier>opac-id</qualifier>
+    <scope_note>OPAC-ID as Identifier</scope_note>
+  </dc-type>
+  
+  <dc-type>
+	<schema>dc</schema>
+    <element>identifier</element>
+    <qualifier>pmid</qualifier>
+    <scope_note>PMID as Identifier</scope_note>
+  </dc-type>
+  
+  <dc-type>
+	<schema>dc</schema>
+    <element>identifier</element>
+    <qualifier>arxiv</qualifier>
+    <scope_note>ARXIV as Identifier</scope_note>
+  </dc-type>
+  
+  <dc-type>
+	<schema>dc</schema>
+    <element>identifier</element>
+    <qualifier>fau-id</qualifier>
+    <scope_note>FAU-ID as Identifier</scope_note>
+  </dc-type>
+  
+  <dc-type>
+	<schema>dc</schema>
+    <element>identifier</element>
+    <qualifier>std-doi</qualifier>
+    <scope_note>Std-DOI as Identifier</scope_note>
+  </dc-type>
+  
+  <dc-type>
+	<schema>dc</schema>
+    <element>identifier</element>
+    <qualifier>splash-url</qualifier>
+    <scope_note>Splash URL as Identifier</scope_note>
+  </dc-type>
+  
+  <dc-type>
+	<schema>dc</schema>
+    <element>identifier</element>
+    <qualifier>cris-link</qualifier>
+    <scope_note>Link to Cris as Identifier</scope_note>
+  </dc-type>
+  
+  <dc-type>
+	<schema>dc</schema>
+    <element>identifier</element>
+    <qualifier>url</qualifier>
+    <scope_note>URL Identifier</scope_note>
+  </dc-type>
+  
+  
+  <dc-type>
+	<schema>dc</schema>
+    <element>identifier</element>
+    <qualifier>opus-id</qualifier>
+    <scope_note>Opus4 Identifier</scope_note>
+  </dc-type>
+  
+  <dc-type>
+	<schema>dc</schema>
+    <element>identifier</element>
+    <qualifier>serial</qualifier>
+    <scope_note>Serial Identifier</scope_note>
+  </dc-type>
+  
+  <dc-type>
+	<schema>dc</schema>
+    <element>identifier</element>
+    <qualifier>uuid</qualifier>
+    <scope_note>UUID Identifier</scope_note>
+  </dc-type>
+  
+  <dc-type>
+	<schema>dc</schema>
+    <element>identifier</element>
+    <qualifier>urn</qualifier>
+    <scope_note>URN Identifier</scope_note>
+  </dc-type>
+  
+  
+  
+  
+  
+  
+
+ <!-- **************************************************** -->
+
 
   <!-- Used by system: do not remove -->
   <dc-type>

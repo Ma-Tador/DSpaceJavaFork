@@ -125,41 +125,6 @@
 
 <dc-type>
     <schema>local</schema>
-    <element>identifier</element>
-    <qualifier>cris-link</qualifier>
-    <scope_note>To enter the cris-link of a document from Opus.</scope_note>
-</dc-type>
-
-<dc-type>
-    <schema>local</schema>
-    <element>identifier</element>
-    <qualifier>splash-url</qualifier>
-    <scope_note>To enter the splash-url of a document from Opus.</scope_note>
-</dc-type>
-
-<dc-type>
-    <schema>local</schema>
-    <element>identifier</element>
-    <qualifier>opac-id</qualifier>
-    <scope_note>To enter the opac-id of a document from Opus.</scope_note>
-</dc-type>
-
-<dc-type>
-    <schema>local</schema>
-    <element>identifier</element>
-    <qualifier>pmid</qualifier>
-    <scope_note>To enter the pmid of a document from Opus.</scope_note>
-</dc-type>
-
-<dc-type>
-    <schema>local</schema>
-    <element>identifier</element>
-    <qualifier>arxiv</qualifier>
-    <scope_note>To enter the arxiv of a document from Opus.</scope_note>
-</dc-type>
-
-<dc-type>
-    <schema>local</schema>
     <element>document</element>
     <qualifier>doc-id</qualifier>
     <scope_note>To enter the doc-id of a document from Opus.</scope_note>
@@ -266,6 +231,44 @@
     <scope_note>To enter the issue of a journal from Opus.</scope_note>
 </dc-type>
 
+
+<!-- ***************Moved to dc namespace instead of local************** -->
+<!--
+<dc-type>
+    <schema>local</schema>
+    <element>identifier</element>
+    <qualifier>cris-link</qualifier>
+    <scope_note>To enter the cris-link of a document from Opus.</scope_note>
+</dc-type>
+
+<dc-type>
+    <schema>local</schema>
+    <element>identifier</element>
+    <qualifier>splash-url</qualifier>
+    <scope_note>To enter the splash-url of a document from Opus.</scope_note>
+</dc-type>
+
+<dc-type>
+    <schema>local</schema>
+    <element>identifier</element>
+    <qualifier>opac-id</qualifier>
+    <scope_note>To enter the opac-id of a document from Opus.</scope_note>
+</dc-type>
+
+<dc-type>
+    <schema>local</schema>
+    <element>identifier</element>
+    <qualifier>pmid</qualifier>
+    <scope_note>To enter the pmid of a document from Opus.</scope_note>
+</dc-type>
+
+<dc-type>
+    <schema>local</schema>
+    <element>identifier</element>
+    <qualifier>arxiv</qualifier>
+    <scope_note>To enter the arxiv of a document from Opus.</scope_note>
+</dc-type>
+
 <dc-type>
     <schema>local</schema>
     <element>identifier</element>
@@ -325,41 +328,6 @@
 <dc-type>
     <schema>local</schema>
     <element>identifier</element>
-    <qualifier>cris-link</qualifier>
-    <scope_note>To enter the cris-link of a document from Opus.</scope_note>
-</dc-type>
-
-<dc-type>
-    <schema>local</schema>
-    <element>identifier</element>
-    <qualifier>splash-url</qualifier>
-    <scope_note>To enter the splash-url of a document from Opus.</scope_note>
-</dc-type>
-
-<dc-type>
-    <schema>local</schema>
-    <element>identifier</element>
-    <qualifier>opac-id</qualifier>
-    <scope_note>To enter the opac-id of a document from Opus.</scope_note>
-</dc-type>
-
-<dc-type>
-    <schema>local</schema>
-    <element>identifier</element>
-    <qualifier>pmid</qualifier>
-    <scope_note>To enter the pmid of a document from Opus.</scope_note>
-</dc-type>
-
-<dc-type>
-    <schema>local</schema>
-    <element>identifier</element>
-    <qualifier>arxiv</qualifier>
-    <scope_note>To enter the arxiv of a document from Opus.</scope_note>
-</dc-type>
-
-<dc-type>
-    <schema>local</schema>
-    <element>identifier</element>
     <qualifier>fau-id</qualifier>
     <scope_note>To enter the fau-id of a document from Opus.</scope_note>
 </dc-type>
@@ -398,13 +366,8 @@
     <qualifier>eugrant</qualifier>
     <scope_note>To enter the EU-GrantNr of a document from Opus.</scope_note>
 </dc-type>
+-->
 
-<dc-type>
-    <schema>local</schema>
-    <element>identifier</element>
-    <qualifier>serial</qualifier>
-    <scope_note>To enter the serial of a document from Opus.</scope_note>
-</dc-type>
 
 <dc-type>
     <schema>local</schema>
