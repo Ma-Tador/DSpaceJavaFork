@@ -70,9 +70,9 @@
              <dc-element>fakultaet</dc-element>
              <dc-qualifier>lehrstuhl</dc-qualifier>
              <repeatable>false</repeatable>
-             <label>Lehrstuhl</label>
+             <label>Organisationseinheit</label>
              <input-type>onebox</input-type>
-             <hint>Geben Sie die Lehrstuhl für die Fakultät ein, falls notwendig.</hint>
+             <hint>Bitte geben Sie die Lehrstuhl (oder andere Organisationseinheit) für die Fakultät ein.</hint>
              <required></required>
             </field>
          </row>

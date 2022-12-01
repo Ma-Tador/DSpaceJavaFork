@@ -70,9 +70,9 @@
              <dc-element>fakultaet</dc-element>
              <dc-qualifier>lehrstuhl</dc-qualifier>
              <repeatable>false</repeatable>
-             <label>Chair of the department</label>
+             <label>Organizational Unit</label>
              <input-type>onebox</input-type>
-             <hint>Enter the chair of the department if necessary.</hint>
+             <hint>Please enter the chair of the department (or other organizational unit) if necessary.</hint>
              <required></required>
             </field>
          </row>

@@ -91,11 +91,16 @@
             <artifactId>commons-lang3</artifactId>
         </dependency>
         <!-- for filters -->
+        
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
+            <!-- steli
             <scope>provided</scope>
+             -->   
         </dependency>
+        
+        
         <dependency>
             <groupId>com.sun.mail</groupId>
             <artifactId>javax.mail</artifactId>

@@ -76,7 +76,7 @@
                             <artifactId>error_prone_core</artifactId>
                             <version>${errorprone.version}</version>
                         </path>
-                    </annotationProcessorPaths>
+                    </annotationProcessorPaths> 
                 </configuration>
             </plugin>
             <plugin>
@@ -480,11 +480,17 @@
             <groupId>com.sun.mail</groupId>
             <artifactId>javax.mail</artifactId>
         </dependency>
+        
+        
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
+            <!-- steli
             <scope>provided</scope>
+                -->
         </dependency>
+        
+        
         <dependency>
             <groupId>javax.annotation</groupId>
             <artifactId>javax.annotation-api</artifactId>

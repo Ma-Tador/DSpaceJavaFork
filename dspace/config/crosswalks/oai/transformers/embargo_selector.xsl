@@ -56,8 +56,11 @@
 				<xsl:element name="field" namespace="http://www.lyncode.com/xoai">
 					<xsl:attribute name="name">openAireAccess</xsl:attribute>
 					<xsl:choose>
-						<xsl:when test="$embargo = 'true'">info:eu-repo/semantics/embargoedAccess</xsl:when>
-						<xsl:otherwise>info:eu-repo/semantics/openAccess</xsl:otherwise>
+					   <!--	<xsl:when test="$embargo = 'true'">info:eu-repo/semantics/embargoedAccess</xsl:when>
+							<xsl:otherwise>info:eu-repo/semantics/openAccess</xsl:otherwise>
+					   -->
+					   		<xsl:when test="$embargo = 'true'">embargoed access</xsl:when>
+							<xsl:otherwise>open access</xsl:otherwise>
 					</xsl:choose>
 				</xsl:element>
 		</xsl:copy>

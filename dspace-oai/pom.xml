@@ -166,11 +166,15 @@
         </dependency>
 
         <!-- Web API -->
+        
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
+            <!-- steli
             <scope>provided</scope>
+                 -->
         </dependency>
+       
 
         <!-- Logging -->
         <dependency>

@@ -87,12 +87,11 @@ public class PasswordAuthentication
             email = email.trim().toLowerCase();
             for (int i = 0; i < domains.length; i++) {
                 check = domains[i].trim().toLowerCase();
-                if (email.endsWith(check)) {
+                if (email.endsWith(check)) {          
                     // A match, so we can register this user
                     return true;
                 }
             }
-
             // No match
             return false;
         }

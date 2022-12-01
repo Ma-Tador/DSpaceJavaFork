@@ -70,11 +70,15 @@
             </exclusions>
         </dependency>
 
+        
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
+            <!-- steli
             <scope>provided</scope>
+            -->
         </dependency>
+                
 
         <dependency>
             <groupId>org.apache.logging.log4j</groupId>

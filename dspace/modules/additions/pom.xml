@@ -238,11 +238,17 @@
           <groupId>org.dspace</groupId>
           <artifactId>dspace-services</artifactId>
       </dependency>
+      
+         
       <dependency>
          <groupId>javax.servlet</groupId>
          <artifactId>javax.servlet-api</artifactId>
+          <!-- steli   
          <scope>provided</scope>
+            -->
       </dependency>
+
+      
       <dependency>
          <groupId>ant-contrib</groupId>
          <artifactId>ant-contrib</artifactId>

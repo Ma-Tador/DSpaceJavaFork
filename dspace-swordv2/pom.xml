@@ -55,11 +55,16 @@
     </profiles>
 
     <dependencies>
+        
+        
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
+            <!-- steli
             <scope>provided</scope>
+             -->   
         </dependency>
+        
 
         <!-- SWORDv2 Java implementation -->
         <dependency>
@@ -75,10 +80,13 @@
                     <groupId>org.apache.abdera</groupId>
                     <artifactId>abdera-client</artifactId>
                 </exclusion>
+                
                 <exclusion>
                     <groupId>javax.servlet</groupId>
                     <artifactId>servlet-api</artifactId>
                 </exclusion>
+
+              
                 <!-- Newer version of log4j provided below -->
                 <exclusion>
                     <groupId>log4j</groupId>

@@ -144,10 +144,8 @@
 
 	<!-- Prefixing dc.description.sponsorship for EU projects ORG
 	<xsl:template match="/doc:metadata/doc:element[@name='dc']/doc:element[@name='description']/doc:element[@name='sponsorship']/doc:element/doc:field/text()">
-	
-	<xsl:template match="/doc:metadata/doc:element[@name='created']/doc:element[@name='identifier']/doc:element[@name='eugrant']/doc:element/doc:field/text()">
 	-->
-	<xsl:template match="/doc:metadata/doc:element[@name='local']/doc:element[@name='identifier']/doc:element[@name='eugrant']/doc:element/doc:field/text()">
+	<xsl:template match="/doc:metadata/doc:element[@name='dc']/doc:element[@name='identifier']/doc:element[@name='eugrant']/doc:element/doc:field/text()">
 		<xsl:choose>
 			<xsl:when test="starts-with(., 'EC')">
 				<xsl:call-template name="addPrefix">

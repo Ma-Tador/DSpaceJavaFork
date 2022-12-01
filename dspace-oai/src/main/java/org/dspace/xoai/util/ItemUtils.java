@@ -379,7 +379,6 @@ public class ItemUtils {
         catch (SQLException | AuthorizeException e){
             log.warn("Unable to get item embargo: " + e, e);
         }
-	//end added steli
 	metadata.getElement().add(other);
 
         // Repository Info

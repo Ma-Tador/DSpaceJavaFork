@@ -326,6 +326,7 @@
                     <xsl:value-of select="."/>
                 </dcterms:issued>
             </xsl:for-each>
+            
 
 
             <!-- 14 Publikationstyp dc.type to dc:type xsi:type dini:PublType -->
@@ -388,26 +389,16 @@
                 </dc:type>
             </xsl:for-each>
 
-
-	<!-- DOI  new, if existent, send as ddb:identifier -->
-	<xsl:variable name="doiNew">
-		<xsl:value-of select="doc:metadata/doc:element[@name='dc']/doc:element[@name='identifier']/doc:element[@name='doi']/doc:element/doc:field[@name='value']"/>
-	</xsl:variable>
-
-            
                     
       <!-- old DOIs from Opus, are saved in created.identifier.doi, send as ddb:identifier  -->
-            <xsl:variable name="doiOpus">
-	<!--	<xsl:value-of select="doc:metadata/doc:element[@name='created']/doc:element[@name='identifier']/doc:element[@name='doi']/doc:element/doc:field[@name='value']"/>   -->
-		<xsl:value-of select="doc:metadata/doc:element[@name='local']/doc:element[@name='identifier']/doc:element[@name='doi']/doc:element/doc:field[@name='value']"/>
+         <xsl:variable name="doiOpus">
+		<xsl:value-of select="doc:metadata/doc:element[@name='dc']/doc:element[@name='identifier']/doc:element[@name='doi']/doc:element/doc:field[@name='value']"/>
 	</xsl:variable>
             
-
             
            <!-- 16 Identifier get URN --> 
             <xsl:variable name="urn">
-	<!--	<xsl:value-of select="doc:metadata/doc:element[@name='created']/doc:element[@name='identifier']/doc:element[@name='urn']/doc:element/doc:field[@name='value']"/>   -->
-		<xsl:value-of select="doc:metadata/doc:element[@name='local']/doc:element[@name='identifier']/doc:element[@name='urn']/doc:element/doc:field[@name='value']"/>
+		<xsl:value-of select="doc:metadata/doc:element[@name='dc']/doc:element[@name='identifier']/doc:element[@name='urn']/doc:element/doc:field[@name='value']"/>
 	</xsl:variable>
             
             <!-- 16 Identifikator URN created:identifier  xsi:type="urn:nbn" -->
@@ -423,8 +414,7 @@
                      </xsl:choose>
                     </dc:identifier>
 	    </xsl:if>	    
-	    	
-		
+	    			
                   
        <!-- Variables needed to create ZS-Ausgabe and to check if 1st or 2nd Publication -->        
 	    <xsl:variable name="citation">
@@ -486,7 +476,7 @@
          
           <!-- 20 Quelle der Hochschulschrift - if there is a print version, the ISBN can be referenced here: dc.identifier.isbn -->
          <!--   <xsl:for-each select="doc:metadata/doc:element[@name='created']/doc:element[@name='identifier']/doc:element[@name='isbn']/doc:element/doc:field[@name='value']">  -->
-         <xsl:for-each select="doc:metadata/doc:element[@name='local']/doc:element[@name='identifier']/doc:element[@name='isbn']/doc:element/doc:field[@name='value']">
+         <xsl:for-each select="doc:metadata/doc:element[@name='dc']/doc:element[@name='identifier']/doc:element[@name='isbn']/doc:element/doc:field[@name='value']">
                 <dc:source xsi:type="ddb:ISBN">
                     <xsl:value-of select="."/>
                 </dc:source>
@@ -849,7 +839,7 @@
 
             <!-- 47. Further Identifier: ISSN -->
           <!--  <xsl:for-each select="doc:metadata/doc:element[@name='created']/doc:element[@name='identifier']/doc:element[@name='issn']/doc:element/doc:field[@name='value']">  -->
-          <xsl:for-each select="doc:metadata/doc:element[@name='local']/doc:element[@name='identifier']/doc:element[@name='issn']/doc:element/doc:field[@name='value']">
+          <xsl:for-each select="doc:metadata/doc:element[@name='dc']/doc:element[@name='identifier']/doc:element[@name='issn']/doc:element/doc:field[@name='value']">
                 <ddb:identifier ddb:type="ISSN">
                     <xsl:value-of select="."/>
                 </ddb:identifier>
@@ -857,19 +847,22 @@
             
             
               <!-- 47. Further Identifier: DOI -->
-            <xsl:if test="$doiNew != ''">
-                    <ddb:identifier ddb:type="DOI">
-                      <xsl:choose>
-                    	<xsl:when test="contains($doiNew, 'doi.org/')">
-                       	<xsl:value-of select="substring-after($doiNew, 'doi.org/')"/>
-                       </xsl:when>
-                       <xsl:otherwise>
-                       	<xsl:value-of select="$doiNew"/>
-                       </xsl:otherwise>
-                     </xsl:choose>
-                   </ddb:identifier>
-            </xsl:if>
-            
+              <!-- DOI  new, if existent, send as ddb:identifier -->
+		<xsl:for-each select="doc:metadata/doc:element[@name='dc']/doc:element[@name='identifier']/doc:element[@name='uri']/doc:element/doc:field[@name='value']" >
+			<xsl:if test="contains(., '10.')">
+				<ddb:identifier ddb:type="DOI">
+					<xsl:choose>
+				    	<xsl:when test="contains(., 'doi.org/')">
+				       	<xsl:value-of select="substring-after(., 'doi.org/')"/>
+				       </xsl:when>
+				       <xsl:otherwise>
+				       	<xsl:value-of select="."/>
+				       </xsl:otherwise>
+				     </xsl:choose>
+				</ddb:identifier>	
+			</xsl:if>
+		</xsl:for-each>	
+		         
             
                  <xsl:if test="$doiOpus != ''">
                     <ddb:identifier ddb:type="DOI">

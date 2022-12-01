@@ -61,46 +61,43 @@
             - https://openaire-guidelines-for-literature-repository-managers.readthedocs.io/en/v4.0.0/
             There is a limitation over the embargoedEndDate parameter:
             - Predefined DSpace fields don't allow to set this up with a default.
-         -->
-        <Context baseurl="openaire4" name="OpenAIRE 4 Context">
-            <!-- Date format, field prefixes, etc are ensured by the transformer -->
-            <Transformer ref="openaire4Transformer"/>
-            <!-- OpenAIRE filter -->
-            <Filter ref="openAIRE4Filter"/>
-            <!-- Metadata Formats -->
+         
+        <Context baseurl="openaire4" name="OpenAIRE 4 Context">      
+            <Transformer ref="openaire4Transformer"/>   
+            <Filter ref="openAIRE4Filter"/> 
             <Format ref="oaiopenaire"/>
             <Description>
                 This contexts complies with OpenAIRE Guidelines for Literature Repositories v4.0.
             </Description>
         </Context>
-        
+        -->
+
+	<!-- OpenAIRE Guidelines 4.0 @Steli implementation from OpenAIRE3 via tub -->
+	<Context baseurl="openaire4" name="OpenAIRE Context">
+            <Transformer ref="tubOpenaireTransformer"/>
+            <Filter ref="fauOpenAire4Filter"/>
+            <!-- <Set ref="openaireSet"/>  -->
+            <Format ref="fau_openaire4"/>
+            <Description>
+                This contexts complies with OpenAIRE Guidelines for Literature Repositories v4.0.
+            </Description>
+        </Context>
 
         <!--
-            OpenAIRE Guidelines 3.0:
-            - https://guidelines.openaire.eu/
-            There is a limitation over the embargoedEndDate parameter:
-            - Predefined DSpace fields don't allow to set this up with a default.
-         -->
+            OpenAIRE Guidelines 3.0: https://guidelines.openaire.eu/
+            There is a limitation over the embargoedEndDate parameter: Predefined DSpace fields don't allow to set this up with a default.
+         
         <Context baseurl="openaire" name="OpenAIRE Context">
-            <!-- Date format, field prefixes, etc are ensured by the transformer 
-            	<Transformer ref="openaireTransformer"/>
-            -->
             <Transformer ref="tubOpenaireTransformer"/>
-            <!-- OpenAIRE filter 
-            	<Filter ref="openAireFilter"/>
-            -->
             <Filter ref="tubOpenAireFilter"/>
-            <!-- Just an alias, in fact it returns all items within the driver context -->
             <Set ref="openaireSet"/>
-            <!-- Metadata Formats 
-            	<Format ref="oaidc"/>
-            -->
             <Format ref="oaidc_tub"/>
             <Format ref="mets"/>
             <Description>
                 This contexts complies with OpenAIRE Guidelines for Literature Repositories v3.0.
             </Description>
         </Context>
+        -->
 
         <!--
             Context for DNB
@@ -124,7 +121,14 @@
 
 
     <Formats>
-    	<!--  for OPEN-AIRE3, almost same as oai_dc. Renamed to persist in config, when move to new DSpace system  -->
+    <!-- @Steli Format for OPEN-AIRE4  Renamed to persist in config, when move to new DSpace system  -->
+        <Format id="fau_openaire4">
+            <Prefix>oai_openaire4</Prefix>
+            <XSLT>metadataFormats/fau_oai_dc_openaire4.xsl</XSLT>
+            <Namespace>http://namespace.openaire.eu/schema/oaire/</Namespace>
+            <SchemaLocation>https://www.openaire.eu/schema/repo-lit/4.0/openaire.xsd</SchemaLocation>
+        </Format>
+    	<!-- @Steli Format for OPEN-AIRE3, almost same as oai_dc. Renamed to persist in config, when move to new DSpace system  -->
         <Format id="oaidc_tub">
             <Prefix>oai_dc</Prefix>
             <XSLT>metadataFormats/tub_oai_dc.xsl</XSLT>
@@ -222,7 +226,8 @@
         </Format>
         <Format id="oaiopenaire">
             <Prefix>oai_openaire</Prefix>
-            <XSLT>metadataFormats/oai_openaire.xsl</XSLT>
+            <!-- @Steli changed metadata file <XSLT>metadataFormats/oai_openaire.xsl</XSLT> -->
+            <XSLT>metadataFormats/oai_openaire_fau.xsl</XSLT>
             <Namespace>http://namespace.openaire.eu/schema/oaire/</Namespace>
             <SchemaLocation>https://www.openaire.eu/schema/repo-lit/4.0/openaire.xsd</SchemaLocation>
         </Format>
@@ -385,6 +390,55 @@
                             </LeftCondition>
                             <RightCondition>
                                 <Custom ref="tubPublicationDocumentTypeCondition"/>
+                            </RightCondition>
+                        </And>
+                    </RightCondition>
+                </And>
+            </Definition>
+        </Filter>
+        
+        
+        <!-- FAU OpenAIRE4 filter.
+             Return an Item record:
+               * If a EuGrant & Author field both exist
+               * AND Item is either publicly accessible OR embargoed OR Withdrawn (for tombstones)
+               * AND a valid document type for publications exists
+             This filter is only used in the OpenAIRE context ([oai]/openaire).
+        -->
+        <Filter id="fauOpenAire4Filter">
+            <Definition>
+                <And>
+                    <LeftCondition>
+                        <Or>
+                            <LeftCondition>                               
+                                <Or>
+                                    <LeftCondition>
+                                        <Custom ref="embargoCondition"/>
+                                    </LeftCondition>
+                                    <RightCondition>
+                                        <Custom ref="itemAccessCondition"/>
+                                    </RightCondition>
+                                </Or>
+                            </LeftCondition>
+                            <RightCondition>
+                                <Custom ref="itemWithdrawnCondition"/>
+                            </RightCondition>
+                        </Or>
+                    </LeftCondition>
+                    <RightCondition>
+                        <And>
+                            <LeftCondition>
+                                <And>
+                                    <LeftCondition>
+                                        <Custom ref="eugrantExistsCondition"/>
+                                    </LeftCondition>
+                                    <RightCondition>
+                                        <Custom ref="authorExistsCondition"/>
+                                    </RightCondition>
+                                </And>
+                            </LeftCondition>
+                            <RightCondition>
+                                <Custom ref="tubPublicationDocumentTypeCondition"/>                              
                             </RightCondition>
                         </And>
                     </RightCondition>
@@ -590,6 +644,15 @@
                 <string name="field">dc.title</string>
             </Configuration>
         </CustomCondition>
+        
+        <!-- This condition determines if an Item has a "dc.identifier.eugrant" -->
+        <CustomCondition id="eugrantExistsCondition">
+            <Class>org.dspace.xoai.filter.DSpaceMetadataExistsFilter</Class>
+            <Configuration>
+                <string name="field">dc.identifier.eugrant</string>
+            </Configuration>
+        </CustomCondition>
+
 
         <!-- This condition determines if an Item has a "dc.type" field
              specifying one of the valid DRIVER document types. -->
@@ -659,6 +722,18 @@
             </Configuration>
         </CustomCondition>
         
+        
+        <!-- @Steli Determines if the item is embargoed -->
+ 	<CustomCondition id="embargoCondition">
+            <Class>org.dspace.xoai.filter.DSpaceAtLeastOneMetadataFilter</Class>
+            <Configuration>
+                <string name="field">local.sendToDnb</string>
+                <string name="operator">equal</string>
+                <string name="value">embargoed</string>
+            </Configuration>
+        </CustomCondition>
+        
+        
         <!-- This condition determines if an Item has a "dspace.entity.type" -->
         <CustomCondition id="relationshipTypeExistsCondition">
             <Class>org.dspace.xoai.filter.DSpaceMetadataExistsFilter</Class>
@@ -692,6 +767,11 @@
         <Set id="openaireSet">
             <Spec>openaire</Spec>
             <Name>OpenAIRE</Name>
+            <!-- Just an alias -->
+        </Set>
+        <Set id="openaire4Set">
+            <Spec>openaire4</Spec>
+            <Name>OpenAIRE4</Name>
             <!-- Just an alias -->
         </Set>
         <Set id="dnbSet">
