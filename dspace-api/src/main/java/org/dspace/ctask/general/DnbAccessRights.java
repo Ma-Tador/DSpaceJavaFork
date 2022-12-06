@@ -25,6 +25,7 @@ import org.dspace.eperson.service.GroupService;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -82,27 +83,46 @@ public class DnbAccessRights extends AbstractCurationTask {
         if (dso.getType() == Constants.ITEM) {
             Item item = (Item) dso;
             try {
-                String accessRights = itemService.getMetadataFirstValue(item, "local", "sendToDnb", "", Item.ANY);
-                report("Item " + item.getHandle() + " has access rights " + accessRights);
-                //if no accessRights for item, set accessRights
-                if (accessRights == null) {
-                    System.out.println("Item "+ item.getHandle() + ", has no local.sendToDnb set. Setting access rights..."); 
-                    if (isInEmbargo(Curator.curationContext(), item)) {
-                        System.out.println("Item "+ item.getHandle() + ", local.sendToDnb set to Embargoed.");
+                //by import from Opus, check if embargo date is after current date in order to set embargo to DNB
+                String embargoOpusMetadata = itemService.getMetadataFirstValue(item, "local", "document", "embargo-date", Item.ANY);
+                if(embargoOpusMetadata != null){
+                    report("Item " + item.getHandle() + " has local.document.embargo-date metadata from Opus. Calculating access rights...");
+                    System.out.println("Item "+ item.getHandle() + " has local.document.embargo-date metadata from Opus. Calculating access rights...");
+                    LocalDate embargoDateOpus = LocalDate.parse(embargoOpusMetadata);
+                    if(embargoDateOpus.isAfter(LocalDate.now())){
                         setAccessRights(item, EMBARGOED);
-                    } else {
-                        System.out.println("Item "+ item.getHandle() + ", has no local.sendToDnb set. Setting local.sendToDnb= Free/Domain/Unknown");
+                        report("Access rights set to: EMBARGOED");
+                        System.out.println("EmbargoDateOpus valid => set to EMBARGOED.");
+                    }else{
+                        setAccessRights(item, FREE);
+                        report("Access rights set to: FREE");
+                        System.out.println("EmbargoDateOpus valid => set to FREE.Clearing local.document.embargo-date...");
+                        itemService.clearMetadata(Curator.curationContext(), item, "local", "document", "embargo-date", Item.ANY);
+                    }
+                }else{
+                    String accessRights = itemService.getMetadataFirstValue(item, "local", "sendToDnb", "", Item.ANY);
+                    report("Item " + item.getHandle() + " has access rights: " + accessRights != null? accessRights : "not yet set.");
+                    //if no accessRights for item, set accessRights
+                    if (accessRights == null) {
+                        System.out.println("Item "+ item.getHandle() + ", has no local.sendToDnb set. Setting access rights..."); 
+                        if (isInEmbargo(Curator.curationContext(), item)) {
+                            System.out.println("Item "+ item.getHandle() + ", local.sendToDnb set to Embargoed.");
+                            setAccessRights(item, EMBARGOED);
+                        } else {
+                            System.out.println("Item "+ item.getHandle() + ", has no local.sendToDnb set. Setting local.sendToDnb= Free/Domain/Unknown");
+                            setAccessRights(item, calculateAccessRights(item));
+                        }
+                    } else if ((FREE.equals(accessRights) || DOMAIN.equals(accessRights) || UNKNOWN.equals(accessRights)) && isInEmbargo(Curator.curationContext(), item)) {
+                        //if item had some other accessRights, but in embargo, update to Embargoed
+                        System.out.println("Item was in embrago, but set in local.sendToDnb= Free, Domain or Unknown. Updating local.sendToDnb= embargoed.");
+                        setAccessRights(item, EMBARGOED); 
+                    } else if (EMBARGOED.equals(accessRights) && !isInEmbargo(Curator.curationContext(), item)) {
+                        //if item was in embrago, but now not, update accessRights to Free/Unknown/Domain
+                        System.out.println("Item's local.sendToDnb= Embargoed, but is no longer embargoed. Update local.sendToDnb= unknown/Free/Domain.");
                         setAccessRights(item, calculateAccessRights(item));
                     }
-                } else if ((FREE.equals(accessRights) || DOMAIN.equals(accessRights) || UNKNOWN.equals(accessRights)) && isInEmbargo(Curator.curationContext(), item)) {
-                    //if item had some other accessRights, but in embargo, update to Embargoed
-                    System.out.println("Item was in embrago, but set in local.sendToDnb= Free, Domain or Unknown. Updating local.sendToDnb= embargoed.");
-                    setAccessRights(item, EMBARGOED); 
-                } else if (EMBARGOED.equals(accessRights) && !isInEmbargo(Curator.curationContext(), item)) {
-                    //if item was in embrago, but now not, update accessRights to Free/Unknown/Domain
-                    System.out.println("Item's local.sendToDnb= Embargoed, but is no longer embargoed. Update local.sendToDnb= unknown/Free/Domain.");
-                    setAccessRights(item, calculateAccessRights(item));
                 }
+                
                 System.out.println("Done. Item "+ item.getHandle() + ", has local.sendToDnb updated.");
                 result = Curator.CURATE_SUCCESS;
             } catch (SQLException e) {
