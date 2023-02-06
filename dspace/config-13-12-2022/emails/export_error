@@ -1,0 +1,33 @@
+## Email sent to DSpace users when they successfully export an item or collection.
+##
+## Parameters: {0} the export error
+##             {1} the URL to the feedback page
+##
+##
+## See org.dspace.core.Email for information on the format of this file.
+##
+#set($subject = 'DSpace - The item export you requested was not completed.')
+The item export you requested was not completed, due to the following reason:
+ ${params[0]}
+
+For more information you may contact your system administrator:
+ ${params[1]}
+
+
+
+The FAU Repository  Team
+
+
+----------------------------------------------------------------------------------
+
+
+Der von Ihnen angeforderte Artikelexport wurde aus folgendem Grund nicht abgeschlossen:
+  ${params[0]}
+
+Für weitere Informationen wenden Sie sich bitte an Ihren Systemadministrator:
+  ${params[1]}
+
+
+
+Das Repositorium-Team der FAU
+

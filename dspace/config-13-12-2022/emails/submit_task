@@ -1,0 +1,43 @@
+## Workflow task email message
+##
+## {0}  Title of submission
+## {1}  Name of collection
+## {2}  submitter's name
+## {3}  Description of task
+## {4}  link to 'my DSpace' page (changed, direct link to workflowItem @Steli)
+##
+#set($subject = 'DSpace: You have a new task')
+
+A new item has been submitted:
+
+Title:        ${params[0]}
+Collection:   ${params[1]}
+Submitted by: ${params[2]}
+
+${params[3]}
+
+To claim this task, please visit your "FAU Repositorium"
+page:  ${params[4]}
+
+Many thanks!
+
+FAU Repository Team
+
+
+-----------------------------------------------------------------------------------
+
+
+Ein neuer Artikel wurde eingereicht:
+
+Titel: ${params[0]}
+Sammlung: ${params[1]}
+Eingereicht von: ${params[2]}
+
+${params[3]}
+
+Um diese Aufgabe in Anspruch zu nehmen, besuchen Sie bitte Ihr "FAU Test-Repository"
+Seite: ${params[4]}
+
+Vielen Dank!
+
+Das Repositorium-Team der FAU

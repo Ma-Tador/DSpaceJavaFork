@@ -287,7 +287,7 @@
                <field>
                   <dc-schema>local</dc-schema>
                   <dc-element>series</dc-element>
-                  <dc-qualifier>mapping</dc-qualifier>
+                  <dc-qualifier>name</dc-qualifier>
                   <repeatable>false</repeatable>
                   <label>Schriftenreihe</label>
                   <type-bind>book,bookpart,doctoralthesis,habilitation,masterthesis,bachelorthesis,other,periodicalpart</type-bind>
@@ -492,7 +492,9 @@
                    <repeatable>false</repeatable>
                    <label>Dokumentenlizenz</label>
                    <input-type value-pairs-name="fau_licenses">dropdown</input-type>
-                   <hint>Wählen Sie eine Lizenz für Ihr einreichendes Element aus.</hint>
+                   <hint>
+                  	Wählen Sie eine Lizenz für Ihr einreichendes Element aus. Weitere Informationen rund um die Lizenzbedienungen finden Sie im unsere FAQ, unter https://repotest.ub.fau.de/info/faq/legallicense.
+                  </hint>
                    <required></required>
                 </field>
             </row>
@@ -2513,11 +2515,10 @@
        </value-pairs>
 -->
 
-
-<value-pairs value-pairs-name="series_list_dropdown" dc-term="series_mapping">
-	     <pair>                                                                                                                                                                                                                             
-		<displayed-value>1 - Akademische Reden und Kolloquien | Friedrich-Alexander-Universität Erlangen-Nürnberg</displayed-value>
-                <!-- UUID of Serie to map the item to. DO NOT USE HANDLE, because it will generate errors -->                                                                                                                      
+<!--UUID of Serie to map the item to. DO NOT USE HANDLE -->
+<!--
+<value-pairs value-pairs-name="series_list_dropdown" dc-term="series_mapping"> <pair>                                                                                                                                                                                                                             
+		<displayed-value>1 - Akademische Reden und Kolloquien | Friedrich-Alexander-Universität Erlangen-Nürnberg</displayed-value>                                                                                                                    
 		<stored-value>bce15039-6f83-4c86-aefe-4bf49af3154e</stored-value>                                                                       
 	     </pair>                                                                                                                                                                                                                    
 	     <pair>                                                                                                                                                                                                                            
@@ -2653,7 +2654,182 @@
                 <stored-value>e4c3dac8-daa0-4e5b-ac6f-3da685c1d278</stored-value>
             </pair>
        </value-pairs>     
+-->
 
+<value-pairs value-pairs-name="series_list_dropdown" dc-term="series_name">
+	     <pair>                                                                                                                                                                                                                             
+		<displayed-value>1 - Akademische Reden und Kolloquien | Friedrich-Alexander-Universität Erlangen-Nürnberg</displayed-value>                                                                                                                      
+		<stored-value>Akademische Reden und Kolloquien | Friedrich-Alexander-Universität Erlangen-Nürnberg</stored-value>                                                                       
+	     </pair>                                                                                                                                                                                                                    
+	     <pair>                                                                                                                                                                                                                            
+		<displayed-value>2 - Alles Buch | Studien der Erlanger Buchwissenschaft</displayed-value>                                                                                                                                                        
+		<stored-value>Alles Buch | Studien der Erlanger Buchwissenschaft</stored-value>                                                                                                                                                     
+	     </pair>                                                                                                                                                                                 
+	     <pair>                                                                                                                                                                                                                          
+		<displayed-value>3 - Ausgezeichnete Abschlussarbeiten der Erlanger Geschichtswissenschaft</displayed-value>                                                                                                                                      
+		<stored-value>Ausgezeichnete Abschlussarbeiten der Erlanger Geschichtswissenschaft</stored-value>                                                                                                                                        
+	     </pair>                                                                                                                                                                                                                                     
+	     <pair>                                                                                                                                                                                                                              
+		<displayed-value>4 - Erlanger Beiträge zur Kulturgeographie</displayed-value>                                                                                                                                                                    
+		<stored-value>Erlanger Beiträge zur Kulturgeographie</stored-value>                                                                                                                                                                      
+	     </pair>                                                                                                                                                                                                                                      
+	     <pair>                                                                                                                                                                                                                               
+		<displayed-value>5 - Erlanger Beiträge zur Medienwirtschaft</displayed-value>                                                                                                                                                                    
+		<stored-value>Erlanger Beiträge zur Medienwirtschaft</stored-value>                                                                                                                                                                      
+	     </pair>                                                                                                                                                                                                                                                                                                                                                                                                                                               
+	     <pair>                                                                                                                                                                                                                               
+		<displayed-value>6 - Erlanger Forschungen | A, Geisteswissenschaften</displayed-value>                                                                                                                                                           
+		<stored-value>Erlanger Forschungen | A, Geisteswissenschaften</stored-value>                                                                                                                                                             
+	     </pair>                                                                                                                                                                                                                        
+	     <pair>                                                                                                                                                                                                                                  
+		<displayed-value>7 - Erlanger Forschungen | B, Naturwissenschaften und Medizin</displayed-value>                                                                                                                                                 
+		<stored-value>Erlanger Forschungen | B, Naturwissenschaften und Medizin</stored-value>                                                                                                                                 
+	     </pair>                                                                                                                                                                                                                            
+	     <pair>                                                                                                                                                                                                                                
+		<displayed-value>8 - Erlanger Forschungen | Sonderreihe</displayed-value>                                                                                                                                                                        
+		<stored-value>Erlanger Forschungen | Sonderreihe</stored-value>                                                                                                                                                        
+	     </pair>                                                                                                                                                                                                             
+	     <pair>                                                                                                                                                                                                                            
+		<displayed-value>9 - Erlanger Migrations- und Integrationsstudien</displayed-value>                                                                                                                                                              
+		<stored-value>Erlanger Migrations- und Integrationsstudien</stored-value>                                                                                                                                                                
+	     </pair>                                                                                                                                                                                                                      
+	     <pair>                                                                                                                                                                                                                                
+		<displayed-value>10 - Erlanger Universitätstage</displayed-value>                                                                                                                                                                                 
+		<stored-value>Erlanger Universitätstage</stored-value>                           
+	    </pair>                                           
+            <pair>
+                <displayed-value>11 - FAU Forschungen, Reihe A, Geisteswissenschaften</displayed-value>
+                <stored-value>FAU Forschungen, Reihe A, Geisteswissenschaften</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>12 - FAU Forschungen, Reihe B, Medizin, Naturwissenschaft, Technik</displayed-value>
+                <stored-value>FAU Forschungen, Reihe B, Medizin, Naturwissenschaft, Technik</stored-value>
+            </pair>
+	    <pair>
+                <displayed-value>13 - FAU Kunst und Bildung</displayed-value>
+                <stored-value>FAU Kunst und Bildung</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>14 - FAU Lehren und Lernen</displayed-value>
+                <stored-value>FAU Lehren und Lernen</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>15 - FAU Studien aus dem Maschinenbau</displayed-value>
+                <stored-value>FAU Studien aus dem Maschinenbau</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>16 - FAU Studien aus der Elektrotechnik</displayed-value>                     
+		<stored-value>FAU Studien aus der Elektrotechnik</stored-value>                                                                                                
+	    </pair>                             
+	    <pair>
+                <displayed-value>17 - FAU Studien aus der Informatik</displayed-value>
+                <stored-value>FAU Studien aus der Informatik</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>18 - FAU Studien aus der Philosophischen Fakultät</displayed-value>
+                <stored-value>FAU Studien aus der Philosophischen Fakultät</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>19 - FAU Studien aus der Rechtswissenschaft</displayed-value>      
+                <stored-value>FAU Studien aus der Rechtswissenschaft</stored-value>                                                                                
+	    </pair>
+            <pair>
+                <displayed-value>20 - FAU Studien Gender Differenz Diversität</displayed-value>
+                <stored-value>FAU Studien Gender Differenz Diversität</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>21 - FAU Studien Materialwissenschaft und Werkstofftechnik</displayed-value>
+                <stored-value>FAU Studien Materialwissenschaft und Werkstofftechnik</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>22 - FAU Studien zu Menschenrechten</displayed-value>
+                <stored-value>FAU Studien zu Menschenrechten</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>23 - FAU Studies Mathematics and Physics</displayed-value>
+                <stored-value>FAU Studies Mathematics and Physics</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>24 - FAU-Panel</displayed-value>
+                <stored-value>FAU-Panel</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>25 - Fertigungstechnik-Erlangen</displayed-value>
+                <stored-value>Fertigungstechnik-Erlangen</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>26 - Forschungsberichte aus dem Lehrstuhl für Informationstechnik mit dem Schwerpunkt Kommunikationselektronik</displayed-value>
+                <stored-value>Forschungsberichte aus dem Lehrstuhl für Informationstechnik mit dem Schwerpunkt Kommunikationselektronik</stored-value>
+            </pair>
+	    <pair>
+                <displayed-value>27 - Kleine Schriften zu Kultur und Geschichte der Friedrich-Alexander-Universität</displayed-value>
+                <stored-value>Kleine Schriften zu Kultur und Geschichte der Friedrich-Alexander-Universität</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>28 - Magazin für digitale Editionswissenschaften</displayed-value>
+                <stored-value>Magazin für digitale Editionswissenschaften</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>29 - Progress in Modern Optics</displayed-value>
+                <stored-value>Progress in Modern Optics</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>30 - Schriftenreihe Technische Dynamik</displayed-value>
+                <stored-value>Schriftenreihe Technische Dynamik</stored-value>
+            </pair>
+	    <pair>
+                <displayed-value>31 - Schriftenreihe Technische Mechanik</displayed-value>
+                <stored-value>Schriftenreihe Technische Mechanik</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>32 - Technical reports | Department Informatik</displayed-value>
+                <stored-value>Technical reports | Department Informatik</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>33 - Texte zur Wirtschaftspädagogik und Personalentwicklung</displayed-value>
+                <stored-value>Texte zur Wirtschaftspädagogik und Personalentwicklung</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>34 - Uni-Kurier-Magazin</displayed-value>
+                <stored-value>Uni-Kurier-Magazin</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>35 - Erlangen National High Performance Computing Center (NHR @FAU)</displayed-value>
+                <stored-value>Erlangen National High Performance Computing Center (NHR @FAU)</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>36 - Vortragsreihen</displayed-value>
+                <stored-value>Vortragsreihen</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>37 - Universitätsbibliothek Erlangen-Nürnberg</displayed-value>
+                <stored-value>Universitätsbibliothek Erlangen-Nürnberg</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>38 - Studierendenbefragung</displayed-value>
+                <stored-value>Studierendenbefragung</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>39 - Regionales Rechenzentrum Erlangen</displayed-value>
+                <stored-value>Regionales Rechenzentrum Erlangen</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>40 - Institut für Buchwissenschaft</displayed-value>
+                <stored-value>Institut für Buchwissenschaft</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>41 - FAU University Press</displayed-value>
+                <stored-value>FAU University Press</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>42 - Studia linguistica et philologica, 2</displayed-value>
+                <stored-value>Studia linguistica et philologica, 2</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>43 - Technisch-wissenschaftlicher Bericht / Lehrstuhl für Kunststofftechnik</displayed-value>
+                <stored-value>Technisch-wissenschaftlicher Bericht / Lehrstuhl für Kunststofftechnik</stored-value>
+            </pair>
+       </value-pairs>
 
     </form-value-pairs>
 

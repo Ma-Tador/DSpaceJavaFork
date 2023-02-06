@@ -235,7 +235,7 @@ $ scp MODS-2-DIM.xslt athena.dialup.mit.edu:~/Private/
         </xsl:template>
         
         
-        <!-- **** MODS   originInfo/dateIssued ====> DC  date.issued **** -->
+        <!-- **** MODS   originInfo/dateIssued ====> no equivalent field in our DSpace repository as Opus Team instructed
         <xsl:template match="*[local-name()='originInfo']/*[local-name()='dateOther'][@type='accepted']">
                 <xsl:element name="dim:field">
                         <xsl:attribute name="mdschema">local</xsl:attribute>
@@ -245,6 +245,7 @@ $ scp MODS-2-DIM.xslt athena.dialup.mit.edu:~/Private/
                         <xsl:value-of select="."/>
                 </xsl:element>
         </xsl:template>
+        -->
 
 
 <!-- **** MODS   physicalDescription/extent ====> DC  format.extent **** -->
@@ -274,36 +275,15 @@ $ scp MODS-2-DIM.xslt athena.dialup.mit.edu:~/Private/
         <xsl:template match="*[local-name()='subject']/*[local-name()='topic']">
                 <xsl:element name="dim:field">
                         <xsl:attribute name="mdschema">dc</xsl:attribute>
-                        <xsl:attribute name="element">subject</xsl:attribute>                   <xsl:attribute name="lang">en_US</xsl:attribute>
-                        <xsl:value-of select="normalize-space(.)"/>
-                </xsl:element>
-        </xsl:template>
-
-
-<!-- **** MODS   subject/geographic ====> DC  coverage.spatial **** -->
-        <!-- (Not anticipated for CSAIL.) 
-        <xsl:template match="*[local-name()='subject']/*[local-name()='geographic']">
-                <xsl:element name="dim:field">
-                        <xsl:attribute name="mdschema">dc</xsl:attribute>
-                        <xsl:attribute name="element">coverage</xsl:attribute>                                                  
-                        <xsl:attribute name="qualifier">spatial</xsl:attribute>
+                        <xsl:attribute name="element">subject</xsl:attribute>                   
                         <xsl:attribute name="lang">en_US</xsl:attribute>
                         <xsl:value-of select="normalize-space(.)"/>
                 </xsl:element>
         </xsl:template>
-        -->
-
-<!-- **** MODS   subject/temporal ====> DC  coverage.temporal **** -->
-        <!-- (Not anticipated for CSAIL.) 
-        <xsl:template match="*[local-name()='subject']/*[local-name()='temporal']">
-                <xsl:element name="dim:field">
-                        <xsl:attribute name="mdschema">dc</xsl:attribute>
-                        <xsl:attribute name="element">coverage</xsl:attribute>                                                  <xsl:attribute name="qualifier">temporal</xsl:attribute>
-                        <xsl:attribute name="lang">en_US</xsl:attribute>
-                        <xsl:value-of select="normalize-space(.)"/>
-                </xsl:element>
-        </xsl:template>
-        -->
+        
+        
+        <xsl:variable name="dateIssued" select="*[local-name()='originInfo']/*[local-name()='dateIssued']" />
+        <xsl:variable name="doi" select="*[local-name()='identifier'][@type='doi']" />
 
 
 <!-- **** MODS   relatedItem...    **** -->
@@ -320,7 +300,7 @@ $ scp MODS-2-DIM.xslt athena.dialup.mit.edu:~/Private/
                                         The bibliographic citation is _not_ parsed further,
                                         and one single 'text' element will contain it.
                                         e.g. <text>Journal of Physics, v. 53, no. 9, pp. 34-55, Aug. 15, 2004</text>
-                                        -->
+                                        
                         <xsl:if test="*[local-name()='part']/*[local-name()='text']">
                                 <xsl:element name="dim:field">
                                         <xsl:attribute name="mdschema">dc</xsl:attribute>
@@ -329,47 +309,118 @@ $ scp MODS-2-DIM.xslt athena.dialup.mit.edu:~/Private/
                                         <xsl:value-of select="normalize-space(*[local-name()='part']/*[local-name()='text'])"/>
                                 </xsl:element>
                         </xsl:if>
-                        <!-- 2)  DC  created.journal.title  
-                        <xsl:if test="./@type='host'  and   *[local-name()='titleInfo']/*[local-name()='title']">
-                                <xsl:element name="dim:field">
-                                        <xsl:attribute name="mdschema">created</xsl:attribute>
-                                        <xsl:attribute name="element">journal</xsl:attribute>
-                                        <xsl:attribute name="qualifier">title</xsl:attribute>
-                                        <xsl:value-of select="normalize-space(*[local-name()='titleInfo']/*[local-name()='title'])"/>
+                        -->
+                        
+                        <xsl:variable name="journalTitle" select="normalize-space(*[local-name()='titleInfo']/*[local-name()='title'])"/>
+                        <xsl:variable name="journalVolume" select="normalize-space(*[local-name()='part']/*[local-name()='detail'][@type='volume'])"/>
+                        <xsl:variable name="journalIssue" select="normalize-space(*[local-name()='part']/*[local-name()='detail'][@type='issue'])"/>
+                       
+                        <xsl:variable name="dateIssued" select="../*[local-name()='originInfo']/*[local-name()='dateIssued']" />
+                        <xsl:variable name="doi" select="../*[local-name()='identifier'][@type='doi']" />
+                        
+                        
+                        
+                        
+                        <!-- 1) citation / original verrof -->
+                        <xsl:if test="./@type='host'  and   *[local-name()='titleInfo']/*[local-name()='title'] and *[local-name()='part']/*[local-name()='detail'][@type='volume']">
+                        	<xsl:element name="dim:field">
+                                        <xsl:attribute name="mdschema">dc</xsl:attribute>
+                                        <xsl:attribute name="element">identifier</xsl:attribute>
+                                        <xsl:attribute name="qualifier">citation</xsl:attribute>
+<xsl:value-of select="$journalTitle"/><xsl:text> </xsl:text><xsl:value-of select="$journalVolume"/><xsl:text> (</xsl:text><xsl:value-of select="$dateIssued" /><xsl:text>) . DOI: </xsl:text><xsl:value-of select="$doi"/>
                                 </xsl:element>
                         </xsl:if>
-                        -->
-                        <!-- 3)  DC  created.identifier.issn  -->
-                        <xsl:if test="*[local-name()='identifier'][@type='issn']">
+                        
+                        <!-- 2)  DC  local.journal.title  -->
+                        <xsl:if test="./@type='host'  and   *[local-name()='titleInfo']/*[local-name()='title']">
                                 <xsl:element name="dim:field">
                                         <xsl:attribute name="mdschema">local</xsl:attribute>
+                                        <xsl:attribute name="element">journal</xsl:attribute>
+                                        <xsl:attribute name="qualifier">title</xsl:attribute>
+                                        <!-- <xsl:value-of select="normalize-space(*[local-name()='titleInfo']/*[local-name()='title'])"/>  -->
+                                        <xsl:value-of select="$journalTitle" />
+                                </xsl:element>
+                        </xsl:if>
+
+                        <!-- 3)  DC  dc.identifier.issn  -->
+                        <xsl:if test="*[local-name()='identifier'][@type='issn']">
+                                <xsl:element name="dim:field">
+                                        <xsl:attribute name="mdschema">dc</xsl:attribute>
                                         <xsl:attribute name="element">identifier</xsl:attribute>
                                         <xsl:attribute name="qualifier">issn</xsl:attribute>
                                         <xsl:value-of select="normalize-space(*[local-name()='identifier'][@type='issn'])"/>
                                 </xsl:element>
                         </xsl:if>
                         
-                         <!-- 4)  DC  created.identifier.isbn  -->
+                        <!-- 3b)  DC  dc.identifier.issn  -->
+                        <xsl:if test="*[local-name()='identifier'][@type='eIssn']">
+                                <xsl:element name="dim:field">
+                                        <xsl:attribute name="mdschema">dc</xsl:attribute>
+                                        <xsl:attribute name="element">identifier</xsl:attribute>
+                                        <xsl:attribute name="qualifier">issn</xsl:attribute>
+                                        <xsl:value-of select="normalize-space(*[local-name()='identifier'][@type='eIssn'])"/>
+                                </xsl:element>
+                        </xsl:if>
+                        
+                        <!-- 3c)  DC  dc.identifier.issn  -->
+                        <xsl:if test="*[local-name()='identifier'][@type='pIssn']">
+                                <xsl:element name="dim:field">
+                                        <xsl:attribute name="mdschema">dc</xsl:attribute>
+                                        <xsl:attribute name="element">identifier</xsl:attribute>
+                                        <xsl:attribute name="qualifier">issn</xsl:attribute>
+                                        <xsl:value-of select="normalize-space(*[local-name()='identifier'][@type='pIssn'])"/>
+                                </xsl:element>
+                        </xsl:if>
+                        
+                         <!-- 4)  DC  dc.identifier.isbn  -->
                         <xsl:if test="*[local-name()='identifier'][@type='isbn']">
                                 <xsl:element name="dim:field">
-                                        <xsl:attribute name="mdschema">local</xsl:attribute>
+                                        <xsl:attribute name="mdschema">dc</xsl:attribute>
                                         <xsl:attribute name="element">identifier</xsl:attribute>
                                         <xsl:attribute name="qualifier">isbn</xsl:attribute>
                                         <xsl:value-of select="normalize-space(*[local-name()='identifier'][@type='isbn'])"/>
                                 </xsl:element>
                         </xsl:if>
                         
-                        
-                         <!-- 4b)  DC  created.identifier.other  -->
-                     <xsl:for-each select="*[local-name()='identifier'][@type != 'doi' and @type != 'urn' and @type != 'uri' and @type != 'issn' and @type != 'isbn']">
-                     
+                        <!-- 4b)  DC  dc.identifier.isbn  -->
+                        <xsl:if test="*[local-name()='identifier'][@type='eIsbn']">
                                 <xsl:element name="dim:field">
-                                        <xsl:attribute name="mdschema">local</xsl:attribute>
+                                        <xsl:attribute name="mdschema">dc</xsl:attribute>
+                                        <xsl:attribute name="element">identifier</xsl:attribute>
+                                        <xsl:attribute name="qualifier">isbn</xsl:attribute>
+                                        <xsl:value-of select="normalize-space(*[local-name()='identifier'][@type='eIsbn'])"/>
+                                </xsl:element>
+                        </xsl:if>
+                        
+                        <!-- 4c)  DC  dc.identifier.isbn  -->
+                        <xsl:if test="*[local-name()='identifier'][@type='pIsbn']">
+                                <xsl:element name="dim:field">
+                                        <xsl:attribute name="mdschema">dc</xsl:attribute>
+                                        <xsl:attribute name="element">identifier</xsl:attribute>
+                                        <xsl:attribute name="qualifier">isbn</xsl:attribute>
+                                        <xsl:value-of select="normalize-space(*[local-name()='identifier'][@type='pIsbn'])"/>
+                                </xsl:element>
+                        </xsl:if>
+                                         
+                         <!-- 4d)  DC  created.identifier.other  -->
+                     <xsl:for-each select="*[local-name()='identifier']
+                     [@type != 'doi' 
+                     and @type != 'urn' 
+                     and @type != 'uri' 
+                     and @type != 'issn' 
+                     and @type != 'isbn' 
+                     and @type != 'eIssn' 
+                     and @type != 'pIssn' 
+                     and @type != 'eIsbn' 
+                     and @type != 'pIsbn']">                   
+                                <xsl:element name="dim:field">
+                                        <xsl:attribute name="mdschema">dc</xsl:attribute>
                                         <xsl:attribute name="element">identifier</xsl:attribute>
                                         <xsl:attribute name="qualifier">other</xsl:attribute>
                                         <xsl:value-of select="."/>
                                 </xsl:element>
                      </xsl:for-each>
+                     
                         
                         <!-- 5)  DC  created.journal.volume  -->
                         <xsl:if test="*[local-name()='part']/*[local-name()='detail'][@type='volume']">
@@ -377,7 +428,8 @@ $ scp MODS-2-DIM.xslt athena.dialup.mit.edu:~/Private/
                                         <xsl:attribute name="mdschema">local</xsl:attribute>
                                         <xsl:attribute name="element">journal</xsl:attribute>
                                         <xsl:attribute name="qualifier">volume</xsl:attribute>
-                                        <xsl:value-of select="normalize-space(*[local-name()='part']/*[local-name()='detail'][@type='volume'])"/>
+                                        <!-- <xsl:value-of select="normalize-space(*[local-name()='part']/*[local-name()='detail'][@type='volume'])"/> -->
+                                        <xsl:value-of select="$journalVolume" />
                                 </xsl:element>
                         </xsl:if>
                         
@@ -387,7 +439,8 @@ $ scp MODS-2-DIM.xslt athena.dialup.mit.edu:~/Private/
                                         <xsl:attribute name="mdschema">local</xsl:attribute>
                                         <xsl:attribute name="element">journal</xsl:attribute>
                                         <xsl:attribute name="qualifier">issue</xsl:attribute>
-                                  	 <xsl:value-of select="normalize-space(*[local-name()='part']/*[local-name()='detail'][@type='issue'])"/>
+                                  	 <!-- <xsl:value-of select="normalize-space(*[local-name()='part']/*[local-name()='detail'][@type='issue'])"/>  -->
+                                  	 <xsl:value-of select="$journalIssue" />
                                 </xsl:element>
                         </xsl:if>  
                         
@@ -433,12 +486,12 @@ $ scp MODS-2-DIM.xslt athena.dialup.mit.edu:~/Private/
         </dim:field>
     </xsl:template>    
 
-
+	
 
 <!-- **** MODS   identifier/@type=DOI  ====> DC created.identifier.doi  **** -->
         <xsl:template match="*[local-name()='identifier'][@type='doi']"> 
                 <xsl:element name="dim:field">
-                        <xsl:attribute name="mdschema">local</xsl:attribute>
+                        <xsl:attribute name="mdschema">dc</xsl:attribute>
                         <xsl:attribute name="element">identifier</xsl:attribute>
                         <xsl:attribute name="qualifier">doi</xsl:attribute>
                         <xsl:value-of select="normalize-space(.)"/>
@@ -448,7 +501,7 @@ $ scp MODS-2-DIM.xslt athena.dialup.mit.edu:~/Private/
         <!-- **** MODS   identifier/@type=urn  ====> DC created.identifier.urn  **** -->
         <xsl:template match="*[local-name()='identifier'][@type='urn']"> 
                 <xsl:element name="dim:field">
-                        <xsl:attribute name="mdschema">local</xsl:attribute>
+                        <xsl:attribute name="mdschema">dc</xsl:attribute>
                         <xsl:attribute name="element">identifier</xsl:attribute>
                         <xsl:attribute name="qualifier">urn</xsl:attribute>
                         <xsl:value-of select="normalize-space(.)"/>
@@ -458,7 +511,7 @@ $ scp MODS-2-DIM.xslt athena.dialup.mit.edu:~/Private/
              <!-- **** MODS   identifier/@type=urn  ====> DC created.identifier.uri  **** -->
         <xsl:template match="*[local-name()='identifier'][@type='uri']"> 
                 <xsl:element name="dim:field">
-                        <xsl:attribute name="mdschema">local</xsl:attribute>
+                        <xsl:attribute name="mdschema">dc</xsl:attribute>
                         <xsl:attribute name="element">identifier</xsl:attribute>
                         <xsl:attribute name="qualifier">uri</xsl:attribute>
                         <xsl:value-of select="normalize-space(.)"/>

@@ -9,11 +9,12 @@
 		<property name="metadata" value="bitstream-metadata" />
         <property name="options">
             <list>
+            <!--
                 <ref bean="openAccess"/>
                 <ref bean="lease"/>
                 <ref bean="embargoed" />
-                <ref bean="administrator"/>
-                <!-- <ref bean="networkAdministration"/> -->
+                <ref bean="administrator"/> 
+                -->
             </list>
         </property>
     </bean>

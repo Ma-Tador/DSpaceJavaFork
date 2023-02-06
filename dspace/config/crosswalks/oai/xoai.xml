@@ -39,15 +39,11 @@
             - http://www.driver-support.eu/documents/DRIVER_Guidelines_v2_Final_2008-11-13.pdf
             Page 57 - 58
             https://guidelines.openaire.eu/en/latest/literature/use_of_oai_pmh.html
-         -->
+         
         <Context baseurl="driver" name="Driver Context">
-            <!-- Date format, field prefixes, etc are ensured by the transformer -->
             <Transformer ref="driverTransformer"/>
-            <!-- The driver filter -->
             <Filter ref="driverFilter"/>
-            <!-- Just an alias, in fact it returns all items within the driver context -->
             <Set ref="driverSet"/>
-            <!-- Metadata Formats -->
             <Format ref="oaidc"/>
             <Format ref="mets"/>
             <Format ref="didl"/>
@@ -55,6 +51,7 @@
                 This context complies with Driver rules.
             </Description>
         </Context>
+        -->
         
         <!--
             OpenAIRE Guidelines 4.0:
@@ -123,7 +120,7 @@
     <Formats>
     <!-- @Steli Format for OPEN-AIRE4  Renamed to persist in config, when move to new DSpace system  -->
         <Format id="fau_openaire4">
-            <Prefix>oai_openaire4</Prefix>
+            <Prefix>oai_openaire</Prefix>
             <XSLT>metadataFormats/fau_oai_dc_openaire4.xsl</XSLT>
             <Namespace>http://namespace.openaire.eu/schema/oaire/</Namespace>
             <SchemaLocation>https://www.openaire.eu/schema/repo-lit/4.0/openaire.xsd</SchemaLocation>
@@ -224,13 +221,14 @@
             <Namespace>http://irdb.nii.ac.jp/oai</Namespace>
             <SchemaLocation>http://irdb.nii.ac.jp/oai/junii2-3-1.xsd</SchemaLocation>
         </Format>
+        <!--
         <Format id="oaiopenaire">
             <Prefix>oai_openaire</Prefix>
-            <!-- @Steli changed metadata file <XSLT>metadataFormats/oai_openaire.xsl</XSLT> -->
-            <XSLT>metadataFormats/oai_openaire_fau.xsl</XSLT>
+            <XSLT>metadataFormats/oai_openaire.xsl</XSLT>
             <Namespace>http://namespace.openaire.eu/schema/oaire/</Namespace>
             <SchemaLocation>https://www.openaire.eu/schema/repo-lit/4.0/openaire.xsd</SchemaLocation>
         </Format>
+        -->
     </Formats>
 
     <Transformers>
