@@ -244,17 +244,13 @@
             <!--<step id="sample"/> -->
 
             <step id="collection"/>
-            
-            <!-- added pre-register DOI @Steli -->
-            <step id="identifiers"/>
 
             <!--Step will be to Describe the item. -->
             <step id="traditionalpageone"/>
             <step id="traditionalpagetwo"/>
 
-            <!-- Uncomment this step to allow the user to embargo or access restrict the entire item  -->
+            <!-- Uncomment this step to allow the user to embargo or access restrict the entire item -->
             <step id="itemAccessConditions"/>
-
 
           <!-- Uncomment this step to show when appropriate publisher policies retrieved from SHERPA/RoMEO
             <step id="sherpaPolicies"/>
@@ -269,6 +265,9 @@
 
             <!-- Uncomment this step to allow the user to select a Creative Commons License -->
             <!-- <step id="cclicense"/> -->
+            
+            <!-- added pre-register DOI @Steli -->
+            <step id="identifiers"/>
 
             <!--Step will be to Sign off on the required DSpace License agreement -->
             <step id="license"/>

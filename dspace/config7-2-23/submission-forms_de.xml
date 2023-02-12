@@ -29,10 +29,10 @@
                     <dc-element>title</dc-element>
                     <dc-qualifier></dc-qualifier>
                     <repeatable>false</repeatable>
-                    <label>Title</label>
+                    <label>Titel</label>
                     <input-type>onebox</input-type>
-                    <hint>Enter the name of the file.</hint>
-                    <required>You must enter a name for this file</required>
+                    <hint>Geben Sie den Namen der Datei ein</hint>
+                    <required>Sie müssen einen Namen für diese Datei eingeben</required>
                 </field>
             </row>
             <row>
@@ -40,9 +40,9 @@
                     <dc-schema>dc</dc-schema>
                     <dc-element>description</dc-element>
                     <repeatable>true</repeatable>
-                    <label>Description</label>
+                    <label>Beschreibung</label>
                     <input-type>textarea</input-type>
-                    <hint>Enter a description for the file</hint>
+                    <hint>Geben Sie eine Beschreibung für die Datei ein</hint>
                     <required></required>
                 </field>
             </row>
@@ -51,17 +51,17 @@
         <!-- Form which defines the first page/section of the "traditional" DSpace submission process,
              often used when depositing normal Items (i.e. Items which are not Entities). -->
         <form name="traditionalpageone">
-        	<row>
-                <field>
+        	<row>                                                                                                                                                                                                                                            
+                 <field>                                                                                                                                                                                                                                          
                     <dc-schema>dc</dc-schema>
-                    <dc-element>type</dc-element>
+                    <dc-element>type</dc-element>                                                                                                                                                                                                                
                     <dc-qualifier></dc-qualifier>
-                    <repeatable>false</repeatable>
-                    <label>Document type</label>
+                    <repeatable>false</repeatable>                 
+                    <label>Dokumenttyp</label>
                     <input-type value-pairs-name="common_types">dropdown</input-type>
-                    <hint>Select the type(s) of content of the item. To select more than one value in the list, you may have to hold down the "CTRL" or "Shift" key.</hint>
-                    <required>You must select a document type!</required>
-                </field>
+                    <hint>Bitte wählen Sie hier den Dokumenttyp aus.</hint>                                                                                                                                                                                                                                      
+                    <required>Sie müssen das Dokumenttyp wählen!</required>         
+                </field>                                                                                                                                                                                         
             </row>
         
           <row>
@@ -69,27 +69,13 @@
              <dc-schema>local</dc-schema>
              <dc-element>fakultaet</dc-element>
              <dc-qualifier>lehrstuhl</dc-qualifier>
-             <repeatable>true</repeatable>
-             <label>Organizational Unit</label>
+             <repeatable>false</repeatable>
+             <label>Organisationseinheit</label>
              <input-type>onebox</input-type>
-             <hint>Please enter the department, chair of the department, institution, organizational unit. For more information you can see https://www.fau.de/research/service-fuer-forschende/publizieren-und-open-access/tipps-zur-korrekten-affiliation.</hint>
+             <hint>Bitte geben Sie die Lehrstuhl (oder andere Organisationseinheit) für die Fakultät ein.</hint>
              <required></required>
             </field>
          </row>
-      
-            <row>
-                <field>
-                    <dc-schema>dc</dc-schema>
-                    <dc-element>contributor</dc-element>
-                    <dc-qualifier>author</dc-qualifier>
-                    <repeatable>true</repeatable>
-                    <label>Author</label>
-                    <type-bind>article,movingimage,bachelorthesis,book,bookpart,conferenceobject,coursematerial,dataset,habilitation,journalissue,masterthesis,other,periodicalpart,postprint,preprint,report,review,software,studythesis,workingpaper</type-bind>                
-                    <input-type>onebox</input-type>
-                    <hint>Enter the author's name ('Family-Name, Given-Name' or 'Given-Name Family-Name'). If available, enter the ORCID Id and select the appropiate author from the displayed list.</hint>
-                    <required></required>
-                </field>
-            </row>
             
             <row>
                 <field>
@@ -97,168 +83,104 @@
                     <dc-element>contributor</dc-element>
                     <dc-qualifier>author</dc-qualifier>
                     <repeatable>true</repeatable>
-                    <label>Author</label>
-                    <type-bind>doctoralthesis</type-bind>
+                    <label>Autor*in</label>
                     <input-type>onebox</input-type>
-                    <hint>Enter the author's name ('Family-Name, Given-Name' or 'Given-Name Family-Name'). If available, enter the ORCID Id and select the appropiate author from the displayed list.</hint>
-                    <required>Please enter the author.</required>
+                    <hint>Geben Sie den Namen des Autors ein (Familienname, Vornamen)</hint>
+                    <required></required>
                 </field>
             </row>
-
             <row>
                 <field>
                     <dc-schema>dc</dc-schema>
                     <dc-element>contributor</dc-element>
                     <dc-qualifier>advisor</dc-qualifier>
                     <repeatable>true</repeatable>
-                    <label>Advisor</label>
-                    <type-bind>habilitation,masterthesis,bachelorthesis,other</type-bind>
+                    <label>Betreuer*in</label>
+                    <type-bind>doctoralthesis,habilitation,masterthesis,bachelorthesis,other</type-bind>
                     <input-type>onebox</input-type>
-                    <hint>Enter the advisor's name. ('Family-Name, Given-Name' or 'Given-Name Family-Name')</hint>
+                    <hint>Tragen Sie bitte die/den Betreuer*in ein.</hint>
                     <required></required>
                 </field>
             </row>
-            <!-- Advisor/Betreuer is for doctoralthesis required -->
-            <row>
-                <field>
-                    <dc-schema>dc</dc-schema>
-                    <dc-element>contributor</dc-element>
-                    <dc-qualifier>advisor</dc-qualifier>
-                    <repeatable>true</repeatable>
-                    <label>Advisor</label>
-                    <type-bind>doctoralthesis</type-bind>
-                    <input-type>onebox</input-type>
-                    <hint>Enter the advisor's name. ('Family-Name, Given-Name' or 'Given-Name Family-Name')</hint>
-                    <required>Enter the advisor's name.</required>
-                </field>
-            </row>
-            
             <row>
                 <field>
                     <dc-schema>dc</dc-schema>
                     <dc-element>contributor</dc-element>
                     <dc-qualifier></dc-qualifier>
                     <repeatable>true</repeatable>
-                    <label>Reviewer</label>
-                    <type-bind>habilitation,masterthesis,bachelorthesis,other</type-bind>
+                    <label>Gutachter*in</label>
+                    <type-bind>doctoralthesis,habilitation,masterthesis,bachelorthesis,other</type-bind>
                     <input-type>onebox</input-type>
-                    <hint>Enter the reviewer's name. ('Family-Name, Given-Name' or 'Given-Name Family-Name')</hint>
+                    <hint>Tragen Sie bitte die Gutachter*innen ein.</hint>
                     <required></required>
-                </field>
-	    </row>
-	    <!-- dc.contributor/Gutachter is for doctoralthesis required -->
-	    <row>
-                <field>
-                    <dc-schema>dc</dc-schema>
-                    <dc-element>contributor</dc-element>
-                    <dc-qualifier></dc-qualifier>
-                    <repeatable>true</repeatable>
-                    <label>Reviewer</label>
-                    <type-bind>doctoralthesis</type-bind>
-                    <input-type>onebox</input-type>
-                    <hint>Enter the reviewer's name. ('Family-Name, Given-Name' or 'Given-Name Family-Name')</hint>
-                    <required>Enter the reviewer's name.</required>
-                </field>
-	    </row>
-	    
-            <row>
+                 </field>
+            </row>
+           <row>
                <field>
                    <dc-schema>dc</dc-schema>
                    <dc-element>provenance</dc-element>
-		   <dc-qualifier></dc-qualifier>
-		   <repeatable>true</repeatable>
-		   <label>Granting institution</label>
-		   <type-bind>habilitation,masterthesis,bachelorthesis,other</type-bind>
-		   <input-type value-pairs-name="grantor_list">dropdown</input-type>
-	  	   <hint>Select the grantor from the list.</hint>
+                   <dc-qualifier></dc-qualifier>
+                   <repeatable></repeatable>
+                   <label>Titel verleihende Institution</label>
+                   <type-bind>doctoralthesis,habilitation,masterthesis,bachelorthesis,other</type-bind>
+                   <input-type value-pairs-name="grantor_list">dropdown</input-type>
+                   <hint>Wählen Sie bitte die titelverleihende Institution aus.</hint>
                    <required></required>
                 </field>
             </row>
-            <!-- dc.provenance/Titelverleih is for doctoralthesis required -->
             <row>
-               <field>
-                   <dc-schema>dc</dc-schema>
-                   <dc-element>provenance</dc-element>
-		   <dc-qualifier></dc-qualifier>
-		   <repeatable>true</repeatable>
-		   <label>Granting institution</label>
-		   <type-bind>doctoralthesis</type-bind>
-		   <input-type value-pairs-name="grantor_list">dropdown</input-type>
-	  	   <hint>Select the grantor from the list.</hint>
-                   <required>Select the grantor from the list.</required>
+                <field>
+                  <dc-schema>local</dc-schema>
+                  <dc-element>date</dc-element>
+                  <dc-qualifier>accepted</dc-qualifier>
+                  <repeatable></repeatable>
+                  <label>Datum der mündlichen Abschlussprüfung</label>
+                  <type-bind>doctoralthesis,habilitation,masterthesis,bachelorthesis,other</type-bind>
+                  <input-type>date</input-type>
+                  <hint>Bitte wählen Sie das Datum des mündlichen Abschlussprüfung.</hint>
+                  <required></required>
                 </field>
             </row>
-	    <row>
-		<field>
-		  <dc-schema>local</dc-schema>
-		  <dc-element>date</dc-element>
-		  <dc-qualifier>accepted</dc-qualifier>
-		  <repeatable></repeatable>
-		  <label>Acceptance date of the thesis</label>
-		  <type-bind>habilitation,masterthesis,bachelorthesis,other</type-bind>
-		  <input-type>date</input-type>
-		  <hint>Select the date of your final examination (eg date of the final exam for Ph.D.)</hint>
-		  <required></required>
-		</field>
-	    </row>
-	    <!-- local.date.accepted/Datum der mündlichen Abschlussprüfung is for doctoralthesis required -->
-	    <row>
-		<field>
-		  <dc-schema>local</dc-schema>
-		  <dc-element>date</dc-element>
-		  <dc-qualifier>accepted</dc-qualifier>
-		  <repeatable></repeatable>
-		  <label>Acceptance date of the thesis</label>
-		  <type-bind>doctoralthesis</type-bind>
-		  <input-type>date</input-type>
-		  <hint>Select the date of your final examination (eg date of the final exam for Ph.D.)</hint>
-		  <required>Select the date of your final examination.</required>
-		</field>
-	    </row>
+	  <row>
+             <field>
+                <dc-schema>dc</dc-schema>
+                <dc-element>contributor</dc-element>
+                <dc-qualifier>editor</dc-qualifier>
+                <repeatable>true</repeatable>
+                <label>Herausgeber*in</label>
+                <input-type>onebox</input-type>
+                <hint>Tragen Sie bitte die Herausgeber*in ein.</hint>
+                <required></required>
+              </field>
+          </row>
 
-	<row>
-	     <field>
-		<dc-schema>dc</dc-schema>
-		<dc-element>contributor</dc-element>
-		<dc-qualifier>editor</dc-qualifier>
-		<repeatable>true</repeatable>
-		<label>Editor</label>
-		<input-type>onebox</input-type>
-		<hint>Enter the editor's name. ('Family-Name, Given-Name' or 'Given-Name Family-Name')</hint>
-		<required></required>
-	      </field>
-	  </row> 
-
-<!-- Qualdrop_value always repeateable>true</repeateable>        -->
+<!-- Qualdrop_value always repeateable>true</repeateable>  -->
             <row>
-                <field> 
-                    <dc-schema>dc</dc-schema>     
+                <field>
+                    <dc-schema>dc</dc-schema>
                     <dc-element>contributor</dc-element>
                     <dc-qualifier></dc-qualifier>
                     <repeatable>true</repeatable>
-                    <label>Other contributor</label>
+                    <label>Weitere beteiligte Personen</label>
                     <input-type value-pairs-name="contributor_list">qualdrop_value</input-type>
-                    <hint>If the item has a contributor associated with it, please select the type and enter the name of the contributor ('Family-Name, Given-Name' or 'Given-Name Family-Name').
-                    </hint>
+                    <hint>Tragen Sie bitte weitere beteiligte Personen ein.</hint>
                     <required></required>
                 </field>
             </row>
 
-
-<row>
+            <row>
                 <field>
                     <dc-schema>dc</dc-schema>
                     <dc-element>title</dc-element>
                     <dc-qualifier></dc-qualifier>
                     <repeatable>true</repeatable>
-                    <label>Title</label>
+                    <label>Titel des Dokuments</label>
                     <language value-pairs-name="common_iso_languages">true</language>
                     <input-type>onebox</input-type>
-                    <hint>Enter the main title of the item.</hint>
-                    <required>You must enter a main title for this item.</required>
+                    <hint></hint>
+                    <required>Sie müssen einen Titel für diesen Artikel eingeben.</required>
                 </field>
             </row>
-            
             
             <row>
                 <field>
@@ -266,9 +188,9 @@
                     <dc-element>title</dc-element>
                     <dc-qualifier>alternative</dc-qualifier>
                     <repeatable>true</repeatable>
-                    <label>Additional titles</label>
+                    <label>Weitere Titel</label>
                     <input-type>onebox</input-type>
-                    <hint>If the item has any alternative or translated titles, please enter them here.</hint>
+                    <hint>Wenn der Artikel alternative Titel hat, geben Sie diese bitte hier ein.</hint>
                     <required></required>
                 </field>
             </row>
@@ -278,71 +200,40 @@
                     <dc-element>language</dc-element>
                     <dc-qualifier>iso</dc-qualifier>
                     <repeatable>false</repeatable>
-                    <label>Language</label>
-                    <type-bind>article,movingimage,bachelorthesis,book,bookpart,conferenceobject,coursematerial,dataset,habilitation,journalissue,masterthesis,other,periodicalpart,postprint,preprint,report,review,software,studythesis,workingpaper</type-bind>
+                    <label>Sprache</label>
                     <input-type value-pairs-name="common_iso_languages">dropdown</input-type>
-                    <hint>Select the language of the main content of the item. If the language does not appear in the
-                        list, please select 'Other'. If the content does not really have a language (for example, if it
-                        is a dataset or an image) please select 'N/A'.
+                    <hint>Wählen Sie die Sprache des Hauptinhalts des Elements aus. Wenn die Sprache nicht im
+                         Liste wählen Sie bitte 'Andere' aus. Wenn der Inhalt nicht wirklich eine Sprache hat (z. B. wenn er
+                         ein Datensatz oder ein Bild ist) wählen Sie bitte 'N/A'.
                     </hint>
                     <required></required>
                 </field>
             </row>
-            
-            <row>
-                <field>
-                    <dc-schema>dc</dc-schema>
-                    <dc-element>language</dc-element>
-                    <dc-qualifier>iso</dc-qualifier>
-                    <repeatable>false</repeatable>
-                    <label>Language</label>
-                    <type-bind>doctoralthesis</type-bind>
-                    <input-type value-pairs-name="common_iso_languages">dropdown</input-type>
-                    <hint>Select the language of the main content of the item. If the language does not appear in the
-                        list, please select 'Other'. If the content does not really have a language (for example, if it
-                        is a dataset or an image) please select 'N/A'.
-                    </hint>
-                    <required>Select the language of the main content of the item.</required>
-                </field>
-            </row>
-            <row>
-                <field>
+
+            <row> 
+                <field>            
                     <dc-schema>dc</dc-schema>
                     <dc-element>description</dc-element>
                     <dc-qualifier>abstract</dc-qualifier>
                     <repeatable>true</repeatable>
-                    <label>Abstract</label>
-                    <type-bind>article,movingimage,bachelorthesis,book,bookpart,conferenceobject,coursematerial,dataset,habilitation,journalissue,masterthesis,other,periodicalpart,postprint,preprint,report,review,software,studythesis,workingpaper</type-bind>
+                    <label>Zusammenfassung</label>
                     <language value-pairs-name="common_iso_languages">true</language>
                     <input-type>textarea</input-type>
-                    <hint>Enter the abstract of the item.</hint>
+                    <hint>Geben Sie die Zusammenfassung des Artikels ein</hint>
                     <required></required>
                 </field>
             </row>
-            <!-- Abstract is for doctoralthesis required -->
-            <row>
-                <field>
-                    <dc-schema>dc</dc-schema>
-                    <dc-element>description</dc-element>
-                    <dc-qualifier>abstract</dc-qualifier>
-                    <repeatable>true</repeatable>
-                    <label>Abstract</label>
-                    <type-bind>doctoralthesis</type-bind>
-                    <language value-pairs-name="common_iso_languages">true</language>
-                    <input-type>textarea</input-type>
-                    <hint>Enter the abstract of the item.</hint>
-                    <required>Enter the abstract of the item.</required>
-                </field>
-            </row>
+
+
             <row>
                 <field>
                     <dc-schema>dc</dc-schema>
                     <dc-element>subject</dc-element>
                     <dc-qualifier></dc-qualifier>
                     <repeatable>true</repeatable>
-                    <label>Free Subject Keywords</label>
+                    <label>Freie Schlagworte</label>
                     <input-type>onebox</input-type>
-                    <hint>Enter appropriate subject keywords or phrases.</hint>
+                    <hint>Bitte geben Sie ein Schlagwort ein.</hint>
                     <required></required>
                 </field>
             </row>
@@ -353,13 +244,14 @@
                     <dc-qualifier>ddc</dc-qualifier>
                     <!-- An input-type of tag MUST be marked as repeatable -->
                     <repeatable>true</repeatable>
-                    <label>DDC Keywords or ID</label>
+                    <label>DDC-Schlagworte oder ID</label>
                     <input-type>tag</input-type>
-                    <hint>Enter DDC keyword or ID. (ex: 600 Technik, Technologie). For more information, see our FAQ.</hint>
+                    <hint>Geben Sie passende DDC-Schlagworte oder DDC-ID ein.</hint>
                     <required></required>
                     <vocabulary>ddc</vocabulary>
                 </field>
             </row>
+
 <!--
             <row>
                 <field>
@@ -367,40 +259,40 @@
                     <dc-element>series</dc-element>
                     <dc-qualifier></dc-qualifier>
                     <repeatable>true</repeatable>
-                    <label>Series/No.</label>
+                    <label>Schriftenreihe / Bandnummer</label>
                     <input-type value-pairs-name="series_list">qualdrop_value</input-type>
-                    <hint>Select the series and enter the number assigned to this item.</hint>
+                    <hint>Bitte wählen Sie hier ggf. die Schriftenreihe aus, in der Ihr Dokument erschienen ist.</hint>
                     <required></required>
                 </field>
             </row>
 -->
 
-
-<row>
+	
+	<row>
                <field>
                   <dc-schema>local</dc-schema>
                   <dc-element>document</dc-element>
                   <dc-qualifier>edition</dc-qualifier>
                   <repeatable>false</repeatable>
-                  <label>Edition</label>
+                  <label>Auflage</label>
                   <type-bind>book,doctoralthesis,habilitation,masterthesis,bachelorthesis,other</type-bind>
                   <input-type>onebox</input-type>
-                  <hint>Enter the edition of this document, if available.</hint>
+                  <hint>Geben Sie die Auflage ein, wenn zutreffend.</hint>
                   <required></required>
               </field>
            </row>
 
 
-            <row>
+<row>
                <field>
                   <dc-schema>local</dc-schema>
                   <dc-element>series</dc-element>
                   <dc-qualifier>name</dc-qualifier>
                   <repeatable>false</repeatable>
-                  <label>Series</label>
+                  <label>Schriftenreihe</label>
                   <type-bind>book,bookpart,doctoralthesis,habilitation,masterthesis,bachelorthesis,other,periodicalpart</type-bind>
                   <input-type value-pairs-name="series_list_dropdown">dropdown</input-type>
-                  <hint>Select the series for this item, if applicable.</hint>
+                  <hint>Geben Sie eine Schriftenreihe ein, wenn zutreffend.</hint>
                   <required></required>
               </field>
            </row>
@@ -412,81 +304,67 @@
 		<dc-element>series</dc-element>
 		<dc-qualifier>number</dc-qualifier>
            	<repeatable>false</repeatable>
-		<label>Series' Number</label>
+		<label>Bandnummer</label>
 		<type-bind>book,bookpart,doctoralthesis,habilitation,masterthesis,bachelorthesis,other,periodicalpart</type-bind>
 		<input-type>onebox</input-type>
-		<hint>Select the series' number for this item, if applicable.</hint>
+		<hint>Geben Sie ein Bandnummer für das Dokument ein.</hint>
 		<required></required> 
               </field>
              </row>
 
-            <row>  
-               <field>  
-                  <dc-schema>dc</dc-schema> 
-                  <dc-element>publisher</dc-element>
-                  <dc-qualifier></dc-qualifier>
-                  <repeatable>false</repeatable>
-                  <label>Publisher</label>
-                  <!-- <style>col-sm-8</style> -->
-                  <input-type>onebox</input-type>                                                                                         
-                  <hint>Enter the name of the publisher of the previously issued instance of this item.</hint>
-                  <required></required>                                                                       
-               </field>
-           </row>
-           <row>
+
+          <row>
+                <field>
+                    <dc-schema>dc</dc-schema>
+                    <dc-element>publisher</dc-element>
+                    <dc-qualifier></dc-qualifier>
+                    <repeatable>false</repeatable>
+                    <label>Verlag</label>
+                <!--    <style>col-sm-8</style>  -->
+                    <input-type>onebox</input-type>
+                    <hint>Falls Ihre Arbeit in einem Verlag erschienen ist, tragen Sie bitte den Verlag ein.</hint>
+                    <required></required>
+                </field>
+            </row>
+            <row>
                <field>
                   <dc-schema>local</dc-schema>
                   <dc-element>publisherplace</dc-element>
                   <dc-qualifier></dc-qualifier>
                   <repeatable>false</repeatable>
-                  <label>Place of publication</label>
+                  <label>Verlagsort</label>
                   <input-type>onebox</input-type>
-                  <hint>Enter the place of the publisher for this item.</hint>
+                  <hint>Falls Ihre Arbeit in einem Verlag erschienen ist, tragen Sie bitte den Verlagsort ein.</hint>
                   <required></required>
                </field>
            </row>
            <row>
               <field>
-                    <dc-schema>dc</dc-schema> 
+                    <dc-schema>dc</dc-schema>
                     <dc-element>format</dc-element>
                     <dc-qualifier>extent</dc-qualifier>
-                    <repeatable>false</repeatable>    
-                    <label>Size</label>        
-                    <input-type>onebox</input-type> 
-                    <hint>Enter the size, duration or the number of pages for this item.</hint>
+                    <repeatable>false</repeatable>
+                    <label>Größe (z.B. Seitenzahl, Dateigröße ...)</label>
+                    <input-type>onebox</input-type>
+                    <hint></hint>
                     <required></required>
-              </field>                                                  
-          </row>
-         </form>
-
-        <!-- Form which defines the second page/section of the "traditional" DSpace submission process,
-             often used when depositing normal Items. -->
-        <form name="traditionalpagetwo">
-            <row>
-               <field>
-                  <dc-schema>local</dc-schema>
-                  <dc-element>journal</dc-element>
-                  <dc-qualifier>title</dc-qualifier>
-                  <repeatable>false</repeatable>
-                  <label>Title of journal / compilation</label>
-                  <type-bind>conferenceobject,article,bookpart,review,postprint,preprint,other</type-bind>
-                  <input-type>onebox</input-type>
-                  <hint>Please enter the title of superordinate works. (e.g. magazine or anthology)</hint>
-                  <required></required>
               </field>
-         </row>      
-         <!-- local.journal.title/Titel des Zeitschrift is for journalissue required -->     
-         <row>
+          </row>
+       </form>
+
+<!-- Form which defines the second page/section of the "traditional" DSpace submission process, often used when depositing normal Items. -->
+        <form name="traditionalpagetwo">
+          <row>
                <field>
                   <dc-schema>local</dc-schema>
                   <dc-element>journal</dc-element>
                   <dc-qualifier>title</dc-qualifier>
                   <repeatable>false</repeatable>
-                  <label>Title of journal / compilation</label>
-                  <type-bind>journalissue</type-bind>
+                  <label>Titel des Zeitschrift / Sammelwerk</label>
+                  <type-bind>conferenceobject,article,bookpart,review,postprint,preprint,journalissue,other</type-bind>
                   <input-type>onebox</input-type>
-                  <hint>Please enter the title of superordinate works. (e.g. magazine or anthology)</hint>
-                  <required>Please enter the title of superordinate works.</required>
+                  <hint>Bitten geben Sie das Titel des übergeordneter Werke ein (z.B. Zeitschrift oder Sammelband)</hint>
+                  <required></required>
               </field>
          </row>
          <row>
@@ -495,10 +373,11 @@
                  <dc-element>journal</dc-element>
                  <dc-qualifier>volume</dc-qualifier>
                  <repeatable>false</repeatable>
-                 <label>Volume</label>
+                 <label>Band / Jahrgang</label>
+                 <type-bind>conferenceobject,article,bookpart,review,postprint,preprint,journalissue,other</type-bind>
                  <input-type>onebox</input-type>
-                 <hint>Please enter the volume.</hint>
-                 <required></required> 
+                 <hint>Tragen Sie bitte den Band / Jahrgang der Zeitschrift ein. (Band, Vol.)</hint>
+                 <required></required>
               </field>
          </row>
          <row>
@@ -507,13 +386,13 @@
                     <dc-element>journal</dc-element>
                     <dc-qualifier>issue</dc-qualifier>
                     <repeatable>false</repeatable>
-                    <label>Issue</label>
+                    <label>Ausgabe / Heft</label>
                     <type-bind>conferenceobject,article,bookpart,review,postprint,preprint,journalissue,other</type-bind>
                     <style></style>
                     <input-type>onebox</input-type>
-                    <hint>Please give the issue of publication.</hint>
+                    <hint>Tragen Sie bitte die Heftangabe (Heftnummer, Issue) ein.</hint>
                     <required></required>
-                </field>    
+                </field>
          </row>
          <row>
                 <field>
@@ -521,62 +400,62 @@
                     <dc-element>document</dc-element>
                     <dc-qualifier>articlenumber</dc-qualifier>
                     <repeatable>false</repeatable>
-                    <label>Article Number</label>
+                    <label>Aufsatznummer</label>
                     <type-bind>conferenceobject,article,postprint,preprint,other</type-bind>
                     <style></style>
                     <input-type>onebox</input-type>
-                    <hint>Please give the article number of publication.</hint>
+                    <hint>Bitte geben Sie die Aufsatznummer des Dokument ein.</hint>
                     <required></required>
-                </field>  
+                </field>
           </row>
           <row>
                 <field>
                     <dc-schema>dc</dc-schema>
                     <dc-element>identifier</dc-element>
                     <dc-qualifier>citation</dc-qualifier>
-                    <repeatable>false</repeatable>
-                    <label>Bibliographical reference / Original publication</label>
+                    <repeatable>true</repeatable>
+                    <label>Zitat / Originalveröffentlichung</label>
                     <input-type>onebox</input-type>
-                    <hint>Enter the standard citation for the previously issued instance of this item.</hint>
+                    <hint>Falls das Dokument noch anderweitig veröffentlicht wurde, geben Sie hier bitte die entsprechende Quelle an.</hint>
                     <required></required>
                 </field>
-          </row>
-          <row>
-                <field>
-                    <dc-schema>dc</dc-schema>
-                    <dc-element>date</dc-element>
-                    <dc-qualifier>issued</dc-qualifier>
-                    <repeatable>false</repeatable>
-                    <label>Date of first publication</label>
-                    <style>col-sm-4</style>
-                    <input-type>date</input-type>
-                    <hint>Please give the date of publication or public distribution. You can leave out the day and/or month if they aren't applicable.</hint>
-                    <required>You must enter at least the year.</required>
-                </field>
             </row>
+ 	    <row>                                                                                                                                                                                                                                            
+	     <field>                                                                                                                                                                                                                                          
+		<dc-schema>dc</dc-schema>                                                                                                                                                                                                                    
+		<dc-element>date</dc-element>                                                                                                                                                                                                                
+		<dc-qualifier>issued</dc-qualifier>                                                                                                                                                                                                          
+		<repeatable>false</repeatable>                                                                                                                                                                                                               
+		<label>Datum der Erstveröffentlichung</label>                                                                                                                                                                                                                  
+		<style>col-sm-4</style>                                                                                                                                                                                                                      
+		<input-type>date</input-type>                                                                                                                                                                                                                
+		<hint>Bitte geben Sie das Datum der vorherigen Veröffentlichung oder öffentlichen Verbreitung an. Sie können den Tag und/oder den Monat weglassen, wenn sie nicht zutreffen.</hint>                                                                                                                                                                                                                                      
+		<required>Sie müssen mindestens das Jahr eingeben</required>                                                                                                                                                                             
+	     </field>                                                                                                                                                                                                                               
+	    </row>
             <row>
                 <field>
                     <dc-schema>local</dc-schema>
                     <dc-element>document</dc-element>
                     <dc-qualifier>creatingcorporation</dc-qualifier>
                     <repeatable>true</repeatable>
-                    <label>Issuing Institution/Conference Data</label>
+                    <label>Herausgebende Institution / Konferenzangabe</label>
                     <type-bind>conferenceobject,article,postprint,preprint,book,other</type-bind>
                     <input-type>onebox</input-type>
-                    <hint>Enter the publishing institution/conference data for this item.</hint>
+                    <hint>Bitte geben Sie die Herausgebende Institution/Konferenzangabe ein.</hint>
                     <required></required>
                 </field>
             </row>
             <row>
                 <field>
                     <dc-schema>dcterms</dc-schema>
-                    <dc-element>contributor</dc-element>   
-                    <dc-qualifier></dc-qualifier> 
+                    <dc-element>contributor</dc-element>
+                    <dc-qualifier></dc-qualifier>
                     <repeatable>true</repeatable>
-                    <label>Other participating institution</label>
+                    <label>Beteiligte Institution</label>
                     <type-bind>book,other</type-bind>
                     <input-type>onebox</input-type>
-                    <hint>Enter the contributing institution for this item.</hint>
+                    <hint>Bitte geben Sie die Beteiligte Institution ein.</hint>
                     <required></required>
                 </field>
             </row>
@@ -587,38 +466,38 @@
                     <dc-qualifier></dc-qualifier>
                     <!-- An input-type of qualdrop_value MUST be marked as repeatable -->
                     <repeatable>true</repeatable>
-                    <label>Identifiers</label>
+                    <label>Identifikatoren</label>
                     <input-type value-pairs-name="common_identifiers">qualdrop_value</input-type>
-                    <hint>If the item has any identification numbers or codes associated with it, please enter the types and the actual numbers or codes. </hint>
+                    <hint>Wenn mit dem Artikel Identifikationsnummern oder Codes verbunden sind, geben Sie bitte die Typen und die tatsächlichen Nummern oder Codes ein.</hint>
                     <required></required>
                 </field>
-            </row>    
+            </row>
             <row>
                 <field>
                     <dc-schema>dc</dc-schema>
                     <dc-element>description</dc-element>
                     <dc-qualifier></dc-qualifier>
                     <repeatable>false</repeatable>
-                    <label>Comments</label>
+                    <label>Beschreibung</label>
                     <input-type>textarea</input-type>
-                    <hint>Enter any other description or comments in this box.</hint>
+                    <hint>Geben Sie in dieses Feld weitere Beschreibungen oder Kommentare ein</hint>
                     <required></required>
                 </field>
             </row>
             <row>
-              <field>
-                  <dc-schema>dc</dc-schema>
-                  <dc-element>rights</dc-element> 
-                  <dc-qualifier>uri</dc-qualifier>
-                  <repeatable>false</repeatable>
-                  <label>Document License</label>
-                  <input-type value-pairs-name="fau_licenses">dropdown</input-type>
-                  <hint>
-                  	Select a license for your submitting item. For more information see https://repotest.ub.fau.de/info/faq/legallicense.
+                <field>
+                   <dc-schema>dc</dc-schema>
+                   <dc-element>rights</dc-element>
+                   <dc-qualifier>uri</dc-qualifier>
+                   <repeatable>false</repeatable>
+                   <label>Dokumentenlizenz</label>
+                   <input-type value-pairs-name="fau_licenses">dropdown</input-type>
+                   <hint>
+                  	Wählen Sie eine Lizenz für Ihr einreichendes Element aus. Weitere Informationen rund um die Lizenzbedienungen finden Sie im unsere FAQ, unter https://repotest.ub.fau.de/info/faq/legallicense.
                   </hint>
-                  <required>Please select a license for your document.</required>
-              </field>
-          </row>
+                   <required></required>
+                </field>
+            </row>
         </form>
 
 
@@ -632,8 +511,8 @@
                     <relationship-type>isAuthorOfPublication</relationship-type>
                     <search-configuration>person</search-configuration>
                     <repeatable>true</repeatable>
-                    <label>Author</label>
-                    <hint>Enter the author's name (Family name, Given names).</hint>
+                    <label>Autor/in</label>
+                    <hint>Geben Sie den Namen des Autors ein (Familienname, Vornamen)</hint>
                     <linked-metadata-field>
                         <dc-schema>dc</dc-schema>
                         <dc-element>contributor</dc-element>
@@ -654,10 +533,10 @@
                     <dc-element>title</dc-element>
                     <dc-qualifier></dc-qualifier>
                     <repeatable>false</repeatable>
-                    <label>Title</label>
+                    <label>Haupttitel</label>
                     <input-type>onebox</input-type>
-                    <hint>Enter the main title of the item.</hint>
-                    <required>You must enter a main title for this item.</required>
+                    <hint>Geben Sie den Haupttitel des Elements ein</hint>
+                    <required>Sie müssen einen Haupttitel für diesen Artikel eingeben</required>
                 </field>
             </row>
             <row>
@@ -666,9 +545,9 @@
                     <dc-element>title</dc-element>
                     <dc-qualifier>alternative</dc-qualifier>
                     <repeatable>true</repeatable>
-                    <label>Other Titles</label>
+                    <label>Andere Titel</label>
                     <input-type>onebox</input-type>
-                    <hint>If the item has any alternative titles, please enter them here.</hint>
+                    <hint>Wenn der Artikel alternative Titel hat, geben Sie diese bitte hier ein.</hint>
                     <required></required>
                 </field>
             </row>
@@ -678,13 +557,13 @@
                     <dc-element>date</dc-element>
                     <dc-qualifier>issued</dc-qualifier>
                     <repeatable>false</repeatable>
-                    <label>Date of Issue</label>
+                    <label>Ausgabedatum</label>
                     <style>col-sm-4</style>
                     <input-type>date</input-type>
-                    <hint>Please give the date of previous publication or public distribution.
-                        You can leave out the day and/or month if they aren't applicable.
+                    <hint>Bitte geben Sie das Datum der vorherigen Veröffentlichung oder öffentlichen Verbreitung an.
+                         Sie können den Tag und/oder den Monat weglassen, wenn sie nicht zutreffen.
                     </hint>
-                    <required>You must enter at least the year.</required>
+                    <required>Sie müssen mindestens das Jahr eingeben</required>
                 </field>
 
                 <field>
@@ -692,10 +571,10 @@
                     <dc-element>publisher</dc-element>
                     <dc-qualifier></dc-qualifier>
                     <repeatable>false</repeatable>
-                    <label>Publisher</label>
+                    <label>Herausgeber/in</label>
                     <style>col-sm-8</style>
                     <input-type>onebox</input-type>
-                    <hint>Enter the name of the publisher of the previously issued instance of this item.</hint>
+                    <hint>Geben Sie den Namen des Herausgebers der zuvor ausgestellten Instanz dieses Artikels ein</hint>
                     <required></required>
                 </field>
             </row>
@@ -705,9 +584,9 @@
                     <dc-element>identifier</dc-element>
                     <dc-qualifier>citation</dc-qualifier>
                     <repeatable>false</repeatable>
-                    <label>Citation</label>
+                    <label>Zitat</label>
                     <input-type>onebox</input-type>
-                    <hint>Enter the standard citation for the previously issued instance of this item.</hint>
+                    <hint>Geben Sie das Standardzitat für die zuvor ausgestellte Instanz dieses Elements ein</hint>
                     <required></required>
                 </field>
             </row>
@@ -717,9 +596,9 @@
                     <dc-element>relation</dc-element>
                     <dc-qualifier>ispartofseries</dc-qualifier>
                     <repeatable>true</repeatable>
-                    <label>Series/Report No.</label>
+                    <label>Serie/Bericht Nr.</label>
                     <input-type>series</input-type>
-                    <hint>Enter the series and number assigned to this item by your community.</hint>
+                    <hint>Geben Sie die Serie und Nummer ein, die diesem Artikel von Ihrer Community zugewiesen wurde</hint>
                     <required></required>
                 </field>
             </row>
@@ -730,10 +609,10 @@
                     <dc-qualifier></dc-qualifier>
                     <!-- An input-type of qualdrop_value MUST be marked as repeatable -->
                     <repeatable>true</repeatable>
-                    <label>Identifiers</label>
+                    <label>Identifikatoren</label>
                     <input-type value-pairs-name="common_identifiers">qualdrop_value</input-type>
-                    <hint>If the item has any identification numbers or codes associated with
-                        it, please enter the types and the actual numbers or codes.
+                    <hint>Wenn mit dem Artikel Identifikationsnummern oder Codes verbunden sind
+                         Geben Sie bitte die Typen und die tatsächlichen Nummern oder Codes ein.
                     </hint>
                     <required></required>
                 </field>
@@ -744,10 +623,10 @@
                     <dc-element>type</dc-element>
                     <dc-qualifier></dc-qualifier>
                     <repeatable>true</repeatable>
-                    <label>Type</label>
+                    <label>Typ</label>
                     <input-type value-pairs-name="common_types">dropdown</input-type>
-                    <hint>Select the type(s) of content of the item. To select more than one value in the list, you may
-                        have to hold down the "CTRL" or "Shift" key.
+                    <hint>Wählen Sie die Art(en) des Inhalts des Elements aus. Um mehr als einen Wert in der Liste auszuwählen, können Sie
+                         müssen Sie die Taste "STRG" oder "Umschalt" gedrückt halten.
                     </hint>
                     <required></required>
                 </field>
@@ -758,11 +637,11 @@
                     <dc-element>language</dc-element>
                     <dc-qualifier>iso</dc-qualifier>
                     <repeatable>false</repeatable>
-                    <label>Language</label>
+                    <label>Sprache</label>
                     <input-type value-pairs-name="common_iso_languages">dropdown</input-type>
-                    <hint>Select the language of the main content of the item. If the language does not appear in the
-                        list, please select 'Other'. If the content does not really have a language (for example, if it
-                        is a dataset or an image) please select 'N/A'.
+                    <hint>Wählen Sie die Sprache des Hauptinhalts des Elements aus. Wenn die Sprache nicht im
+                         Liste wählen Sie bitte 'Andere' aus. Wenn der Inhalt nicht wirklich eine Sprache hat (z. B. wenn er
+                         ein Datensatz oder ein Bild ist) wählen Sie bitte 'N/A'.
                     </hint>
                     <required></required>
                 </field>
@@ -775,8 +654,8 @@
                 <relation-field>
                     <relationship-type>isPublicationOfAuthor</relationship-type>
                     <search-configuration>publication</search-configuration>
-                    <label>Publication</label>
-                    <hint>import a publicaton</hint>
+                    <label>Publikation</label>
+                    <hint>Importieren eine Publikation</hint>
                     <externalsources>pubmed</externalsources>
                 </relation-field>
             </row>
@@ -784,18 +663,18 @@
                 <field>
                     <dc-schema>person</dc-schema>
                     <dc-element>familyName</dc-element>
-                    <label>Last name</label>
+                    <label>Name</label>
                     <input-type>onebox</input-type>
-                    <hint>Enter the last name of the person</hint>
+                    <hint>Bitte geben Sie die Name ein</hint>
                 </field>
             </row>
             <row>
                 <field>
                     <dc-schema>person</dc-schema>
                     <dc-element>givenName</dc-element>
-                    <label>First name</label>
+                    <label>Vorname</label>
                     <input-type>onebox</input-type>
-                    <hint>Enter the first name of the person</hint>
+                    <hint>Bitte geben Sie die Vorname ein</hint>
                 </field>
             </row>
             <row>
@@ -804,7 +683,7 @@
                     <dc-element>email</dc-element>
                     <label>Email</label>
                     <input-type>onebox</input-type>
-                    <hint>Enter the email of the person</hint>
+                    <hint>Bitte geben Sie die Email ein</hint>
                 </field>
             </row>
             <!--     <row>-->
@@ -821,9 +700,9 @@
                 <field>
                     <dc-schema>person</dc-schema>
                     <dc-element>birthDate</dc-element>
-                    <label>Birth date</label>
+                    <label>Geburtsdatum</label>
                     <input-type>date</input-type>
-                    <hint>Enter the birth date of the person</hint>
+                    <hint>Bitte geben Sie die Geburtsdatum ein</hint>
                 </field>
             </row>
 <!--            <row>-->
@@ -840,9 +719,9 @@
                 <field>
                     <dc-schema>person</dc-schema>
                     <dc-element>jobTitle</dc-element>
-                    <label>Job title</label>
+                    <label>Berufsbezeichnung</label>
                     <input-type>onebox</input-type>
-                    <hint>Enter the job title of the person</hint>
+                    <hint>Bitte geben Sie die Berufsbezeichnung ein</hint>
                 </field>
             </row>
         </form>
@@ -855,7 +734,7 @@
                     <dc-element>title</dc-element>
                     <label>Name</label>
                     <input-type>onebox</input-type>
-                    <hint>Enter the name of the project</hint>
+                    <hint>Bitte geben Sie der Name des Project ein</hint>
                 </field>
             </row>
             <row>
@@ -864,7 +743,7 @@
                     <dc-element>identifier</dc-element>
                     <label>ID</label>
                     <input-type>onebox</input-type>
-                    <hint>Enter the id of the project</hint>
+                    <hint>Bitte geben Sie die ID des Projekt ein</hint>
                 </field>
             </row>
 <!--            <row>-->
@@ -898,86 +777,22 @@
 <!--                </field>-->
 <!--            </row>-->
             <row>
-                <relation-field>
-                    <relationship-type>isProjectOfPerson</relationship-type>
-                    <search-configuration>person</search-configuration>
-                    <repeatable>true</repeatable>
-                    <label>Investigator</label>
-                    <hint>Enter the investigator's name (Family name, Given names).</hint>
-                    <linked-metadata-field>
-                        <dc-schema>project</dc-schema>
-                        <dc-element>investigator</dc-element>
-                        <input-type>onebox</input-type>
-                    </linked-metadata-field>
-                    <externalsources>orcid</externalsources>
-                </relation-field>
-            </row>
-            <row>
-                <relation-field>
-                    <relationship-type>isProjectOfOrgUnit</relationship-type>
-                    <search-configuration>orgunit</search-configuration>
-                    <repeatable>false</repeatable>
-                    <label>Organization</label>
-                    <hint>Enter the organization's name</hint>
-                    <linked-metadata-field>
-                        <dc-schema>project</dc-schema>
-                        <dc-element>funder</dc-element>
-                        <dc-qualifier>name</dc-qualifier>
-                        <input-type>onebox</input-type>
-                    </linked-metadata-field>
-                    <externalsources/>
-                </relation-field>
-            </row>
-            <row>
                 <field>
                     <dc-schema>dc</dc-schema>
                     <dc-element>subject</dc-element>
                     <repeatable>true</repeatable>
-                    <label>Keywords</label>
+                    <label>Schlüsselwörter</label>
                     <input-type>onebox</input-type>
-                    <hint>Enter the keywords of the project</hint>
-                </field>
-            </row>
-            <row>
-                <field>
-                    <dc-schema>project</dc-schema>
-                    <dc-element>startDate</dc-element>
-                    <label>Start date</label>
-                    <input-type>date</input-type>
-                    <hint>Enter the start date of the project</hint>
-                </field>
-                <field>
-                    <dc-schema>project</dc-schema>
-                    <dc-element>endDate</dc-element>
-                    <label>End date</label>
-                    <input-type>date</input-type>
-                    <hint>Enter the end date of the project</hint>
-                </field>
-            </row>
-            <row>
-                <field>
-                    <dc-schema>project</dc-schema>
-                    <dc-element>amount</dc-element>
-                    <label>Amount</label>
-                    <input-type>onebox</input-type>
-                    <hint>Enter the amount of the project</hint>
-                </field>
-                <field>
-                    <dc-schema>project</dc-schema>
-                    <dc-element>amount</dc-element>
-                    <dc-qualifier>currency</dc-qualifier>
-                    <label>Amount currency</label>
-                    <input-type>onebox</input-type>
-                    <hint>Enter the amount currency of the project</hint>
+                    <hint>Geben Sie Schlüsselwörter des Projekts ein</hint>
                 </field>
             </row>
             <row>
                 <field>
                     <dc-schema>dc</dc-schema>
                     <dc-element>description</dc-element>
-                    <label>Description</label>
+                    <label>Beschreibung</label>
                     <input-type>textarea</input-type>
-                    <hint>Enter the description of the project</hint>
+                    <hint>Beschreiben Sie bitte das Projekt  ein</hint>
                 </field>
             </row>
         </form>
@@ -990,7 +805,7 @@
                     <dc-element>legalName</dc-element>
                     <label>Name</label>
                     <input-type>onebox</input-type>
-                    <hint>Enter the name of the orgunit</hint>
+                    <hint>Geben Sie bitte der Name des Organisation ein</hint>
                 </field>
             </row>
             <row>
@@ -999,16 +814,16 @@
                     <dc-element>identifier</dc-element>
                     <label>ID</label>
                     <input-type>onebox</input-type>
-                    <hint>Enter the id of the orgunit</hint>
+                    <hint>Geben Sie bitte das ID des Organisation ein</hint>
                 </field>
             </row>
             <row>
                 <field>
                     <dc-schema>organization</dc-schema>
                     <dc-element>foundingDate</dc-element>
-                    <label>Date established</label>
+                    <label>Gründungsdatum</label>
                     <input-type>date</input-type>
-                    <hint>Enter the established date of the orgunit</hint>
+                    <hint>Geben Sie das festgelegte Datum der Organisation ein</hint>
                 </field>
             </row>
             <row>
@@ -1016,9 +831,9 @@
                     <dc-schema>organization</dc-schema>
                     <dc-element>address</dc-element>
                     <dc-qualifier>addressLocality</dc-qualifier>
-                    <label>City</label>
+                    <label>Stadt</label>
                     <input-type>onebox</input-type>
-                    <hint>Enter the city of the orgunit</hint>
+                    <hint>Bitte geben Sie das Ort des Organisation ein</hint>
                 </field>
             </row>
             <row>
@@ -1026,18 +841,18 @@
                     <dc-schema>organization</dc-schema>
                     <dc-element>address</dc-element>
                     <dc-qualifier>addressCountry</dc-qualifier>
-                    <label>Country</label>
+                    <label>Land</label>
                     <input-type>onebox</input-type>
-                    <hint>Enter the country of the orgunit</hint>
+                    <hint>Bitte geben Sie das Land des Organisation ein</hint>
                 </field>
             </row>
             <row>
                 <field>
                     <dc-schema>dc</dc-schema>
                     <dc-element>description</dc-element>
-                    <label>Description</label>
+                    <label>Beschreibung</label>
                     <input-type>textarea</input-type>
-                    <hint>Enter the description of the orgunit</hint>
+                    <hint>Beschreiben Sie bitte das Organisation</hint>
                 </field>
             </row>
         </form>
@@ -1050,7 +865,7 @@
                     <dc-element>title</dc-element>
                     <label>Name</label>
                     <input-type>onebox</input-type>
-                    <hint>Enter the name of the journal</hint>
+                    <hint>Geben Sie bitte der Name des Journal ein</hint>
                 </field>
             </row>
             <row>
@@ -1059,7 +874,7 @@
                     <dc-element>editor</dc-element>
                     <label>Editor</label>
                     <input-type>name</input-type>
-                    <hint>Enter the editor of the journal</hint>
+                    <hint>Geben Sie bitte den Editor des Journal ein</hint>
                 </field>
             </row>
             <row>
@@ -1068,25 +883,25 @@
                     <dc-element>issn</dc-element>
                     <label>ISSN</label>
                     <input-type>onebox</input-type>
-                    <hint>Enter the issn of the journal</hint>
+                    <hint>Geben Sie bitte die ISSN dese journal ein</hint>
                 </field>
             </row>
             <row>
                 <field>
                     <dc-schema>dc</dc-schema>
                     <dc-element>description</dc-element>
-                    <label>Description</label>
+                    <label>Beschreibung</label>
                     <input-type>textarea</input-type>
-                    <hint>Enter the description of the journal</hint>
+                    <hint>Beschreiben Sie bitte das Journal ein</hint>
                 </field>
             </row>
             <row>
                 <field>
                     <dc-schema>creativework</dc-schema>
                     <dc-element>publisher</dc-element>
-                    <label>Publisher</label>
+                    <label>Heraugeber/in</label>
                     <input-type>onebox</input-type>
-                    <hint>Enter the publisher of the journal</hint>
+                    <hint>Heraugeber/in des Journal</hint>
                 </field>
             </row>
 
@@ -1101,7 +916,7 @@
                     <!-- example of filtering Discovery search for Journal by a specific publisher -->
                     <!--<filter>creativework.publisher:somepublishername</filter>-->
                     <label>Journal</label>
-                    <hint>Select the journal related to this volume.</hint>
+                    <hint>Wählen Sie die zu diesem Band gehörende Zeitschrift</hint>
                     <externalsources>sherpaJournal</externalsources>
                 </relation-field>
             </row>
@@ -1111,34 +926,34 @@
                     <dc-element>title</dc-element>
                     <label>Name</label>
                     <input-type>onebox</input-type>
-                    <hint>Enter the name of the journal volume</hint>
+                    <hint>Geben Sie den Namen des Zeitschriftenbandes ein</hint>
                 </field>
             </row>
             <row>
                 <field>
                     <dc-schema>publicationvolume</dc-schema>
                     <dc-element>volumeNumber</dc-element>
-                    <label>Volume</label>
+                    <label>Umfang</label>
                     <input-type>onebox</input-type>
-                    <hint>Enter the volume of the journal volume</hint>
+                    <hint>Geben Sie den Umfang des Zeitschriftenbandes ein</hint>
                 </field>
             </row>
             <row>
                 <field>
                     <dc-schema>creativework</dc-schema>
                     <dc-element>datePublished</dc-element>
-                    <label>Issue date</label>
+                    <label>Ausgabedatum</label>
                     <input-type>date</input-type>
-                    <hint>Enter the issue date of the journal volume</hint>
+                    <hint>Geben Sie das Ausgabedatum des Zeitschriftenbandes ein</hint>
                 </field>
             </row>
             <row>
                 <field>
                     <dc-schema>dc</dc-schema>
                     <dc-element>description</dc-element>
-                    <label>Description</label>
+                    <label>Beschreibung</label>
                     <input-type>textarea</input-type>
-                    <hint>Enter the description of the journal volume</hint>
+                    <hint>Geben Sie die Beschreibung des Zeitschriftenbandes ein</hint>
                 </field>
             </row>
         </form>
@@ -1149,8 +964,8 @@
                 <relation-field>
                     <relationship-type>isJournalVolumeOfIssue</relationship-type>
                     <search-configuration>journalvolume</search-configuration>
-                    <label>Journal Volume</label>
-                    <hint>Select the journal volume related to this issue.</hint>
+                    <label>Zeitschriftenbandes</label>
+                    <hint>Wählen Sie den Zeitschriftenband zu dieser Ausgabe aus.</hint>
                 </relation-field>
             </row>
             <row>
@@ -1159,34 +974,34 @@
                     <dc-element>title</dc-element>
                     <label>Name</label>
                     <input-type>onebox</input-type>
-                    <hint>Enter the name of the journal issue</hint>
+                    <hint>Geben Sie den Namen der Zeitschriftenausgabe ein</hint>
                 </field>
             </row>
             <row>
                 <field>
                     <dc-schema>publicationissue</dc-schema>
                     <dc-element>issueNumber</dc-element>
-                    <label>Number</label>
+                    <label>Nummer</label>
                     <input-type>onebox</input-type>
-                    <hint>Enter the number of the journal issue</hint>
+                    <hint>Geben Sie die Nummer der Zeitschriftenausgabe ein</hint>
                 </field>
             </row>
             <row>
                 <field>
                     <dc-schema>creativework</dc-schema>
                     <dc-element>datePublished</dc-element>
-                    <label>Issue date</label>
+                    <label>Ausgabedatum</label>
                     <input-type>date</input-type>
-                    <hint>Enter the issue date of the journal issue</hint>
+                    <hint>Geben Sie das Ausgabedatum der Zeitschriftenausgabe ein</hint>
                 </field>
             </row>
             <row>
                 <field>
                     <dc-schema>dc</dc-schema>
                     <dc-element>description</dc-element>
-                    <label>Description</label>
+                    <label>Beschreibung</label>
                     <input-type>textarea</input-type>
-                    <hint>Enter the description of the journal issue</hint>
+                    <hint>Geben Sie die Beschreibung der Zeitschriftenausgabe ein</hint>
                 </field>
             </row>
             <row>
@@ -1194,9 +1009,9 @@
                     <dc-schema>creativework</dc-schema>
                     <dc-element>keywords</dc-element>
                     <repeatable>true</repeatable>
-                    <label>Keywords</label>
+                    <label>Schlagworte</label>
                     <input-type>onebox</input-type>
-                    <hint>Enter the keywords of the journal issue</hint>
+                    <hint>Geben Sie die Schlagworte der Zeitschriftenausgabe ein</hint>
                 </field>
             </row>
 
@@ -1211,10 +1026,10 @@
                     <dc-element>title</dc-element>
                     <dc-qualifier></dc-qualifier>
                     <repeatable>false</repeatable>
-                    <label>Title</label>
+                    <label>Haupttitel</label>
                     <input-type>onebox</input-type>
-                    <hint>Enter the main title of the item.</hint>
-                    <required>You must enter a main title for this item.</required>
+                    <hint>Geben Sie bitte die Haupttiel für diesen Artikel ein.</hint>
+                    <required>Sie müssen einen Haupttitel für diesen Artikel eingeben</required>
                 </field>
             </row>
             <row>
@@ -1223,9 +1038,9 @@
                     <dc-element>title</dc-element>
                     <dc-qualifier>alternative</dc-qualifier>
                     <repeatable>true</repeatable>
-                    <label>Other Titles</label>
+                    <label>Andere Titel</label>
                     <input-type>onebox</input-type>
-                    <hint>If the item has any alternative titles, please enter them here.</hint>
+                    <hint>Wenn der Artikel alternative Titel hat, geben Sie diese bitte hier ein.</hint>
                     <required></required>
                 </field>
             </row>
@@ -1235,8 +1050,8 @@
                     <search-configuration>personOrOrgunit</search-configuration>
                     <repeatable>true</repeatable>
                     <name-variants>true</name-variants>
-                    <label>Author</label>
-                    <hint>Add an author</hint>
+                    <label>Autor/in</label>
+                    <hint>Geben Sie bitte ein Autor/in ein</hint>
                     <linked-metadata-field>
                         <dc-schema>dc</dc-schema>
                         <dc-element>contributor</dc-element>
@@ -1256,14 +1071,14 @@
                     <dc-element>date</dc-element>
                     <dc-qualifier>issued</dc-qualifier>
                     <repeatable>false</repeatable>
-                    <label>Date of Issue</label>
+                    <label>Ausgabedatum</label>
                     <style>col-sm-4</style>
                     <input-type>date</input-type>
-                    <hint>Please give the date of previous publication or public distribution.
-                        You can leave out the day
-                        and/or month if they aren't applicable.
+                    <hint>Bitte geben Sie das Datum der vorherigen Veröffentlichung oder öffentlichen Verbreitung an.
+                         Du kannst den Tag auslassen
+                         und/oder Monat, wenn sie nicht zutreffend sind.
                     </hint>
-                    <required>You must enter at least the year.</required>
+                    <required>Sie müssen mindestens das Jahr eingeben</required>
                 </field>
             </row>
             <row>
@@ -1272,10 +1087,10 @@
                     <dc-element>publisher</dc-element>
                     <dc-qualifier></dc-qualifier>
                     <repeatable>false</repeatable>
-                    <label>Publisher</label>
+                    <label>Heraugeber/in</label>
                     <style>col-sm-8</style>
                     <input-type>onebox</input-type>
-                    <hint>Enter the name of the publisher of the previously issued instance of this item.</hint>
+                    <hint>Geben Sie den Namen des Herausgebers der zuvor ausgestellten Instanz dieses Artikels ein</hint>
                     <required></required>
                 </field>
             </row>
@@ -1285,9 +1100,9 @@
                     <dc-element>relation</dc-element>
                     <dc-qualifier>hasversion</dc-qualifier>
                     <repeatable>false</repeatable>
-                    <label>Editor Version</label>
+                    <label>Editor-Version</label>
                     <input-type>onebox</input-type>
-                    <hint>Enter the URL/DOI of the editor version of this item.</hint>
+                    <hint>Geben Sie die URL/DOI der Editorversion dieses Elements ein</hint>
                     <required></required>
                 </field>
             </row>
@@ -1297,9 +1112,9 @@
                     <dc-element>dcterms</dc-element>
                     <dc-qualifier>references</dc-qualifier>
                     <repeatable>false</repeatable>
-                    <label>Related Dataset</label>
+                    <label>Zugehöriger Datensatz</label>
                     <input-type>onebox</input-type>
-                    <hint>Enter the URL/DOI of the related Dataset.</hint>
+                    <hint>Geben Sie die URL/DOI des zugehörigen Datasets ein</hint>
                     <required></required>
                 </field>
             </row>
@@ -1310,11 +1125,11 @@
                     <dc-qualifier></dc-qualifier>
                     <!-- An input-type of qualdrop_value MUST be marked as repeatable -->
                     <repeatable>true</repeatable>
-                    <label>Identifiers</label>
+                    <label>Identifikatoren</label>
                     <input-type value-pairs-name="common_identifiers">qualdrop_value</input-type>
-                    <hint>If the item has any identification numbers or codes associated with
-                        it, please enter the types
-                        and the actual numbers or codes.
+                    <hint>Wenn mit dem Artikel Identifikationsnummern oder Codes verbunden sind
+                         es, bitte geben Sie die Typen ein
+                         und die tatsächlichen Zahlen oder Codes.
                     </hint>
                     <required></required>
                 </field>
@@ -1325,9 +1140,9 @@
                     <dc-element>citation</dc-element>
                     <dc-qualifier>title</dc-qualifier>
                     <repeatable>false</repeatable>
-                    <label>Title of Journal, Book or Event</label>
+                    <label>Titel der Zeitschrift, des Buches oder der Veranstaltung</label>
                     <input-type>onebox</input-type>
-                    <hint>Include the name of related item like the journal name, book title or event name.</hint>
+                    <hint>Fügen Sie den Namen des verwandten Elements wie den Zeitschriftennamen, den Buchtitel oder den Veranstaltungsnamen ein</hint>
                     <required></required>
                 </field>
             </row>
@@ -1337,9 +1152,9 @@
                     <dc-element>citation</dc-element>
                     <dc-qualifier>conferencePlace</dc-qualifier>
                     <repeatable>false</repeatable>
-                    <label>Event/Conference Place</label>
+                    <label>Veranstaltungs-/Konferenzort</label>
                     <input-type>onebox</input-type>
-                    <hint>Enter the event location.</hint>
+                    <hint>Geben Sie den Veranstaltungsort ein</hint>
                     <required></required>
                 </field>
             </row>
@@ -1349,9 +1164,9 @@
                     <dc-element>citation</dc-element>
                     <dc-qualifier>conferenceDate</dc-qualifier>
                     <repeatable>false</repeatable>
-                    <label>Conference Date</label>
+                    <label>Konferenzdatum</label>
                     <input-type>date</input-type>
-                    <hint>Enter the date of the event.</hint>
+                    <hint>Geben Sie das Datum der Veranstaltung ein</hint>
                     <required></required>
                 </field>
             </row>
@@ -1361,9 +1176,9 @@
                     <dc-element>citation</dc-element>
                     <dc-qualifier>volume</dc-qualifier>
                     <repeatable>false</repeatable>
-                    <label>Volume</label>
+                    <label>Band</label>
                     <input-type>onebox</input-type>
-                    <hint>Enter the volume of the item.</hint>
+                    <hint>Geben Sie den Band des Artikel ein</hint>
                     <required></required>
                 </field>
             </row>
@@ -1373,9 +1188,9 @@
                     <dc-element>citation</dc-element>
                     <dc-qualifier>issue</dc-qualifier>
                     <repeatable>false</repeatable>
-                    <label>Issue</label>
+                    <label>Ausgabenummer</label>
                     <input-type>onebox</input-type>
-                    <hint>Enter the issue number of the item.</hint>
+                    <hint>Geben Sie die Ausgabenummer des Artikels ein</hint>
                     <required></required>
                 </field>
             </row>
@@ -1385,9 +1200,9 @@
                     <dc-element>citation</dc-element>
                     <dc-qualifier>edition</dc-qualifier>
                     <repeatable>false</repeatable>
-                    <label>Edition</label>
+                    <label>Ausgabe</label>
                     <input-type>onebox</input-type>
-                    <hint>Enter the edition of the item.</hint>
+                    <hint>Geben Sie die Ausgabe des Artikels ein</hint>
                     <required></required>
                 </field>
             </row>
@@ -1397,9 +1212,9 @@
                     <dc-element>citation</dc-element>
                     <dc-qualifier>startPage</dc-qualifier>
                     <repeatable>false</repeatable>
-                    <label>First Page</label>
+                    <label>Startseite</label>
                     <input-type>onebox</input-type>
-                    <hint>Enter the start page number.</hint>
+                    <hint>Geben Sie die Nummer der Startseite ein</hint>
                     <required></required>
                 </field>
                 <field>
@@ -1407,9 +1222,9 @@
                     <dc-element>citation</dc-element>
                     <dc-qualifier>endPage</dc-qualifier>
                     <repeatable>false</repeatable>
-                    <label>Last Page</label>
+                    <label>Letzte Seite</label>
                     <input-type>onebox</input-type>
-                    <hint>Enter the last page number.</hint>
+                    <hint>Geben Sie die letzte Seitenzahl ein</hint>
                     <required></required>
                 </field>
             </row>
@@ -1419,10 +1234,10 @@
                     <dc-element>type</dc-element>
                     <dc-qualifier></dc-qualifier>
                     <repeatable>true</repeatable>
-                    <label>Type</label>
+                    <label>Typ</label>
                     <input-type value-pairs-name="openaire_types">dropdown</input-type>
-                    <hint>Select the type(s) of content of the item. To select more than one value in the list, you may
-                        have to hold down the "CTRL" or "Shift" key.
+                    <hint>Wählen Sie die Art(en) des Inhalts des Elements aus. Um mehr als einen Wert in der Liste auszuwählen, können Sie
+                         müssen Sie die Taste "STRG" oder "Umschalt" gedrückt halten.
                     </hint>
                     <required></required>
                 </field>
@@ -1432,10 +1247,11 @@
                     <dc-schema>oaire</dc-schema>
                     <dc-element>version</dc-element>
                     <repeatable>false</repeatable>
-                    <label>Resource Version</label>
+                    <label>Ressourcenversion</label>
                     <input-type value-pairs-name="openaire_version_types">dropdown</input-type>
-                    <hint>Select the version of the resource. If the resource does not have that information, please
-                        select "Not Applicable (or Unknown)".</hint>
+                    <hint>Wählen Sie die Version der Ressource aus. Wenn die Ressource diese Informationen nicht enthält, bitte
+                         Wählen Sie "Nicht zutreffend (oder Unbekannt)".
+                    </hint>
                     <required></required>
                 </field>
                 <field>
@@ -1443,11 +1259,11 @@
                     <dc-element>language</dc-element>
                     <dc-qualifier>iso</dc-qualifier>
                     <repeatable>false</repeatable>
-                    <label>Language</label>
+                    <label>Sprache</label>
                     <input-type value-pairs-name="common_iso_languages">dropdown</input-type>
-                    <hint>Select the language of the main content of the item. If the language does not appear in the
-                        list, please select 'Other'. If the content does not really have a language (for example, if it
-                        is a dataset or an image) please select 'N/A'.
+                    <hint>Wählen Sie die Sprache des Hauptinhalts des Elements aus. Wenn die Sprache nicht im
+                         Liste wählen Sie bitte 'Andere' aus. Wenn der Inhalt nicht wirklich eine Sprache hat (z. B. wenn er
+                         ein Datensatz oder ein Bild ist) wählen Sie bitte 'N/A'.
                     </hint>
                     <required></required>
                 </field>
@@ -1462,9 +1278,9 @@
                     <dc-qualifier></dc-qualifier>
                     <!-- An input-type of tag MUST be marked as repeatable -->
                     <repeatable>true</repeatable>
-                    <label>Subject Keywords</label>
+                    <label>Schlagworte</label>
                     <input-type>tag</input-type>
-                    <hint>Enter appropriate subject keywords or phrases.</hint>
+                    <hint>Geben Sie passende Schlagworte oder Phrasen ein</hint>
                     <required></required>
                     <vocabulary>srsc</vocabulary>
                 </field>
@@ -1493,9 +1309,9 @@
                     <dc-element>description</dc-element>
                     <dc-qualifier>abstract</dc-qualifier>
                     <repeatable>false</repeatable>
-                    <label>Abstract</label>
+                    <label>Zusammenfassung </label>
                     <input-type>textarea</input-type>
-                    <hint>Enter the abstract of the item.</hint>
+                    <hint>Geben Sie die Zusammenfassung des Artikel ein</hint>
                     <required></required>
                 </field>
             </row>
@@ -1505,14 +1321,14 @@
                     <search-configuration>project</search-configuration>
                     <repeatable>true</repeatable>
                     <name-variants>false</name-variants>
-                    <label>Funding</label>
-                    <hint>Add a related Funding</hint>
+                    <label>Finanzierung</label>
+                    <hint>Fügen Sie eine zugehörige Finanzierung hinzu</hint>
                     <linked-metadata-field>
                         <dc-schema>dc</dc-schema>
                         <dc-element>relation</dc-element>
                         <input-type>onebox</input-type>
                     </linked-metadata-field>
-                    <externalsources>openAIREFunding</externalsources>
+                    <externalsources></externalsources>
                     <required></required>
                 </relation-field>
             </row>
@@ -1521,9 +1337,9 @@
                     <dc-schema>dc</dc-schema>
                     <dc-element>rights</dc-element>
                     <repeatable>false</repeatable>
-                    <label>Access Type</label>
+                    <label>Zugangsart</label>
                     <input-type value-pairs-name="openaire_rights">dropdown</input-type>
-                    <hint>Select the access type of the resource.</hint>
+                    <hint>Wählen Sie den Zugriffstyp der Ressource aus</hint>
                     <required></required>
                 </field>
             </row>
@@ -1535,7 +1351,7 @@
                     <repeatable>false</repeatable>
                     <label>License</label>
                     <input-type value-pairs-name="openaire_license_types">dropdown</input-type>
-                    <hint>Select the license of the resource.</hint>
+                    <hint>Wählen Sie die Lizenz der Ressource aus</hint>
                     <required></required>
                 </field>
             </row>
@@ -1545,9 +1361,9 @@
                     <dc-element>coverage</dc-element>
                     <dc-qualifier></dc-qualifier>
                     <repeatable>false</repeatable>
-                    <label>Coverage</label>
+                    <label>Abdeckung</label>
                     <input-type>onebox</input-type>
-                    <hint>Enter the coverage of the item, like a period, jurisdiction, etc.</hint>
+                    <hint>>Geben Sie den Geltungsbereich des Artikels ein, wie Zeitraum, Gerichtsstand usw.</hint>
                     <required></required>
                 </field>
             </row>
@@ -1557,9 +1373,9 @@
                     <dc-element>description</dc-element>
                     <dc-qualifier></dc-qualifier>
                     <repeatable>false</repeatable>
-                    <label>Description</label>
+                    <label>Beschreibung</label>
                     <input-type>textarea</input-type>
-                    <hint>Enter any other description or comments in this box.</hint>
+                    <hint>Geben Sie eine Beschreibung</hint>
                     <required></required>
                 </field>
             </row>
@@ -1570,25 +1386,25 @@
                 <field>
                     <dc-schema>person</dc-schema>
                     <dc-element>familyName</dc-element>
-                    <label>Last name</label>
+                    <label>Name</label>
                     <input-type>onebox</input-type>
-                    <hint>Enter surname or last name of the person</hint>
+                    <hint>Geben Sie bitte der Name ein</hint>
                 </field>
                 <field>
                     <dc-schema>person</dc-schema>
                     <dc-element>givenName</dc-element>
-                    <label>First name</label>
+                    <label>Vorname</label>
                     <input-type>onebox</input-type>
-                    <hint>Enter personal or first name of the person</hint>
+                    <hint>Geben Sie bitte der Vorname ein</hint>
                 </field>
             </row>
             <row>
                 <field>
                     <dc-schema>dc</dc-schema>
                     <dc-element>title</dc-element>
-                    <label>Author preferred name</label>
+                    <label>Bevorzugter Name des Autors</label>
                     <input-type>onebox</input-type>
-                    <hint>Enter the preferred name of this person regarding the authorship</hint>
+                    <hint>Geben Sie den bevorzugten Namen dieser Person in Bezug auf die Autorenschaft ein</hint>
                 </field>
             </row>
             <row>
@@ -1597,9 +1413,9 @@
                     <dc-element>affiliation</dc-element>
                     <dc-qualifier>name</dc-qualifier>
                     <repeatable>true</repeatable>
-                    <label>Affiliation Name</label>
+                    <label>Zugehörigkeitsname</label>
                     <input-type>onebox</input-type>
-                    <hint>Enter the organizational or institutional affiliation of this person</hint>
+                    <hint>Geben Sie die organisatorische oder institutionelle Zugehörigkeit dieser Person ein</hint>
                 </field>
             </row>
             <row>
@@ -1609,7 +1425,7 @@
                     <repeatable>true</repeatable>
                     <label>Email</label>
                     <input-type>onebox</input-type>
-                    <hint>Enter the email of the person</hint>
+                    <hint>Geben Sie das Email ein</hint>
                 </field>
             </row>
             <row>
@@ -1619,10 +1435,10 @@
                     <dc-qualifier></dc-qualifier>
                     <!-- An input-type of qualdrop_value MUST be marked as repeatable -->
                     <repeatable>true</repeatable>
-                    <label>Author identifier</label>
+                    <label>Autorenkennung</label>
                     <input-type value-pairs-name="openaire_author_identifier_types">qualdrop_value</input-type>
-                    <hint>If the author has any identifiers or codes associated with
-                        it, please enter the types and the actual numbers or codes.
+                    <hint>Wenn mit dem Autor Identifikatoren oder Codes verknüpft sind
+                         Geben Sie bitte die Typen und die tatsächlichen Nummern oder Codes ein.
                     </hint>
                     <required></required>
                 </field>
@@ -1634,9 +1450,9 @@
                 <field>
                     <dc-schema>dc</dc-schema>
                     <dc-element>title</dc-element>
-                    <label>Project name</label>
+                    <label>Projektname</label>
                     <input-type>onebox</input-type>
-                    <hint>Enter the name of the project</hint>
+                    <hint>Geben Sie bitte der Projektname ein</hint>
                 </field>
             </row>
             <row>
@@ -1644,9 +1460,9 @@
                     <dc-schema>dc</dc-schema>
                     <dc-element>identifier</dc-element>
                     <dc-qualifier>uri</dc-qualifier>
-                    <label>Project web page</label>
+                    <label>Projekt-Webseite</label>
                     <input-type>onebox</input-type>
-                    <hint>Enter the URL of the project webpage</hint>
+                    <hint>Geben Sie die URL des Projekt-Webpage ein</hint>
                 </field>
             </row>
             <row>
@@ -1655,8 +1471,8 @@
                     <search-configuration>openAIREFundingAgency</search-configuration>
                     <repeatable>false</repeatable>
                     <name-variants>false</name-variants>
-                    <label>Funding Agency</label>
-                    <hint>Add a Funding Agency</hint>
+                    <label>Förderagentur</label>
+                    <hint>Füge eine Förderagentur hinzu</hint>
                     <linked-metadata-field>
                         <dc-schema>project</dc-schema>
                         <dc-element>funder</dc-element>
@@ -1671,16 +1487,16 @@
                 <field>
                     <dc-schema>oaire</dc-schema>
                     <dc-element>fundingStream</dc-element>
-                    <label>Name of the Funding Stream</label>
+                    <label>Name des Förderstroms</label>
                     <input-type>onebox</input-type>
-                    <hint>Enter the name of the funding stream of the project</hint>
+                    <hint>Geben Sie den Namen des Finanzierungsstroms des Projekts ein</hint>
                 </field>
                 <field>
                     <dc-schema>dc</dc-schema>
                     <dc-element>identifier</dc-element>
-                    <label>Award number</label>
+                    <label>Auszeichnungsnummer</label>
                     <input-type>onebox</input-type>
-                    <hint>Enter the identifier of the project</hint>
+                    <hint>Geben Sie die Kennung des Projekts ein</hint>
                 </field>
             </row>
         </form>
@@ -1690,9 +1506,9 @@
                 <field>
                     <dc-schema>organization</dc-schema>
                     <dc-element>legalName</dc-element>
-                    <label>Organization name</label>
+                    <label>Organisationsname</label>
                     <input-type>onebox</input-type>
-                    <hint>Enter the name of the orgunit or organization</hint>
+                    <hint>Geben Sie der Organisationsname ein</hint>
                 </field>
             </row>
             <row>
@@ -1702,10 +1518,10 @@
                     <dc-qualifier></dc-qualifier>
                     <!-- An input-type of qualdrop_value MUST be marked as repeatable -->
                     <repeatable>true</repeatable>
-                    <label>Organization identifier</label>
+                    <label>Organizationsidentifikator</label>
                     <input-type value-pairs-name="openaire_organization_identifier_types">qualdrop_value</input-type>
-                    <hint>If the organization has any identifiers or codes associated with
-                        it, please enter the types and the actual numbers or codes.
+                    <hint>Wenn die Organisation mit Identifikatoren oder Codes verknüpft ist
+                         Geben Sie bitte die Typen und die tatsächlichen Nummern oder Codes ein.
                     </hint>
                     <required></required>
                 </field>
@@ -1714,9 +1530,9 @@
                 <field>
                     <dc-schema>dc</dc-schema>
                     <dc-element>type</dc-element>
-                    <label>Organization type</label>
+                    <label>Organizationstyp</label>
                     <input-type value-pairs-name="openaire_organization_types">dropdown</input-type>
-                    <hint>Choose the attributes of the Organization</hint>
+                    <hint>Wählen Sie die Attribute der Organisation</hint>
                     <required></required>
                 </field>
             </row>
@@ -1724,9 +1540,9 @@
                 <field>
                     <dc-schema>dc</dc-schema>
                     <dc-element>description</dc-element>
-                    <label>Description</label>
+                    <label>Beschreibung</label>
                     <input-type>textarea</input-type>
-                    <hint>Enter the description of the orgunit</hint>
+                    <hint>Beschreiben Sie den Organisation bitte</hint>
                 </field>
             </row>
         </form>
@@ -1761,182 +1577,196 @@
                 <displayed-value>ISBN</displayed-value>
                 <stored-value>isbn</stored-value>
             </pair>
-	    <pair>                
-		<displayed-value>DOI</displayed-value>                                                            
-		<stored-value>doi</stored-value>                                                              
-	   </pair>                                      
-	   <pair>     
-		<displayed-value>URN</displayed-value>                                                   
-		<stored-value>urn</stored-value>                                      
-	   </pair> 
-	   <pair>                 
-		<displayed-value>EU-Grantnummer</displayed-value>                                                           
-		<stored-value>eugrant</stored-value>
-            </pair>                     
+            <pair>
+		<displayed-value>DOI</displayed-value>
+		<stored-value>doi</stored-value>
+            </pair>
+ 	    <pair>
+                <displayed-value>URN</displayed-value>
+		<stored-value>urn</stored-value>
+            </pair>
+            <pair>
+ 		<displayed-value>EU-Grantnummer</displayed-value>
+                <stored-value>eugrant</stored-value>
+            </pair>
+            <pair>
+		<displayed-value>arxiv</displayed-value>
+ 		<stored-value>arxiv</stored-value>
+	    </pair>
 	    <pair>
-                <displayed-value>arxiv</displayed-value>
-                <stored-value>arxiv</stored-value>                                       
-            </pair>
-            <pair>
-                <displayed-value>handle</displayed-value>    
-                <stored-value>handle</stored-value>    
-            </pair>
-            				<pair>                                                                                                                                                                                              
+		<displayed-value>handle</displayed-value>
+		<stored-value>handle</stored-value>
+	    </pair>
+<!--
+	    <pair>
+		<displayed-value>opac-id</displayed-value>	
+		<stored-value>opac-id</stored-value>
+	    </pair>
+-->
+	    <pair>
 		<displayed-value>opus-id</displayed-value>
-                <stored-value>opus-id</stored-value>
-            </pair>
-            <pair>
-                <displayed-value>pmid</displayed-value>
-                <stored-value>pmid</stored-value>
-            </pair>
-	    <pair>                                  
-		<displayed-value>Other</displayed-value>                
-		<stored-value>other</stored-value>                                 
-	   </pair>
+		<stored-value>opus-id</stored-value>	
+	    </pair>
+	    <pair>
+		<displayed-value>pmid</displayed-value>
+		<stored-value>pmid</stored-value>
+	    </pair>
+<!--
+	    <pair>
+		<displayed-value>serial</displayed-value>
+		<stored-value>serial</stored-value>	
+	    </pair>
+	    <pair>
+		<displayed-value>splash-url</displayed-value>
+		<stored-value>splash-url</stored-value>
+	    </pair>
+	    <pair>
+		<displayed-value>std-doi</displayed-value>
+		<stored-value>std-doi</stored-value>
+	    </pair>
+	    <pair>
+		<displayed-value>URL</displayed-value>
+		<stored-value>url</stored-value>
+	    </pair>
+	    <pair>
+		<displayed-value>UUID</displayed-value>
+		<stored-value>uuid</stored-value>
+	    </pair>
+-->
+	    <pair>                                                                                                                                                                                                               
+		<displayed-value>Weitere</displayed-value>                                                                                                                                                                                                     
+		<stored-value>other</stored-value>        
+	    </pair>
         </value-pairs>
 
 
-        <value-pairs value-pairs-name="common_types" dc-term="type">
+
+        <value-pairs value-pairs-name="common_types" dc-term="type">		
+
+	    <pair>                                                                                                                                                                                                                                           
+		<displayed-value>Arbeitspapier</displayed-value>                                                                                                  
+		<stored-value>workingpaper</stored-value>                                                                                                                                                                                               
+	    </pair>
             <pair>
-                <displayed-value>Article / Paper (journal or newspaper)</displayed-value>
-                <stored-value>article</stored-value>
-            </pair>
-            <pair>
-               <displayed-value>Audio-visual Media</displayed-value>    
+               <displayed-value>Audiovisuelle Medien</displayed-value>    
                <stored-value>movingimage</stored-value> 
             </pair>
             <pair>
-                <displayed-value>Bachelor thesis</displayed-value>
+                <displayed-value>Bachelorarbeit</displayed-value>
                 <stored-value>bachelorthesis</stored-value>
             </pair>
+	    <pair>                                                                                                                                                                                                                                           
+		<displayed-value>Beitrag zu einer Konferenz</displayed-value>                                                                                                                                                                                
+		<stored-value>conferenceobject</stored-value>                                                                                                                                                                                           
+	    </pair>
+	    <pair>                                                                                                                                                                                                                                           
+		<displayed-value>Beitrag zu einer Zeitschrift/Zeitung</displayed-value>                                                                                                                                                                      
+		<stored-value>article</stored-value>                                                                                                                                                                                           
+	    </pair>
+	    <pair>                                                                                                                                                                                                                          >                
+		<displayed-value>Bericht</displayed-value>                                                                                                                                                                                                   
+		<stored-value>report</stored-value>                                                                                                                                                                                                      
+	    </pair>
             <pair>
-                <displayed-value>Book</displayed-value>
+                <displayed-value>Buch (Monographie)</displayed-value>
                 <stored-value>book</stored-value>
             </pair>
             <pair>
-                <displayed-value>Book Part (e.g. chapter)</displayed-value>
+                <displayed-value>Buchabschnitt (Teil, Kapitel)</displayed-value>
                 <stored-value>bookpart</stored-value>
             </pair>
-	    <pair>                                                                                                                                                                                                                     
-		<displayed-value>Conference Paper</displayed-value>                                                                                                                                                        
-		<stored-value>conferenceobject</stored-value>                                                                                                                                                                  
-	    </pair>
             <pair>
-                <displayed-value>Course Material</displayed-value>
-                <stored-value>coursematerial</stored-value>
-            </pair>
-            <pair>
-                <displayed-value>Dataset</displayed-value>
+                <displayed-value>Datensatz</displayed-value>
                 <stored-value>dataset</stored-value>
             </pair>
 	    <pair>
-                <displayed-value>Doctoral thesis</displayed-value>
+                <displayed-value>Dissertation</displayed-value>
                 <stored-value>doctoralthesis</stored-value>
             </pair>
             <pair>
                 <displayed-value>Habilitation</displayed-value>
                 <stored-value>habilitation</stored-value>
+            </pair>            
+            <pair>
+                <displayed-value>Lehrmaterial</displayed-value>
+                <stored-value>coursematerial</stored-value>
             </pair>
             <pair>
-	 	<displayed-value>Journal issue (complete)</displayed-value>
- 		<stored-value>journalissue</stored-value>
+                <displayed-value>Masterarbeit, Diplomarbeit, Magisterarbeit, Zulassungsarbeit</displayed-value>
+                <stored-value>masterthesis</stored-value>                                          
             </pair>
+            <pair>                                                                                                                                                                                                                          >                
+		<displayed-value>Postprint</displayed-value>
+                <stored-value>postprint</stored-value>
+            </pair>
+
+	    <pair>                                                                                                                                                                                                                              
+		<displayed-value>Preprint</displayed-value>                                                                                                                                                        
+		<stored-value>preprint</stored-value>                                                                                                                      
+	    </pair>
             <pair>
-                <displayed-value>Master's thesis</displayed-value>
-                <stored-value>masterthesis</stored-value>                                                                                                                                                                     
-            </pair>                              
-            <pair>
-                <displayed-value>Other item</displayed-value>
-                <stored-value>other</stored-value>
+                <displayed-value>Rezension</displayed-value>
+                <stored-value>review</stored-value>
             </pair>
-	    <pair>                                                                                                                                                                                                      
-		<displayed-value>Periodical part</displayed-value>
-                <stored-value>periodicalpart</stored-value>
-            </pair>
-            <pair>                                                                                                                                                                                                                      
-                <displayed-value>Postprint</displayed-value> 
-                <stored-value>postprint</stored-value>                      
-            </pair>   
-            <pair>                                                                                                                                                                           
-               <displayed-value>Preprint</displayed-value>                                           
-               <stored-value>preprint</stored-value>
-           </pair>
-           <pair>                                                                                                                                                                                                                                
-                <displayed-value>Report</displayed-value>                                                   
-                <stored-value>report</stored-value>                       
-           </pair>
-           <pair>
-               <displayed-value>Review</displayed-value>  
-               <stored-value>review</stored-value>
-            </pair>
-            <pair>
+	    <pair>
                 <displayed-value>Software</displayed-value>
                 <stored-value>software</stored-value>
             </pair>
             <pair>
-                <displayed-value>Study thesis</displayed-value>                                                                                                                                                  
+                <displayed-value>Studienarbeit</displayed-value>
                 <stored-value>studythesis</stored-value>
             </pair>
             <pair>
-                <displayed-value>Working paper</displayed-value>                                                                                                                                         
-                <stored-value>workingpaper</stored-value>
+                <displayed-value>Teil einer Zeitschrift</displayed-value>
+                <stored-value>periodicalpart</stored-value>
             </pair>
+	    <pair>                                                                                                                                                                                                                                           
+		<displayed-value>Vollständige Ausgabe einer Zeitschrift</displayed-value>
+                <stored-value>journalissue</stored-value>
+            </pair>
+	    <pair>                                                                                                                                                                                                                                           
+		<displayed-value>Weiteres</displayed-value>                                                                                                                                                                                                  
+		<stored-value>other</stored-value>                                                                                                                                                                                                       
+	    </pair>
 <!--
             <pair>
-                <displayed-value>University thesis (excluding doctoral thesis)</displayed-value>
+                <displayed-value>Hochschulschriften (außer Dissertationen)</displayed-value>
                 <stored-value>University Thesis</stored-value>
-            </pair>   
-         <pair>
-                <displayed-value>Learning Object</displayed-value>
-                <stored-value>Learning Object</stored-value>
             </pair>
             <pair>
-                <displayed-value>Image</displayed-value>
-                <stored-value>Image</stored-value>
-            </pair>
-            <pair>
-                <displayed-value>Image, 3-D</displayed-value>
-                <stored-value>Image, 3-D</stored-value>
-            </pair>
-            <pair>
-                <displayed-value>Map</displayed-value>
-                <stored-value>Map</stored-value>
-            </pair>
-            <pair>
-                <displayed-value>Musical Score</displayed-value>
+                <displayed-value>Partitur</displayed-value>
                 <stored-value>Musical Score</stored-value>
             </pair>
-         <pair>
-                <displayed-value>Plan or blueprint</displayed-value>
+            <pair>
+                <displayed-value>Plan</displayed-value>
                 <stored-value>Plan or blueprint</stored-value>
             </pair>
-         <pair>
-                <displayed-value>Presentation</displayed-value>
+            <pair>
+                <displayed-value>Präsentation</displayed-value>
                 <stored-value>Presentation</stored-value>
-            </pair>    
-        <pair>
-                <displayed-value>Recording, acoustical</displayed-value>
+            </pair>
+            <pair>
+                <displayed-value>Aufnahme, akustisch</displayed-value>
                 <stored-value>Recording, acoustical</stored-value>
             </pair>
             <pair>
-                <displayed-value>Recording, musical</displayed-value>
+                <displayed-value>Aufnahme, Musical</displayed-value>
                 <stored-value>Recording, musical</stored-value>
             </pair>
             <pair>
-                <displayed-value>Recording, oral</displayed-value>
+                <displayed-value>Aufnahme, mündlich</displayed-value>
                 <stored-value>Recording, oral</stored-value>
-            </pair>   
-         <pair>
-                <displayed-value>Technical Report</displayed-value>
+            </pair> 
+            <pair>
+                <displayed-value>Technischer Bericht</displayed-value>
                 <stored-value>Technical Report</stored-value>
-            </pair>   
-         <pair>
+            </pair>
+            <pair>
                 <displayed-value>Video</displayed-value>
                 <stored-value>Video</stored-value>
             </pair>
--->    
+-->
         </value-pairs>
-
 
         <!-- default language order: (from dspace 1.2.1)
              "en_US", "en", "es", "de", "fr", "it", "ja", "zh", "other", ""
@@ -1947,47 +1777,47 @@
                 <stored-value></stored-value>
             </pair>
             <pair>
-                <displayed-value>English (United States)</displayed-value>
+                <displayed-value>Englisch (USA)</displayed-value>
                 <stored-value>en_US</stored-value>
             </pair>
             <pair>
-                <displayed-value>English</displayed-value>
+                <displayed-value>Englisch</displayed-value>
                 <stored-value>en</stored-value>
             </pair>
             <pair>
-                <displayed-value>Spanish</displayed-value>
+                <displayed-value>Spanisch</displayed-value>
                 <stored-value>es</stored-value>
             </pair>
             <pair>
-                <displayed-value>German</displayed-value>
+                <displayed-value>Deutsch</displayed-value>
                 <stored-value>de</stored-value>
             </pair>
             <pair>
-                <displayed-value>French</displayed-value>
+                <displayed-value>Französisch</displayed-value>
                 <stored-value>fr</stored-value>
             </pair>
             <pair>
-                <displayed-value>Italian</displayed-value>
+                <displayed-value>Italienisch</displayed-value>
                 <stored-value>it</stored-value>
             </pair>
             <pair>
-                <displayed-value>Japanese</displayed-value>
+                <displayed-value>Japanisch</displayed-value>
                 <stored-value>ja</stored-value>
             </pair>
             <pair>
-                <displayed-value>Chinese</displayed-value>
+                <displayed-value>Chinesisch</displayed-value>
                 <stored-value>zh</stored-value>
             </pair>
             <pair>
-                <displayed-value>Portuguese</displayed-value>
+                <displayed-value>Portugiesisch</displayed-value>
                 <stored-value>pt</stored-value>
             </pair>
             <pair>
-                <displayed-value>Turkish</displayed-value>
+                <displayed-value>Turkisch</displayed-value>
                 <stored-value>tr</stored-value>
             </pair>
             <pair>
-                <displayed-value>(Other)</displayed-value>
+                <displayed-value>(Andere)</displayed-value>
                 <stored-value>other</stored-value>
             </pair>
         </value-pairs>
@@ -1999,36 +1829,36 @@
             <!-- Based on: http://openaire-guidelines-for-literature-repository-managers.readthedocs.io/en/latest/field_licensecondition.html#dc-rightslicensecondition -->
 
             <pair>
-                <displayed-value>Without License</displayed-value>
+                <displayed-value>Ohne Lizenz</displayed-value>
                 <stored-value></stored-value>
             </pair>
             <pair>
-                <displayed-value>Attribution (CC-BY)</displayed-value>
+                <displayed-value>Namensnennung (CC-BY)</displayed-value>
                 <stored-value>http://creativecommons.org/licenses/by/4.0/</stored-value>
             </pair>
             <pair>
-                <displayed-value>Attribution, No Derivative Works (CC-BY-ND)</displayed-value>
+                <displayed-value>Namensnennung, keine abgeleiteten Werke (CC-BY-ND)</displayed-value>
                 <stored-value>http://creativecommons.org/licenses/by-nd/4.0/</stored-value>
             </pair>
             <pair>
-                <displayed-value>Attribution, Share-alike (CC-BY-SA)</displayed-value>
+                <displayed-value>Namensnennung, Weitergabe unter gleichen Bedingungen (CC-BY-SA)</displayed-value>
                 <stored-value>http://creativecommons.org/licenses/by-sa/4.0/</stored-value>
             </pair>
             <pair>
-                <displayed-value>Attribution, Non-commercial (CC-BY-NC)</displayed-value>
+                <displayed-value>Namensnennung, nicht kommerziell (CC-BY-NC)</displayed-value>
                 <stored-value>http://creativecommons.org/licenses/by-nc/4.0/</stored-value>
             </pair>
             <pair>
-                <displayed-value>Attribution, Non-commercial, No Derivative Works (CC-BY-NC-ND)</displayed-value>
+                <displayed-value>Namensnennung, nicht kommerziell, keine abgeleiteten Werke (CC-BY-NC-ND)</displayed-value>
                 <stored-value>http://creativecommons.org/licenses/by-nc-nd/4.0/</stored-value>
             </pair>
             <pair>
-                <displayed-value>Attribution, Non-commercial, Share-alike (CC-BY-NC-SA)</displayed-value>
+                <displayed-value>Namensnennung, nicht kommerziell, Weitergabe unter gleichen Bedingungen (CC-BY-NC-SA)</displayed-value>
                 <stored-value>http://creativecommons.org/licenses/by-nc-sa/4.0/</stored-value>
             </pair>
             <!-- Add here other licenses -->
             <pair>
-                <displayed-value>Other</displayed-value>
+                <displayed-value>Andere</displayed-value>
                 <stored-value>other</stored-value>
             </pair>
 
@@ -2041,39 +1871,39 @@
         -->
         <value-pairs value-pairs-name="openaire_types" dc-term="type">
             <pair>
-                <displayed-value>Interactive Resource</displayed-value>
+                <displayed-value>Interaktive Ressource</displayed-value>
                 <stored-value>interactive resource</stored-value>
             </pair>
             <pair>
-                <displayed-value>- Website</displayed-value>
+                <displayed-value>Website</displayed-value>
                 <stored-value>website</stored-value>
             </pair>
             <pair>
-                <displayed-value>Dataset</displayed-value>
+                <displayed-value>Datensatz</displayed-value>
                 <stored-value>dataset</stored-value>
             </pair>
             <pair>
-                <displayed-value>- Interview</displayed-value>
+                <displayed-value>Interview</displayed-value>
                 <stored-value>interview</stored-value>
             </pair>
             <pair>
-                <displayed-value>Image</displayed-value>
+                <displayed-value>Bild</displayed-value>
                 <stored-value>image</stored-value>
             </pair>
             <pair>
-                <displayed-value>- Moving Image</displayed-value>
+                <displayed-value>bewegendes Bild</displayed-value>
                 <stored-value>moving image</stored-value>
             </pair>
             <pair>
-                <displayed-value>-- Video</displayed-value>
+                <displayed-value>Video</displayed-value>
                 <stored-value>video</stored-value>
             </pair>
             <pair>
-                <displayed-value>- Still Image</displayed-value>
+                <displayed-value>Standbild</displayed-value>
                 <stored-value>still image</stored-value>
             </pair>
             <pair>
-                <displayed-value>Other</displayed-value>
+                <displayed-value>Andere</displayed-value>
                 <stored-value>other</stored-value>
             </pair>
             <pair>
@@ -2081,27 +1911,27 @@
                 <stored-value>software</stored-value>
             </pair>
             <pair>
-                <displayed-value>- Research Software</displayed-value>
+                <displayed-value>Forschungssoftware</displayed-value>
                 <stored-value>research software</stored-value>
             </pair>
             <pair>
-                <displayed-value>Workflow</displayed-value>
+                <displayed-value>Arbeitsablauf</displayed-value>
                 <stored-value>workflow</stored-value>
             </pair>
             <pair>
-                <displayed-value>Cartographic Material</displayed-value>
+                <displayed-value>Kartografisches Material</displayed-value>
                 <stored-value>cartographic material</stored-value>
             </pair>
             <pair>
-                <displayed-value>- Map</displayed-value>
+                <displayed-value>Karte</displayed-value>
                 <stored-value>map</stored-value>
             </pair>
             <pair>
-                <displayed-value>Sound</displayed-value>
+                <displayed-value>Tönen</displayed-value>
                 <stored-value>sound</stored-value>
             </pair>
             <pair>
-                <displayed-value>- Musical Composition</displayed-value>
+                <displayed-value>Musikalische Komposition</displayed-value>
                 <stored-value>musical composition</stored-value>
             </pair>
             <pair>
@@ -2109,254 +1939,254 @@
                 <stored-value>text</stored-value>
             </pair>
             <pair>
-                <displayed-value>- Annotation</displayed-value>
+                <displayed-value>Anmerkung</displayed-value>
                 <stored-value>annotation</stored-value>
             </pair>
             <pair>
-                <displayed-value>- Bibliography</displayed-value>
+                <displayed-value>Literaturverzeichnis</displayed-value>
                 <stored-value>bibliography</stored-value>
             </pair>
             <pair>
-                <displayed-value>- Book</displayed-value>
+                <displayed-value>Buch</displayed-value>
                 <stored-value>book</stored-value>
             </pair>
             <pair>
-                <displayed-value>-- Book Part</displayed-value>
+                <displayed-value>Buchteil</displayed-value>
                 <stored-value>book part</stored-value>
             </pair>
             <pair>
-                <displayed-value>- Conference Object</displayed-value>
+                <displayed-value>Konferenzobjekt</displayed-value>
                 <stored-value>conference object</stored-value>
             </pair>
             <pair>
-                <displayed-value>-- Conference Proceedings</displayed-value>
+                <displayed-value>Tagungsband</displayed-value>
                 <stored-value>conference proceedings</stored-value>
             </pair>
             <pair>
-                <displayed-value>--- Conference Paper</displayed-value>
+                <displayed-value>Konferenzpapier</displayed-value>
                 <stored-value>conference paper</stored-value>
             </pair>
             <pair>
-                <displayed-value>--- Conference Poster</displayed-value>
+                <displayed-value>Konferenzposter</displayed-value>
                 <stored-value>conference poster</stored-value>
             </pair>
             <pair>
-                <displayed-value>-- Conference Paper Not In Proceedings</displayed-value>
+                <displayed-value>Konferenzpapier nicht in Bearbeitung</displayed-value>
                 <stored-value>conference paper not in proceedings</stored-value>
             </pair>
             <pair>
-                <displayed-value>-- Conference Poster Not In Proceedings</displayed-value>
+                <displayed-value>Konferenzposter nicht in Bearbeitung</displayed-value>
                 <stored-value>conference poster not in proceedings</stored-value>
             </pair>
             <pair>
-                <displayed-value>- Lecture</displayed-value>
+                <displayed-value>Vorlesung</displayed-value>
                 <stored-value>lecture</stored-value>
             </pair>
             <pair>
-                <displayed-value>- Letter</displayed-value>
+                <displayed-value>Brief</displayed-value>
                 <stored-value>letter</stored-value>
             </pair>
             <pair>
-                <displayed-value>- Periodical</displayed-value>
+                <displayed-value>Zeitschrift</displayed-value>
                 <stored-value>periodical</stored-value>
             </pair>
             <pair>
-                <displayed-value>-- Journal</displayed-value>
+                <displayed-value>Journal</displayed-value>
                 <stored-value>journal</stored-value>
             </pair>
             <pair>
-                <displayed-value>--- Contribution to Journal</displayed-value>
+                <displayed-value>Beitrag zur Zeitschrift</displayed-value>
                 <stored-value>contribution to journal</stored-value>
             </pair>
             <pair>
-                <displayed-value>---- Journal Article</displayed-value>
+                <displayed-value>Zeitschriftenartikel</displayed-value>
                 <stored-value>journal article</stored-value>
             </pair>
             <pair>
-                <displayed-value>----- Data Paper</displayed-value>
+                <displayed-value>Datenpapier</displayed-value>
                 <stored-value>data paper</stored-value>
             </pair>
             <pair>
-                <displayed-value>----- Review Article</displayed-value>
+                <displayed-value>Artikel-überprüfen</displayed-value>
                 <stored-value>review article</stored-value>
             </pair>
             <pair>
-                <displayed-value>----- Research Article</displayed-value>
+                <displayed-value>Forschungsartikel</displayed-value>
                 <stored-value>research article</stored-value>
             </pair>
             <pair>
-                <displayed-value>----- Corrigendum</displayed-value>
+                <displayed-value>Berichtigung</displayed-value>
                 <stored-value>corrigendum</stored-value>
             </pair>
             <pair>
-                <displayed-value>----- Software Paper</displayed-value>
+                <displayed-value>Software Papier</displayed-value>
                 <stored-value>software paper</stored-value>
             </pair>
             <pair>
-                <displayed-value>---- Editorial</displayed-value>
+                <displayed-value>Leitartikol</displayed-value>
                 <stored-value>editorial</stored-value>
             </pair>
             <pair>
-                <displayed-value>---- Letter to the Editor</displayed-value>
+                <displayed-value>Leserbrief</displayed-value>
                 <stored-value>letter to the editor</stored-value>
             </pair>
             <pair>
-                <displayed-value>-- Newspaper</displayed-value>
+                <displayed-value>Zeitung</displayed-value>
                 <stored-value>newspaper</stored-value>
             </pair>
             <pair>
-                <displayed-value>--- Newspaper Article</displayed-value>
+                <displayed-value>Zeitungsartikel</displayed-value>
                 <stored-value>newspaper article</stored-value>
             </pair>
             <pair>
-                <displayed-value>-- Magazine</displayed-value>
+                <displayed-value>Magazin</displayed-value>
                 <stored-value>magazine</stored-value>
             </pair>
             <pair>
-                <displayed-value>- Patent</displayed-value>
+                <displayed-value>Patent</displayed-value>
                 <stored-value>patent</stored-value>
             </pair>
             <pair>
-                <displayed-value>- Preprint</displayed-value>
+                <displayed-value>Vordruck</displayed-value>
                 <stored-value>preprint</stored-value>
             </pair>
             <pair>
-                <displayed-value>- Report</displayed-value>
+                <displayed-value>Prüfbericht</displayed-value>
                 <stored-value>report</stored-value>
             </pair>
             <pair>
-                <displayed-value>-- Report Part</displayed-value>
+                <displayed-value>Berichtsteil</displayed-value>
                 <stored-value>report part</stored-value>
             </pair>
             <pair>
-                <displayed-value>-- Internal Report</displayed-value>
+                <displayed-value>Interner Bericht</displayed-value>
                 <stored-value>internal report</stored-value>
             </pair>
             <pair>
-                <displayed-value>-- Memorandum</displayed-value>
+                <displayed-value>Memorandum</displayed-value>
                 <stored-value>memorandum</stored-value>
             </pair>
             <pair>
-                <displayed-value>-- Other Type of Report</displayed-value>
+                <displayed-value>Andere Art von Bericht</displayed-value>
                 <stored-value>other type of report</stored-value>
             </pair>
             <pair>
-                <displayed-value>-- Policy Report</displayed-value>
+                <displayed-value>Richtlinienbericht</displayed-value>
                 <stored-value>policy report</stored-value>
             </pair>
             <pair>
-                <displayed-value>-- Project Deliverable</displayed-value>
+                <displayed-value>Projektleistung</displayed-value>
                 <stored-value>project deliverable</stored-value>
             </pair>
             <pair>
-                <displayed-value>--- Data Management Plan</displayed-value>
+                <displayed-value>Datenmanagementplan</displayed-value>
                 <stored-value>data management plan</stored-value>
             </pair>
             <pair>
-                <displayed-value>-- Report to Funding Agency</displayed-value>
+                <displayed-value>Meldung an Förderstelle</displayed-value>
                 <stored-value>report to funding agency</stored-value>
             </pair>
             <pair>
-                <displayed-value>-- Research Report</displayed-value>
+                <displayed-value>Forschungsbericht</displayed-value>
                 <stored-value>research report</stored-value>
             </pair>
             <pair>
-                <displayed-value>-- Technical Report</displayed-value>
+                <displayed-value>Technischer Bericht</displayed-value>
                 <stored-value>technical report</stored-value>
             </pair>
             <pair>
-                <displayed-value>- Research Proposal</displayed-value>
+                <displayed-value>Forschungszwecke</displayed-value>
                 <stored-value>research proposal</stored-value>
             </pair>
             <pair>
-                <displayed-value>- Review</displayed-value>
+                <displayed-value>Rezension</displayed-value>
                 <stored-value>review</stored-value>
             </pair>
             <pair>
-                <displayed-value>-- Book Review</displayed-value>
+                <displayed-value>Buchrezension</displayed-value>
                 <stored-value>book review</stored-value>
             </pair>
             <pair>
-                <displayed-value>- Technical Documentation</displayed-value>
+                <displayed-value></displayed-value>
                 <stored-value>technical documentation</stored-value>
             </pair>
             <pair>
-                <displayed-value>- Working Paper</displayed-value>
+                <displayed-value>Arbeitspapier</displayed-value>
                 <stored-value>working paper</stored-value>
             </pair>
             <pair>
-                <displayed-value>- Thesis</displayed-value>
+                <displayed-value>These</displayed-value>
                 <stored-value>thesis</stored-value>
             </pair>
             <pair>
-                <displayed-value>-- Bachelor Thesis</displayed-value>
+                <displayed-value>Bachelorarbeit</displayed-value>
                 <stored-value>bachelor thesis</stored-value>
             </pair>
             <pair>
-                <displayed-value>-- Doctoral Thesis</displayed-value>
+                <displayed-value>Doktorarbeit</displayed-value>
                 <stored-value>doctoral thesis</stored-value>
             </pair>
             <pair>
-                <displayed-value>-- Master Thesis</displayed-value>
+                <displayed-value>Masterarbeit</displayed-value>
                 <stored-value>master thesis</stored-value>
             </pair>
             <pair>
-                <displayed-value>- Musical Notation</displayed-value>
+                <displayed-value>Musikalische Notation</displayed-value>
                 <stored-value>musical notation</stored-value>
             </pair>
             <pair>
-                <displayed-value>- Blog Post</displayed-value>
+                <displayed-value>Blogeintrag</displayed-value>
                 <stored-value>blog post</stored-value>
             </pair>
             <pair>
-                <displayed-value>- Manuscript</displayed-value>
+                <displayed-value>- Manuskript</displayed-value>
                 <stored-value>website</stored-value>
             </pair>
             <pair>
-                <displayed-value>Learning Object</displayed-value>
+                <displayed-value>Lernobjekt</displayed-value>
                 <stored-value>learning object</stored-value>
             </pair>
             <pair>
-                <displayed-value>Clinical Trial</displayed-value>
+                <displayed-value>Klinische Versuche</displayed-value>
                 <stored-value>clinical trial</stored-value>
             </pair>
             <pair>
-                <displayed-value>Clinical Study</displayed-value>
+                <displayed-value>Klinische Studie</displayed-value>
                 <stored-value>clinical study</stored-value>
             </pair>
         </value-pairs>
 
         <value-pairs value-pairs-name="openaire_version_types" dc-term="version">
             <pair>
-                <displayed-value>Author’s Original</displayed-value>
+                <displayed-value>Original des Autors</displayed-value>
                 <stored-value>http://purl.org/coar/version/c_b1a7d7d4d402bcce</stored-value>
             </pair>
             <pair>
-                <displayed-value>Submitted Manuscript Under Review</displayed-value>
+                <displayed-value>Eingereichtes Manuskript wird überprüft</displayed-value>
                 <stored-value>http://purl.org/coar/version/c_71e4c1898caa6e32</stored-value>
             </pair>
             <pair>
-                <displayed-value>Accepted Manuscript</displayed-value>
+                <displayed-value>Akzeptiertes Manuskript</displayed-value>
                 <stored-value>http://purl.org/coar/version/c_ab4af688f83e57aa</stored-value>
             </pair>
             <pair>
-                <displayed-value>Proof</displayed-value>
+                <displayed-value>Nachweisen</displayed-value>
                 <stored-value>http://purl.org/coar/version/c_fa2ee174bc00049f</stored-value>
             </pair>
             <pair>
-                <displayed-value>Version of Record</displayed-value>
+                <displayed-value>Version des Datensatzes</displayed-value>
                 <stored-value>http://purl.org/coar/version/c_970fb48d4fbd8a85</stored-value>
             </pair>
             <pair>
-                <displayed-value>Corrected Version of Record</displayed-value>
+                <displayed-value>Korrigierte Version des Datensatzes</displayed-value>
                 <stored-value>http://purl.org/coar/version/c_e19f295774971610</stored-value>
             </pair>
             <pair>
-                <displayed-value>Enhanced Version of Record</displayed-value>
+                <displayed-value>Verbesserte Version des Datensatzes</displayed-value>
                 <stored-value>http://purl.org/coar/version/c_dc82b40f9837b551</stored-value>
             </pair>
             <pair>
-                <displayed-value>Not Applicable (or Unknown)</displayed-value>
+                <displayed-value>Nicht zutreffend (oder unbekannt)</displayed-value>
                 <stored-value>http://purl.org/coar/version/c_be7fb7dd8ff6fe43</stored-value>
             </pair>
         </value-pairs>
@@ -2367,22 +2197,22 @@
                 <stored-value>http://purl.org/coar/access_right/c_abf2</stored-value>
             </pair>
             <pair>
-                <displayed-value>embargoed access</displayed-value>
+                <displayed-value>Zugangsembargo</displayed-value>
                 <stored-value>http://purl.org/coar/access_right/c_f1cf</stored-value>
             </pair>
             <pair>
-                <displayed-value>restricted access</displayed-value>
+                <displayed-value>eingeschränkter Zugang</displayed-value>
                 <stored-value>http://purl.org/coar/access_right/c_16ec</stored-value>
             </pair>
             <pair>
-                <displayed-value>metadata only access</displayed-value>
+                <displayed-value>Zugriff nur auf Metadaten</displayed-value>
                 <stored-value>http://purl.org/coar/access_right/c_14cb</stored-value>
             </pair>
         </value-pairs>
 
         <value-pairs value-pairs-name="openaire_author_identifier_types" dc-term="identifier">
             <pair>
-                <displayed-value>Scopus Author ID</displayed-value>
+                <displayed-value>Scopus Autor-in ID</displayed-value>
                 <stored-value>scopus-author-id</stored-value>
             </pair>
             <pair>
@@ -2406,7 +2236,7 @@
                 <stored-value>isni</stored-value>
             </pair>
             <pair>
-                <displayed-value>Other</displayed-value>
+                <displayed-value>Andere</displayed-value>
                 <stored-value></stored-value>
             </pair>
         </value-pairs>
@@ -2425,7 +2255,7 @@
                 <stored-value>ror</stored-value>
             </pair>
             <pair>
-                <displayed-value>Other</displayed-value>
+                <displayed-value>Andere</displayed-value>
                 <stored-value></stored-value>
             </pair>
         </value-pairs>
@@ -2436,133 +2266,259 @@
                 <stored-value></stored-value>
             </pair>
             <pair>
-                <displayed-value>Is a Funding Organization</displayed-value>
+                <displayed-value>Ist eine Förderorganisation</displayed-value>
                 <stored-value>FundingOrganization</stored-value>
             </pair>
         </value-pairs>
-        
-        
-        
-        
-        <!-- FAU Verlag and Creative Commons License added -->
+
+<!-- FAU Verlag and Creative Commons License added -->
        <value-pairs value-pairs-name="fau_licenses" dc-term="rights">
-          <!--
-          <pair>
-              <displayed-value>Without License</displayed-value>
-              <stored-value></stored-value>
-          </pair>
-          -->
-          <!-- Creative Commons -->
             <pair>
-                <displayed-value>Creative Commons Attribution 4.0 (CC BY)</displayed-value>
+                <displayed-value>Ohne Lizenz</displayed-value>
+                <stored-value></stored-value>
+            </pair>
+<!-- Creative Commons -->
+            <pair>
+                <displayed-value>Creative Commons Namensnennung 4.0 International (CC BY)</displayed-value>
                 <stored-value>https://creativecommons.org/licenses/by/4.0/</stored-value>
             </pair>
             <pair>
-                <displayed-value>Creative Commons Attribution ShareAlike 4.0 (CC BY-SA)</displayed-value>
+                <displayed-value>Creative Commons Namensnennung - Weitergabe unter gleichen Bedingungen 4.0 International (CC BY-SA)</displayed-value>
                 <stored-value>https://creativecommons.org/licenses/by-sa/4.0/</stored-value>
             </pair>
             <pair>
-                <displayed-value>Creative Commons Attribution NonCommercial 4.0 (CC BY-NC)</displayed-value>
+                <displayed-value>Creative Commons Namensnennung - Nicht kommerziell 4.0 International (CC BY-NC)</displayed-value>
                 <stored-value>https://creativecommons.org/licenses/by-nc/4.0/</stored-value>
             </pair>
             <pair>
-                <displayed-value> Creative Commons Attribution NoDerivatives 4.0 (CC BY-ND)</displayed-value>
+                <displayed-value> Creative Commons Namensnennung - Keine Bearbeitungen 4.0 International (CC BY-ND)</displayed-value>
                 <stored-value>https://creativecommons.org/licenses/by-nd/4.0/</stored-value>
             </pair>
             <pair>
-                <displayed-value>Creative Commons Attribution NonCommercial ShareAlike 4.0 (CC BY-NC-SA) </displayed-value>
+                <displayed-value>Creative Commons Namensnennung - Nicht kommerziell -  Weitergabe unter gleichen Bedingungen 4.0 International (CC BY-NC-SA) </displayed-value>
                 <stored-value>https://creativecommons.org/licenses/by-nc-sa/4.0/</stored-value>
             </pair>
             <pair>
-                <displayed-value>Creative Commons Attribution NonCommercial NoDerivatives 4.0 (CC BY-NC-ND)</displayed-value>
+                <displayed-value>Creative Commons Namensnennung - Nicht kommerziell - Keine Bearbeitungen 4.0 International (CC BY-NC-ND)</displayed-value>
                 <stored-value>https://creativecommons.org/licenses/by-nc-nd/4.0/</stored-value>
             </pair>
             <pair>
                 <displayed-value>Creative Commons Zero 1.0 (CC0)</displayed-value>
                 <stored-value>https://creativecommons.org/publicdomain/zero/1.0/</stored-value>
             </pair>
-            <!-- FAU specific licenses -->
+<!-- FAU specific licenses -->
             <pair>
-                 <displayed-value>The publication contract and German copyright law apply</displayed-value>
-                 <stored-value>http://www.gesetze-im-internet.de/urhg/index.html</stored-value>
+                <displayed-value>Es gilt der Veröffentlichungsvertrag und das deutsche Urheberrecht</displayed-value>
+                <stored-value>http://www.gesetze-im-internet.de/urhg/index.html</stored-value>
             </pair>
-q            <pair>
-                 <displayed-value>The copyright and license rights of the publisher and any open access rights negotiated with it apply</displayed-value>
-                 <stored-value>https://www.nationallizenzen.de/open-access</stored-value>
-            </pair>
-         </value-pairs>
-
-
-
-
-
-
-<!-- CONTRIBUTOR OTHER drop down list -->
-	<value-pairs value-pairs-name="contributor_list" dc-term="contributor">
-<!--            
             <pair>
-                 <displayed-value>Advisor</displayed-value>                     
+                <displayed-value>Es gelten die Urheber- und Lizenzrechte des Verlags sowie die ggf. mit ihm verhandelten Open-Access-Rechte</displayed-value>
+                <stored-value>https://www.nationallizenzen.de/open-access</stored-value>
+           </pair>
+       </value-pairs>
+
+<!-- Qualdrop selection for Contributor.other  -->
+       <value-pairs value-pairs-name="contributor_list" dc-term="contributor">
+   <!--    
+           <pair>
+                 <displayed-value>BeraterIn</displayed-value>
                  <stored-value>advisor</stored-value>
-            </pair>  
-          
-            <pair>
-                 <displayed-value>Contributor</displayed-value>
-                 <stored-value></stored-value>
+            </pair>
+     
+           <pair>
+                 <displayed-value>EditorIn</displayed-value>
+                 <stored-value>editor</stored-value>
             </pair>
 -->
             <pair>
-                  <displayed-value>Illustrator</displayed-value>
+                  <displayed-value>IllustratorIn</displayed-value>
                   <stored-value>illustrator</stored-value>
             </pair>
-            <pair>
-                  <displayed-value>Other</displayed-value>
+  
+          <pair>
+                  <displayed-value>Andere</displayed-value>
                   <stored-value>other</stored-value>
             </pair>
+
         </value-pairs>
 
 
-
-
-
-
-
 <!-- Grantor_list with University Departments -->
-      <value-pairs value-pairs-name="grantor_list" dc-term="provenance">
-       <!-- <pair>
-		<displayed-value>N/A</displayed-value>
+<value-pairs value-pairs-name="grantor_list" dc-term="provenance">
+     <!--   <pair>
+		<displayed-value>Nicht zutreffend</displayed-value>
 		<stored-value></stored-value>
-        </pair>
--->
-        <pair>
-                <displayed-value>Friedrich-Alexander-Universität Erlangen-Nürnberg (FAU), Medizinische Fakultät</displayed-value>
-                <stored-value>Friedrich-Alexander-Universität Erlangen-Nürnberg (FAU), Medizinische Fakultät</stored-value>
-        </pair>
-	<pair>
-		<displayed-value>Friedrich-Alexander-Universität Erlangen-Nürnberg (FAU), Philosophische Fakultät und Fachbereich Theologie</displayed-value>
-		<stored-value>Friedrich-Alexander-Universität Erlangen-Nürnberg (FAU), Philosophische Fakultät und Fachbereich Theologie</stored-value>
 	</pair>
-	<pair>
-		<displayed-value>Friedrich-Alexander-Universität Erlangen-Nürnberg (FAU), Rechts- und Wirtschaftswissenschaftliche Fakultät</displayed-value>
-		<stored-value>Friedrich-Alexander-Universität Erlangen-Nürnberg (FAU), Rechts- und Wirtschaftswissenschaftliche Fakultät</stored-value>
-	</pair>
-	<pair>
-		<displayed-value>Friedrich-Alexander-Universität Erlangen-Nürnberg (FAU), Naturwissenschaftliche Fakultät</displayed-value>
-		<stored-value>Friedrich-Alexander-Universität Erlangen-Nürnberg (FAU), Naturwissenschaftliche Fakultät</stored-value>
-	</pair>
-	<pair>
-		<displayed-value>Friedrich-Alexander-Universität Erlangen-Nürnberg (FAU), Technische Fakultät</displayed-value>
-		<stored-value>Friedrich-Alexander-Universität Erlangen-Nürnberg (FAU), Technische Fakultät</stored-value>
-	</pair>
-      </value-pairs>
-      
-      
-     <!-- Obsolete, used for maapping via Series collection has @Steli -->
-     <!-- UUID of Serie to map the item to. DO NOT USE HANDLE, because it will generate errors --> 
-     <!--
-      <value-pairs value-pairs-name="series_list_dropdown" dc-term="series_mapping">
+-->                                                                                                                                                                             
+	<pair>                                                                                                                                                                                                                                               
+		<displayed-value>Friedrich-Alexander-Universität Erlangen-Nürnberg (FAU), Medizinische Fakultät</displayed-value>                                                                                                                            
+		<stored-value>Friedrich-Alexander-Universität Erlangen-Nürnberg (FAU), Medizinische Fakultät</stored-value>                                                                                                                          
+	</pair>                                                                                                                                                                                                                                      
+	<pair>                                                                                                                                                                                                                                               
+		<displayed-value>Friedrich-Alexander-Universität Erlangen-Nürnberg (FAU), Philosophische Fakultät und Fachbereich Theologie</displayed-value>                                                                                                
+		<stored-value>Friedrich-Alexander-Universität Erlangen-Nürnberg (FAU), Philosophische Fakultät und Fachbereich Theologie</stored-value>                                                                                              
+	</pair>                                                                                                                                                                                                                                      
+	<pair>                                                                                                                                                                                                                                               
+		<displayed-value>Friedrich-Alexander-Universität Erlangen-Nürnberg (FAU), Rechts- und Wirtschaftswissenschaftliche Fakultät</displayed-value>                                                                                                
+		<stored-value>Friedrich-Alexander-Universität Erlangen-Nürnberg (FAU), Rechts- und Wirtschaftswissenschaftliche Fakultät</stored-value>                                                                                              
+	</pair>                                                                                                                                                                                                                                      
+	<pair>                                                                                                                                                                                                                                               
+		<displayed-value>Friedrich-Alexander-Universität Erlangen-Nürnberg (FAU), Naturwissenschaftliche Fakultät</displayed-value>                                                                                                                  
+		<stored-value>Friedrich-Alexander-Universität Erlangen-Nürnberg (FAU), Naturwissenschaftliche Fakultät</stored-value>                                                                                                                
+	</pair>                                                                                                                                                                                                                                      
+	<pair>                                                                                                                                                                                                                                               
+		<displayed-value>Friedrich-Alexander-Universität Erlangen-Nürnberg (FAU), Technische Fakultät</displayed-value>                                                                                                                              
+		<stored-value>Friedrich-Alexander-Universität Erlangen-Nürnberg (FAU), Technische Fakultät</stored-value>                                                                                                                            
+	</pair>                                                                                                                                                                                                                                    
+</value-pairs>
+
+<!-- Series_list used as qualdrop value for Series and Band Nr -->   
+
+<!--                                                                                                                                                        
+	<value-pairs value-pairs-name="series_list" dc-term="series">                                                                                                                                                     
 	     <pair>                                                                                                                                                                                                                             
-		<displayed-value>1 - Akademische Reden und Kolloquien | Friedrich-Alexander-Universität Erlangen-Nürnberg</displayed-value>
-                                                                                                                                     
+		<displayed-value>1 - Akademische Reden und Kolloquien | Friedrich-Alexander-Universität Erlangen-Nürnberg</displayed-value>                                                                                                                      
+		<stored-value>serie1</stored-value>
+	     </pair>                                                                                                                                                                                                                    
+	     <pair>                                                                                                                                                                                                                            
+		<displayed-value>2 - Alles Buch | Studien der Erlanger Buchwissenschaft</displayed-value>                                                                                                                                                        
+		<stored-value>serie2</stored-value>                                                                                                                                                     
+	     </pair>                                                                                                                                                                                                                           
+	     <pair>                                                                                                                                                                                                                         
+		<displayed-value>3 - Atzelsberger Gespräche</displayed-value>                                                                                                                                                                        
+		<stored-value>serie3</stored-value>                                                                                                                                                                              
+	     </pair>                                                                                                                                                                                                                  
+	     <pair>                                                                                                                                                                                                                          
+		<displayed-value>4 - Ausgezeichnete Abschlussarbeiten der Erlanger Geschichtswissenschaft</displayed-value>                                                                                                                                      
+		<stored-value>serie4</stored-value>                                                                                                                                        
+	     </pair>                                                                                                                                                                                                                                     
+	     <pair>                                                                                                                                                                                                                              
+		<displayed-value>5 - Erlanger Beiträge zur Kulturgeographie</displayed-value>                                                                                                                                                                    
+		<stored-value>serie5</stored-value>                                                                                                                                                                      
+	     </pair>                                                                                                                                                                                                                                      
+	     <pair>                                                                                                                                                                                                                               
+		<displayed-value>6 - Erlanger Beiträge zur Medienwirtschaft</displayed-value>                                                                                                                                                                    
+		<stored-value>serie6</stored-value>                                                                                                                                                                      
+	     </pair>                                                                                                                                                                                                                                              
+	     <pair>                                                                                                                                                                                                                               
+		<displayed-value>7 - Erlanger Forschungen | A, Geisteswissenschaften</displayed-value>                                                                                                                                                           
+		<stored-value>serie7</stored-value>                                                                                                                                                             
+	     </pair>                                                                                                                                                                                                                        
+	     <pair>                                                                                                                                                                                                                                  
+		<displayed-value>8 - Erlanger Forschungen | B, Naturwissenschaften und Medizin</displayed-value>                                                                                                                                                 
+		<stored-value>serie8</stored-value>                                                                                                                                 
+	     </pair>                                                                                                                                                                                                                            
+	     <pair>                                                                                                                                                                                                                                
+		<displayed-value>9 - Erlanger Forschungen | Sonderreihe</displayed-value>                                                                                                                                                                        
+		<stored-value>serie9</stored-value>                                                                                                                                                        
+	     </pair>                                                                                                                                                                                                             
+	     <pair>                                                                                                                                                                                                                            
+		<displayed-value>10 - Erlanger Migrations- und Integrationsstudien</displayed-value>                                                                                                                                                              
+		<stored-value>serie10</stored-value>                                                                                                                                                                
+	     </pair>                                                                                                                                                                                                                      
+	     <pair>                                                                                                                                                                                                                                
+		<displayed-value>11 - Erlanger Universitätstage</displayed-value>                                                                                                                                                                                 
+		<stored-value>serie11</stored-value>                           
+	    </pair>                                           
+            <pair>
+                <displayed-value>12 - FAU Forschungen, Reihe A, Geisteswissenschaften</displayed-value>
+                <stored-value>serie12</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>13 - FAU Forschungen, Reihe B, Medizin, Naturwissenschaft, Technik</displayed-value>
+                <stored-value>serie13</stored-value>
+            </pair>
+	    <pair>
+                <displayed-value>14 - FAU Kunst und Bildung</displayed-value>
+                <stored-value>serie14</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>15 - FAU Lehren und Lernen</displayed-value>
+                <stored-value>serie15</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>16 - FAU Studien aus dem Maschinenbau</displayed-value>
+                <stored-value>serie16</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>17 - FAU Studien aus der Elektrotechnik</displayed-value>                     
+		<stored-value>serie17</stored-value>                                                                                                
+	    </pair>                             
+	    <pair>
+                <displayed-value>18 - FAU Studien aus der Informatik</displayed-value>
+                <stored-value>serie18</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>19 - FAU Studien aus der Philosophischen Fakultät</displayed-value>
+                <stored-value>serie19</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>20 - FAU Studien aus der Rechtswissenschaft</displayed-value>      
+                <stored-value>serie20</stored-value>                                                                                
+	    </pair>
+            <pair>
+                <displayed-value>21 - FAU Studien Gender Differenz Diversität</displayed-value>
+                <stored-value>serie21</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>22 - FAU Studien Materialwissenschaft und Werkstofftechnik</displayed-value>
+                <stored-value>serie22</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>23 - FAU Studien zu Menschenrechten</displayed-value>
+                <stored-value>serie23</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>24 - FAU Studies Mathematics and Physics</displayed-value>
+                <stored-value>serie24</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>25 - FAU-Panel</displayed-value>
+                <stored-value>serie25</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>26 - Fertigungstechnik | Erlangen</displayed-value>
+                <stored-value>serie26</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>27 - Forschungsberichte aus dem Lehrstuhl für Informationstechnik mit dem Schwerpunkt Kommunikationselektronik</displayed-value>
+                <stored-value>serie27</stored-value>
+            </pair>
+	    <pair>
+                <displayed-value>28 - Kleine Schriften zu Kultur und Geschichte der Friedrich-Alexander-Universität</displayed-value>
+                <stored-value>serie28</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>29 - Magazin für digitale Editionswissenschaften</displayed-value>
+                <stored-value>serie29</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>30 - Progress in Modern Optics</displayed-value>
+                <stored-value>serie30</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>31 - Schriftenreihe Technische Mechanik</displayed-value>
+                <stored-value>serie31</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>32 - Technical reports | Department Informatik</displayed-value>
+                <stored-value>serie32</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>33 - Texte zur Wirtschaftspädagogik und Personalentwicklung</displayed-value>
+                <stored-value>serie33</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>34 - Uni-Kurier-Magazin</displayed-value>
+                <stored-value>serie34</stored-value>
+            </pair>
+       </value-pairs>
+-->
+
+<!--UUID of Serie to map the item to. DO NOT USE HANDLE -->
+<!--
+<value-pairs value-pairs-name="series_list_dropdown" dc-term="series_mapping"> <pair>                                                                                                                                                                                                                             
+		<displayed-value>1 - Akademische Reden und Kolloquien | Friedrich-Alexander-Universität Erlangen-Nürnberg</displayed-value>                                                                                                                    
 		<stored-value>bce15039-6f83-4c86-aefe-4bf49af3154e</stored-value>                                                                       
 	     </pair>                                                                                                                                                                                                                    
 	     <pair>                                                                                                                                                                                                                            
@@ -2697,10 +2653,10 @@ q            <pair>
                 <displayed-value>34 - Uni-Kurier-Magazin</displayed-value>
                 <stored-value>e4c3dac8-daa0-4e5b-ac6f-3da685c1d278</stored-value>
             </pair>
-       </value-pairs>
-       -->
-       
-       <value-pairs value-pairs-name="series_list_dropdown" dc-term="series_name">
+       </value-pairs>     
+-->
+
+<value-pairs value-pairs-name="series_list_dropdown" dc-term="series_name">
 	     <pair>                                                                                                                                                                                                                             
 		<displayed-value>1 - Akademische Reden und Kolloquien | Friedrich-Alexander-Universität Erlangen-Nürnberg</displayed-value>                                                                                                                      
 		<stored-value>Akademische Reden und Kolloquien | Friedrich-Alexander-Universität Erlangen-Nürnberg</stored-value>                                                                       

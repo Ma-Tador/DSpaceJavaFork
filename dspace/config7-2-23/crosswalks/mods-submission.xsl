@@ -131,58 +131,7 @@ $ scp MODS-2-DIM.xslt athena.dialup.mit.edu:~/Private/
         -->
                         <xsl:apply-templates/>
                 </xsl:element>
-                
-	<!-- Get document license if available, otherwise provide standard license -->
-	<xsl:variable name="defaultLicense" select="'https://www.nationallizenzen.de/open-access'" />
-	<xsl:variable name="license">
-           <xsl:value-of select="*[local-name()='accessCondition'][@type='use and reproduction']" />
-	</xsl:variable>		
-	<xsl:element name="dim:field">
-                    <xsl:attribute name="mdschema">dc</xsl:attribute>
-                    <xsl:attribute name="element">rights</xsl:attribute>
-                    <xsl:attribute name="qualifier">uri</xsl:attribute>
-	<xsl:if test="normalize-space($license) = ''">
-		<xsl:value-of select="$defaultLicense"/>
-	</xsl:if>
-	<xsl:if test="normalize-space($license) != ''">
-		<xsl:value-of select="$license"/>
-	</xsl:if>
-	</xsl:element>
-	
-	<!-- Get subject and remove any intern XML if provided -->
-	<xsl:variable name="subj">
-           <xsl:value-of select="*[local-name()='subject']/*[local-name()='topic']" />
-	</xsl:variable>		
-	<xsl:element name="dim:field">
-                    <xsl:attribute name="mdschema">dc</xsl:attribute>
-                    <xsl:attribute name="element">subject</xsl:attribute>
-                    <xsl:attribute name="qualifier"></xsl:attribute>
-		     <xsl:call-template name="remove-markup">
-            		<xsl:with-param name="string" select="$subj"/>
-        	     </xsl:call-template>
-	</xsl:element>
-
         </xsl:template>
-        
-        
-        <!-- remove markup from text -->
-        <xsl:template name="remove-markup">
-	    <xsl:param name="string"/> 
-	    <xsl:choose>
-		<xsl:when test="contains($string, '&lt;')">
-		    <xsl:value-of select="substring-before($string, '&lt;')" />
-		    <!-- recursive call -->
-		    <xsl:call-template name="remove-markup">
-		        <xsl:with-param name="string" select="substring-after($string, '&gt;')"/>
-		    </xsl:call-template>
-		</xsl:when>
-		<xsl:otherwise>
-		    <xsl:value-of select="$string"/>
-		</xsl:otherwise>
-	    </xsl:choose>
-	 </xsl:template>
-	
-	
 
 <!-- **** MODS   titleInfo/title ====> DC title **** -->
         <xsl:template match="*[local-name()='titleInfo']/*[local-name()='title']">
@@ -263,7 +212,7 @@ $ scp MODS-2-DIM.xslt athena.dialup.mit.edu:~/Private/
 </xsl:template>
 
 
-<!-- **** MODS   originInfo/dateCreated ====> DC  date.created **** 
+<!-- **** MODS   originInfo/dateCreated ====> DC  date.created **** -->
         <xsl:template match="*[local-name()='originInfo']/*[local-name()='dateCreated']">
                 <xsl:element name="dim:field">
                         <xsl:attribute name="mdschema">dc</xsl:attribute>
@@ -273,19 +222,6 @@ $ scp MODS-2-DIM.xslt athena.dialup.mit.edu:~/Private/
                         <xsl:value-of select="."/>
                 </xsl:element>
         </xsl:template>
-        -->
-        
-        <!-- save year issued in dc.date.created -> request from Opus Team  Error java illegal date format + 
-        <xsl:template match="*[local-name()='originInfo']/*[local-name()='dateIssued']">
-                <xsl:element name="dim:field">
-                        <xsl:attribute name="mdschema">dc</xsl:attribute>
-                        <xsl:attribute name="element">date</xsl:attribute>
-                        <xsl:attribute name="qualifier">created</xsl:attribute>
-                        <xsl:attribute name="lang">en_US</xsl:attribute>
-                        <xsl:value-of select="substring(., 1, 4)"/>
-                </xsl:element>
-        </xsl:template>
-        -->
 
 <!-- **** MODS   originInfo/dateIssued ====> DC  date.issued **** -->
         <xsl:template match="*[local-name()='originInfo']/*[local-name()='dateIssued']">
@@ -298,7 +234,6 @@ $ scp MODS-2-DIM.xslt athena.dialup.mit.edu:~/Private/
                 </xsl:element>
         </xsl:template>
         
-                 
         
         <!-- **** MODS   originInfo/dateIssued ====> no equivalent field in our DSpace repository as Opus Team instructed
         <xsl:template match="*[local-name()='originInfo']/*[local-name()='dateOther'][@type='accepted']">
@@ -321,16 +256,8 @@ $ scp MODS-2-DIM.xslt athena.dialup.mit.edu:~/Private/
                         <xsl:attribute name="qualifier">extent</xsl:attribute>
                         <xsl:attribute name="lang">en_US</xsl:attribute>
                         <xsl:value-of select="."/>
-                        <xsl:attribute name="mdschema">local</xsl:attribute>
-                        <xsl:attribute name="element">date</xsl:attribute>
-                        <xsl:attribute name="qualifier">accepted</xsl:attribute>
-                        <xsl:value-of select="substring(., 1, 4)"/>
                 </xsl:element>
         </xsl:template>
-        
-        
-       
-        
 
 <!-- **** MODS   abstract  ====> DC  description.abstract **** -->
         <xsl:template match="*[local-name()='abstract']">
@@ -344,7 +271,7 @@ $ scp MODS-2-DIM.xslt athena.dialup.mit.edu:~/Private/
         </xsl:template>
 
 
-<!-- **** MODS   subject/topic ====> DC  subject **** 
+<!-- **** MODS   subject/topic ====> DC  subject **** -->
         <xsl:template match="*[local-name()='subject']/*[local-name()='topic']">
                 <xsl:element name="dim:field">
                         <xsl:attribute name="mdschema">dc</xsl:attribute>
@@ -353,8 +280,11 @@ $ scp MODS-2-DIM.xslt athena.dialup.mit.edu:~/Private/
                         <xsl:value-of select="normalize-space(.)"/>
                 </xsl:element>
         </xsl:template>
--->
         
+        
+        <xsl:variable name="dateIssued" select="*[local-name()='originInfo']/*[local-name()='dateIssued']" />
+        <xsl:variable name="doi" select="*[local-name()='identifier'][@type='doi']" />
+
 
 <!-- **** MODS   relatedItem...    **** -->
         <!-- NOTE -
@@ -383,30 +313,24 @@ $ scp MODS-2-DIM.xslt athena.dialup.mit.edu:~/Private/
                         
                         <xsl:variable name="journalTitle" select="normalize-space(*[local-name()='titleInfo']/*[local-name()='title'])"/>
                         <xsl:variable name="journalVolume" select="normalize-space(*[local-name()='part']/*[local-name()='detail'][@type='volume'])"/>
-                        <xsl:variable name="journalIssue" select="normalize-space(*[local-name()='part']/*[local-name()='detail'][@type='issue'])"/>                   
+                        <xsl:variable name="journalIssue" select="normalize-space(*[local-name()='part']/*[local-name()='detail'][@type='issue'])"/>
+                       
                         <xsl:variable name="dateIssued" select="../*[local-name()='originInfo']/*[local-name()='dateIssued']" />
                         <xsl:variable name="doi" select="../*[local-name()='identifier'][@type='doi']" />
-                                                                   
                         
-                 <!-- 1) citation / original Verrof -->
-		<xsl:if test="./@type='host'  and   *[local-name()='titleInfo']/*[local-name()='title']">
-			<xsl:element name="dim:field">
-                        <xsl:attribute name="mdschema">dc</xsl:attribute>
-                        <xsl:attribute name="element">identifier</xsl:attribute>
-                        <xsl:attribute name="qualifier">citation</xsl:attribute>
-			<xsl:value-of select="$journalTitle"/> 
-			<xsl:text> </xsl:text>
-			<xsl:value-of select="$journalVolume"/>
-			<xsl:text>.</xsl:text>
-			<xsl:value-of select="$journalIssue"/>
-			<xsl:text> (</xsl:text>
-			<xsl:value-of select="substring($dateIssued, 1, 4)"/>
-			<xsl:text>). DOI:</xsl:text>
-			<xsl:value-of select="$doi"/>
-			</xsl:element>
-		</xsl:if>
-
-                   
+                        
+                        
+                        
+                        <!-- 1) citation / original verrof -->
+                        <xsl:if test="./@type='host'  and   *[local-name()='titleInfo']/*[local-name()='title'] and *[local-name()='part']/*[local-name()='detail'][@type='volume']">
+                        	<xsl:element name="dim:field">
+                                        <xsl:attribute name="mdschema">dc</xsl:attribute>
+                                        <xsl:attribute name="element">identifier</xsl:attribute>
+                                        <xsl:attribute name="qualifier">citation</xsl:attribute>
+<xsl:value-of select="$journalTitle"/><xsl:text> </xsl:text><xsl:value-of select="$journalVolume"/><xsl:text> (</xsl:text><xsl:value-of select="$dateIssued" /><xsl:text>) . DOI: </xsl:text><xsl:value-of select="$doi"/>
+                                </xsl:element>
+                        </xsl:if>
+                        
                         <!-- 2)  DC  local.journal.title  -->
                         <xsl:if test="./@type='host'  and   *[local-name()='titleInfo']/*[local-name()='title']">
                                 <xsl:element name="dim:field">
@@ -606,78 +530,18 @@ $ scp MODS-2-DIM.xslt athena.dialup.mit.edu:~/Private/
         </xsl:template>
 
 
-	    <!--   mods:/accessCondition[@type="use and reproduction"] ====>   dc.rights  
-	<xsl:template match="*[local-name()='mods']">
-	<xsl:choose>
-        <xsl:when test="*[local-name()='accessCondition'][@type='use and reproduction']">  
+	    <!--   mods:/accessCondition[@type="use and reproduction"] ====>   dc.rights  -->
+	    <xsl:template match="*[local-name()='accessCondition'][@type='use and reproduction']">
 		<xsl:element name="dim:field">
 		    <xsl:attribute name="mdschema">dc</xsl:attribute> 
 		    <xsl:attribute name="element">rights</xsl:attribute> 
-		    <xsl:attribute name="qualifier">uri</xsl:attribute>
-		    <xsl:value-of select="*[local-name()='accessCondition'][@type='use and reproduction']"/>
+		    <xsl:if test="@description ='uri'"> 
+		        <xsl:attribute name="qualifier">uri</xsl:attribute>
+		    </xsl:if>
+		    <xsl:value-of select="."/>
 		</xsl:element>
- 	</xsl:when>
-	<xsl:otherwise>
-		<xsl:element name="dim:field">
-                    <xsl:attribute name="mdschema">dc</xsl:attribute>
-                    <xsl:attribute name="element">rights</xsl:attribute>
-                    <xsl:attribute name="qualifier">uri</xsl:attribute>
-                    <xsl:value-of select="https://www.nationallizenzen.de/open-access"/>
-                </xsl:element>
-	</xsl:otherwise>	
-	</xsl:template>
-	-->
+	    </xsl:template>
 
 
-<!--
-<xsl:template match="*[local-name()='accessCondition'][@type='use and reproduction']">
--->
-<!--
-<xsl:template match="accessCondition[@type='use and reproduction']">
-                <xsl:element name="dim:field">
-                    <xsl:attribute name="mdschema">dc</xsl:attribute>
-                    <xsl:attribute name="element">rights</xsl:attribute>
-                    <xsl:attribute name="qualifier">uri</xsl:attribute>
-                    <xsl:value-of select="."/>
-                </xsl:element>
-</xsl:template>
-<xsl:template match="/*[not(accessCondition][@type='use and reproduction'])]">
-                <xsl:element name="dim:field">
-                    <xsl:attribute name="mdschema">dc</xsl:attribute>
-                    <xsl:attribute name="element">rights</xsl:attribute>
-                    <xsl:attribute name="qualifier">uri</xsl:attribute>
-                    <xsl:value-of select="https://www.nationallizenzen.de/open-access"/>
-                </xsl:element>
-</xsl:template>
--->
-
-
-
-<!--
-<xsl:template match="*[local-name()='mods']">
-<xsl:variable name="license">
-	<xsl:value-of select="accessCondition[@type='use and reproduction']" />
-</xsl:variable>
-<xsl:choose>
-        <xsl:when test="$license">
-		<xsl:element name="dim:field">
-                    <xsl:attribute name="mdschema">dc</xsl:attribute>
-                    <xsl:attribute name="element">rights</xsl:attribute>
-                    <xsl:attribute name="qualifier">uri</xsl:attribute>
-                    <xsl:value-of select="$license"/>
-                </xsl:element>
-        </xsl:when>
-        <xsl:otherwise>
-                <xsl:element name="dim:field">
-                    <xsl:attribute name="mdschema">dc</xsl:attribute>
-                    <xsl:attribute name="element">rights</xsl:attribute>
-                    <xsl:attribute name="qualifier">uri</xsl:attribute>
-                    <xsl:value-of select="https://www.nationallizenzen.de/open-access"/>
-                </xsl:element>
-        </xsl:otherwise>
-</xsl:choose>
-</xsl:template>
--->
 
 </xsl:stylesheet>
-

@@ -8,11 +8,11 @@
 		<property name="name" value="upload"/>
 		<property name="metadata" value="bitstream-metadata" />
         <property name="options">
-            <list>            
+            <list>
+            <!--
                 <ref bean="openAccess"/>
-		<ref bean="embargoed" />
-		<!--   ORG
                 <ref bean="lease"/>
+                <ref bean="embargoed" />
                 <ref bean="administrator"/> 
                 -->
             </list>
@@ -65,18 +65,13 @@
     <bean id="accessConditionConfigurationDefault" class="org.dspace.submit.model.AccessConditionConfiguration">
         <!-- This name must match the id of the step as defined in the item-submission.xml -->
         <property name="name" value="itemAccessConditions"></property>
-<!--  ORG
         <property name="canChangeDiscoverable" value="true"></property>
--->	
-	<property name="canChangeDiscoverable" value="false"></property>
         <property name="options">
             <list>
                 <ref bean="openAccess"/>
+                <ref bean="lease"/>
                 <ref bean="embargoed" />
-		<!--  ORG
-		<ref bean="lease"/>
                 <ref bean="administrator"/>
-		-->
             </list>
         </property>
     </bean>

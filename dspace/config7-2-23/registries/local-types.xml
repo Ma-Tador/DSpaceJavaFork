@@ -53,12 +53,14 @@
     <scope_note>To keep the notes of a document from Opus.</scope_note>
   </dc-type>
 
+<!-- now mapped to local.series.name at import
 <dc-type>
     <schema>local</schema>
     <element>relatedSerie</element>
     <qualifier></qualifier>
     <scope_note>To enter the TextSeries value(enrichment in Opus) of a document from.</scope_note>
   </dc-type>
+-->
 
 <dc-type>
     <schema>local</schema>

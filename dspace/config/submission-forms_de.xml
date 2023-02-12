@@ -69,10 +69,10 @@
              <dc-schema>local</dc-schema>
              <dc-element>fakultaet</dc-element>
              <dc-qualifier>lehrstuhl</dc-qualifier>
-             <repeatable>false</repeatable>
+             <repeatable>true</repeatable>
              <label>Organisationseinheit</label>
              <input-type>onebox</input-type>
-             <hint>Bitte geben Sie die Lehrstuhl (oder andere Organisationseinheit) für die Fakultät ein.</hint>
+             <hint>Hier können Sie Department, Klinik, Institut, Lehrtushl... eingeben, entweder frei oder Affiliation der FAU, https://www.fau.de/research/service-fuer-forschende/publizieren-und-open-access/tipps-zur-korrekten-affiliation.</hint>
              <required></required>
             </field>
          </row>
@@ -84,11 +84,27 @@
                     <dc-qualifier>author</dc-qualifier>
                     <repeatable>true</repeatable>
                     <label>Autor*in</label>
+                    <type-bind>article,movingimage,bachelorthesis,book,bookpart,conferenceobject,coursematerial,dataset,habilitation,journalissue,masterthesis,other,periodicalpart,postprint,preprint,report,review,software,studythesis,workingpaper</type-bind>
                     <input-type>onebox</input-type>
-                    <hint>Geben Sie den Namen des Autors ein (Familienname, Vornamen)</hint>
+                    <hint>Geben Sie den Namen des Autors ein. ('Familienname, Vornamen' oder 'Vornamen Familienname') </hint>
                     <required></required>
                 </field>
             </row>
+            
+            <row>
+                <field>
+                    <dc-schema>dc</dc-schema>
+                    <dc-element>contributor</dc-element>
+                    <dc-qualifier>author</dc-qualifier>
+                    <repeatable>true</repeatable>
+                    <label>Autor*in</label>
+                    <type-bind>doctoralthesis</type-bind>
+                    <input-type>onebox</input-type>
+                    <hint>Geben Sie den Namen des Autors ein. ('Familienname, Vornamen' oder 'Vornamen Familienname') </hint>
+                    <required>Geben Sie den Namen des Autors ein.</required>
+                </field>
+            </row>
+            
             <row>
                 <field>
                     <dc-schema>dc</dc-schema>
@@ -96,12 +112,27 @@
                     <dc-qualifier>advisor</dc-qualifier>
                     <repeatable>true</repeatable>
                     <label>Betreuer*in</label>
-                    <type-bind>doctoralthesis,habilitation,masterthesis,bachelorthesis,other</type-bind>
+                    <type-bind>habilitation,masterthesis,bachelorthesis,other</type-bind>
                     <input-type>onebox</input-type>
-                    <hint>Tragen Sie bitte die/den Betreuer*in ein.</hint>
+                    <hint>Geben Sie den Namen des Betreuer*in ein. ('Familienname, Vornamen' oder 'Vornamen Familienname') </hint>
                     <required></required>
                 </field>
             </row>
+            <!-- Advisor/Betreuer is for doctoralthesis required -->
+            <row>
+                <field>
+                    <dc-schema>dc</dc-schema>
+                    <dc-element>contributor</dc-element>
+                    <dc-qualifier>advisor</dc-qualifier>
+                    <repeatable>true</repeatable>
+                    <label>Betreuer*in</label>
+                    <type-bind>doctoralthesis</type-bind>
+                    <input-type>onebox</input-type>
+                    <hint>Geben Sie den Namen des Betreuer*in ein. ('Familienname, Vornamen' oder 'Vornamen Familienname') </hint>
+                    <required>Bitte geben Sie den Namen des Betreuer*in ein.</required>
+                </field>
+            </row>
+            
             <row>
                 <field>
                     <dc-schema>dc</dc-schema>
@@ -109,12 +140,27 @@
                     <dc-qualifier></dc-qualifier>
                     <repeatable>true</repeatable>
                     <label>Gutachter*in</label>
-                    <type-bind>doctoralthesis,habilitation,masterthesis,bachelorthesis,other</type-bind>
+                    <type-bind>habilitation,masterthesis,bachelorthesis,other</type-bind>
                     <input-type>onebox</input-type>
-                    <hint>Tragen Sie bitte die Gutachter*innen ein.</hint>
+                    <hint>Geben Sie den Namen des Gutachter*innen ein. ('Familienname, Vornamen' oder 'Vornamen Familienname') </hint>
                     <required></required>
                  </field>
             </row>
+            <!-- dc.contributor/Gutachter is for doctoralthesis required -->
+            <row>
+                <field>
+                    <dc-schema>dc</dc-schema>
+                    <dc-element>contributor</dc-element>
+                    <dc-qualifier></dc-qualifier>
+                    <repeatable>true</repeatable>
+                    <label>Gutachter*in</label>
+                    <type-bind>doctoralthesis</type-bind>
+                    <input-type>onebox</input-type>
+                    <hint>Geben Sie den Namen des Gutachter*innen ein. ('Familienname, Vornamen' oder 'Vornamen Familienname') </hint>
+                    <required>Geben Sie den Namen des Gutachter*innen ein.</required>
+                 </field>
+            </row>
+            
            <row>
                <field>
                    <dc-schema>dc</dc-schema>
@@ -122,10 +168,24 @@
                    <dc-qualifier></dc-qualifier>
                    <repeatable></repeatable>
                    <label>Titel verleihende Institution</label>
-                   <type-bind>doctoralthesis,habilitation,masterthesis,bachelorthesis,other</type-bind>
+                   <type-bind>habilitation,masterthesis,bachelorthesis,other</type-bind>
                    <input-type value-pairs-name="grantor_list">dropdown</input-type>
                    <hint>Wählen Sie bitte die titelverleihende Institution aus.</hint>
                    <required></required>
+                </field>
+            </row>
+            <!-- dc.provenance/Titel verleihende is for doctoralthesis required -->
+            <row>
+               <field>
+                   <dc-schema>dc</dc-schema>
+                   <dc-element>provenance</dc-element>
+                   <dc-qualifier></dc-qualifier>
+                   <repeatable></repeatable>
+                   <label>Titel verleihende Institution</label>
+                   <type-bind>doctoralthesis</type-bind>
+                   <input-type value-pairs-name="grantor_list">dropdown</input-type>
+                   <hint>Wählen Sie bitte die titelverleihende Institution aus.</hint>
+                   <required>Wählen Sie bitte die titelverleihende Institution aus.</required>
                 </field>
             </row>
             <row>
@@ -135,10 +195,24 @@
                   <dc-qualifier>accepted</dc-qualifier>
                   <repeatable></repeatable>
                   <label>Datum der mündlichen Abschlussprüfung</label>
-                  <type-bind>doctoralthesis,habilitation,masterthesis,bachelorthesis,other</type-bind>
+                  <type-bind>habilitation,masterthesis,bachelorthesis,other</type-bind>
                   <input-type>date</input-type>
                   <hint>Bitte wählen Sie das Datum des mündlichen Abschlussprüfung.</hint>
                   <required></required>
+                </field>
+            </row>
+            <!-- local.date.accepted/Datum der mündlichen Abschlussprüfung is for doctoralthesis required -->
+            <row>
+                <field>
+                  <dc-schema>local</dc-schema>
+                  <dc-element>date</dc-element>
+                  <dc-qualifier>accepted</dc-qualifier>
+                  <repeatable></repeatable>
+                  <label>Datum der mündlichen Abschlussprüfung</label>
+                  <type-bind>doctoralthesis</type-bind>
+                  <input-type>date</input-type>
+                  <hint>Bitte wählen Sie das Datum des mündlichen Abschlussprüfung.</hint>
+                  <required>Bitte wählen Sie das Datum des mündlichen Abschlussprüfung.</required>
                 </field>
             </row>
 	  <row>
@@ -149,7 +223,7 @@
                 <repeatable>true</repeatable>
                 <label>Herausgeber*in</label>
                 <input-type>onebox</input-type>
-                <hint>Tragen Sie bitte die Herausgeber*in ein.</hint>
+                <hint>Geben Sie den Namen des Herausgeber*in ein. ('Familienname, Vornamen' oder 'Vornamen Familienname') </hint>
                 <required></required>
               </field>
           </row>
@@ -163,7 +237,7 @@
                     <repeatable>true</repeatable>
                     <label>Weitere beteiligte Personen</label>
                     <input-type value-pairs-name="contributor_list">qualdrop_value</input-type>
-                    <hint>Tragen Sie bitte weitere beteiligte Personen ein.</hint>
+                    <hint>Geben Sie weitere beteiligte Personen ein. ('Familienname, Vornamen' oder 'Vornamen Familienname') </hint>
                     <required></required>
                 </field>
             </row>
@@ -201,12 +275,30 @@
                     <dc-qualifier>iso</dc-qualifier>
                     <repeatable>false</repeatable>
                     <label>Sprache</label>
+                    <type-bind>article,movingimage,bachelorthesis,book,bookpart,conferenceobject,coursematerial,dataset,habilitation,journalissue,masterthesis,other,periodicalpart,postprint,preprint,report,review,software,studythesis,workingpaper</type-bind>
                     <input-type value-pairs-name="common_iso_languages">dropdown</input-type>
                     <hint>Wählen Sie die Sprache des Hauptinhalts des Elements aus. Wenn die Sprache nicht im
                          Liste wählen Sie bitte 'Andere' aus. Wenn der Inhalt nicht wirklich eine Sprache hat (z. B. wenn er
                          ein Datensatz oder ein Bild ist) wählen Sie bitte 'N/A'.
                     </hint>
                     <required></required>
+                </field>
+            </row>
+            <!-- Language/Sprache is for doctoralthesis required -->
+            <row>
+                <field>
+                    <dc-schema>dc</dc-schema>
+                    <dc-element>language</dc-element>
+                    <dc-qualifier>iso</dc-qualifier>
+                    <repeatable>false</repeatable>
+                    <label>Sprache</label>
+                    <type-bind>doctoralthesis</type-bind>
+                    <input-type value-pairs-name="common_iso_languages">dropdown</input-type>
+                    <hint>Wählen Sie die Sprache des Hauptinhalts des Elements aus. Wenn die Sprache nicht im
+                         Liste wählen Sie bitte 'Andere' aus. Wenn der Inhalt nicht wirklich eine Sprache hat (z. B. wenn er
+                         ein Datensatz oder ein Bild ist) wählen Sie bitte 'N/A'.
+                    </hint>
+                    <required>Wählen Sie die Sprache des Hauptinhalts des Elements aus.</required>
                 </field>
             </row>
 
@@ -217,10 +309,26 @@
                     <dc-qualifier>abstract</dc-qualifier>
                     <repeatable>true</repeatable>
                     <label>Zusammenfassung</label>
+                    <type-bind>article,movingimage,bachelorthesis,book,bookpart,conferenceobject,coursematerial,dataset,habilitation,journalissue,masterthesis,other,periodicalpart,postprint,preprint,report,review,software,studythesis,workingpaper</type-bind>
                     <language value-pairs-name="common_iso_languages">true</language>
                     <input-type>textarea</input-type>
                     <hint>Geben Sie die Zusammenfassung des Artikels ein</hint>
                     <required></required>
+                </field>
+            </row>
+            <!-- Abstract is for doctoralthesis requred -->
+            <row> 
+                <field>            
+                    <dc-schema>dc</dc-schema>
+                    <dc-element>description</dc-element>
+                    <dc-qualifier>abstract</dc-qualifier>
+                    <repeatable>true</repeatable>
+                    <label>Zusammenfassung</label>
+                    <type-bind>doctoralthesis</type-bind>
+                    <language value-pairs-name="common_iso_languages">true</language>
+                    <input-type>textarea</input-type>
+                    <hint>Geben Sie die Zusammenfassung des Artikels ein</hint>
+                    <required>Geben Sie die Zusammenfassung des Artikels ein</required>
                 </field>
             </row>
 
@@ -246,7 +354,7 @@
                     <repeatable>true</repeatable>
                     <label>DDC-Schlagworte oder ID</label>
                     <input-type>tag</input-type>
-                    <hint>Geben Sie passende DDC-Schlagworte oder DDC-ID ein.</hint>
+                    <hint>Geben Sie passende DDC-Schlagworte oder DDC-Id ein. (z.B.660 Technik, Technologie). Siehe FAQ um mehr zu erfahren.</hint>
                     <required></required>
                     <vocabulary>ddc</vocabulary>
                 </field>
@@ -361,10 +469,24 @@
                   <dc-qualifier>title</dc-qualifier>
                   <repeatable>false</repeatable>
                   <label>Titel des Zeitschrift / Sammelwerk</label>
-                  <type-bind>conferenceobject,article,bookpart,review,postprint,preprint,journalissue,other</type-bind>
+                  <type-bind>conferenceobject,article,bookpart,review,postprint,preprint,other</type-bind>
                   <input-type>onebox</input-type>
                   <hint>Bitten geben Sie das Titel des übergeordneter Werke ein (z.B. Zeitschrift oder Sammelband)</hint>
                   <required></required>
+              </field>
+         </row>
+         <!-- local.journal.title/Titel des Zeitschrift is for journalissue required -->
+         <row>
+               <field>
+                  <dc-schema>local</dc-schema>
+                  <dc-element>journal</dc-element>
+                  <dc-qualifier>title</dc-qualifier>
+                  <repeatable>false</repeatable>
+                  <label>Titel des Zeitschrift / Sammelwerk</label>
+                  <type-bind>journalissue</type-bind>
+                  <input-type>onebox</input-type>
+                  <hint>Bitten geben Sie das Titel des übergeordneter Werke ein. (z.B. Zeitschrift oder Sammelband)</hint>
+                  <required>Bitten geben Sie das Titel des übergeordneter Werke ein.</required>
               </field>
          </row>
          <row>
@@ -493,9 +615,9 @@
                    <label>Dokumentenlizenz</label>
                    <input-type value-pairs-name="fau_licenses">dropdown</input-type>
                    <hint>
-                  	Wählen Sie eine Lizenz für Ihr einreichendes Element aus. Weitere Informationen rund um die Lizenzbedienungen finden Sie im unsere FAQ, unter https://repotest.ub.fau.de/info/faq/legallicense.
+                  	Bitte wählen Sie eine Lizenz für Ihr einreichendes Element aus. Weitere Informationen rund um die Lizenzbedienungen finden Sie im unsere FAQ, unter https://repotest.ub.fau.de/info/faq/legallicense.
                   </hint>
-                   <required></required>
+                   <required>Bitte wählen Sie eine Lizenz für Ihr einreichendes Element aus.</required>
                 </field>
             </row>
         </form>
@@ -2273,10 +2395,12 @@
 
 <!-- FAU Verlag and Creative Commons License added -->
        <value-pairs value-pairs-name="fau_licenses" dc-term="rights">
+            <!--
             <pair>
                 <displayed-value>Ohne Lizenz</displayed-value>
                 <stored-value></stored-value>
             </pair>
+            -->
 <!-- Creative Commons -->
             <pair>
                 <displayed-value>Creative Commons Namensnennung 4.0 International (CC BY)</displayed-value>

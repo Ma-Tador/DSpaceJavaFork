@@ -55,18 +55,18 @@
         <xsl:choose>
             <xsl:when test="@type ='doi'">
              <!--   <dim:field mdschema="created" element="identifier" qualifier="doi">  -->
-             	    <dim:field mdschema="local" element="identifier" qualifier="doi">
+             	    <dim:field mdschema="dc" element="identifier" qualifier="doi">
                     <xsl:value-of select="."/>
                 </dim:field>
             </xsl:when>
 	    <xsl:when test="@type ='urn'">
                <!-- <dim:field mdschema="created" element="identifier" qualifier="urn">  -->   
-               <dim:field mdschema="local" element="identifier" qualifier="urn">                                                                                                                                               <xsl:value-of select="."/>
+               <dim:field mdschema="dc" element="identifier" qualifier="urn">                                                                                                                                               <xsl:value-of select="."/>
                 </dim:field>
             </xsl:when>
             <!--  dc.identifier.* -->
             <xsl:otherwise>
-            	<dim:field mdschema="local" element="identifier" qualifier="other">
+            	<dim:field mdschema="dc" element="identifier" qualifier="other">
             	<xsl:value-of select="."/>
             	</dim:field>
             </xsl:otherwise>
@@ -149,32 +149,38 @@
             </dim:field>
         </xsl:if>
 
+<!--
       <xsl:if test="mods:dateOther[@type='accepted']">
 	<dim:field mdschema="local" element="date" qualifier="accepted">
 		<xsl:value-of select="mods:dateOther[@type='accepted']"/>
 	</dim:field>
       </xsl:if>
-    </xsl:template>
+   -->
+   <xsl:if test="mods:dateOther[@type='accepted']">
+            <dim:field mdschema="local" element="date" qualifier="accepted">
+                <xsl:value-of select="mods:dateOther"/>
+            </dim:field>
+   </xsl:if>
+   </xsl:template>
     
     
     <!--   mods relatedItem   -->
     <xsl:template match="mods:mods/mods:relatedItem[@type='host']">
          
-        <!-- mods:/relatedItem[@type="host"]/titleInfo/title   ====>   journaltitle -->
+        <!-- mods:/relatedItem[@type="host"]/titleInfo/title   ====>   journaltitle 
         <xsl:if test="mods:titleInfo/mods:title">
-            <xsl:element name="dim:field">
-            <!--    <xsl:attribute name="mdschema">created</xsl:attribute>   -->
-            <xsl:attribute name="mdschema">local</xsl:attribute>
-                <xsl:attribute name="element">journal</xsl:attribute> 
-                <xsl:attribute name="qualifier">title</xsl:attribute>
-                <xsl:if test="mods:titleInfo/mods:title/@xml:lang">
-                    <xsl:attribute name="lang">
-                        <xsl:value-of select="mods:titleInfo/mods:title/@xml:lang"/>
-                    </xsl:attribute>
-                </xsl:if>
-                <xsl:value-of select="normalize-space(mods:titleInfo/mods:title)"/>
-            </xsl:element> 
+            	<dim:field mdschema="local" element="journal" qualifier="title">
+                   <xsl:value-of select="normalize-space(mods:titleInfo/mods:title)"/>
+                </dim:field>  
         </xsl:if>
+        -->
+        
+        <xsl:for-each select="mods:titleInfo">
+                <dim:field mdschema="local" element="journal" qualifier="title">
+                    <xsl:value-of select="mods:title"/>
+                </dim:field>
+        </xsl:for-each>
+        
         
         <!--   mods:/relatedItem[@type="host"]/identifier[@type="issn']  -->
         <xsl:for-each select="mods:identifier">
@@ -194,22 +200,19 @@
             </xsl:if>
         </xsl:for-each>
 
-<!--   mods:/relatedItem[@type="host"]/identifier[@type="eIssn or pIssn']  -->
-<xsl:for-each select="mods:identifier">
-     <xsl:if test="@type='eIssn' or @type='pIssn'">
-       <dim:field mdschema="local" element="identifier" qualifier="issn">
-         <xsl:value-of select="."/>
-       </dim:field>
-    </xsl:if>
-</xsl:for-each>			
-
-
+	<!--   mods:/relatedItem[@type="host"]/identifier[@type="eIssn or pIssn']  -->
+	<xsl:for-each select="mods:identifier">
+	     <xsl:if test="@type='eIssn' or @type='pIssn'">
+	       <dim:field mdschema="local" element="identifier" qualifier="issn">
+		 <xsl:value-of select="."/>
+	       </dim:field>
+	    </xsl:if>
+	</xsl:for-each>			
         
         <!--    mods:/relatedItem/part/detail[@type="volume" | @type="issue"]    ====>   created.journal.[volume, issue] -->
         <xsl:if test="mods:part">
             <xsl:for-each select="mods:part/mods:detail">
                 <xsl:element name="dim:field">
-                <!--    <xsl:attribute name="mdschema">created</xsl:attribute>   -->
                 <xsl:attribute name="mdschema">local</xsl:attribute>
                     <xsl:attribute name="element">journal</xsl:attribute>
                     <xsl:attribute name="qualifier">

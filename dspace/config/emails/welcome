@@ -12,4 +12,23 @@ edit and/or approve submissions.
 If you need assistance with your account, please email
 ${config.get("mail.admin")}.
 
-The ${config.get('dspace.name')} Team
+The OPEN FAU Team
+#The ${config.get('dspace.name')} Team
+
+
+
+------------------------------------------------------------------------------
+
+
+
+Vielen Dank für die Registrierung eines Kontos. Ihr neues Konto kann sofort verwendet werden
+um Benachrichtigungen über neue Inhalte zu abonnieren, die in Sammlungen Ihrer Wahl eintreffen.
+
+Ihrem neuen Konto können auch Privilegien zum Einreichen neuer Inhalte gewährt werden
+Einreichungen bearbeiten und/oder genehmigen.
+
+Wenn Sie Hilfe mit Ihrem Konto benötigen, senden Sie bitte eine E-Mail an
+${config.get("mail.admin")}.
+
+
+OPEN FAU Team

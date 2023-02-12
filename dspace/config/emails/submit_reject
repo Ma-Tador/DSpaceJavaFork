@@ -20,7 +20,7 @@ ${params[3]}
 Your submission has not been deleted.  You can access it from your
 "My FAU Repositorium" page: ${params[4]}
 
-FAU Repository Team
+OPEN FAU Repository Team
 
 
 --------------------------------------------------------------------------
@@ -38,4 +38,4 @@ ${params[3]}
 Ihre Einreichung wurde nicht gelöscht. Sie können ihre Einreichung auf
 "My FAU Repository" Seite finden: ${params[4]}
 
-Das Repositorium-Team der FAU
+Das Repositorium-Team der OPEN FAU
