@@ -90,15 +90,13 @@ public class ClaimAction extends UserSelectionAction {
             }
             XmlWorkflowService xmlWorkflowService = XmlWorkflowServiceFactory.getInstance().getXmlWorkflowService();
             xmlWorkflowService.alertUsersOnTaskActivation(c, wfi, "submit_task", roleMembers.getAllUniqueMembers(c),
-                    //The arguments
                     wfi.getItem().getName(),
                     wfi.getCollection().getName(),
                     submitterName,
-                    //TODO: message
                     "New task available.",
-                    //xmlWorkflowService.getMyDSpaceLink(),  //ORG 
+                    xmlWorkflowService.getMyDSpaceLink() + "?configuration=workflow"
                     //modified to send the workflowItemID for direct access @Steli
-                    "https://repotest.ub.fau.de/workflowitems/" + wfi.getID() + "/view"  
+                    // "https://repotest.ub.fau.de/workflowitems/" + wfi.getID() + "/view"  
             );
         } catch (MessagingException e) {
             log.info(LogHelper.getHeader(c, "error emailing user(s) for claimed task",
