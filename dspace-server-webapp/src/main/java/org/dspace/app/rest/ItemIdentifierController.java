@@ -235,10 +235,12 @@ public class ItemIdentifierController {
                 boolean pending = false;
                 Integer doiStatus = doiService.findDOIByDSpaceObject(context, item).getStatus();
                 log.debug("Steli got DOI status" + doiStatus);
-                // Check DOI status -> check to NOT be already online-registered (if minted, pending or registered go update doi)
-                if (null == doiStatus || DOIIdentifierProvider.MINTED.equals(doiStatus)
-                            || DOIIdentifierProvider.PENDING.equals(doiStatus) 
-                            //|| DOIIdentifierProvider.UPDATE_BEFORE_REGISTRATION.equals(doiStatus) 
+                // Check DOI status -> check to NOT be already online-registered/reserver/deleted (if minted, pending or local reserved,update,registered go update doi)
+                if (null == doiStatus
+                            || DOIIdentifierProvider.MINTED.equals(doiStatus)
+                            || DOIIdentifierProvider.PENDING.equals(doiStatus)
+                            || DOIIdentifierProvider.UPDATE_BEFORE_REGISTRATION.equals(doiStatus)
+                            || DOIIdentifierProvider.TO_BE_RESERVED.equals(doiStatus)
                             || DOIIdentifierProvider.TO_BE_REGISTERED.equals(doiStatus)) {
                     pending = true;
                     log.debug("Steli doi is pending true");
