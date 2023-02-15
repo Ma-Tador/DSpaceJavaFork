@@ -7,14 +7,19 @@
  */
 package org.dspace.app.rest;
 
+import java.io.IOException;
 import static org.dspace.app.rest.utils.RegexUtils.REGEX_REQUESTMAPPING_IDENTIFIER_AS_UUID;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import java.util.stream.Collectors;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import org.apache.logging.log4j.LogManager;
 
 import org.dspace.app.rest.converter.ConverterService;
 import org.dspace.app.rest.converter.MetadataConverter;
@@ -38,6 +43,7 @@ import org.dspace.identifier.IdentifierNotFoundException;
 import org.dspace.identifier.service.DOIService;
 import org.dspace.identifier.service.IdentifierService;
 import org.dspace.services.factory.DSpaceServicesFactory;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.rest.webmvc.ControllerUtils;
 import org.springframework.data.rest.webmvc.ResourceNotFoundException;
@@ -82,6 +88,9 @@ public class ItemIdentifierController {
 
     @Autowired
     Utils utils;
+    
+    private static final org.slf4j.Logger log = LoggerFactory.getLogger(ItemIdentifierController.class);
+    
 
     /**
      * Get list of identifiers associated with this item, along with type (eg doi, handle)
@@ -177,6 +186,79 @@ public class ItemIdentifierController {
         } catch (IdentifierNotFoundException e) {
             httpStatus = HttpStatus.NOT_FOUND;
         } catch (IdentifierException e) {
+            throw new IllegalStateException("Failed to register identifier: " + identifier);
+        }
+        // We didn't exactly change the item, but we did queue an identifier which is closely associated with it
+        // so we should update the last modified date here
+        itemService.updateLastModified(context, item);
+        itemRest = converter.toRest(item, utils.obtainProjection());
+        context.complete();
+        ItemResource itemResource = converter.toResource(itemRest);
+        // Return the status and item resource
+        return ControllerUtils.toResponseEntity(httpStatus, new HttpHeaders(), itemResource);
+    }
+    
+    
+    //REST ENDPOINT: https://repotest.ub.fau.de/server/api/core/items/{itemUUID}/identifiers
+    //User when an Item is manualy passing the filter by Admin (Item->Edit->Status->Register DOI->Edit DOI),
+    //and the autom generated DOI should be changed (to contain for ex.the ISSN)
+    @RequestMapping(method = RequestMethod.PUT)
+    @PreAuthorize("hasPermission(#uuid, 'ITEM', 'ADMIN')")
+    public ResponseEntity<RepresentationModel<?>> updateIdentifierFromString(@PathVariable UUID uuid,
+                                                                            HttpServletRequest request,
+                                                                            HttpServletResponse response)
+            throws SQLException, AuthorizeException {
+        
+        Context context = ContextUtil.obtainContext(request);
+        Item item = itemService.find(context, uuid);
+        ItemRest itemRest;
+
+        if (item == null) {
+            throw new ResourceNotFoundException("Could not find item with id " + uuid);
+        }
+        //get doi as a string from request body
+        String identifier = "";
+        try {
+            identifier = request.getReader().lines().reduce("", String::concat);
+            log.debug("Steli after reading doiString" + identifier);
+        } catch (IOException ex) {
+            Logger.getLogger(ItemIdentifierController.class.getName()).log(Level.SEVERE, null, ex);
+        }  
+        HttpStatus httpStatus = HttpStatus.BAD_REQUEST;
+        try {
+            DOIIdentifierProvider doiIdentifierProvider = DSpaceServicesFactory.getInstance().getServiceManager()
+                    .getServiceByName("org.dspace.identifier.DOIIdentifierProvider", DOIIdentifierProvider.class);
+           log.debug("Steli got DOIIdProvider");
+            if (doiIdentifierProvider != null) {
+                DOI doi = doiService.findDOIByDSpaceObject(context, item);
+                log.debug("Steli found Doi for dsobject");
+                boolean pending = false;
+                Integer doiStatus = doiService.findDOIByDSpaceObject(context, item).getStatus();
+                log.debug("Steli got DOI status" + doiStatus);
+                // Check DOI status -> check to NOT be already online-registered (if minted, pending or registered go update doi)
+                if (null == doiStatus || DOIIdentifierProvider.MINTED.equals(doiStatus)
+                            || DOIIdentifierProvider.PENDING.equals(doiStatus) 
+                            //|| DOIIdentifierProvider.UPDATE_BEFORE_REGISTRATION.equals(doiStatus) 
+                            || DOIIdentifierProvider.TO_BE_REGISTERED.equals(doiStatus)) {
+                    pending = true;
+                    log.debug("Steli doi is pending true");
+                }
+                //if not already online registered, update doi to have the new string
+                if (pending) {
+                    log.debug("Steli DOi NOT existent/pending");
+                    // update current registered doi to mint our doiString and return status OK
+                    doiIdentifierProvider.updateDOIFromString(context, item, identifier, doi);
+                    log.debug("Steli created");
+                    httpStatus = HttpStatus.OK;
+                } else {
+                    log.debug("Steli DOI already online-registered. Not possible to update/create. Try another doiString.");
+                    // If the item is already online-registered, NO update possible (the old DOI is preserved)
+                    httpStatus = HttpStatus.FOUND;
+                }
+            } else {
+                throw new IllegalStateException("No DOI provider is configured");
+            }
+        } catch (Exception e){
             throw new IllegalStateException("Failed to register identifier: " + identifier);
         }
         // We didn't exactly change the item, but we did queue an identifier which is closely associated with it

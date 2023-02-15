@@ -1004,6 +1004,129 @@ public class DOIIdentifierProvider extends FilteredIdentifierProvider {
 
         return doi;
     }
+    
+    /*
+    public DOI updateDOIFromString2(Context context, DSpaceObject dso, String doiIdentifier)
+        throws SQLException, DOIIdentifierException, IdentifierNotApplicableException {
+
+        DOI doi = null;
+        Filter filter = new TrueFilter();
+        // Was an identifier specified that we shall try to load or create if it is not existing yet?
+        if (null != doiIdentifier) {
+            //get tid of https://doi.org and let only the prefix and suffix
+            doiIdentifier = doiIdentifier.substring(16); 
+            log.warn("Steli DOIstring after substring is: " + doiIdentifier);
+            // check if DOI is already in Database
+            doi = doiService.findByDoi(context, doiIdentifier);
+            log.warn("Steli findByDoi called for our substr doi");
+            if (null != doi) {
+                log.warn("Steli doi not null");
+                if (doi.getDSpaceObject() == null) {
+                    log.warn("Steli doi.getDSpaceObject is null");
+                    // doi was deleted, check resource type
+                    if (doi.getResourceTypeId() != null
+                        && doi.getResourceTypeId() != dso.getType()) {
+                        // doi was assigned to another resource type. Don't
+                        // reactivate it
+                        throw new DOIIdentifierException("Cannot reassign"
+                            + " previously deleted DOI " + doiIdentifier
+                            + " as the resource types of the object it was"
+                            + " previously assigned to and the object it"
+                            + " shall be assigned to now differ (was: "
+                            + Constants.typeText[doi.getResourceTypeId()]
+                            + ", trying to assign to "
+                            + Constants.typeText[dso.getType()] + ").",
+                            DOIIdentifierException.DOI_IS_DELETED);
+                    } else {
+                        // nothing to do here, doi will be reassigned after if-else block
+                    }
+                } else {
+                    // doi is assigned to a DSO; is it assigned to our specific dso?
+                    // check if DOI already belongs to dso
+                    if (dso.getID().equals(doi.getDSpaceObject().getID())) {
+                        log.warn("Steli check if out doi already belongs to item and if so return doi aka already created");
+                        return doi;
+                    } else {
+                        throw new DOIIdentifierException("Trying to create a DOI " +
+                            "that is already reserved for another object.",
+                            DOIIdentifierException.DOI_ALREADY_EXISTS);
+                    }
+                }
+            }
+            // Check if this item is eligible for minting. An IdentifierNotApplicableException will be thrown if not.
+            checkMintable(context, filter, dso);
+            log.warn("Steli checkMintable doi");
+            // check prefix
+            if (!doiIdentifier.startsWith(this.getPrefix() + "/")) {
+                throw new DOIIdentifierException("Trying to create a DOI " +
+                    "that's not part of our Namespace!",
+                    DOIIdentifierException.FOREIGN_DOI);
+            }
+            if (doi == null) {
+                // prepare new doiRow
+                doi = doiService.create(context);
+                log.warn("Steli create doi");
+            }
+        } else {
+            log.warn("Steli checkingMintable item...");
+            // Check if this item is eligible for minting. An IdentifierNotApplicableException will be thrown if not.
+            checkMintable(context, filter, dso);
+            log.warn("Steli creating doi...");
+            doi = doiService.create(context);
+            //doiIdentifier = this.getPrefix() + "/" + this.getNamespaceSeparator() + doi.getID();
+        }
+        log.warn("Steli preparing new doi...");
+        // prepare new doiRow
+        doi.setDoi(doiIdentifier);
+        doi.setDSpaceObject(dso);
+        doi.setStatus(MINTED);
+        try {
+            log.warn("Steli trying doi update...");
+            doiService.update(context, doi);
+        } catch (SQLException e) {
+            throw new RuntimeException("Cannot save DOI to database for unknown reason.");
+        }
+        log.warn("Steli returning doi...");
+        return doi;
+    }
+    */
+    
+    
+    //Update the registered DOI, to contain the provided doiString via doi.setDoi(doiString)
+    //The update is possible only if the DOI is not already online-registered (only if is in out DB and not sent to DataCite)
+    public DOI updateDOIFromString(Context context, DSpaceObject dso, String doiIdentifier, DOI doiToUpdate)
+        throws SQLException, DOIIdentifierException, IdentifierNotApplicableException {
+            
+            Filter filter = new TrueFilter();
+            //get rid of https://doi.org from input form, and let only the prefix and suffix
+            doiIdentifier = doiIdentifier.substring(16); 
+            log.debug("Steli calling findByDoi(doiString)...");
+            DOI doi = doiService.findByDoi(context, doiIdentifier);
+            if (null != doi) {   
+                log.debug("Steli Given doiString IS used as doi for another item! ERROR, cant use same doi for 2 diff items!");
+                throw new DOIIdentifierException("Cannot assign this DOI (" + doi.getDoi() + 
+                ") because another object has already this DOI asigned. Please provide another DOI.",
+            DOIIdentifierException.DOI_ALREADY_EXISTS);
+            } else { 
+                log.debug("Steli checkingMintable doi...An IdentifierNotApplicableException will be thrown if not.");
+                checkMintable(context, filter, dso);
+                log.debug("Steli checking prefix doiString...");
+                if (!doiIdentifier.startsWith(this.getPrefix() + "/")) {
+                    throw new DOIIdentifierException("Trying to create a DOI that's not part of our Namespace!",
+                    DOIIdentifierException.FOREIGN_DOI);
+                }
+                log.debug("Steli set doi to doiString");
+                doiToUpdate.setDoi(doiIdentifier);
+                try {
+                    log.debug("Steli trying old doi update in order to replace doi.setDoi(provided doiString)...");
+                    doiService.update(context, doiToUpdate);
+                } catch (SQLException e) {
+                    throw new RuntimeException("Cannot save DOI to database for unknown reason.");
+                }
+                return doiToUpdate;        
+        }
+    }
+    
 
     /**
      * Loads a DOI out of the metadata of an DSpaceObject.
