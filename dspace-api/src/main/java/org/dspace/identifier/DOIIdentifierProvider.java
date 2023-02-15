@@ -988,8 +988,11 @@ public class DOIIdentifierProvider extends FilteredIdentifierProvider {
             checkMintable(context, filter, dso);
 
             doi = doiService.create(context);
-            doiIdentifier = this.getPrefix() + "/" + this.getNamespaceSeparator() +
-                doi.getID();
+            //ORG create new DOI based on prefix/namesapceseparator-doi_id
+            //doiIdentifier = this.getPrefix() + "/" + this.getNamespaceSeparator() + doi.getID();
+            //Get the last part of the handle (after last /)
+            doiIdentifier = this.getPrefix() + "/" + this.getNamespaceSeparator() + 
+                    dso.getHandle().substring(dso.getHandle().lastIndexOf("/") + 1);
         }
 
         // prepare new doiRow
