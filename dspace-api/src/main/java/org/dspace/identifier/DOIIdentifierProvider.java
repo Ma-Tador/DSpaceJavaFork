@@ -989,10 +989,10 @@ public class DOIIdentifierProvider extends FilteredIdentifierProvider {
 
             doi = doiService.create(context);
             //ORG create new DOI based on prefix/namesapceseparator-doi_id
-            //doiIdentifier = this.getPrefix() + "/" + this.getNamespaceSeparator() + doi.getID();
+            doiIdentifier = this.getPrefix() + "/" + this.getNamespaceSeparator() + doi.getID();
             //Get the last part of the handle (after last /)
-            doiIdentifier = this.getPrefix() + "/" + this.getNamespaceSeparator() + 
-                    dso.getHandle().substring(dso.getHandle().lastIndexOf("/") + 1);
+            //doiIdentifier = this.getPrefix() + "/" + this.getNamespaceSeparator() + 
+            //        dso.getHandle().substring(dso.getHandle().lastIndexOf("/") + 1);
         }
 
         // prepare new doiRow
