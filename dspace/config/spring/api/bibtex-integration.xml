@@ -17,17 +17,72 @@
             only matters here for postprocessing of the value. The mapped MetadatumContributor has full control over
             what metadatafield is generated.
         </description>
+        <entry key-ref="dcPublPlace" value-ref="bibtexAddress" />
         <entry key-ref="dcType" value-ref="bibtexTypeContrib" />
         <entry key-ref="dcTitle" value-ref="bibtexTitleContrib" />
         <entry key-ref="dcAuthors" value-ref="bibtexAuthorsContrib" />
+        <entry key-ref="dcEditors" value-ref="bibtexEditor" />
+        <entry key-ref="dcEdition" value-ref="bibtexEdition" />
         <entry key-ref="dcJournal" value-ref="bibtexJournalContrib" />
-		<entry key-ref="dcIssued" value-ref="bibtexIssuedContrib" />
-		<entry key-ref="dcJissn" value-ref="bibtexJissnContrib" />    
+        <entry key-ref="dcJournalVol" value-ref="bibtexJournalVol" />
+	<entry key-ref="dcIssued" value-ref="bibtexIssuedContrib" />
+	<entry key-ref="dcJissn" value-ref="bibtexJissnContrib" />   
+	<entry key-ref="dcSerieName" value-ref="bibtexSerieName" />  
+	<entry key-ref="dcSerieNumber" value-ref="bibtexSerieNumber" />  
+	<entry key-ref="dcDoi" value-ref="bibtexDoi" />
+	<entry key-ref="dcPisbn" value-ref="bibtexIsbn" />
+	<entry key-ref="dcUri" value-ref="bibtexUrl" />
+	<entry key-ref="dcOrganisation" value-ref="bibtexInstitution" />
     </util:map>
+    
+    <bean id="bibtexUrl" class="org.dspace.importer.external.metadatamapping.contributor.SimpleMetadataContributor">
+        <property name="field" ref="dcUri"/>
+        <property name="key" value="url" />
+    </bean>
+    <bean id="bibtexIsbn" class="org.dspace.importer.external.metadatamapping.contributor.SimpleMetadataContributor">
+        <property name="field" ref="dcPisbn"/>
+        <property name="key" value="isbn" />
+    </bean>
+    <bean id="bibtexJournalVol" class="org.dspace.importer.external.metadatamapping.contributor.SimpleMetadataContributor">
+        <property name="field" ref="dcJournalVol"/>
+        <property name="key" value="volume" />
+    </bean>
+    <bean id="bibtexEditor" class="org.dspace.importer.external.metadatamapping.contributor.SimpleMetadataContributor">
+        <property name="field" ref="dcEditors"/>
+        <property name="key" value="editor" />
+    </bean>
+    <bean id="bibtexEdition" class="org.dspace.importer.external.metadatamapping.contributor.SimpleMetadataContributor">
+        <property name="field" ref="dcEdition"/>
+        <property name="key" value="edition" />
+    </bean>
+    <bean id="bibtexAddress" class="org.dspace.importer.external.metadatamapping.contributor.SimpleMetadataContributor">
+        <property name="field" ref="dcPublPlace"/>
+        <property name="key" value="address" />
+    </bean>
+    
+    <bean id="bibtexInstitution" class="org.dspace.importer.external.metadatamapping.contributor.SimpleMetadataContributor">
+        <property name="field" ref="dcOrganisation"/>
+        <property name="key" value="institution" />
+    </bean>
+    
+    <bean id="bibtexDoi" class="org.dspace.importer.external.metadatamapping.contributor.SimpleMetadataContributor">
+        <property name="field" ref="dcDoi"/>
+        <property name="key" value="doi" />
+    </bean>
+    
+    <bean id="bibtexSerieNumber" class="org.dspace.importer.external.metadatamapping.contributor.SimpleMetadataContributor">
+        <property name="field" ref="dcSerieNumber"/>
+        <property name="key" value="number" />
+    </bean>
+    
+    <bean id="bibtexSerieName" class="org.dspace.importer.external.metadatamapping.contributor.SimpleMetadataContributor">
+        <property name="field" ref="dcSerieName"/>
+        <property name="key" value="series" />
+    </bean>
 
     <bean id="bibtexJissnContrib" class="org.dspace.importer.external.metadatamapping.contributor.SimpleMetadataContributor">
         <property name="field" ref="dcJissn"/>
-        <property name="key" value="ISSN" />
+        <property name="key" value="issn" />
     </bean>
 
     <bean id="bibtexIssuedContrib" class="org.dspace.importer.external.metadatamapping.contributor.SimpleMetadataContributor">
@@ -49,7 +104,7 @@
         </constructor-arg>
         <constructor-arg name="regex" value="\sand\s"/>
     </bean>
-    
+ 
     <bean id="bibtexTitleContrib" class="org.dspace.importer.external.metadatamapping.contributor.SimpleMetadataContributor">
         <property name="field" ref="dcTitle"/>
         <property name="key" value="title" />

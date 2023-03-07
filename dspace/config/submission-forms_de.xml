@@ -86,7 +86,7 @@
                     <label>Autor*in</label>
                     <type-bind>article,movingimage,bachelorthesis,book,bookpart,conferenceobject,coursematerial,dataset,habilitation,journalissue,masterthesis,other,periodicalpart,postprint,preprint,report,review,software,studythesis,workingpaper</type-bind>
                     <input-type>onebox</input-type>
-                    <hint>Geben Sie den Namen des Autors ein. ('Familienname, Vornamen' oder 'Vornamen Familienname') </hint>
+                    <hint>Familienname, Vorname</hint>
                     <required></required>
                 </field>
             </row>
@@ -100,7 +100,7 @@
                     <label>Autor*in</label>
                     <type-bind>doctoralthesis</type-bind>
                     <input-type>onebox</input-type>
-                    <hint>Geben Sie den Namen des Autors ein. ('Familienname, Vornamen' oder 'Vornamen Familienname') </hint>
+                    <hint>Familienname, Vorname</hint>
                     <required>Geben Sie den Namen des Autors ein.</required>
                 </field>
             </row>
@@ -114,7 +114,7 @@
                     <label>Betreuer*in</label>
                     <type-bind>habilitation,masterthesis,bachelorthesis,other</type-bind>
                     <input-type>onebox</input-type>
-                    <hint>Geben Sie den Namen des Betreuer*in ein. ('Familienname, Vornamen' oder 'Vornamen Familienname') </hint>
+                    <hint>Familienname, Vorname</hint>
                     <required></required>
                 </field>
             </row>
@@ -128,7 +128,7 @@
                     <label>Betreuer*in</label>
                     <type-bind>doctoralthesis</type-bind>
                     <input-type>onebox</input-type>
-                    <hint>Geben Sie den Namen des Betreuer*in ein. ('Familienname, Vornamen' oder 'Vornamen Familienname') </hint>
+                    <hint>Familienname, Vorname</hint>
                     <required>Bitte geben Sie den Namen des Betreuer*in ein.</required>
                 </field>
             </row>
@@ -142,7 +142,7 @@
                     <label>Gutachter*in</label>
                     <type-bind>habilitation,masterthesis,bachelorthesis,other</type-bind>
                     <input-type>onebox</input-type>
-                    <hint>Geben Sie den Namen des Gutachter*innen ein. ('Familienname, Vornamen' oder 'Vornamen Familienname') </hint>
+                    <hint>Familienname, Vorname</hint>
                     <required></required>
                  </field>
             </row>
@@ -156,7 +156,7 @@
                     <label>Gutachter*in</label>
                     <type-bind>doctoralthesis</type-bind>
                     <input-type>onebox</input-type>
-                    <hint>Geben Sie den Namen des Gutachter*innen ein. ('Familienname, Vornamen' oder 'Vornamen Familienname') </hint>
+                    <hint>Familienname, Vorname</hint>
                     <required>Geben Sie den Namen des Gutachter*innen ein.</required>
                  </field>
             </row>
@@ -223,7 +223,7 @@
                 <repeatable>true</repeatable>
                 <label>Herausgeber*in</label>
                 <input-type>onebox</input-type>
-                <hint>Geben Sie den Namen des Herausgeber*in ein. ('Familienname, Vornamen' oder 'Vornamen Familienname') </hint>
+                <hint>Familienname, Vorname</hint>
                 <required></required>
               </field>
           </row>
@@ -237,7 +237,7 @@
                     <repeatable>true</repeatable>
                     <label>Weitere beteiligte Personen</label>
                     <input-type value-pairs-name="contributor_list">qualdrop_value</input-type>
-                    <hint>Geben Sie weitere beteiligte Personen ein. ('Familienname, Vornamen' oder 'Vornamen Familienname') </hint>
+                    <hint>Tragen Sie bitte weitere beteiligte Personen mit "Familienname, Vorname" ein.</hint>
                     <required></required>
                 </field>
             </row>
@@ -251,8 +251,8 @@
                     <label>Titel des Dokuments</label>
                     <language value-pairs-name="common_iso_languages">true</language>
                     <input-type>onebox</input-type>
-                    <hint></hint>
-                    <required>Sie müssen einen Titel für diesen Artikel eingeben.</required>
+                    <hint>Bitte tragen Sie den Titel des Dokuments ein.</hint>
+                    <required>Sie müssen den Titel des Dokuments eingeben.</required>
                 </field>
             </row>
             
@@ -264,7 +264,7 @@
                     <repeatable>true</repeatable>
                     <label>Weitere Titel</label>
                     <input-type>onebox</input-type>
-                    <hint>Wenn der Artikel alternative Titel hat, geben Sie diese bitte hier ein.</hint>
+                    <hint>Wenn das Dokument alternative Titel hat, geben Sie diese bitte hier mit ein. Reine Übersetzungstitel sind dabei nicht gemeint, diese sind beim Titel des Dokuments einzugeben.</hint>
                     <required></required>
                 </field>
             </row>
@@ -277,8 +277,8 @@
                     <label>Sprache</label>
                     <type-bind>article,movingimage,bachelorthesis,book,bookpart,conferenceobject,coursematerial,dataset,habilitation,journalissue,masterthesis,other,periodicalpart,postprint,preprint,report,review,software,studythesis,workingpaper</type-bind>
                     <input-type value-pairs-name="common_iso_languages">dropdown</input-type>
-                    <hint>Wählen Sie die Sprache des Hauptinhalts des Elements aus. Wenn die Sprache nicht im
-                         Liste wählen Sie bitte 'Andere' aus. Wenn der Inhalt nicht wirklich eine Sprache hat (z. B. wenn er
+                    <hint>Wählen Sie die Sprache des Hauptinhalts des Dokuments aus. Wenn die Sprache nicht in der
+                         Liste steht, wählen Sie bitte 'Andere' aus. Wenn der Inhalt nicht wirklich eine Sprache hat (z. B. wenn er
                          ein Datensatz oder ein Bild ist) wählen Sie bitte 'N/A'.
                     </hint>
                     <required></required>
@@ -294,11 +294,11 @@
                     <label>Sprache</label>
                     <type-bind>doctoralthesis</type-bind>
                     <input-type value-pairs-name="common_iso_languages">dropdown</input-type>
-                    <hint>Wählen Sie die Sprache des Hauptinhalts des Elements aus. Wenn die Sprache nicht im
-                         Liste wählen Sie bitte 'Andere' aus. Wenn der Inhalt nicht wirklich eine Sprache hat (z. B. wenn er
+                    <hint>Wählen Sie die Sprache des Hauptinhalts des Dokuments aus. Wenn die Sprache nicht in der
+                         Liste steht, wählen Sie bitte 'Andere' aus. Wenn der Inhalt nicht wirklich eine Sprache hat (z. B. wenn er
                          ein Datensatz oder ein Bild ist) wählen Sie bitte 'N/A'.
                     </hint>
-                    <required>Wählen Sie die Sprache des Hauptinhalts des Elements aus.</required>
+                    <required>Wählen Sie die Sprache des Hauptinhalts des Dokuments aus.</required>
                 </field>
             </row>
 
@@ -312,7 +312,7 @@
                     <type-bind>article,movingimage,bachelorthesis,book,bookpart,conferenceobject,coursematerial,dataset,habilitation,journalissue,masterthesis,other,periodicalpart,postprint,preprint,report,review,software,studythesis,workingpaper</type-bind>
                     <language value-pairs-name="common_iso_languages">true</language>
                     <input-type>textarea</input-type>
-                    <hint>Geben Sie die Zusammenfassung des Artikels ein</hint>
+                    <hint>Geben Sie die Kurzzusammenfassung/Abstract des Dokuments ein. Weitere Zusammenfassungen in anderen Sprachen tragen Sie mit "+ Hinzufügen" ein.</hint>
                     <required></required>
                 </field>
             </row>
@@ -327,8 +327,8 @@
                     <type-bind>doctoralthesis</type-bind>
                     <language value-pairs-name="common_iso_languages">true</language>
                     <input-type>textarea</input-type>
-                    <hint>Geben Sie die Zusammenfassung des Artikels ein</hint>
-                    <required>Geben Sie die Zusammenfassung des Artikels ein</required>
+                    <hint>Geben Sie die Kurzzusammenfassung/Abstract des Dokuments ein. Weitere Zusammenfassungen in anderen Sprachen tragen Sie mit "+ Hinzufügen" ein.</hint>
+                    <required>Geben Sie die Zusammenfassung/Abstract des Artikels ein.</required>
                 </field>
             </row>
 
@@ -341,7 +341,7 @@
                     <repeatable>true</repeatable>
                     <label>Freie Schlagworte</label>
                     <input-type>onebox</input-type>
-                    <hint>Bitte geben Sie ein Schlagwort ein.</hint>
+                    <hint>Hier können Sie ein Schlagwort eingeben.</hint>
                     <required></required>
                 </field>
             </row>
@@ -352,9 +352,9 @@
                     <dc-qualifier>ddc</dc-qualifier>
                     <!-- An input-type of tag MUST be marked as repeatable -->
                     <repeatable>true</repeatable>
-                    <label>DDC-Schlagworte oder ID</label>
+                    <label>DDC (Dewey-Dezimalklassifikation)</label>
                     <input-type>tag</input-type>
-                    <hint>Geben Sie passende DDC-Schlagworte oder DDC-Id ein. (z.B.660 Technik, Technologie). Siehe FAQ um mehr zu erfahren.</hint>
+                    <hint>Hier können Sie eine DDC-Klasse Ihres Dokumentes eingeben. Beispieleingabe: "500" (für "500 Naturwisseschaften und Mathematik"). Alternativ geben Sie ein übergeordnetes Stichwort für Ihr Dokument ein und Sie erhalten eine DDC-Klasse angezeigt, z.B. wird bei der Eingabe Krank bzw.Krankheit "616 Krankheiten" vorgeschlagen. Eine Übersicht über verfügbare Klassen bekommen Sie unter https://deweysearchde.pansoft.de.</hint>
                     <required></required>
                     <vocabulary>ddc</vocabulary>
                 </field>
@@ -400,7 +400,7 @@
                   <label>Schriftenreihe</label>
                   <type-bind>book,bookpart,doctoralthesis,habilitation,masterthesis,bachelorthesis,other,periodicalpart</type-bind>
                   <input-type value-pairs-name="series_list_dropdown">dropdown</input-type>
-                  <hint>Geben Sie eine Schriftenreihe ein, wenn zutreffend.</hint>
+                  <hint>Geben Sie eine Buch- oder Schriftenreihe ein, wenn zutreffend.</hint>
                   <required></required>
               </field>
            </row>
@@ -415,7 +415,7 @@
 		<label>Bandnummer</label>
 		<type-bind>book,bookpart,doctoralthesis,habilitation,masterthesis,bachelorthesis,other,periodicalpart</type-bind>
 		<input-type>onebox</input-type>
-		<hint>Geben Sie ein Bandnummer für das Dokument ein.</hint>
+		<hint>Geben Sie eine Bandnummer für das Dokument ein, falls zutreffend.</hint>
 		<required></required> 
               </field>
              </row>
@@ -430,7 +430,7 @@
                     <label>Verlag</label>
                 <!--    <style>col-sm-8</style>  -->
                     <input-type>onebox</input-type>
-                    <hint>Falls Ihre Arbeit in einem Verlag erschienen ist, tragen Sie bitte den Verlag ein.</hint>
+                    <hint>Falls Ihr Dokument in einem Verlag erschienen ist, tragen Sie bitte den Verlag ein.</hint>
                     <required></required>
                 </field>
             </row>
@@ -442,7 +442,7 @@
                   <repeatable>false</repeatable>
                   <label>Verlagsort</label>
                   <input-type>onebox</input-type>
-                  <hint>Falls Ihre Arbeit in einem Verlag erschienen ist, tragen Sie bitte den Verlagsort ein.</hint>
+                  <hint>Falls Ihr Dokument in einem Verlag erschienen ist, tragen Sie bitte den Verlagsort ein.</hint>
                   <required></required>
                </field>
            </row>
@@ -454,7 +454,7 @@
                     <repeatable>false</repeatable>
                     <label>Größe (z.B. Seitenzahl, Dateigröße ...)</label>
                     <input-type>onebox</input-type>
-                    <hint></hint>
+                    <hint>Geben Sie die Seitenzahl, die Dateigröße, die Laufzeit... des Dokumentes an.</hint>
                     <required></required>
               </field>
           </row>
@@ -471,7 +471,7 @@
                   <label>Titel des Zeitschrift / Sammelwerk</label>
                   <type-bind>conferenceobject,article,bookpart,review,postprint,preprint,other</type-bind>
                   <input-type>onebox</input-type>
-                  <hint>Bitten geben Sie das Titel des übergeordneter Werke ein (z.B. Zeitschrift oder Sammelband)</hint>
+                  <hint>Bitte geben Sie den Titel des übergeordneter Werke ein (z.B. Zeitschrift oder Sammelband).</hint>
                   <required></required>
               </field>
          </row>
@@ -485,8 +485,8 @@
                   <label>Titel des Zeitschrift / Sammelwerk</label>
                   <type-bind>journalissue</type-bind>
                   <input-type>onebox</input-type>
-                  <hint>Bitten geben Sie das Titel des übergeordneter Werke ein. (z.B. Zeitschrift oder Sammelband)</hint>
-                  <required>Bitten geben Sie das Titel des übergeordneter Werke ein.</required>
+                  <hint>Bitte geben Sie den Titel des übergeordneter Werke ein (z.B. Zeitschrift oder Sammelband).</hint>
+                  <required>Bitten geben Sie den Titel des übergeordneter Werke ein.</required>
               </field>
          </row>
          <row>
@@ -495,10 +495,10 @@
                  <dc-element>journal</dc-element>
                  <dc-qualifier>volume</dc-qualifier>
                  <repeatable>false</repeatable>
-                 <label>Band / Jahrgang</label>
+                 <label>Band (Volume) / Jahrgang</label>
                  <type-bind>conferenceobject,article,bookpart,review,postprint,preprint,journalissue,other</type-bind>
                  <input-type>onebox</input-type>
-                 <hint>Tragen Sie bitte den Band / Jahrgang der Zeitschrift ein. (Band, Vol.)</hint>
+                 <hint>Tragen Sie bitte den Band (Volume) / Jahrgang der Zeitschrift ein.</hint>
                  <required></required>
               </field>
          </row>
@@ -526,7 +526,7 @@
                     <type-bind>conferenceobject,article,postprint,preprint,other</type-bind>
                     <style></style>
                     <input-type>onebox</input-type>
-                    <hint>Bitte geben Sie die Aufsatznummer des Dokument ein.</hint>
+                    <hint>Hier können Sie die Aufsatznummer des Artikels angeben.</hint>
                     <required></required>
                 </field>
           </row>
@@ -538,7 +538,7 @@
                     <repeatable>true</repeatable>
                     <label>Zitat / Originalveröffentlichung</label>
                     <input-type>onebox</input-type>
-                    <hint>Falls das Dokument noch anderweitig veröffentlicht wurde, geben Sie hier bitte die entsprechende Quelle an.</hint>
+                    <hint>Falls das Dokument noch anderweitig veröffentlicht wurde, können Sie hier die entsprechende Originalquelle angeben.</hint>
                     <required></required>
                 </field>
             </row>
@@ -551,7 +551,7 @@
 		<label>Datum der Erstveröffentlichung</label>                                                                                                                                                                                                                  
 		<style>col-sm-4</style>                                                                                                                                                                                                                      
 		<input-type>date</input-type>                                                                                                                                                                                                                
-		<hint>Bitte geben Sie das Datum der vorherigen Veröffentlichung oder öffentlichen Verbreitung an. Sie können den Tag und/oder den Monat weglassen, wenn sie nicht zutreffen.</hint>                                                                                                                                                                                                                                      
+		<hint>Bei Zweitveröffentlichungen geben Sie hier bitte das Jahr oder das Datum der Erstveröffentlichung an.</hint>                                                                                                                                                                                                                                      
 		<required>Sie müssen mindestens das Jahr eingeben</required>                                                                                                                                                                             
 	     </field>                                                                                                                                                                                                                               
 	    </row>
@@ -564,7 +564,7 @@
                     <label>Herausgebende Institution / Konferenzangabe</label>
                     <type-bind>conferenceobject,article,postprint,preprint,book,other</type-bind>
                     <input-type>onebox</input-type>
-                    <hint>Bitte geben Sie die Herausgebende Institution/Konferenzangabe ein.</hint>
+                    <hint>Bitte geben Sie die herausgebende Institution/Konferenzangabe ein.</hint>
                     <required></required>
                 </field>
             </row>
@@ -574,10 +574,10 @@
                     <dc-element>contributor</dc-element>
                     <dc-qualifier></dc-qualifier>
                     <repeatable>true</repeatable>
-                    <label>Beteiligte Institution</label>
+                    <label>Weitere beteiligte Institution</label>
                     <type-bind>book,other</type-bind>
                     <input-type>onebox</input-type>
-                    <hint>Bitte geben Sie die Beteiligte Institution ein.</hint>
+                    <hint>Bitte geben Sie die beteiligte Institution ein.</hint>
                     <required></required>
                 </field>
             </row>
@@ -590,7 +590,7 @@
                     <repeatable>true</repeatable>
                     <label>Identifikatoren</label>
                     <input-type value-pairs-name="common_identifiers">qualdrop_value</input-type>
-                    <hint>Wenn mit dem Artikel Identifikationsnummern oder Codes verbunden sind, geben Sie bitte die Typen und die tatsächlichen Nummern oder Codes ein.</hint>
+                    <hint>Wenn mit dem Dokument Identifikationsnummern (DOI, ISBN, ISSN, EU-Grantnummer...) oder Codes verbunden sind, geben Sie bitte die Typen und die tatsächlichen Nummern oder Codes ein.</hint>
                     <required></required>
                 </field>
             </row>
@@ -602,7 +602,7 @@
                     <repeatable>false</repeatable>
                     <label>Beschreibung</label>
                     <input-type>textarea</input-type>
-                    <hint>Geben Sie in dieses Feld weitere Beschreibungen oder Kommentare ein</hint>
+                    <hint>Hier können Sie weitere Beschreibungen oder Kommentare angeben.</hint>
                     <required></required>
                 </field>
             </row>
@@ -615,9 +615,9 @@
                    <label>Dokumentenlizenz</label>
                    <input-type value-pairs-name="fau_licenses">dropdown</input-type>
                    <hint>
-                  	Bitte wählen Sie eine Lizenz für Ihr einreichendes Element aus. Weitere Informationen rund um die Lizenzbedienungen finden Sie im unsere FAQ, unter https://repotest.ub.fau.de/info/faq/legallicense.
+                  	Bitte wählen Sie eine Lizenz für Ihr Dokument aus. Weitere Informationen rund um die Lizenzbedienungen finden Sie im den FAQs, unter https://repotest.ub.fau.de/info/faq/legallicense.
                   </hint>
-                   <required>Bitte wählen Sie eine Lizenz für Ihr einreichendes Element aus.</required>
+                   <required>Bitte wählen Sie eine Lizenz für Ihr Dokument aus.</required>
                 </field>
             </row>
         </form>
@@ -2437,7 +2437,8 @@
             </pair>
             <pair>
                 <displayed-value>Es gelten die Urheber- und Lizenzrechte des Verlags sowie die ggf. mit ihm verhandelten Open-Access-Rechte</displayed-value>
-                <stored-value>https://www.nationallizenzen.de/open-access</stored-value>
+                <!-- <stored-value>https://www.nationallizenzen.de/open-access</stored-value> -->
+                <stored-value>https://rightsstatements.org/page/CNE/1.0/?language=de</stored-value>
            </pair>
        </value-pairs>
 

@@ -133,7 +133,7 @@ $ scp MODS-2-DIM.xslt athena.dialup.mit.edu:~/Private/
                 </xsl:element>
                 
 	<!-- Get document license if available, otherwise provide standard license -->
-	<xsl:variable name="defaultLicense" select="'https://www.nationallizenzen.de/open-access'" />
+	<xsl:variable name="defaultLicense" select="'https://rightsstatements.org/page/CNE/1.0/?language=de'" />
 	<xsl:variable name="license">
            <xsl:value-of select="*[local-name()='accessCondition'][@type='use and reproduction']" />
 	</xsl:variable>		
@@ -149,20 +149,31 @@ $ scp MODS-2-DIM.xslt athena.dialup.mit.edu:~/Private/
 	</xsl:if>
 	</xsl:element>
 	
-	<!-- Get subject and remove any intern XML if provided -->
-	<xsl:variable name="subj">
-           <xsl:value-of select="*[local-name()='subject']/*[local-name()='topic']" />
-	</xsl:variable>		
-	<xsl:element name="dim:field">
+	<!-- Get subject and remove any intern XML if provided -->	
+	<xsl:for-each select="*[local-name()='subject']/*[local-name()='topic']">		
+		<xsl:element name="dim:field">
                     <xsl:attribute name="mdschema">dc</xsl:attribute>
                     <xsl:attribute name="element">subject</xsl:attribute>
                     <xsl:attribute name="qualifier"></xsl:attribute>
 		     <xsl:call-template name="remove-markup">
-            		<xsl:with-param name="string" select="$subj"/>
+            		<xsl:with-param name="string" select="."/>
         	     </xsl:call-template>
-	</xsl:element>
+		</xsl:element>
+	</xsl:for-each>
+	
+	<!-- Get abstract and remove string 'Abstract ' if provided -->	
+	<xsl:for-each select="*[local-name()='abstract']">		
+		<xsl:element name="dim:field">
+                    <xsl:attribute name="mdschema">dc</xsl:attribute>
+                    <xsl:attribute name="element">description</xsl:attribute>
+                    <xsl:attribute name="qualifier">abstract</xsl:attribute>
+		     <xsl:call-template name="remove-text">
+            		<xsl:with-param name="value" select="."/>
+        	     </xsl:call-template>
+		</xsl:element>
+	</xsl:for-each>
 
-        </xsl:template>
+    </xsl:template>
         
         
         <!-- remove markup from text -->
@@ -181,6 +192,19 @@ $ scp MODS-2-DIM.xslt athena.dialup.mit.edu:~/Private/
 		</xsl:otherwise>
 	    </xsl:choose>
 	 </xsl:template>
+	 
+	 <!-- remove 'Abstract ' delivered in dc.abstract by DeepGreen -->
+	 <xsl:template name="remove-text">
+	 	<xsl:param name="value"/> 
+	 	<xsl:choose>
+		<xsl:when test="contains($value, 'Abstract')">
+        		<xsl:value-of select="normalize-space(substring-after($value, 'Abstract'))"/>
+    		</xsl:when>
+    		<xsl:otherwise>
+		    <xsl:value-of select="normalize-space($value)"/>
+		</xsl:otherwise>
+	    </xsl:choose>
+	</xsl:template>
 	
 	
 
@@ -228,23 +252,17 @@ $ scp MODS-2-DIM.xslt athena.dialup.mit.edu:~/Private/
 
 
 
-<!-- **** MODS  name ====> DC  contributor.{role/roleTerm} **** -->
-        <xsl:template match="*[local-name()='name']">
+<!-- **** MODS  name ====> DC  contributor.{role/roleTerm} **** <xsl:if test="*[local-name()='name']"> </xsl:if>-->
+<xsl:template match="*[local-name()='name'][@type='personal']">
         <xsl:variable name="contributorFamName" select="*[local-name()='namePart'][@type='family']"/>
         <xsl:variable name="contributorGivenName" select="*[local-name()='namePart'][@type='given']"/>
         <xsl:variable name="contributorName" select="concat($contributorFamName,', ',$contributorGivenName)"/>
                 <xsl:element name="dim:field">
                         <xsl:attribute name="mdschema">dc</xsl:attribute>
                         <xsl:attribute name="element">contributor</xsl:attribute>
-                        <!-- Important assumption: That the string value used
-                                in the MODS role/roleTerm is indeed a DC Qualifier.
-                                e.g. contributor.illustrator
-                                (Using this assumption, rather than coding in
-                                a more controlled vocabulary via xsl:choose etc.)
-                                -->
+                        <!-- assumme string in MODS role/roleTerm is DC Qualifier e.g. contributor. author/illustrator etc  -->
                         <xsl:attribute name="qualifier"><xsl:value-of select="*[local-name()='role']/*[local-name()='roleTerm']"/></xsl:attribute>
                         <xsl:attribute name="lang">en_US</xsl:attribute>
-<!-- TODO: Logic (xsl:choose) re: format of names in source XML (e.g. Smith, John; or Fname and Lname in separate elements, etc.) -->
 <!-- Used for CSAIL == simply:
                         <namePart>Lname, Fname</namePart>
                         <xsl:variable name="contributorName" select="concat(*[local-name()='namePart'][@type='family'],', '*[local-name()='namePart'][@type='given'])"/>
@@ -252,7 +270,6 @@ $ scp MODS-2-DIM.xslt athena.dialup.mit.edu:~/Private/
 -->
                         
                         <xsl:value-of select="$contributorName"/>
-
 <!-- Not Used for CSAIL
                         <namePart type="family">Lname</namePart> <namePart type="given">Fname</namePart>
 -->
@@ -332,7 +349,7 @@ $ scp MODS-2-DIM.xslt athena.dialup.mit.edu:~/Private/
        
         
 
-<!-- **** MODS   abstract  ====> DC  description.abstract **** -->
+<!-- **** MODS   abstract  ====> DC  description.abstract **** 
         <xsl:template match="*[local-name()='abstract']">
                 <xsl:element name="dim:field">
                         <xsl:attribute name="mdschema">dc</xsl:attribute>
@@ -342,6 +359,7 @@ $ scp MODS-2-DIM.xslt athena.dialup.mit.edu:~/Private/
                         <xsl:value-of select="normalize-space(.)"/>
                 </xsl:element>
         </xsl:template>
+-->
 
 
 <!-- **** MODS   subject/topic ====> DC  subject **** 
@@ -604,80 +622,6 @@ $ scp MODS-2-DIM.xslt athena.dialup.mit.edu:~/Private/
                         <xsl:value-of select="normalize-space(.)"/>
                 </xsl:element>
         </xsl:template>
-
-
-	    <!--   mods:/accessCondition[@type="use and reproduction"] ====>   dc.rights  
-	<xsl:template match="*[local-name()='mods']">
-	<xsl:choose>
-        <xsl:when test="*[local-name()='accessCondition'][@type='use and reproduction']">  
-		<xsl:element name="dim:field">
-		    <xsl:attribute name="mdschema">dc</xsl:attribute> 
-		    <xsl:attribute name="element">rights</xsl:attribute> 
-		    <xsl:attribute name="qualifier">uri</xsl:attribute>
-		    <xsl:value-of select="*[local-name()='accessCondition'][@type='use and reproduction']"/>
-		</xsl:element>
- 	</xsl:when>
-	<xsl:otherwise>
-		<xsl:element name="dim:field">
-                    <xsl:attribute name="mdschema">dc</xsl:attribute>
-                    <xsl:attribute name="element">rights</xsl:attribute>
-                    <xsl:attribute name="qualifier">uri</xsl:attribute>
-                    <xsl:value-of select="https://www.nationallizenzen.de/open-access"/>
-                </xsl:element>
-	</xsl:otherwise>	
-	</xsl:template>
-	-->
-
-
-<!--
-<xsl:template match="*[local-name()='accessCondition'][@type='use and reproduction']">
--->
-<!--
-<xsl:template match="accessCondition[@type='use and reproduction']">
-                <xsl:element name="dim:field">
-                    <xsl:attribute name="mdschema">dc</xsl:attribute>
-                    <xsl:attribute name="element">rights</xsl:attribute>
-                    <xsl:attribute name="qualifier">uri</xsl:attribute>
-                    <xsl:value-of select="."/>
-                </xsl:element>
-</xsl:template>
-<xsl:template match="/*[not(accessCondition][@type='use and reproduction'])]">
-                <xsl:element name="dim:field">
-                    <xsl:attribute name="mdschema">dc</xsl:attribute>
-                    <xsl:attribute name="element">rights</xsl:attribute>
-                    <xsl:attribute name="qualifier">uri</xsl:attribute>
-                    <xsl:value-of select="https://www.nationallizenzen.de/open-access"/>
-                </xsl:element>
-</xsl:template>
--->
-
-
-
-<!--
-<xsl:template match="*[local-name()='mods']">
-<xsl:variable name="license">
-	<xsl:value-of select="accessCondition[@type='use and reproduction']" />
-</xsl:variable>
-<xsl:choose>
-        <xsl:when test="$license">
-		<xsl:element name="dim:field">
-                    <xsl:attribute name="mdschema">dc</xsl:attribute>
-                    <xsl:attribute name="element">rights</xsl:attribute>
-                    <xsl:attribute name="qualifier">uri</xsl:attribute>
-                    <xsl:value-of select="$license"/>
-                </xsl:element>
-        </xsl:when>
-        <xsl:otherwise>
-                <xsl:element name="dim:field">
-                    <xsl:attribute name="mdschema">dc</xsl:attribute>
-                    <xsl:attribute name="element">rights</xsl:attribute>
-                    <xsl:attribute name="qualifier">uri</xsl:attribute>
-                    <xsl:value-of select="https://www.nationallizenzen.de/open-access"/>
-                </xsl:element>
-        </xsl:otherwise>
-</xsl:choose>
-</xsl:template>
--->
 
 </xsl:stylesheet>
 

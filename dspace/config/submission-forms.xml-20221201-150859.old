@@ -59,7 +59,7 @@
                     <repeatable>false</repeatable>
                     <label>Document type</label>
                     <input-type value-pairs-name="common_types">dropdown</input-type>
-                    <hint>Please select the type of content of the item.</hint>
+                    <hint>Select the type(s) of content of the item. To select more than one value in the list, you may have to hold down the "CTRL" or "Shift" key.</hint>
                     <required>You must select a document type!</required>
                 </field>
             </row>
@@ -69,10 +69,10 @@
              <dc-schema>local</dc-schema>
              <dc-element>fakultaet</dc-element>
              <dc-qualifier>lehrstuhl</dc-qualifier>
-             <repeatable>true</repeatable>
-             <label>Organizational Unit</label>
+             <repeatable>false</repeatable>
+             <label>Chair of the department</label>
              <input-type>onebox</input-type>
-             <hint>Please enter the department, institute, chair, or other organizational unit. For more information you can see https://www.fau.de/research/service-fuer-forschende/publizieren-und-open-access/tipps-zur-korrekten-affiliation.</hint>
+             <hint>Enter the chair of the department if necessary.</hint>
              <required></required>
             </field>
          </row>
@@ -84,24 +84,9 @@
                     <dc-qualifier>author</dc-qualifier>
                     <repeatable>true</repeatable>
                     <label>Author</label>
-                    <type-bind>article,movingimage,bachelorthesis,book,bookpart,conferenceobject,coursematerial,dataset,habilitation,journalissue,masterthesis,other,periodicalpart,postprint,preprint,report,review,software,studythesis,workingpaper</type-bind>                
                     <input-type>onebox</input-type>
-                    <hint>Family name, Given name</hint>
+                    <hint>Enter the author's name (Family name, Given names) or the ORCID id. Pay attention to the displayed results, and select the appropiate author.</hint>
                     <required></required>
-                </field>
-            </row>
-            
-            <row>
-                <field>
-                    <dc-schema>dc</dc-schema>
-                    <dc-element>contributor</dc-element>
-                    <dc-qualifier>author</dc-qualifier>
-                    <repeatable>true</repeatable>
-                    <label>Author</label>
-                    <type-bind>doctoralthesis</type-bind>
-                    <input-type>onebox</input-type>
-                    <hint>Enter the author's name ('Family-Name, Given-Name' or 'Given-Name Family-Name'). If available, enter the ORCID Id and select the appropiate author from the displayed list.</hint>
-                    <required>Please enter the author.</required>
                 </field>
             </row>
 
@@ -112,27 +97,12 @@
                     <dc-qualifier>advisor</dc-qualifier>
                     <repeatable>true</repeatable>
                     <label>Advisor</label>
-                    <type-bind>habilitation,masterthesis,bachelorthesis,other</type-bind>
+                    <type-bind>doctoralthesis,habilitation,masterthesis,bachelorthesis,other</type-bind>
                     <input-type>onebox</input-type>
-                    <hint>Family name, Given name</hint>
+                    <hint>Enter the advisor's name (Family name, Given names).</hint>
                     <required></required>
                 </field>
             </row>
-            <!-- Advisor/Betreuer is for doctoralthesis required -->
-            <row>
-                <field>
-                    <dc-schema>dc</dc-schema>
-                    <dc-element>contributor</dc-element>
-                    <dc-qualifier>advisor</dc-qualifier>
-                    <repeatable>true</repeatable>
-                    <label>Advisor</label>
-                    <type-bind>doctoralthesis</type-bind>
-                    <input-type>onebox</input-type>
-                    <hint>Family name, Given name</hint>
-                    <required>Enter the advisor's name.</required>
-                </field>
-            </row>
-            
             <row>
                 <field>
                     <dc-schema>dc</dc-schema>
@@ -140,27 +110,12 @@
                     <dc-qualifier></dc-qualifier>
                     <repeatable>true</repeatable>
                     <label>Reviewer</label>
-                    <type-bind>habilitation,masterthesis,bachelorthesis,other</type-bind>
+                    <type-bind>doctoralthesis,habilitation,masterthesis,bachelorthesis,other</type-bind>
                     <input-type>onebox</input-type>
-                    <hint>Family name, Given name</hint>
+                    <hint>Enter the reviewer's name (Family name, Given names).</hint>
                     <required></required>
                 </field>
 	    </row>
-	    <!-- dc.contributor/Gutachter is for doctoralthesis required -->
-	    <row>
-                <field>
-                    <dc-schema>dc</dc-schema>
-                    <dc-element>contributor</dc-element>
-                    <dc-qualifier></dc-qualifier>
-                    <repeatable>true</repeatable>
-                    <label>Reviewer</label>
-                    <type-bind>doctoralthesis</type-bind>
-                    <input-type>onebox</input-type>
-                    <hint>Family name, Given name</hint>
-                    <required>Enter the reviewer's name.</required>
-                </field>
-	    </row>
-	    
             <row>
                <field>
                    <dc-schema>dc</dc-schema>
@@ -168,26 +123,12 @@
 		   <dc-qualifier></dc-qualifier>
 		   <repeatable>true</repeatable>
 		   <label>Granting institution</label>
-		   <type-bind>habilitation,masterthesis,bachelorthesis,other</type-bind>
+		   <type-bind>doctoralthesis,habilitation,masterthesis,bachelorthesis,other</type-bind>
 		   <input-type value-pairs-name="grantor_list">dropdown</input-type>
 	  	   <hint>Select the grantor from the list.</hint>
                    <required></required>
                 </field>
             </row>
-            <!-- dc.provenance/Titelverleih is for doctoralthesis required -->
-            <row>
-               <field>
-                   <dc-schema>dc</dc-schema>
-                   <dc-element>provenance</dc-element>
-		   <dc-qualifier></dc-qualifier>
-		   <repeatable>true</repeatable>
-		   <label>Granting institution</label>
-		   <type-bind>doctoralthesis</type-bind>
-		   <input-type value-pairs-name="grantor_list">dropdown</input-type>
-	  	   <hint>Select the grantor from the list.</hint>
-                   <required>Select the grantor from the list.</required>
-                </field>
-            </row>
 	    <row>
 		<field>
 		  <dc-schema>local</dc-schema>
@@ -195,24 +136,10 @@
 		  <dc-qualifier>accepted</dc-qualifier>
 		  <repeatable></repeatable>
 		  <label>Acceptance date of the thesis</label>
-		  <type-bind>habilitation,masterthesis,bachelorthesis,other</type-bind>
+		  <type-bind>doctoralthesis,habilitation,masterthesis,bachelorthesis,other</type-bind>
 		  <input-type>date</input-type>
 		  <hint>Select the date of your final examination (eg date of the final exam for Ph.D.)</hint>
 		  <required></required>
-		</field>
-	    </row>
-	    <!-- local.date.accepted/Datum der mündlichen Abschlussprüfung is for doctoralthesis required -->
-	    <row>
-		<field>
-		  <dc-schema>local</dc-schema>
-		  <dc-element>date</dc-element>
-		  <dc-qualifier>accepted</dc-qualifier>
-		  <repeatable></repeatable>
-		  <label>Acceptance date of the thesis</label>
-		  <type-bind>doctoralthesis</type-bind>
-		  <input-type>date</input-type>
-		  <hint>Select the date of your final examination (eg date of the final exam for Ph.D.)</hint>
-		  <required>Select the date of your final examination.</required>
 		</field>
 	    </row>
 
@@ -224,7 +151,7 @@
 		<repeatable>true</repeatable>
 		<label>Editor</label>
 		<input-type>onebox</input-type>
-		<hint>Family name, Given name</hint>
+		<hint>Enter the editor's name (Family name, Given names).</hint>
 		<required></required>
 	      </field>
 	  </row> 
@@ -238,7 +165,7 @@
                     <repeatable>true</repeatable>
                     <label>Other contributor</label>
                     <input-type value-pairs-name="contributor_list">qualdrop_value</input-type>
-                    <hint>If the item has other contributor associated with it, please enter the name of the other contributor (Family name, Given name).
+                    <hint>If the item has a contributor associated with it, please select the type and the name of contributor.
                     </hint>
                     <required></required>
                 </field>
@@ -268,7 +195,7 @@
                     <repeatable>true</repeatable>
                     <label>Additional titles</label>
                     <input-type>onebox</input-type>
-                    <hint>If the item has any alternative titles, please enter them here. For titles in other languages please use the Title field and select another language from the list.</hint>
+                    <hint>If the item has any alternative or translated titles, please enter them here.</hint>
                     <required></required>
                 </field>
             </row>
@@ -279,30 +206,12 @@
                     <dc-qualifier>iso</dc-qualifier>
                     <repeatable>false</repeatable>
                     <label>Language</label>
-                    <type-bind>article,movingimage,bachelorthesis,book,bookpart,conferenceobject,coursematerial,dataset,habilitation,journalissue,masterthesis,other,periodicalpart,postprint,preprint,report,review,software,studythesis,workingpaper</type-bind>
                     <input-type value-pairs-name="common_iso_languages">dropdown</input-type>
                     <hint>Select the language of the main content of the item. If the language does not appear in the
                         list, please select 'Other'. If the content does not really have a language (for example, if it
                         is a dataset or an image) please select 'N/A'.
                     </hint>
                     <required></required>
-                </field>
-            </row>
-            
-            <row>
-                <field>
-                    <dc-schema>dc</dc-schema>
-                    <dc-element>language</dc-element>
-                    <dc-qualifier>iso</dc-qualifier>
-                    <repeatable>false</repeatable>
-                    <label>Language</label>
-                    <type-bind>doctoralthesis</type-bind>
-                    <input-type value-pairs-name="common_iso_languages">dropdown</input-type>
-                    <hint>Select the language of the main content of the item. If the language does not appear in the
-                        list, please select 'Other'. If the content does not really have a language (for example, if it
-                        is a dataset or an image) please select 'N/A'.
-                    </hint>
-                    <required>Select the language of the main content of the item.</required>
                 </field>
             </row>
             <row>
@@ -312,26 +221,10 @@
                     <dc-qualifier>abstract</dc-qualifier>
                     <repeatable>true</repeatable>
                     <label>Abstract</label>
-                    <type-bind>article,movingimage,bachelorthesis,book,bookpart,conferenceobject,coursematerial,dataset,habilitation,journalissue,masterthesis,other,periodicalpart,postprint,preprint,report,review,software,studythesis,workingpaper</type-bind>
                     <language value-pairs-name="common_iso_languages">true</language>
                     <input-type>textarea</input-type>
-                    <hint>Enter the short summary/abstract of the document. Enter additional summaries/abstracts in other languages with "+ Add more".</hint>
+                    <hint>Enter the abstract of the item.</hint>
                     <required></required>
-                </field>
-            </row>
-            <!-- Abstract is for doctoralthesis required -->
-            <row>
-                <field>
-                    <dc-schema>dc</dc-schema>
-                    <dc-element>description</dc-element>
-                    <dc-qualifier>abstract</dc-qualifier>
-                    <repeatable>true</repeatable>
-                    <label>Abstract</label>
-                    <type-bind>doctoralthesis</type-bind>
-                    <language value-pairs-name="common_iso_languages">true</language>
-                    <input-type>textarea</input-type>
-                    <hint>Enter the short summary/abstract of the document. Enter additional summaries/abstracts in other languages with "+ Add more".</hint>
-                    <required>Enter the short summary/abstract of the document.</required>
                 </field>
             </row>
             <row>
@@ -353,9 +246,9 @@
                     <dc-qualifier>ddc</dc-qualifier>
                     <!-- An input-type of tag MUST be marked as repeatable -->
                     <repeatable>true</repeatable>
-                    <label>DDC (Dewey Decimal Classfication)</label>
+                    <label>DDC Keywords or ID</label>
                     <input-type>tag</input-type>
-                    <hint>You may enter a DDC term for your document here. Example: "500" (for "500 Technik und Technologie", the DDC is currently only displayed in German). Alternatively you may enter any German term to see suggestions for DDC terms, e.g."616 Krankheit" will be suggested when entering Krank or Krankheit. Please find an overview of DDC terms here: https://deweysearchde.pansoft.de.</hint>
+                    <hint>Enter DDC keywords or ID. (ex: 600 for Technik, Technologie)</hint>
                     <required></required>
                     <vocabulary>ddc</vocabulary>
                 </field>
@@ -385,7 +278,7 @@
                   <label>Edition</label>
                   <type-bind>book,doctoralthesis,habilitation,masterthesis,bachelorthesis,other</type-bind>
                   <input-type>onebox</input-type>
-                  <hint>Enter the edition of this document, if applicable.</hint>
+                  <hint>Enter the edition of this document, if available.</hint>
                   <required></required>
               </field>
            </row>
@@ -395,12 +288,12 @@
                <field>
                   <dc-schema>local</dc-schema>
                   <dc-element>series</dc-element>
-                  <dc-qualifier>name</dc-qualifier>
+                  <dc-qualifier>mapping</dc-qualifier>
                   <repeatable>false</repeatable>
                   <label>Series</label>
                   <type-bind>book,bookpart,doctoralthesis,habilitation,masterthesis,bachelorthesis,other,periodicalpart</type-bind>
                   <input-type value-pairs-name="series_list_dropdown">dropdown</input-type>
-                  <hint>Select the (book) series for this document, if applicable.</hint>
+                  <hint>Select the series for this item, if applicable.</hint>
                   <required></required>
               </field>
            </row>
@@ -429,7 +322,7 @@
                   <label>Publisher</label>
                   <!-- <style>col-sm-8</style> -->
                   <input-type>onebox</input-type>                                                                                         
-                  <hint>Enter the publisher name, if applicable.</hint>
+                  <hint>Enter the name of the publisher of the previously issued instance of this item.</hint>
                   <required></required>                                                                       
                </field>
            </row>
@@ -441,7 +334,7 @@
                   <repeatable>false</repeatable>
                   <label>Place of publication</label>
                   <input-type>onebox</input-type>
-                  <hint>Enter the place of the publisher for this document, if applicable.</hint>
+                  <hint>Enter the place of the publisher for this item.</hint>
                   <required></required>
                </field>
            </row>
@@ -453,7 +346,7 @@
                     <repeatable>false</repeatable>    
                     <label>Size</label>        
                     <input-type>onebox</input-type> 
-                    <hint>Enter the file size, duration or the number of pages for this document.</hint>
+                    <hint>Enter the size, duration or the number of pages for this item.</hint>
                     <required></required>
               </field>                                                  
           </row>
@@ -469,26 +362,12 @@
                   <dc-qualifier>title</dc-qualifier>
                   <repeatable>false</repeatable>
                   <label>Title of journal / compilation</label>
-                  <type-bind>conferenceobject,article,bookpart,review,postprint,preprint,other</type-bind>
+                  <type-bind>conferenceobject,article,bookpart,review,postprint,preprint,journalissue,other</type-bind>
                   <input-type>onebox</input-type>
-                  <hint>Please enter the title of the superordinate work (e.g. journal title or anthology).</hint>
+                  <hint>Please enter the title of superordinate works (e.g. magazine or anthology)</hint>
                   <required></required>
               </field>
-         </row>      
-         <!-- local.journal.title/Titel des Zeitschrift is for journalissue required -->     
-         <row>
-               <field>
-                  <dc-schema>local</dc-schema>
-                  <dc-element>journal</dc-element>
-                  <dc-qualifier>title</dc-qualifier>
-                  <repeatable>false</repeatable>
-                  <label>Title of journal / compilation</label>
-                  <type-bind>journalissue</type-bind>
-                  <input-type>onebox</input-type>
-                  <hint>Please enter the title of the superordinate work (e.g. journal title or anthology).</hint>
-                  <required>Please enter the title of the superordinate work.</required>
-              </field>
-         </row>
+         </row>           
          <row>
               <field>
                  <dc-schema>local</dc-schema>
@@ -497,7 +376,7 @@
                  <repeatable>false</repeatable>
                  <label>Volume</label>
                  <input-type>onebox</input-type>
-                 <hint>Please enter the journal volume.</hint>
+                 <hint>Please enter the volume</hint>
                  <required></required> 
               </field>
          </row>
@@ -511,7 +390,7 @@
                     <type-bind>conferenceobject,article,bookpart,review,postprint,preprint,journalissue,other</type-bind>
                     <style></style>
                     <input-type>onebox</input-type>
-                    <hint>Please enter the journal issue.</hint>
+                    <hint>Please give the issue of publication.</hint>
                     <required></required>
                 </field>    
          </row>
@@ -525,7 +404,7 @@
                     <type-bind>conferenceobject,article,postprint,preprint,other</type-bind>
                     <style></style>
                     <input-type>onebox</input-type>
-                    <hint>Please enter the article number.</hint>
+                    <hint>Please give the article number of publication.</hint>
                     <required></required>
                 </field>  
           </row>
@@ -550,7 +429,7 @@
                     <label>Date of first publication</label>
                     <style>col-sm-4</style>
                     <input-type>date</input-type>
-                    <hint>For secondary publications please enter the date of previous/first publication of this document. You can leave out the day and/or month if they aren't applicable.</hint>
+                    <hint>Please give the date of publication or public distribution. You can leave out the day and/or month if they aren't applicable.</hint>
                     <required>You must enter at least the year.</required>
                 </field>
             </row>
@@ -563,7 +442,7 @@
                     <label>Issuing Institution/Conference Data</label>
                     <type-bind>conferenceobject,article,postprint,preprint,book,other</type-bind>
                     <input-type>onebox</input-type>
-                    <hint>Enter the issuing institution/conference data for this item.</hint>
+                    <hint>Enter the publishing institution/conference data for this item.</hint>
                     <required></required>
                 </field>
             </row>
@@ -573,7 +452,7 @@
                     <dc-element>contributor</dc-element>   
                     <dc-qualifier></dc-qualifier> 
                     <repeatable>true</repeatable>
-                    <label>Other contributing institution</label>
+                    <label>Other participating institution</label>
                     <type-bind>book,other</type-bind>
                     <input-type>onebox</input-type>
                     <hint>Enter the contributing institution for this item.</hint>
@@ -589,7 +468,7 @@
                     <repeatable>true</repeatable>
                     <label>Identifiers</label>
                     <input-type value-pairs-name="common_identifiers">qualdrop_value</input-type>
-                    <hint>If the item has any identification numbers (DOI, ISBN, ISSN, EU Grant Numner, etc.) or codes associated with it, please enter the types and the actual numbers or codes. </hint>
+                    <hint>If the item has any identification numbers or codes associated with it, please enter the types and the actual numbers or codes. </hint>
                     <required></required>
                 </field>
             </row>    
@@ -613,10 +492,8 @@
                   <repeatable>false</repeatable>
                   <label>Document License</label>
                   <input-type value-pairs-name="fau_licenses">dropdown</input-type>
-                  <hint>
-                  	Select a license for your submitted document. For more information see https://repotest.ub.fau.de/info/faq/legallicense.
-                  </hint>
-                  <required>Please select a license for your document.</required>
+                  <hint>Select a license for your submitting item.</hint>
+                  <required></required>
               </field>
           </row>
         </form>
@@ -2446,12 +2323,10 @@
         
         <!-- FAU Verlag and Creative Commons License added -->
        <value-pairs value-pairs-name="fau_licenses" dc-term="rights">
-          <!--
           <pair>
               <displayed-value>Without License</displayed-value>
               <stored-value></stored-value>
           </pair>
-          -->
           <!-- Creative Commons -->
             <pair>
                 <displayed-value>Creative Commons Attribution 4.0 (CC BY)</displayed-value>
@@ -2486,10 +2361,9 @@
                  <displayed-value>The publication contract and German copyright law apply</displayed-value>
                  <stored-value>http://www.gesetze-im-internet.de/urhg/index.html</stored-value>
             </pair>
-            <pair>
+q            <pair>
                  <displayed-value>The copyright and license rights of the publisher and any open access rights negotiated with it apply</displayed-value>
-                 <!-- <stored-value>https://www.nationallizenzen.de/open-access</stored-value> -->
-                 <stored-value>https://rightsstatements.org/page/CNE/1.0/?language=de</stored-value>
+                 <stored-value>https://www.nationallizenzen.de/open-access</stored-value>
             </pair>
          </value-pairs>
 
@@ -2557,14 +2431,12 @@
       </value-pairs>
       
       
-     <!-- Obsolete, used for maapping via Series collection has @Steli -->
-     <!-- UUID of Serie to map the item to. DO NOT USE HANDLE, because it will generate errors --> 
-     <!--
+      
       <value-pairs value-pairs-name="series_list_dropdown" dc-term="series_mapping">
 	     <pair>                                                                                                                                                                                                                             
 		<displayed-value>1 - Akademische Reden und Kolloquien | Friedrich-Alexander-Universität Erlangen-Nürnberg</displayed-value>
-                                                                                                                                     
-		<stored-value>bce15039-6f83-4c86-aefe-4bf49af3154e</stored-value>                                                                       
+                <!-- UUID of Serie to map the item to. DO NOT USE HANDLE, because it will generate errors -->                                                                                                                      
+		<stored-value>3da6cfa5-4144-4448-9694-c16e694c5045</stored-value>                                                                       
 	     </pair>                                                                                                                                                                                                                    
 	     <pair>                                                                                                                                                                                                                            
 		<displayed-value>2 - Alles Buch | Studien der Erlanger Buchwissenschaft</displayed-value>                                                                                                                                                        
@@ -2697,182 +2569,6 @@
             <pair>
                 <displayed-value>34 - Uni-Kurier-Magazin</displayed-value>
                 <stored-value>e4c3dac8-daa0-4e5b-ac6f-3da685c1d278</stored-value>
-            </pair>
-       </value-pairs>
-       -->
-       
-       <value-pairs value-pairs-name="series_list_dropdown" dc-term="series_name">
-	     <pair>                                                                                                                                                                                                                             
-		<displayed-value>1 - Akademische Reden und Kolloquien | Friedrich-Alexander-Universität Erlangen-Nürnberg</displayed-value>                                                                                                                      
-		<stored-value>Akademische Reden und Kolloquien | Friedrich-Alexander-Universität Erlangen-Nürnberg</stored-value>                                                                       
-	     </pair>                                                                                                                                                                                                                    
-	     <pair>                                                                                                                                                                                                                            
-		<displayed-value>2 - Alles Buch | Studien der Erlanger Buchwissenschaft</displayed-value>                                                                                                                                                        
-		<stored-value>Alles Buch | Studien der Erlanger Buchwissenschaft</stored-value>                                                                                                                                                     
-	     </pair>                                                                                                                                                                                 
-	     <pair>                                                                                                                                                                                                                          
-		<displayed-value>3 - Ausgezeichnete Abschlussarbeiten der Erlanger Geschichtswissenschaft</displayed-value>                                                                                                                                      
-		<stored-value>Ausgezeichnete Abschlussarbeiten der Erlanger Geschichtswissenschaft</stored-value>                                                                                                                                        
-	     </pair>                                                                                                                                                                                                                                     
-	     <pair>                                                                                                                                                                                                                              
-		<displayed-value>4 - Erlanger Beiträge zur Kulturgeographie</displayed-value>                                                                                                                                                                    
-		<stored-value>Erlanger Beiträge zur Kulturgeographie</stored-value>                                                                                                                                                                      
-	     </pair>                                                                                                                                                                                                                                      
-	     <pair>                                                                                                                                                                                                                               
-		<displayed-value>5 - Erlanger Beiträge zur Medienwirtschaft</displayed-value>                                                                                                                                                                    
-		<stored-value>Erlanger Beiträge zur Medienwirtschaft</stored-value>                                                                                                                                                                      
-	     </pair>                                                                                                                                                                                                                                                                                                                                                                                                                                               
-	     <pair>                                                                                                                                                                                                                               
-		<displayed-value>6 - Erlanger Forschungen | A, Geisteswissenschaften</displayed-value>                                                                                                                                                           
-		<stored-value>Erlanger Forschungen | A, Geisteswissenschaften</stored-value>                                                                                                                                                             
-	     </pair>                                                                                                                                                                                                                        
-	     <pair>                                                                                                                                                                                                                                  
-		<displayed-value>7 - Erlanger Forschungen | B, Naturwissenschaften und Medizin</displayed-value>                                                                                                                                                 
-		<stored-value>Erlanger Forschungen | B, Naturwissenschaften und Medizin</stored-value>                                                                                                                                 
-	     </pair>                                                                                                                                                                                                                            
-	     <pair>                                                                                                                                                                                                                                
-		<displayed-value>8 - Erlanger Forschungen | Sonderreihe</displayed-value>                                                                                                                                                                        
-		<stored-value>Erlanger Forschungen | Sonderreihe</stored-value>                                                                                                                                                        
-	     </pair>                                                                                                                                                                                                             
-	     <pair>                                                                                                                                                                                                                            
-		<displayed-value>9 - Erlanger Migrations- und Integrationsstudien</displayed-value>                                                                                                                                                              
-		<stored-value>Erlanger Migrations- und Integrationsstudien</stored-value>                                                                                                                                                                
-	     </pair>                                                                                                                                                                                                                      
-	     <pair>                                                                                                                                                                                                                                
-		<displayed-value>10 - Erlanger Universitätstage</displayed-value>                                                                                                                                                                                 
-		<stored-value>Erlanger Universitätstage</stored-value>                           
-	    </pair>                                           
-            <pair>
-                <displayed-value>11 - FAU Forschungen, Reihe A, Geisteswissenschaften</displayed-value>
-                <stored-value>FAU Forschungen, Reihe A, Geisteswissenschaften</stored-value>
-            </pair>
-            <pair>
-                <displayed-value>12 - FAU Forschungen, Reihe B, Medizin, Naturwissenschaft, Technik</displayed-value>
-                <stored-value>FAU Forschungen, Reihe B, Medizin, Naturwissenschaft, Technik</stored-value>
-            </pair>
-	    <pair>
-                <displayed-value>13 - FAU Kunst und Bildung</displayed-value>
-                <stored-value>FAU Kunst und Bildung</stored-value>
-            </pair>
-            <pair>
-                <displayed-value>14 - FAU Lehren und Lernen</displayed-value>
-                <stored-value>FAU Lehren und Lernen</stored-value>
-            </pair>
-            <pair>
-                <displayed-value>15 - FAU Studien aus dem Maschinenbau</displayed-value>
-                <stored-value>FAU Studien aus dem Maschinenbau</stored-value>
-            </pair>
-            <pair>
-                <displayed-value>16 - FAU Studien aus der Elektrotechnik</displayed-value>                     
-		<stored-value>FAU Studien aus der Elektrotechnik</stored-value>                                                                                                
-	    </pair>                             
-	    <pair>
-                <displayed-value>17 - FAU Studien aus der Informatik</displayed-value>
-                <stored-value>FAU Studien aus der Informatik</stored-value>
-            </pair>
-            <pair>
-                <displayed-value>18 - FAU Studien aus der Philosophischen Fakultät</displayed-value>
-                <stored-value>FAU Studien aus der Philosophischen Fakultät</stored-value>
-            </pair>
-            <pair>
-                <displayed-value>19 - FAU Studien aus der Rechtswissenschaft</displayed-value>      
-                <stored-value>FAU Studien aus der Rechtswissenschaft</stored-value>                                                                                
-	    </pair>
-            <pair>
-                <displayed-value>20 - FAU Studien Gender Differenz Diversität</displayed-value>
-                <stored-value>FAU Studien Gender Differenz Diversität</stored-value>
-            </pair>
-            <pair>
-                <displayed-value>21 - FAU Studien Materialwissenschaft und Werkstofftechnik</displayed-value>
-                <stored-value>FAU Studien Materialwissenschaft und Werkstofftechnik</stored-value>
-            </pair>
-            <pair>
-                <displayed-value>22 - FAU Studien zu Menschenrechten</displayed-value>
-                <stored-value>FAU Studien zu Menschenrechten</stored-value>
-            </pair>
-            <pair>
-                <displayed-value>23 - FAU Studies Mathematics and Physics</displayed-value>
-                <stored-value>FAU Studies Mathematics and Physics</stored-value>
-            </pair>
-            <pair>
-                <displayed-value>24 - FAU-Panel</displayed-value>
-                <stored-value>FAU-Panel</stored-value>
-            </pair>
-            <pair>
-                <displayed-value>25 - Fertigungstechnik-Erlangen</displayed-value>
-                <stored-value>Fertigungstechnik-Erlangen</stored-value>
-            </pair>
-            <pair>
-                <displayed-value>26 - Forschungsberichte aus dem Lehrstuhl für Informationstechnik mit dem Schwerpunkt Kommunikationselektronik</displayed-value>
-                <stored-value>Forschungsberichte aus dem Lehrstuhl für Informationstechnik mit dem Schwerpunkt Kommunikationselektronik</stored-value>
-            </pair>
-	    <pair>
-                <displayed-value>27 - Kleine Schriften zu Kultur und Geschichte der Friedrich-Alexander-Universität</displayed-value>
-                <stored-value>Kleine Schriften zu Kultur und Geschichte der Friedrich-Alexander-Universität</stored-value>
-            </pair>
-            <pair>
-                <displayed-value>28 - Magazin für digitale Editionswissenschaften</displayed-value>
-                <stored-value>Magazin für digitale Editionswissenschaften</stored-value>
-            </pair>
-            <pair>
-                <displayed-value>29 - Progress in Modern Optics</displayed-value>
-                <stored-value>Progress in Modern Optics</stored-value>
-            </pair>
-            <pair>
-                <displayed-value>30 - Schriftenreihe Technische Dynamik</displayed-value>
-                <stored-value>Schriftenreihe Technische Dynamik</stored-value>
-            </pair>
-	    <pair>
-                <displayed-value>31 - Schriftenreihe Technische Mechanik</displayed-value>
-                <stored-value>Schriftenreihe Technische Mechanik</stored-value>
-            </pair>
-            <pair>
-                <displayed-value>32 - Technical reports | Department Informatik</displayed-value>
-                <stored-value>Technical reports | Department Informatik</stored-value>
-            </pair>
-            <pair>
-                <displayed-value>33 - Texte zur Wirtschaftspädagogik und Personalentwicklung</displayed-value>
-                <stored-value>Texte zur Wirtschaftspädagogik und Personalentwicklung</stored-value>
-            </pair>
-            <pair>
-                <displayed-value>34 - Uni-Kurier-Magazin</displayed-value>
-                <stored-value>Uni-Kurier-Magazin</stored-value>
-            </pair>
-            <pair>
-                <displayed-value>35 - Erlangen National High Performance Computing Center (NHR @FAU)</displayed-value>
-                <stored-value>Erlangen National High Performance Computing Center (NHR @FAU)</stored-value>
-            </pair>
-            <pair>
-                <displayed-value>36 - Vortragsreihen</displayed-value>
-                <stored-value>Vortragsreihen</stored-value>
-            </pair>
-            <pair>
-                <displayed-value>37 - Universitätsbibliothek Erlangen-Nürnberg</displayed-value>
-                <stored-value>Universitätsbibliothek Erlangen-Nürnberg</stored-value>
-            </pair>
-            <pair>
-                <displayed-value>38 - Studierendenbefragung</displayed-value>
-                <stored-value>Studierendenbefragung</stored-value>
-            </pair>
-            <pair>
-                <displayed-value>39 - Regionales Rechenzentrum Erlangen</displayed-value>
-                <stored-value>Regionales Rechenzentrum Erlangen</stored-value>
-            </pair>
-            <pair>
-                <displayed-value>40 - Institut für Buchwissenschaft</displayed-value>
-                <stored-value>Institut für Buchwissenschaft</stored-value>
-            </pair>
-            <pair>
-                <displayed-value>41 - FAU University Press</displayed-value>
-                <stored-value>FAU University Press</stored-value>
-            </pair>
-            <pair>
-                <displayed-value>42 - Studia linguistica et philologica, 2</displayed-value>
-                <stored-value>Studia linguistica et philologica, 2</stored-value>
-            </pair>
-            <pair>
-                <displayed-value>43 - Technisch-wissenschaftlicher Bericht / Lehrstuhl für Kunststofftechnik</displayed-value>
-                <stored-value>Technisch-wissenschaftlicher Bericht / Lehrstuhl für Kunststofftechnik</stored-value>
             </pair>
        </value-pairs>
 
