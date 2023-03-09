@@ -72,7 +72,7 @@
              <repeatable>true</repeatable>
              <label>Organisationseinheit</label>
              <input-type>onebox</input-type>
-             <hint>Hier können Sie Department, Klinik, Institut, Lehrtushl... eingeben, entweder frei oder Affiliation der FAU, https://www.fau.de/research/service-fuer-forschende/publizieren-und-open-access/tipps-zur-korrekten-affiliation.</hint>
+             <hint>Hier können Sie Department, Klinik, Institut, Lehrstuhl... eingeben, entweder frei oder Affiliation der FAU, https://www.fau.de/research/service-fuer-forschende/publizieren-und-open-access/tipps-zur-korrekten-affiliation.</hint>
              <required></required>
             </field>
          </row>
@@ -264,7 +264,7 @@
                     <repeatable>true</repeatable>
                     <label>Weitere Titel</label>
                     <input-type>onebox</input-type>
-                    <hint>Wenn das Dokument alternative Titel hat, geben Sie diese bitte hier mit ein. Reine Übersetzungstitel sind dabei nicht gemeint, diese sind beim Titel des Dokuments einzugeben.</hint>
+                    <hint>Wenn das Dokument alternative Titel hat, geben Sie diese bitte hier mit ein. Reine Übersetzungstitel sind dabei nicht gemeint, diese sind beim Titel des Dokuments einzugeben und eine andere Sprache aus der Liste auszuwählen.</hint>
                     <required></required>
                 </field>
             </row>
@@ -312,7 +312,7 @@
                     <type-bind>article,movingimage,bachelorthesis,book,bookpart,conferenceobject,coursematerial,dataset,habilitation,journalissue,masterthesis,other,periodicalpart,postprint,preprint,report,review,software,studythesis,workingpaper</type-bind>
                     <language value-pairs-name="common_iso_languages">true</language>
                     <input-type>textarea</input-type>
-                    <hint>Geben Sie die Kurzzusammenfassung/Abstract des Dokuments ein. Weitere Zusammenfassungen in anderen Sprachen tragen Sie mit "+ Hinzufügen" ein.</hint>
+                    <hint>Geben Sie die Kurzzusammenfassung/Abstract des Dokuments ein. Um weitere Zusammenfassungen in anderen Sprachen einzutragen, clicken Sie "+ Hinzufügen" und wählen Sie eine Sprache aus. Um Sonderzeichen und Formeln einzufügen, folgen Sie bitte den Anweisungen von https://repotest.ub.fau.de/info/faq/rulesfordiss.</hint>
                     <required></required>
                 </field>
             </row>
@@ -327,7 +327,7 @@
                     <type-bind>doctoralthesis</type-bind>
                     <language value-pairs-name="common_iso_languages">true</language>
                     <input-type>textarea</input-type>
-                    <hint>Geben Sie die Kurzzusammenfassung/Abstract des Dokuments ein. Weitere Zusammenfassungen in anderen Sprachen tragen Sie mit "+ Hinzufügen" ein.</hint>
+                    <hint>Geben Sie die Kurzzusammenfassung/Abstract des Dokuments ein. Um weitere Zusammenfassungen in anderen Sprachen einzutragen, clicken Sie "+ Hinzufügen" und wählen Sie eine Sprache aus. Um Sonderzeichen und Formeln einzufügen, folgen Sie bitte den Anweisungen von https://repotest.ub.fau.de/info/faq/rulesfordiss.</hint>
                     <required>Geben Sie die Zusammenfassung/Abstract des Artikels ein.</required>
                 </field>
             </row>
