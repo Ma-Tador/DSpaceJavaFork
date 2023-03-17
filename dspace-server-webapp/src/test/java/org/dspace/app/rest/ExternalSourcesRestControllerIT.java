@@ -153,37 +153,19 @@ public class ExternalSourcesRestControllerIT extends AbstractControllerIntegrati
         getClient().perform(get("/api/integration/externalsources/search/findByEntityType")
                    .param("entityType", "Publication"))
                    .andExpect(status().isOk())
-<<<<<<< HEAD
-                   // Expect *at least* 3 Publication sources
-                   .andExpect(jsonPath("$._embedded.externalsources", Matchers.hasItems(
-                              ExternalSourceMatcher.matchExternalSource(publicationProviders.get(0)),
-                              ExternalSourceMatcher.matchExternalSource(publicationProviders.get(1))
-                              )))
-=======
                    // Expect that Publication sources match (check a max of 20 as that is default page size)
                    .andExpect(jsonPath("$._embedded.externalsources",
                                        ExternalSourceMatcher.matchAllExternalSources(publicationProviders, 20)
                               ))
->>>>>>> ec0853ddad290f20cf4b7d647891df2011f1eafb
                    .andExpect(jsonPath("$.page.totalElements", Matchers.is(publicationProviders.size())));
 
         getClient().perform(get("/api/integration/externalsources/search/findByEntityType")
                    .param("entityType", "Journal"))
                    .andExpect(status().isOk())
-<<<<<<< HEAD
-                   // Expect *at least* 5 Journal sources
-                   .andExpect(jsonPath("$._embedded.externalsources", Matchers.hasItems(
-                              ExternalSourceMatcher.matchExternalSource(journalProviders.get(0)),
-                              ExternalSourceMatcher.matchExternalSource(journalProviders.get(1)),
-                              ExternalSourceMatcher.matchExternalSource(journalProviders.get(2)),
-                              ExternalSourceMatcher.matchExternalSource(journalProviders.get(3))
-                              )))
-=======
                    // Check that Journal sources match (check a max of 20 as that is default page size)
                    .andExpect(jsonPath("$._embedded.externalsources",
                                        ExternalSourceMatcher.matchAllExternalSources(journalProviders, 20)
                              ))
->>>>>>> ec0853ddad290f20cf4b7d647891df2011f1eafb
                    .andExpect(jsonPath("$.page.totalElements", Matchers.is(journalProviders.size())));
     }
 
@@ -207,16 +189,9 @@ public class ExternalSourcesRestControllerIT extends AbstractControllerIntegrati
                    .param("entityType", "Journal")
                    .param("size", String.valueOf(pageSize)))
                    .andExpect(status().isOk())
-<<<<<<< HEAD
-                   .andExpect(jsonPath("$._embedded.externalsources", Matchers.contains(
-                              ExternalSourceMatcher.matchExternalSource(journalProviders.get(0)),
-                              ExternalSourceMatcher.matchExternalSource(journalProviders.get(1))
-                              )))
-=======
                    .andExpect(jsonPath("$._embedded.externalsources",
                                        ExternalSourceMatcher.matchAllExternalSources(journalProviders, pageSize)
                              ))
->>>>>>> ec0853ddad290f20cf4b7d647891df2011f1eafb
                    .andExpect(jsonPath("$.page.totalPages", Matchers.is(numberOfPages)))
                    .andExpect(jsonPath("$.page.totalElements", Matchers.is(numJournalProviders)));
 
@@ -225,19 +200,12 @@ public class ExternalSourcesRestControllerIT extends AbstractControllerIntegrati
                    .param("page", "1")
                    .param("size", String.valueOf(pageSize)))
                    .andExpect(status().isOk())
-<<<<<<< HEAD
-                   .andExpect(jsonPath("$._embedded.externalsources", Matchers.contains(
-                              ExternalSourceMatcher.matchExternalSource(journalProviders.get(2)),
-                              ExternalSourceMatcher.matchExternalSource(journalProviders.get(3))
-                              )))
-=======
                    // Check that second page has journal sources starting at index 2.
                    .andExpect(jsonPath("$._embedded.externalsources",
                                        ExternalSourceMatcher.matchAllExternalSources(
                                            journalProviders.subList(2, journalProviders.size()),
                                            pageSize)
                               ))
->>>>>>> ec0853ddad290f20cf4b7d647891df2011f1eafb
                    .andExpect(jsonPath("$.page.totalPages", Matchers.is(numberOfPages)))
                    .andExpect(jsonPath("$.page.totalElements", Matchers.is(numJournalProviders)));
     }

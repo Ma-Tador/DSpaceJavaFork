@@ -30,11 +30,7 @@ public interface FileSource extends MetadataSource {
     /**
      * Return a list of ImportRecord constructed from input file.
      *
-<<<<<<< HEAD
-     * @param InputStream The inputStream of the file
-=======
      * @param inputStream The inputStream of the file
->>>>>>> ec0853ddad290f20cf4b7d647891df2011f1eafb
      * @return A list of {@link ImportRecord}
      * @throws FileSourceException if, for any reason, the file is not parsable
      */
@@ -44,11 +40,7 @@ public interface FileSource extends MetadataSource {
     /**
      * Return an ImportRecord constructed from input file.
      *
-<<<<<<< HEAD
-     * @param InputStream The inputStream of the file
-=======
      * @param inputStream The inputStream of the file
->>>>>>> ec0853ddad290f20cf4b7d647891df2011f1eafb
      * @return An {@link ImportRecord} matching the file content
      * @throws FileSourceException if, for any reason, the file is not parsable
      * @throws FileMultipleOccurencesException if the file contains more than one entry

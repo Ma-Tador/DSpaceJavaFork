@@ -156,11 +156,7 @@ public class EpoIdMetadataContributor implements MetadataContributor<Element> {
      * Depending on the retrieved node (using the query), different types of values will be added to the MetadatumDTO
      * list
      *
-<<<<<<< HEAD
-     * @param t A class to retrieve metadata from.
-=======
      * @param element A class to retrieve metadata from.
->>>>>>> ec0853ddad290f20cf4b7d647891df2011f1eafb
      * @return a collection of import records. Only the identifier of the found records may be put in the record.
      */
     @Override

@@ -48,7 +48,6 @@ See [Running DSpace 7 with Docker Compose](dspace/src/main/docker-compose/README
 
 ## Contributing
 
-<<<<<<< HEAD
 DSpace is a community built and supported project. We do not have a centralized development or support team,
 but have a dedicated group of volunteers who help us improve the software, documentation, resources, etc.
 
@@ -61,9 +60,8 @@ We also encourage GitHub Pull Requests (PRs) at any time. Please see our [Develo
 
 In addition, a listing of all known contributors to DSpace software can be
 found online at: https://wiki.lyrasis.org/display/DSPACE/DSpaceContributors
-=======
+
 See [Contributing documentation](CONTRIBUTING.md)
->>>>>>> ec0853ddad290f20cf4b7d647891df2011f1eafb
 
 ## Getting Help
 

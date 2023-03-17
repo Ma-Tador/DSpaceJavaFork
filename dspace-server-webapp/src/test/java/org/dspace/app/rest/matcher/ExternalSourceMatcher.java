@@ -10,17 +10,14 @@ package org.dspace.app.rest.matcher;
 import static com.jayway.jsonpath.matchers.JsonPathMatchers.hasJsonPath;
 import static org.dspace.app.rest.test.AbstractControllerIntegrationTest.REST_SERVER_URL;
 import static org.hamcrest.Matchers.allOf;
-<<<<<<< HEAD
 import static org.hamcrest.Matchers.is;
 
-=======
 import static org.hamcrest.Matchers.contains;
 import static org.hamcrest.Matchers.is;
 
 import java.util.ArrayList;
 import java.util.List;
 
->>>>>>> ec0853ddad290f20cf4b7d647891df2011f1eafb
 import org.dspace.external.provider.ExternalDataProvider;
 import org.hamcrest.Matcher;
 
@@ -29,8 +26,6 @@ public class ExternalSourceMatcher {
     private ExternalSourceMatcher() {
     }
 
-<<<<<<< HEAD
-=======
     /**
      * Matcher which checks if all external source providers are listed (in exact order), up to the maximum number
      * @param providers List of providers to check against
@@ -53,7 +48,6 @@ public class ExternalSourceMatcher {
         return contains(matchers.toArray(new Matcher[0]));
     }
 
->>>>>>> ec0853ddad290f20cf4b7d647891df2011f1eafb
     public static Matcher<? super Object> matchExternalSource(ExternalDataProvider provider) {
         return matchExternalSource(provider.getSourceIdentifier(), provider.getSourceIdentifier(), false);
     }

@@ -23,12 +23,7 @@ import org.dspace.iiif.util.IIIFSharedUtils;
 
 
 /**
-<<<<<<< HEAD
- * Queries the configured IIIF server for image dimensions. Used for
- * formats that cannot be easily read using ImageIO (jpeg 2000).
-=======
  * Queries the configured IIIF image server via the Image API.
->>>>>>> ec0853ddad290f20cf4b7d647891df2011f1eafb
  *
  * @author Michael Spalti mspalti@willamette.edu
  */

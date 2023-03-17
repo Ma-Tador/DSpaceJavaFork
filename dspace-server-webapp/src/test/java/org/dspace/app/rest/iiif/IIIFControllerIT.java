@@ -22,20 +22,14 @@ import org.apache.commons.codec.CharEncoding;
 import org.apache.commons.io.IOUtils;
 import org.dspace.app.rest.test.AbstractControllerIntegrationTest;
 import org.dspace.builder.BitstreamBuilder;
-<<<<<<< HEAD
-=======
 import org.dspace.builder.BundleBuilder;
->>>>>>> ec0853ddad290f20cf4b7d647891df2011f1eafb
 import org.dspace.builder.CollectionBuilder;
 import org.dspace.builder.CommunityBuilder;
 import org.dspace.builder.EPersonBuilder;
 import org.dspace.builder.GroupBuilder;
 import org.dspace.builder.ItemBuilder;
 import org.dspace.content.Bitstream;
-<<<<<<< HEAD
-=======
 import org.dspace.content.Bundle;
->>>>>>> ec0853ddad290f20cf4b7d647891df2011f1eafb
 import org.dspace.content.Collection;
 import org.dspace.content.Item;
 import org.dspace.content.service.ItemService;
@@ -93,11 +87,7 @@ public class IIIFControllerIT extends AbstractControllerIntegrationTest {
     }
 
     @Test
-<<<<<<< HEAD
-    public void findOneIIIFSearchableEntityTypeWithGlobalConfigIT() throws Exception {
-=======
     public void findOneIIIFSearchableItemWithDefaultDimensionsIT() throws Exception {
->>>>>>> ec0853ddad290f20cf4b7d647891df2011f1eafb
         context.turnOffAuthorisationSystem();
         parentCommunity = CommunityBuilder.createCommunity(context)
                 .withName("Parent Community")
@@ -150,12 +140,8 @@ public class IIIFControllerIT extends AbstractControllerIntegrationTest {
                 .andExpect(jsonPath("$.sequences[0].canvases[0].@id",
                         Matchers.containsString("/iiif/" + publicItem1.getID() + "/canvas/c0")))
                 .andExpect(jsonPath("$.sequences[0].canvases[0].label", is("Page 1")))
-<<<<<<< HEAD
-                .andExpect(jsonPath("$.sequences[0].canvases[0].width", is(2200)))
-=======
                 .andExpect(jsonPath("$.sequences[0].canvases[0].width", is(64)))
                 .andExpect(jsonPath("$.sequences[0].canvases[0].height", is(64)))
->>>>>>> ec0853ddad290f20cf4b7d647891df2011f1eafb
                 .andExpect(jsonPath("$.sequences[0].canvases[0].images[0].resource.service.@id",
                         Matchers.endsWith(bitstream1.getID().toString())))
                 .andExpect(jsonPath("$.sequences[0].canvases[0].metadata[0].label", is("File name")))
@@ -1307,8 +1293,6 @@ public class IIIFControllerIT extends AbstractControllerIntegrationTest {
                    .andExpect(jsonPath("$.metadata[0].value", is("Public item (revised)")));
     }
 
-<<<<<<< HEAD
-=======
     @Test
     public void setDefaultCanvasDimensionCustomBundle() throws Exception {
 
@@ -1350,5 +1334,4 @@ public class IIIFControllerIT extends AbstractControllerIntegrationTest {
                    .andExpect(jsonPath("$.sequences[0].canvases[0].height", is(64)));
     }
 
->>>>>>> ec0853ddad290f20cf4b7d647891df2011f1eafb
 }

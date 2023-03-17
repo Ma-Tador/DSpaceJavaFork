@@ -361,8 +361,6 @@ public class DiscoveryRestControllerIT extends AbstractControllerIntegrationTest
     }
 
     @Test
-<<<<<<< HEAD
-=======
     public void discoverFacetsAuthorTestWithPrefix_Capital_And_Special_Chars() throws Exception {
         context.turnOffAuthorisationSystem();
 
@@ -503,7 +501,6 @@ public class DiscoveryRestControllerIT extends AbstractControllerIntegrationTest
     }
 
     @Test
->>>>>>> ec0853ddad290f20cf4b7d647891df2011f1eafb
     public void discoverFacetsAuthorTestForHasMoreFalse() throws Exception {
         //Turn of the authorization system so that we can create the structure specified below
         context.turnOffAuthorisationSystem();

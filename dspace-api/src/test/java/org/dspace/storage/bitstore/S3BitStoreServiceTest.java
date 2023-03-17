@@ -10,13 +10,9 @@ package org.dspace.storage.bitstore;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.isEmptyOrNullString;
-<<<<<<< HEAD
-import static org.junit.Assert.assertThrows;
-=======
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThrows;
 import static org.junit.Assert.assertTrue;
->>>>>>> ec0853ddad290f20cf4b7d647891df2011f1eafb
 import static org.mockito.ArgumentMatchers.startsWith;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
@@ -69,12 +65,9 @@ public class S3BitStoreServiceTest extends AbstractUnitTest {
     @Mock
     private Bitstream bitstream;
 
-<<<<<<< HEAD
-=======
     @Mock
     private Bitstream externalBitstream;
 
->>>>>>> ec0853ddad290f20cf4b7d647891df2011f1eafb
     @Before
     public void setUp() throws Exception {
         this.s3BitStoreService = new S3BitStoreService(s3Service, tm);
@@ -247,8 +240,6 @@ public class S3BitStoreServiceTest extends AbstractUnitTest {
     }
 
     @Test
-<<<<<<< HEAD
-=======
     public void handleRegisteredIdentifierPrefixInS3() {
         String trueBitStreamId = "012345";
         String registeredBitstreamId = s3BitStoreService.REGISTERED_FLAG + trueBitStreamId;
@@ -267,7 +258,6 @@ public class S3BitStoreServiceTest extends AbstractUnitTest {
     }
 
     @Test
->>>>>>> ec0853ddad290f20cf4b7d647891df2011f1eafb
     public void givenBitStreamIdentifierLongerThanPossibleWhenIntermediatePathIsComputedThenIsSplittedAndTruncated() {
         String path = "01234567890123456789";
         String computedPath = this.s3BitStoreService.getIntermediatePath(path);

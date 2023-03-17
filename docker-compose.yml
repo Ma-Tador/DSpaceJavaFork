@@ -41,11 +41,8 @@ services:
       target: 8080
     - published: 8009
       target: 8009
-<<<<<<< HEAD
-=======
     - published: 8000
       target: 8000
->>>>>>> ec0853ddad290f20cf4b7d647891df2011f1eafb
     stdin_open: true
     tty: true
     volumes:

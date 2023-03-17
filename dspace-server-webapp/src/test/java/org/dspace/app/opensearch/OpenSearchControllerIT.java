@@ -185,8 +185,6 @@ public class OpenSearchControllerIT extends AbstractControllerIntegrationTest {
     }
 
     @Test
-<<<<<<< HEAD
-=======
     public void validSortTest() throws Exception {
         //When we call the root endpoint
         getClient().perform(get("/opensearch/search")
@@ -213,7 +211,6 @@ public class OpenSearchControllerIT extends AbstractControllerIntegrationTest {
     }
 
     @Test
->>>>>>> ec0853ddad290f20cf4b7d647891df2011f1eafb
     public void serviceDocumentTest() throws Exception {
         //When we call the root endpoint
         getClient().perform(get("/opensearch/service"))
