@@ -24,6 +24,7 @@ import org.dspace.eperson.service.EPersonService;
 import org.dspace.eperson.service.RegistrationDataService;
 import org.dspace.services.ConfigurationService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.dspace.authenticate.service.AuthenticationService;
 
 /**
  * Methods for handling registration by email and forgotten passwords. When
@@ -83,7 +84,7 @@ public class AccountServiceImpl implements AccountService {
         if (!configurationService.getBooleanProperty("user.registration", true)) {
             throw new IllegalStateException("The user.registration parameter was set to false");
         }
-        if (!configurationService.canSelfRegister(context, null, email)) {
+        if (!authenticationService.canSelfRegister(context, null, email)) {
             throw new IllegalStateException("Self registration not allowed with this email address.");
         }
         sendInfo(context, email, true, true);

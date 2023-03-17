@@ -43,6 +43,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.rest.webmvc.ResourceNotFoundException;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.stereotype.Component;
+import org.dspace.authenticate.service.AuthenticationService;
 
 /**
  * This is the repository that is responsible for managing Registration Rest objects
@@ -69,6 +70,10 @@ public class RegistrationRestRepository extends DSpaceRestRepository<Registratio
 
     @Autowired
     private RegistrationDataService registrationDataService;
+
+    @Autowired
+    private AuthenticationService authenticationService;
+
 
     @Override
     public RegistrationRest findOne(Context context, Integer integer) {
@@ -128,6 +133,9 @@ public class RegistrationRestRepository extends DSpaceRestRepository<Registratio
                 if (!AuthorizeUtil.authorizeNewAccountRegistration(context, request)) {
                     throw new AccessDeniedException(
                         "Registration is disabled, you are not authorized to create a new Authorization");
+                }
+                if (!authenticationService.canSelfRegister(context, request, registrationRest.getEmail())) {
+                    throw new DSpaceBadRequestException("registration is not allowed with this email address");
                 }
                 accountService.sendRegistrationInfo(context, registrationRest.getEmail());
             } catch (SQLException | IOException | MessagingException | AuthorizeException e) {
