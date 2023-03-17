@@ -10,6 +10,7 @@ package org.dspace.content;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
+<<<<<<< HEAD
 import java.util.Map;
 
 import org.apache.logging.log4j.LogManager;
@@ -18,6 +19,11 @@ import org.dspace.authorize.AuthorizeException;
 import org.dspace.content.factory.ContentServiceFactory;
 import org.dspace.content.logic.Filter;
 import org.dspace.content.logic.FilterUtils;
+=======
+
+import org.dspace.authorize.AuthorizeException;
+import org.dspace.content.factory.ContentServiceFactory;
+>>>>>>> ec0853ddad290f20cf4b7d647891df2011f1eafb
 import org.dspace.content.service.CollectionService;
 import org.dspace.content.service.InstallItemService;
 import org.dspace.content.service.ItemService;
@@ -25,7 +31,10 @@ import org.dspace.core.Constants;
 import org.dspace.core.Context;
 import org.dspace.embargo.service.EmbargoService;
 import org.dspace.event.Event;
+<<<<<<< HEAD
 import org.dspace.identifier.Identifier;
+=======
+>>>>>>> ec0853ddad290f20cf4b7d647891df2011f1eafb
 import org.dspace.identifier.IdentifierException;
 import org.dspace.identifier.service.IdentifierService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -48,11 +57,17 @@ public class InstallItemServiceImpl implements InstallItemService {
     protected IdentifierService identifierService;
     @Autowired(required = true)
     protected ItemService itemService;
+<<<<<<< HEAD
     @Autowired(required = false)
 
     Logger log = LogManager.getLogger(InstallItemServiceImpl.class);
 
     protected InstallItemServiceImpl() {
+=======
+
+    protected InstallItemServiceImpl() {
+
+>>>>>>> ec0853ddad290f20cf4b7d647891df2011f1eafb
     }
 
     @Override
@@ -67,6 +82,7 @@ public class InstallItemServiceImpl implements InstallItemService {
         AuthorizeException {
         Item item = is.getItem();
         Collection collection = is.getCollection();
+<<<<<<< HEAD
         // Get map of filters to use for identifier types
         Map<Class<? extends Identifier>, Filter> filters = FilterUtils.getIdentifierFilters("install");
         try {
@@ -75,6 +91,12 @@ public class InstallItemServiceImpl implements InstallItemService {
                 identifierService.register(c, item, filters);
             } else {
                 // This will register the handle but a pending DOI won't be compatible and so won't be registered
+=======
+        try {
+            if (suppliedHandle == null) {
+                identifierService.register(c, item);
+            } else {
+>>>>>>> ec0853ddad290f20cf4b7d647891df2011f1eafb
                 identifierService.register(c, item, suppliedHandle);
             }
         } catch (IdentifierException e) {
@@ -257,4 +279,8 @@ public class InstallItemServiceImpl implements InstallItemService {
 
         return myMessage.toString();
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> ec0853ddad290f20cf4b7d647891df2011f1eafb

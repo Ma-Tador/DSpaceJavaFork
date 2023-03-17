@@ -1,3 +1,13 @@
+<<<<<<< HEAD
+=======
+/**
+ * The contents of this file are subject to the license and copyright
+ * detailed in the LICENSE and NOTICE files at the root of the source
+ * tree and available online at
+ *
+ * http://www.dspace.org/license/
+ */
+>>>>>>> ec0853ddad290f20cf4b7d647891df2011f1eafb
 package org.dspace.xoai.util;
 
 import java.io.ByteArrayOutputStream;
@@ -30,6 +40,7 @@ import org.dspace.core.Utils;
 import org.dspace.services.ConfigurationService;
 import org.dspace.services.factory.DSpaceServicesFactory;
 import org.dspace.xoai.data.DSpaceItem;
+<<<<<<< HEAD
 import org.dspace.authorize.ResourcePolicy;
 import org.dspace.authorize.factory.AuthorizeServiceFactory;
 import org.dspace.authorize.service.ResourcePolicyService;
@@ -42,6 +53,8 @@ import java.util.Date;
 import org.dspace.content.DCDate;
 //import org.dspace.core.ConfigurationManager;  //obsolete import
 
+=======
+>>>>>>> ec0853ddad290f20cf4b7d647891df2011f1eafb
 
 /**
  * @author Lyncode Development Team (dspace at lyncode dot com)
@@ -50,6 +63,7 @@ import org.dspace.content.DCDate;
 public class ItemUtils {
     private static final Logger log = LogManager.getLogger(ItemUtils.class);
 
+<<<<<<< HEAD
     private static final MetadataExposureService metadataExposureService = UtilServiceFactory.getInstance().getMetadataExposureService();
 
     private static final ItemService itemService = ContentServiceFactory.getInstance().getItemService();
@@ -69,6 +83,22 @@ public class ItemUtils {
 
 
 
+=======
+    private static final MetadataExposureService metadataExposureService
+            = UtilServiceFactory.getInstance().getMetadataExposureService();
+
+    private static final ItemService itemService
+            = ContentServiceFactory.getInstance().getItemService();
+
+    private static final RelationshipService relationshipService
+            = ContentServiceFactory.getInstance().getRelationshipService();
+
+    private static final BitstreamService bitstreamService
+            = ContentServiceFactory.getInstance().getBitstreamService();
+
+    private static final ConfigurationService configurationService
+            = DSpaceServicesFactory.getInstance().getConfigurationService();
+>>>>>>> ec0853ddad290f20cf4b7d647891df2011f1eafb
     /**
      * Default constructor
      */
@@ -81,6 +111,10 @@ public class ItemUtils {
                 return e;
             }
         }
+<<<<<<< HEAD
+=======
+
+>>>>>>> ec0853ddad290f20cf4b7d647891df2011f1eafb
         return null;
     }
 
@@ -97,8 +131,11 @@ public class ItemUtils {
         return e;
     }
 
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> ec0853ddad290f20cf4b7d647891df2011f1eafb
     private static Element createBundlesElement(Context context, Item item) throws SQLException {
         Element bundles = create("bundles");
 
@@ -119,8 +156,12 @@ public class ItemUtils {
                 String url = "";
                 String bsName = bit.getName();
                 String sid = String.valueOf(bit.getSequenceID());
+<<<<<<< HEAD
                 //String baseUrl = configurationService.getProperty("oai.bitstream.baseUrl");
                 //System.out.println(baseUrl);
+=======
+                String baseUrl = configurationService.getProperty("oai.bitstream.baseUrl");
+>>>>>>> ec0853ddad290f20cf4b7d647891df2011f1eafb
                 String handle = null;
                 // get handle of parent Item of this bitstream, if there
                 // is one:
@@ -131,8 +172,12 @@ public class ItemUtils {
                         handle = bi.get(0).getHandle();
                     }
                 }
+<<<<<<< HEAD
                 //url = baseUrl + "/bitstreams/" + bit.getID().toString() + "/download";
 		url = "https://repotest.ub.fau.de/bitstreams/" + bit.getID().toString() + "/download";
+=======
+                url = baseUrl + "/bitstreams/" + bit.getID().toString() + "/download";
+>>>>>>> ec0853ddad290f20cf4b7d647891df2011f1eafb
 
                 String cks = bit.getChecksum();
                 String cka = bit.getChecksumAlgorithm();
@@ -161,9 +206,12 @@ public class ItemUtils {
         return bundles;
     }
 
+<<<<<<< HEAD
 
 
 
+=======
+>>>>>>> ec0853ddad290f20cf4b7d647891df2011f1eafb
     private static Element createLicenseElement(Context context, Item item)
             throws SQLException, AuthorizeException, IOException {
         Element license = create("license");
@@ -180,14 +228,21 @@ public class ItemUtils {
                 ByteArrayOutputStream out = new ByteArrayOutputStream();
                 Utils.bufferedCopy(in, out);
                 license.getField().add(createValue("bin", Base64Utils.encode(out.toString())));
+<<<<<<< HEAD
+=======
+
+>>>>>>> ec0853ddad290f20cf4b7d647891df2011f1eafb
             }
         }
         return license;
     }
 
+<<<<<<< HEAD
 
 
 
+=======
+>>>>>>> ec0853ddad290f20cf4b7d647891df2011f1eafb
     /**
      * This method will add all sub-elements to a top element, like: dc, or dcterms, ...     *
      * @param schema         Element argument passed by reference that will be changed
@@ -244,10 +299,13 @@ public class ItemUtils {
         }
     }
 
+<<<<<<< HEAD
 
 
 
 
+=======
+>>>>>>> ec0853ddad290f20cf4b7d647891df2011f1eafb
     /**
      * Utility method to retrieve a structured XML in XOAI format
      * @param context
@@ -255,6 +313,7 @@ public class ItemUtils {
      * @return Structured XML Metadata in XOAI format
      */
     public static Metadata retrieveMetadata(Context context, Item item) {
+<<<<<<< HEAD
         // read all metadata into Metadata Object
         Metadata metadata = new Metadata();
         Date bitstreamMinEmbargoDate = null;
@@ -269,16 +328,38 @@ public class ItemUtils {
                     continue;
                 }
                 //get metadata schema ex.dcterms
+=======
+        Metadata metadata;
+
+        // read all metadata into Metadata Object
+        metadata = new Metadata();
+
+        List<MetadataValue> vals = itemService.getMetadata(item, Item.ANY, Item.ANY, Item.ANY, Item.ANY);
+        for (MetadataValue val : vals) {
+            MetadataField field = val.getMetadataField();
+            try {
+                // Don't expose fields that are hidden by configuration
+                if (metadataExposureService.isHidden(context, field.getMetadataSchema().getName(), field.getElement(),
+                        field.getQualifier())) {
+                    continue;
+                }
+
+>>>>>>> ec0853ddad290f20cf4b7d647891df2011f1eafb
                 Element schema = getElement(metadata.getElement(), field.getMetadataSchema().getName());
                 if (schema == null) {
                     schema = create(field.getMetadataSchema().getName());
                     metadata.getElement().add(schema);
                 }
+<<<<<<< HEAD
+=======
+
+>>>>>>> ec0853ddad290f20cf4b7d647891df2011f1eafb
                 fillSchemaElement(schema, val);
             } catch (SQLException se) {
                 throw new RuntimeException(se);
             }
         }
+<<<<<<< HEAD
         // Done! Metadata has been read!
         // Now adding bitstream info
         try {
@@ -380,6 +461,25 @@ public class ItemUtils {
             log.warn("Unable to get item embargo: " + e, e);
         }
 	metadata.getElement().add(other);
+=======
+
+        // Done! Metadata has been read!
+        // Now adding bitstream info
+        try {
+            Element bundles = createBundlesElement(context, item);
+            metadata.getElement().add(bundles);
+        } catch (SQLException e) {
+            log.warn(e.getMessage(), e);
+        }
+
+        // Other info
+        Element other = create("others");
+
+        other.getField().add(createValue("handle", item.getHandle()));
+        other.getField().add(createValue("identifier", DSpaceItem.buildIdentifier(item.getHandle())));
+        other.getField().add(createValue("lastModifyDate", item.getLastModified().toString()));
+        metadata.getElement().add(other);
+>>>>>>> ec0853ddad290f20cf4b7d647891df2011f1eafb
 
         // Repository Info
         Element repository = create("repository");
@@ -395,6 +495,10 @@ public class ItemUtils {
         } catch (AuthorizeException | IOException | SQLException e) {
             log.warn(e.getMessage(), e);
         }
+<<<<<<< HEAD
+=======
+
+>>>>>>> ec0853ddad290f20cf4b7d647891df2011f1eafb
         return metadata;
     }
 }

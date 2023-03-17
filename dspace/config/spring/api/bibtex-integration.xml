@@ -17,6 +17,7 @@
             only matters here for postprocessing of the value. The mapped MetadatumContributor has full control over
             what metadatafield is generated.
         </description>
+<<<<<<< HEAD
         <entry key-ref="dcPublPlace" value-ref="bibtexAddress" />
         <entry key-ref="dcType" value-ref="bibtexTypeContrib" />
         <entry key-ref="dcTitle" value-ref="bibtexTitleContrib" />
@@ -83,6 +84,19 @@
     <bean id="bibtexJissnContrib" class="org.dspace.importer.external.metadatamapping.contributor.SimpleMetadataContributor">
         <property name="field" ref="dcJissn"/>
         <property name="key" value="issn" />
+=======
+        <entry key-ref="dcType" value-ref="bibtexTypeContrib" />
+        <entry key-ref="dcTitle" value-ref="bibtexTitleContrib" />
+        <entry key-ref="dcAuthors" value-ref="bibtexAuthorsContrib" />
+        <entry key-ref="dcJournal" value-ref="bibtexJournalContrib" />
+		<entry key-ref="dcIssued" value-ref="bibtexIssuedContrib" />
+		<entry key-ref="dcJissn" value-ref="bibtexJissnContrib" />    
+    </util:map>
+
+    <bean id="bibtexJissnContrib" class="org.dspace.importer.external.metadatamapping.contributor.SimpleMetadataContributor">
+        <property name="field" ref="dcJissn"/>
+        <property name="key" value="ISSN" />
+>>>>>>> ec0853ddad290f20cf4b7d647891df2011f1eafb
     </bean>
 
     <bean id="bibtexIssuedContrib" class="org.dspace.importer.external.metadatamapping.contributor.SimpleMetadataContributor">
@@ -104,7 +118,11 @@
         </constructor-arg>
         <constructor-arg name="regex" value="\sand\s"/>
     </bean>
+<<<<<<< HEAD
  
+=======
+    
+>>>>>>> ec0853ddad290f20cf4b7d647891df2011f1eafb
     <bean id="bibtexTitleContrib" class="org.dspace.importer.external.metadatamapping.contributor.SimpleMetadataContributor">
         <property name="field" ref="dcTitle"/>
         <property name="key" value="title" />

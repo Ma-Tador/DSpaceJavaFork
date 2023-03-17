@@ -397,12 +397,25 @@ public class ItemBuilder extends AbstractDSpaceObjectBuilder<Item> {
        try (Context c = new Context()) {
             c.setDispatcher("noindex");
             c.turnOffAuthorisationSystem();
+<<<<<<< HEAD
+=======
+            // If the workspaceItem used to create this item still exists, delete it
+            workspaceItem = c.reloadEntity(workspaceItem);
+            if (workspaceItem != null) {
+                workspaceItemService.deleteAll(c, workspaceItem);
+            }
+>>>>>>> ec0853ddad290f20cf4b7d647891df2011f1eafb
             // Ensure object and any related objects are reloaded before checking to see what needs cleanup
             item = c.reloadEntity(item);
             if (item != null) {
                  delete(c, item);
+<<<<<<< HEAD
                  c.complete();
             }
+=======
+            }
+            c.complete();
+>>>>>>> ec0853ddad290f20cf4b7d647891df2011f1eafb
        }
     }
 

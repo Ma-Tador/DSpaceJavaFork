@@ -21,7 +21,11 @@ public interface LiveImportClient {
      * 
      * @param timeout        The connect timeout in milliseconds
      * @param URL            URL
+<<<<<<< HEAD
      * @param requestParams  This map contains the parameters to be included in the request.
+=======
+     * @param params         This map contains the parameters to be included in the request.
+>>>>>>> ec0853ddad290f20cf4b7d647891df2011f1eafb
      *                       Each parameter will be added to the url?(key=value)
      * @return               The response in String type converted from InputStream
      */

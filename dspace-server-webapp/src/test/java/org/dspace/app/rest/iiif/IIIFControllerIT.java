@@ -22,12 +22,20 @@ import org.apache.commons.codec.CharEncoding;
 import org.apache.commons.io.IOUtils;
 import org.dspace.app.rest.test.AbstractControllerIntegrationTest;
 import org.dspace.builder.BitstreamBuilder;
+<<<<<<< HEAD
+=======
+import org.dspace.builder.BundleBuilder;
+>>>>>>> ec0853ddad290f20cf4b7d647891df2011f1eafb
 import org.dspace.builder.CollectionBuilder;
 import org.dspace.builder.CommunityBuilder;
 import org.dspace.builder.EPersonBuilder;
 import org.dspace.builder.GroupBuilder;
 import org.dspace.builder.ItemBuilder;
 import org.dspace.content.Bitstream;
+<<<<<<< HEAD
+=======
+import org.dspace.content.Bundle;
+>>>>>>> ec0853ddad290f20cf4b7d647891df2011f1eafb
 import org.dspace.content.Collection;
 import org.dspace.content.Item;
 import org.dspace.content.service.ItemService;
@@ -85,7 +93,11 @@ public class IIIFControllerIT extends AbstractControllerIntegrationTest {
     }
 
     @Test
+<<<<<<< HEAD
     public void findOneIIIFSearchableEntityTypeWithGlobalConfigIT() throws Exception {
+=======
+    public void findOneIIIFSearchableItemWithDefaultDimensionsIT() throws Exception {
+>>>>>>> ec0853ddad290f20cf4b7d647891df2011f1eafb
         context.turnOffAuthorisationSystem();
         parentCommunity = CommunityBuilder.createCommunity(context)
                 .withName("Parent Community")
@@ -138,7 +150,12 @@ public class IIIFControllerIT extends AbstractControllerIntegrationTest {
                 .andExpect(jsonPath("$.sequences[0].canvases[0].@id",
                         Matchers.containsString("/iiif/" + publicItem1.getID() + "/canvas/c0")))
                 .andExpect(jsonPath("$.sequences[0].canvases[0].label", is("Page 1")))
+<<<<<<< HEAD
                 .andExpect(jsonPath("$.sequences[0].canvases[0].width", is(2200)))
+=======
+                .andExpect(jsonPath("$.sequences[0].canvases[0].width", is(64)))
+                .andExpect(jsonPath("$.sequences[0].canvases[0].height", is(64)))
+>>>>>>> ec0853ddad290f20cf4b7d647891df2011f1eafb
                 .andExpect(jsonPath("$.sequences[0].canvases[0].images[0].resource.service.@id",
                         Matchers.endsWith(bitstream1.getID().toString())))
                 .andExpect(jsonPath("$.sequences[0].canvases[0].metadata[0].label", is("File name")))
@@ -1290,4 +1307,48 @@ public class IIIFControllerIT extends AbstractControllerIntegrationTest {
                    .andExpect(jsonPath("$.metadata[0].value", is("Public item (revised)")));
     }
 
+<<<<<<< HEAD
+=======
+    @Test
+    public void setDefaultCanvasDimensionCustomBundle() throws Exception {
+
+        context.turnOffAuthorisationSystem();
+
+        parentCommunity = CommunityBuilder.createCommunity(context)
+                                          .withName("Parent Community")
+                                          .build();
+
+        Collection col1 = CollectionBuilder.createCollection(context, parentCommunity).withName("Collection 1")
+                                           .build();
+
+        Item publicItem1 = ItemBuilder.createItem(context, col1)
+                                      .withTitle("Public item 1")
+                                      .withIssueDate("2017-10-17")
+                                      .withAuthor("Smith, Donald").withAuthor("Doe, John")
+                                      .enableIIIF()
+                                      .build();
+
+
+        Bundle targetBundle = BundleBuilder.createBundle(context, publicItem1)
+                                           .withName(IIIFBundle)
+                                           .build();
+
+        String bitstreamContent = "ThisIsSomeDummyText";
+        try (InputStream is = IOUtils.toInputStream(bitstreamContent, CharEncoding.UTF_8)) {
+            Bitstream bitstream1 = BitstreamBuilder
+                    .createBitstream(context, targetBundle, is)
+                    .withName("Bitstream1.jpg")
+                    .withMimeType("image/jpeg")
+                    .build();
+        }
+        context.restoreAuthSystemState();
+
+        // canvas dimensions using bitstream in the custom bundle (no bitstreams in ORIGINAL)
+        getClient().perform(get("/iiif/" + publicItem1.getID() + "/manifest"))
+                   .andExpect(status().isOk())
+                   .andExpect(jsonPath("$.sequences[0].canvases[0].width", is(64)))
+                   .andExpect(jsonPath("$.sequences[0].canvases[0].height", is(64)));
+    }
+
+>>>>>>> ec0853ddad290f20cf4b7d647891df2011f1eafb
 }

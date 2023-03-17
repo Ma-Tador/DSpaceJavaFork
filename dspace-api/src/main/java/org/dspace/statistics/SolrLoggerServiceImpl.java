@@ -197,7 +197,11 @@ public class SolrLoggerServiceImpl implements SolrLoggerService, InitializingBea
     @Override
     public void postView(DSpaceObject dspaceObject, HttpServletRequest request,
                          EPerson currentUser) {
+<<<<<<< HEAD
         if (solr == null || locationService == null) {
+=======
+        if (solr == null) {
+>>>>>>> ec0853ddad290f20cf4b7d647891df2011f1eafb
             return;
         }
         initSolrYearCores();
@@ -238,7 +242,11 @@ public class SolrLoggerServiceImpl implements SolrLoggerService, InitializingBea
     @Override
     public void postView(DSpaceObject dspaceObject,
                          String ip, String userAgent, String xforwardedfor, EPerson currentUser) {
+<<<<<<< HEAD
         if (solr == null || locationService == null) {
+=======
+        if (solr == null) {
+>>>>>>> ec0853ddad290f20cf4b7d647891df2011f1eafb
             return;
         }
         initSolrYearCores();

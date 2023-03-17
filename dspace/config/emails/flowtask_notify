@@ -20,4 +20,8 @@ ${params[4]}
 
 Action taken on the submission: ${params[5]}
 
+<<<<<<< HEAD
 OPEN FAU Repository Team
+=======
+DSpace
+>>>>>>> ec0853ddad290f20cf4b7d647891df2011f1eafb

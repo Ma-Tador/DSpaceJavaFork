@@ -12,6 +12,7 @@ edit and/or approve submissions.
 If you need assistance with your account, please email
 ${config.get("mail.admin")}.
 
+<<<<<<< HEAD
 The OPEN FAU Team
 #The ${config.get('dspace.name')} Team
 
@@ -32,3 +33,6 @@ ${config.get("mail.admin")}.
 
 
 OPEN FAU Team
+=======
+The ${config.get('dspace.name')} Team
+>>>>>>> ec0853ddad290f20cf4b7d647891df2011f1eafb

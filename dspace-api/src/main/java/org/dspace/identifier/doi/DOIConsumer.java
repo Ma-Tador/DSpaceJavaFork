@@ -7,18 +7,25 @@
  */
 package org.dspace.identifier.doi;
 
+<<<<<<< HEAD
 import java.sql.SQLException;
 
+=======
+>>>>>>> ec0853ddad290f20cf4b7d647891df2011f1eafb
 import org.apache.logging.log4j.Logger;
 import org.dspace.content.DSpaceObject;
 import org.dspace.content.Item;
 import org.dspace.content.factory.ContentServiceFactory;
+<<<<<<< HEAD
 import org.dspace.content.logic.Filter;
 import org.dspace.content.logic.FilterUtils;
+=======
+>>>>>>> ec0853ddad290f20cf4b7d647891df2011f1eafb
 import org.dspace.core.Constants;
 import org.dspace.core.Context;
 import org.dspace.event.Consumer;
 import org.dspace.event.Event;
+<<<<<<< HEAD
 import org.dspace.identifier.DOI;
 import org.dspace.identifier.DOIIdentifierProvider;
 import org.dspace.identifier.IdentifierException;
@@ -27,12 +34,20 @@ import org.dspace.identifier.factory.IdentifierServiceFactory;
 import org.dspace.identifier.service.DOIService;
 import org.dspace.services.ConfigurationService;
 import org.dspace.services.factory.DSpaceServicesFactory;
+=======
+import org.dspace.identifier.DOIIdentifierProvider;
+import org.dspace.identifier.IdentifierException;
+import org.dspace.identifier.IdentifierNotFoundException;
+>>>>>>> ec0853ddad290f20cf4b7d647891df2011f1eafb
 import org.dspace.utils.DSpace;
 import org.dspace.workflow.factory.WorkflowServiceFactory;
 
 /**
  * @author Pascal-Nicolas Becker (p dot becker at tu hyphen berlin dot de)
+<<<<<<< HEAD
  * @author Kim Shepherd
+=======
+>>>>>>> ec0853ddad290f20cf4b7d647891df2011f1eafb
  */
 public class DOIConsumer implements Consumer {
     /**
@@ -40,15 +55,21 @@ public class DOIConsumer implements Consumer {
      */
     private static Logger log = org.apache.logging.log4j.LogManager.getLogger(DOIConsumer.class);
 
+<<<<<<< HEAD
     ConfigurationService configurationService;
 
+=======
+>>>>>>> ec0853ddad290f20cf4b7d647891df2011f1eafb
     @Override
     public void initialize() throws Exception {
         // nothing to do
         // we can ask spring to give as a properly setuped instance of
         // DOIIdentifierProvider. Doing so we don't have to configure it and
         // can load it in consume method as this is not very expensive.
+<<<<<<< HEAD
         configurationService = DSpaceServicesFactory.getInstance().getConfigurationService();
+=======
+>>>>>>> ec0853ddad290f20cf4b7d647891df2011f1eafb
 
     }
 
@@ -75,6 +96,7 @@ public class DOIConsumer implements Consumer {
             return;
         }
         Item item = (Item) dso;
+<<<<<<< HEAD
         DOIIdentifierProvider provider = new DSpace().getSingletonService(DOIIdentifierProvider.class);
         boolean inProgress = (ContentServiceFactory.getInstance().getWorkspaceItemService().findByItem(ctx, item)
                 != null || WorkflowServiceFactory.getInstance().getWorkflowItemService().findByItem(ctx, item) != null);
@@ -95,10 +117,27 @@ public class DOIConsumer implements Consumer {
         try {
             doi = doiService.findDOIByDSpaceObject(ctx, dso);
         } catch (SQLException ex) {
+=======
+
+        if (ContentServiceFactory.getInstance().getWorkspaceItemService().findByItem(ctx, item) != null
+            || WorkflowServiceFactory.getInstance().getWorkflowItemService().findByItem(ctx, item) != null) {
+            // ignore workflow and workspace items, DOI will be minted when item is installed
+            return;
+        }
+
+        DOIIdentifierProvider provider = new DSpace().getSingletonService(
+            DOIIdentifierProvider.class);
+
+        String doi = null;
+        try {
+            doi = provider.lookup(ctx, dso);
+        } catch (IdentifierNotFoundException ex) {
+>>>>>>> ec0853ddad290f20cf4b7d647891df2011f1eafb
             // nothing to do here, next if clause will stop us from processing
             // items without dois.
         }
         if (doi == null) {
+<<<<<<< HEAD
             // No DOI. The only time something should be minted is if we have enabled submission reg'n and
             // it passes the workspace filter. We also need to update status to PENDING straight after.
             if (inProgress) {
@@ -142,6 +181,20 @@ public class DOIConsumer implements Consumer {
                 }
             }
             ctx.commit();
+=======
+            log.debug("DOIConsumer cannot handles items without DOIs, skipping: "
+                          + event.toString());
+            return;
+        }
+        try {
+            provider.updateMetadata(ctx, dso, doi);
+        } catch (IllegalArgumentException ex) {
+            // should not happen, as we got the DOI from the DOIProvider
+            log.warn("DOIConsumer caught an IdentifierException.", ex);
+        } catch (IdentifierException ex) {
+            log.warn("DOIConsumer cannot update metadata for Item with ID "
+                         + item.getID() + " and DOI " + doi + ".", ex);
+>>>>>>> ec0853ddad290f20cf4b7d647891df2011f1eafb
         }
     }
 
@@ -156,4 +209,8 @@ public class DOIConsumer implements Consumer {
         // nothing to do
     }
 
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> ec0853ddad290f20cf4b7d647891df2011f1eafb

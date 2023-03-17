@@ -99,6 +99,10 @@
         <queryResultMaxDocsCached>200</queryResultMaxDocsCached>
         <useColdSearcher>false</useColdSearcher>
         <maxWarmingSearchers>2</maxWarmingSearchers>
+<<<<<<< HEAD
+=======
+        <slowQueryThresholdMillis>1000</slowQueryThresholdMillis>
+>>>>>>> ec0853ddad290f20cf4b7d647891df2011f1eafb
     </query>
 
     <!-- Controls how the Solr HTTP RequestDispatcher responds to requests -->

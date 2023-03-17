@@ -14,6 +14,7 @@ ${params[0]}
 This file will remain available for at least ${params[1]} hours.
 
 
+<<<<<<< HEAD
 The OPEN FAU Repository Team
 
 
@@ -31,3 +32,7 @@ Diese Datei bleibt mindestens ${params[1]} Stunden verfügbar.
 
 
 Das Repositorium-Team der OPEN FAU
+=======
+The DSpace Team
+
+>>>>>>> ec0853ddad290f20cf4b7d647891df2011f1eafb

@@ -23,8 +23,12 @@
     <bean class="org.dspace.statistics.export.IrusExportUsageEventListener">
         <property name="eventService" ref="org.dspace.services.EventService"/>
     </bean>
+<<<<<<< HEAD
     <!--  OpenAIRE statistics tracking  -->
     <bean class="org.dspace.statistics.export.OpenAIREUsageTracker">
         <property name="eventService" ref="org.dspace.services.EventService"/>
     </bean>  
+=======
+
+>>>>>>> ec0853ddad290f20cf4b7d647891df2011f1eafb
 </beans>

@@ -18,6 +18,7 @@ with the following explanation:
 ${params[3]}
 
 Your submission has not been deleted.  You can access it from your
+<<<<<<< HEAD
 "My FAU Repositorium" page: ${params[4]}
 
 OPEN FAU Repository Team
@@ -39,3 +40,8 @@ Ihre Einreichung wurde nicht gelöscht. Sie können ihre Einreichung auf
 "My FAU Repository" Seite finden: ${params[4]}
 
 Das Repositorium-Team der OPEN FAU
+=======
+"My DSpace" page: ${params[4]}
+
+DSpace
+>>>>>>> ec0853ddad290f20cf4b7d647891df2011f1eafb

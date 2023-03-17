@@ -53,7 +53,11 @@ public interface RestAuthenticationService {
      * Checks the current request for a valid authentication token. If found, extracts that token and obtains the
      * currently logged in EPerson.
      * @param request current request
+<<<<<<< HEAD
      * @param request current response
+=======
+     * @param response current response
+>>>>>>> ec0853ddad290f20cf4b7d647891df2011f1eafb
      * @param context current DSpace Context
      * @return EPerson of the logged in user (if auth token found), or null if no auth token is found
      */

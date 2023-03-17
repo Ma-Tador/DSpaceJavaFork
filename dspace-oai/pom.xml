@@ -8,7 +8,11 @@
     <parent>
         <artifactId>dspace-parent</artifactId>
         <groupId>org.dspace</groupId>
+<<<<<<< HEAD
         <version>7.4</version>
+=======
+        <version>7.5-SNAPSHOT</version>
+>>>>>>> ec0853ddad290f20cf4b7d647891df2011f1eafb
         <relativePath>..</relativePath>
     </parent>
 
@@ -166,6 +170,7 @@
         </dependency>
 
         <!-- Web API -->
+<<<<<<< HEAD
         
         <dependency>
             <groupId>javax.servlet</groupId>
@@ -175,6 +180,13 @@
                -->  
         </dependency>
        
+=======
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <scope>provided</scope>
+        </dependency>
+>>>>>>> ec0853ddad290f20cf4b7d647891df2011f1eafb
 
         <!-- Logging -->
         <dependency>

@@ -23,9 +23,15 @@
     <!-- DO NOT CHANGE ANYTHING BELOW THIS LINE EXCEPT YOU REALLY KNOW WHAT YOU ARE DOING! -->
     
     <!-- We need the prefix to determine DOIs that were minted by ourself. -->
+<<<<<<< HEAD
     <xsl:param name="prefix">10.81092/testdspace2-</xsl:param>
     <!-- The content of the following parameter will be used as element publisher. -->
     <xsl:param name="publisher">Test2 FAU Erlangen</xsl:param>
+=======
+    <xsl:param name="prefix">10.5072/dspace-</xsl:param>
+    <!-- The content of the following parameter will be used as element publisher. -->
+    <xsl:param name="publisher">My University</xsl:param>
+>>>>>>> ec0853ddad290f20cf4b7d647891df2011f1eafb
     <!-- The content of the following variable will be used as element contributor with contributorType datamanager. -->
     <xsl:param name="datamanager"><xsl:value-of select="$publisher" /></xsl:param>
     <!-- The content of the following variable will be used as element contributor with contributorType hostingInstitution. -->
@@ -236,6 +242,7 @@
                 </xsl:element>
             </xsl:if>
 
+<<<<<<< HEAD
 <!-- Added to search also in the local identifiers @Steli
 <xsl:if test="//dspace:field[@mdschema='local' and @element='identifier' and @qualifier and not(starts-with(., concat('http://dx.doi.org/', $prefix)))]">
 <xsl:element name="alternateIdentifiers">
@@ -244,6 +251,8 @@
 </xsl:if>
 -->
 
+=======
+>>>>>>> ec0853ddad290f20cf4b7d647891df2011f1eafb
             <!--
                 DataCite (12)
                 Add sizes.
@@ -529,6 +538,7 @@
         </xsl:element>
     </xsl:template>
 
+<<<<<<< HEAD
 <xsl:template match="//dspace:field[@mdschema='dc' and @element='identifier' and @qualifier and not(starts-with(., concat('http://dx.doi.org/', $prefix)))]">
 <xsl:element name="alternateIdentifier">
 <xsl:if test="@qualifier">
@@ -539,6 +549,8 @@
 </xsl:template>
 
 
+=======
+>>>>>>> ec0853ddad290f20cf4b7d647891df2011f1eafb
     <!--
         DataCite (12), DataCite (12.1)
         Adds RelatedIdentifier and relatedIdentifierType information

@@ -31,6 +31,16 @@ public class FacetValueMatcher {
         );
     }
 
+<<<<<<< HEAD
+=======
+    public static Matcher<? super Object> entryFacetWithoutSelfLink(String label) {
+        return allOf(
+            hasJsonPath("$.label", is(label)),
+            hasJsonPath("$.type", is("discover"))
+        );
+    }
+
+>>>>>>> ec0853ddad290f20cf4b7d647891df2011f1eafb
     public static Matcher<? super Object> entryAuthorWithAuthority(String label, String authority, int count) {
         return allOf(
             hasJsonPath("$.authorityKey", is(authority)),

@@ -30,7 +30,10 @@ import java.util.Date;
 import java.util.List;
 
 import org.dspace.AbstractIntegrationTestWithDatabase;
+<<<<<<< HEAD
 import org.dspace.authorize.AuthorizeException;
+=======
+>>>>>>> ec0853ddad290f20cf4b7d647891df2011f1eafb
 import org.dspace.builder.CollectionBuilder;
 import org.dspace.builder.CommunityBuilder;
 import org.dspace.builder.EntityTypeBuilder;
@@ -70,7 +73,13 @@ public class OrcidQueueConsumerIT extends AbstractIntegrationTestWithDatabase {
     private Collection profileCollection;
 
     @Before
+<<<<<<< HEAD
     public void setup() {
+=======
+    @Override
+    public void setUp() throws Exception {
+        super.setUp();
+>>>>>>> ec0853ddad290f20cf4b7d647891df2011f1eafb
 
         context.turnOffAuthorisationSystem();
 
@@ -84,12 +93,22 @@ public class OrcidQueueConsumerIT extends AbstractIntegrationTestWithDatabase {
     }
 
     @After
+<<<<<<< HEAD
     public void after() throws SQLException, AuthorizeException {
+=======
+    @Override
+    public void destroy() throws Exception {
+>>>>>>> ec0853ddad290f20cf4b7d647891df2011f1eafb
         List<OrcidQueue> records = orcidQueueService.findAll(context);
         for (OrcidQueue record : records) {
             orcidQueueService.delete(context, record);
         }
         context.setDispatcher(null);
+<<<<<<< HEAD
+=======
+
+        super.destroy();
+>>>>>>> ec0853ddad290f20cf4b7d647891df2011f1eafb
     }
 
     @Test
@@ -139,6 +158,11 @@ public class OrcidQueueConsumerIT extends AbstractIntegrationTestWithDatabase {
 
     @Test
     public void testOrcidQueueRecordCreationForProfile() throws Exception {
+<<<<<<< HEAD
+=======
+        // Set a fake handle prefix for this test which we will use to assign handles below
+        configurationService.setProperty("handle.prefix", "fake-handle");
+>>>>>>> ec0853ddad290f20cf4b7d647891df2011f1eafb
         context.turnOffAuthorisationSystem();
 
         Item profile = ItemBuilder.createItem(context, profileCollection)
@@ -146,7 +170,11 @@ public class OrcidQueueConsumerIT extends AbstractIntegrationTestWithDatabase {
             .withOrcidIdentifier("0000-1111-2222-3333")
             .withOrcidAccessToken("ab4d18a0-8d9a-40f1-b601-a417255c8d20", eperson)
             .withSubject("test")
+<<<<<<< HEAD
             .withHandle("123456789/200")
+=======
+            .withHandle("fake-handle/190")
+>>>>>>> ec0853ddad290f20cf4b7d647891df2011f1eafb
             .withOrcidSynchronizationProfilePreference(BIOGRAPHICAL)
             .withOrcidSynchronizationProfilePreference(IDENTIFIERS)
             .build();
@@ -159,8 +187,13 @@ public class OrcidQueueConsumerIT extends AbstractIntegrationTestWithDatabase {
         assertThat(queueRecords, hasItem(matches(profile, profile, "KEYWORDS", null,
             "dc.subject::test", "test", INSERT)));
         assertThat(queueRecords, hasItem(matches(profile, "RESEARCHER_URLS", null,
+<<<<<<< HEAD
             "dc.identifier.uri::http://localhost:4000/handle/123456789/200",
             "http://localhost:4000/handle/123456789/200", INSERT)));
+=======
+            "dc.identifier.uri::http://localhost:4000/handle/fake-handle/190",
+            "http://localhost:4000/handle/fake-handle/190", INSERT)));
+>>>>>>> ec0853ddad290f20cf4b7d647891df2011f1eafb
 
         addMetadata(profile, "person", "name", "variant", "User Test", null);
         context.commit();
@@ -170,8 +203,13 @@ public class OrcidQueueConsumerIT extends AbstractIntegrationTestWithDatabase {
         assertThat(queueRecords, hasItem(
             matches(profile, profile, "KEYWORDS", null, "dc.subject::test", "test", INSERT)));
         assertThat(queueRecords, hasItem(matches(profile, "RESEARCHER_URLS", null,
+<<<<<<< HEAD
             "dc.identifier.uri::http://localhost:4000/handle/123456789/200",
             "http://localhost:4000/handle/123456789/200", INSERT)));
+=======
+            "dc.identifier.uri::http://localhost:4000/handle/fake-handle/190",
+            "http://localhost:4000/handle/fake-handle/190", INSERT)));
+>>>>>>> ec0853ddad290f20cf4b7d647891df2011f1eafb
         assertThat(queueRecords, hasItem(matches(profile, profile, "OTHER_NAMES",
             null, "person.name.variant::User Test", "User Test", INSERT)));
     }
@@ -640,7 +678,12 @@ public class OrcidQueueConsumerIT extends AbstractIntegrationTestWithDatabase {
 
     @Test
     public void testOrcidQueueRecalculationOnProfilePreferenceUpdate() throws Exception {
+<<<<<<< HEAD
 
+=======
+        // Set a fake handle prefix for this test which we will use to assign handles below
+        configurationService.setProperty("handle.prefix", "fake-handle");
+>>>>>>> ec0853ddad290f20cf4b7d647891df2011f1eafb
         context.turnOffAuthorisationSystem();
 
         Item profile = ItemBuilder.createItem(context, profileCollection)
@@ -648,7 +691,11 @@ public class OrcidQueueConsumerIT extends AbstractIntegrationTestWithDatabase {
             .withOrcidIdentifier("0000-0000-0012-2345")
             .withOrcidAccessToken("ab4d18a0-8d9a-40f1-b601-a417255c8d20", eperson)
             .withSubject("Math")
+<<<<<<< HEAD
             .withHandle("123456789/200")
+=======
+            .withHandle("fake-handle/200")
+>>>>>>> ec0853ddad290f20cf4b7d647891df2011f1eafb
             .withOrcidSynchronizationProfilePreference(BIOGRAPHICAL)
             .build();
 
@@ -669,8 +716,13 @@ public class OrcidQueueConsumerIT extends AbstractIntegrationTestWithDatabase {
         assertThat(records, hasItem(matches(profile, "KEYWORDS", null, "dc.subject::Math", "Math", INSERT)));
         assertThat(records, hasItem(matches(profile, "EXTERNAL_IDS", null, "person.identifier.rid::ID", "ID", INSERT)));
         assertThat(records, hasItem(matches(profile, "RESEARCHER_URLS", null,
+<<<<<<< HEAD
             "dc.identifier.uri::http://localhost:4000/handle/123456789/200",
             "http://localhost:4000/handle/123456789/200", INSERT)));
+=======
+            "dc.identifier.uri::http://localhost:4000/handle/fake-handle/200",
+            "http://localhost:4000/handle/fake-handle/200", INSERT)));
+>>>>>>> ec0853ddad290f20cf4b7d647891df2011f1eafb
 
         removeMetadata(profile, "dspace", "orcid", "sync-profile");
 

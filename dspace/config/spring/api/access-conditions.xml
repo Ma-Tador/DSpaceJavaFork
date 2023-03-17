@@ -8,6 +8,7 @@
 		<property name="name" value="upload"/>
 		<property name="metadata" value="bitstream-metadata" />
         <property name="options">
+<<<<<<< HEAD
             <list>            
                 <ref bean="openAccess"/>
 		<ref bean="embargoed" />
@@ -15,6 +16,14 @@
                 <ref bean="lease"/>
                 <ref bean="administrator"/> 
                 -->
+=======
+            <list>
+                <ref bean="openAccess"/>
+                <ref bean="lease"/>
+                <ref bean="embargoed" />
+                <ref bean="administrator"/>
+                <!-- <ref bean="networkAdministration"/> -->
+>>>>>>> ec0853ddad290f20cf4b7d647891df2011f1eafb
             </list>
         </property>
     </bean>
@@ -65,6 +74,7 @@
     <bean id="accessConditionConfigurationDefault" class="org.dspace.submit.model.AccessConditionConfiguration">
         <!-- This name must match the id of the step as defined in the item-submission.xml -->
         <property name="name" value="itemAccessConditions"></property>
+<<<<<<< HEAD
 <!--  ORG
         <property name="canChangeDiscoverable" value="true"></property>
 -->	
@@ -77,6 +87,15 @@
 		<ref bean="lease"/>
                 <ref bean="administrator"/>
 		-->
+=======
+        <property name="canChangeDiscoverable" value="true"></property>
+        <property name="options">
+            <list>
+                <ref bean="openAccess"/>
+                <ref bean="lease"/>
+                <ref bean="embargoed" />
+                <ref bean="administrator"/>
+>>>>>>> ec0853ddad290f20cf4b7d647891df2011f1eafb
             </list>
         </property>
     </bean>

@@ -45,7 +45,10 @@ import org.dspace.content.service.RelationshipService;
 import org.dspace.content.service.RelationshipTypeService;
 import org.dspace.content.service.WorkspaceItemService;
 import org.dspace.core.Context;
+<<<<<<< HEAD
 import org.dspace.identifier.service.IdentifierService;
+=======
+>>>>>>> ec0853ddad290f20cf4b7d647891df2011f1eafb
 import org.dspace.util.UUIDUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -94,9 +97,12 @@ public class ItemRestRepository extends DSpaceObjectRestRepository<Item, ItemRes
     RelationshipTypeService relationshipTypeService;
 
     @Autowired
+<<<<<<< HEAD
     IdentifierService identifierService;
 
     @Autowired
+=======
+>>>>>>> ec0853ddad290f20cf4b7d647891df2011f1eafb
     private UriListHandlerService uriListHandlerService;
 
     public ItemRestRepository(ItemService dsoService) {

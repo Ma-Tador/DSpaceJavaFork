@@ -355,7 +355,11 @@ public class Email {
         for (String headerName : config.getArrayProperty("mail.message.headers")) {
             String headerValue = (String) vctx.get(headerName);
             if ("subject".equalsIgnoreCase(headerName)) {
+<<<<<<< HEAD
                 if (null != subject) {
+=======
+                if (null != headerValue) {
+>>>>>>> ec0853ddad290f20cf4b7d647891df2011f1eafb
                     subject = headerValue;
                 }
             } else if ("charset".equalsIgnoreCase(headerName)) {

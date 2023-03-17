@@ -13,7 +13,11 @@
     <parent>
         <groupId>org.dspace</groupId>
         <artifactId>dspace-parent</artifactId>
+<<<<<<< HEAD
         <version>7.4</version>
+=======
+        <version>7.5-SNAPSHOT</version>
+>>>>>>> ec0853ddad290f20cf4b7d647891df2011f1eafb
         <relativePath>..</relativePath>
     </parent>
 
@@ -55,6 +59,7 @@
     </profiles>
 
     <dependencies>
+<<<<<<< HEAD
         
         
         <dependency>
@@ -65,6 +70,13 @@
                 -->
         </dependency>
         
+=======
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <scope>provided</scope>
+        </dependency>
+>>>>>>> ec0853ddad290f20cf4b7d647891df2011f1eafb
 
         <!-- SWORDv2 Java implementation -->
         <dependency>
@@ -80,13 +92,19 @@
                     <groupId>org.apache.abdera</groupId>
                     <artifactId>abdera-client</artifactId>
                 </exclusion>
+<<<<<<< HEAD
                 
+=======
+>>>>>>> ec0853ddad290f20cf4b7d647891df2011f1eafb
                 <exclusion>
                     <groupId>javax.servlet</groupId>
                     <artifactId>servlet-api</artifactId>
                 </exclusion>
+<<<<<<< HEAD
 
               
+=======
+>>>>>>> ec0853ddad290f20cf4b7d647891df2011f1eafb
                 <!-- Newer version of log4j provided below -->
                 <exclusion>
                     <groupId>log4j</groupId>

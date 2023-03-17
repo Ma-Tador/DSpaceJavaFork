@@ -12,7 +12,11 @@
     <parent>
         <groupId>org.dspace</groupId>
         <artifactId>dspace-parent</artifactId>
+<<<<<<< HEAD
         <version>7.4</version>
+=======
+        <version>7.5-SNAPSHOT</version>
+>>>>>>> ec0853ddad290f20cf4b7d647891df2011f1eafb
         <relativePath>..</relativePath>
     </parent>
 
@@ -76,7 +80,11 @@
                             <artifactId>error_prone_core</artifactId>
                             <version>${errorprone.version}</version>
                         </path>
+<<<<<<< HEAD
                     </annotationProcessorPaths> 
+=======
+                    </annotationProcessorPaths>
+>>>>>>> ec0853ddad290f20cf4b7d647891df2011f1eafb
                 </configuration>
             </plugin>
             <plugin>
@@ -480,6 +488,7 @@
             <groupId>com.sun.mail</groupId>
             <artifactId>javax.mail</artifactId>
         </dependency>
+<<<<<<< HEAD
         
         
         <dependency>
@@ -491,6 +500,13 @@
         </dependency>
         
         
+=======
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <scope>provided</scope>
+        </dependency>
+>>>>>>> ec0853ddad290f20cf4b7d647891df2011f1eafb
         <dependency>
             <groupId>javax.annotation</groupId>
             <artifactId>javax.annotation-api</artifactId>
@@ -595,6 +611,7 @@
             <artifactId>solr-core</artifactId>
             <scope>test</scope>
             <version>${solr.client.version}</version>
+<<<<<<< HEAD
             <exclusions>
                 <!-- Newer version brought in by opencsv -->
                 <exclusion>
@@ -602,6 +619,8 @@
                     <artifactId>commons-text</artifactId>
                 </exclusion>
             </exclusions>
+=======
+>>>>>>> ec0853ddad290f20cf4b7d647891df2011f1eafb
         </dependency>
         <dependency>
             <groupId>org.apache.lucene</groupId>
@@ -799,6 +818,7 @@
             <version>1.19.0</version>
             <scope>test</scope>
         </dependency>
+<<<<<<< HEAD
         <!-- https://mvnrepository.com/artifact/org.apache.httpcomponents/httpasyncclient -->
         <dependency>
             <groupId>org.apache.httpcomponents</groupId>
@@ -817,6 +837,9 @@
             <artifactId>sqlite-jdbc</artifactId>
             <version>3.21.0.1</version>
         </dependency>
+=======
+
+>>>>>>> ec0853ddad290f20cf4b7d647891df2011f1eafb
         <!-- Used for Solr core export/import -->
         <dependency>
             <groupId>com.opencsv</groupId>
@@ -870,11 +893,14 @@
           <!-- Solve dependency convergence issues related to
                'mockserver-junit-rule' by selecting the versions we want to use. -->
           <dependency>
+<<<<<<< HEAD
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-text</artifactId>
             <version>1.9</version>
           </dependency>
           <dependency>
+=======
+>>>>>>> ec0853ddad290f20cf4b7d647891df2011f1eafb
             <groupId>io.netty</groupId>
             <artifactId>netty-buffer</artifactId>
             <version>4.1.68.Final</version>

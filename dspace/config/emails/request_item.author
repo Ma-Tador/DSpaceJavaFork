@@ -28,6 +28,7 @@ IF YOU ARE NOT AN AUTHOR OF THIS DOCUMENT, and only submitted the document on th
 IF YOU ARE AN AUTHOR OF THE REQUESTED DOCUMENT, thank you for your cooperation!
 
 If you have any questions concerning this request, please contact ${params[10]}.
+<<<<<<< HEAD
 
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -48,3 +49,5 @@ WENN SIE KEIN AUTOR DIESES DOKUMENTS SIND und das Dokument nur im Namen des Auto
 WENN SIE AUTOR DES ANGEFORDERTEN DOKUMENTS SIND, vielen Dank für Ihre Mitarbeit!
 
 Bei Fragen zu dieser Anfrage wenden Sie sich bitte an ${params[10]}.
+=======
+>>>>>>> ec0853ddad290f20cf4b7d647891df2011f1eafb

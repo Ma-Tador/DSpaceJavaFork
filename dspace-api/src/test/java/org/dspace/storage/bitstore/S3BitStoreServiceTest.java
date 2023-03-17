@@ -10,7 +10,13 @@ package org.dspace.storage.bitstore;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.isEmptyOrNullString;
+<<<<<<< HEAD
 import static org.junit.Assert.assertThrows;
+=======
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertThrows;
+import static org.junit.Assert.assertTrue;
+>>>>>>> ec0853ddad290f20cf4b7d647891df2011f1eafb
 import static org.mockito.ArgumentMatchers.startsWith;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
@@ -63,6 +69,12 @@ public class S3BitStoreServiceTest extends AbstractUnitTest {
     @Mock
     private Bitstream bitstream;
 
+<<<<<<< HEAD
+=======
+    @Mock
+    private Bitstream externalBitstream;
+
+>>>>>>> ec0853ddad290f20cf4b7d647891df2011f1eafb
     @Before
     public void setUp() throws Exception {
         this.s3BitStoreService = new S3BitStoreService(s3Service, tm);
@@ -235,6 +247,27 @@ public class S3BitStoreServiceTest extends AbstractUnitTest {
     }
 
     @Test
+<<<<<<< HEAD
+=======
+    public void handleRegisteredIdentifierPrefixInS3() {
+        String trueBitStreamId = "012345";
+        String registeredBitstreamId = s3BitStoreService.REGISTERED_FLAG + trueBitStreamId;
+        // Should be detected as registered bitstream
+        assertTrue(this.s3BitStoreService.isRegisteredBitstream(registeredBitstreamId));
+    }
+
+    @Test
+    public void stripRegisteredBitstreamPrefixWhenCalculatingPath() {
+        // Set paths and IDs
+        String s3Path = "UNIQUE_S3_PATH/test/bitstream.pdf";
+        String registeredBitstreamId = s3BitStoreService.REGISTERED_FLAG + s3Path;
+        // Paths should be equal, since the getRelativePath method should strip the registered -R prefix
+        String relativeRegisteredPath = this.s3BitStoreService.getRelativePath(registeredBitstreamId);
+        assertEquals(s3Path, relativeRegisteredPath);
+    }
+
+    @Test
+>>>>>>> ec0853ddad290f20cf4b7d647891df2011f1eafb
     public void givenBitStreamIdentifierLongerThanPossibleWhenIntermediatePathIsComputedThenIsSplittedAndTruncated() {
         String path = "01234567890123456789";
         String computedPath = this.s3BitStoreService.getIntermediatePath(path);

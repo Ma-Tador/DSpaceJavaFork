@@ -335,7 +335,11 @@ public class OpenAIRERestConnector {
     /**
      * tokenUsage true to enable the usage of an access token
      * 
+<<<<<<< HEAD
      * @param tokenUsage
+=======
+     * @param tokenEnabled true/false
+>>>>>>> ec0853ddad290f20cf4b7d647891df2011f1eafb
      */
     @Autowired(required = false)
     public void setTokenEnabled(boolean tokenEnabled) {

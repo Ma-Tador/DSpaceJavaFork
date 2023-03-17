@@ -105,10 +105,17 @@ public class BibtexImportMetadataSourceServiceImpl extends AbstractPlainMetadata
 
 
     /**
+<<<<<<< HEAD
      * Retrieve the MetadataFieldMapping containing the mapping between RecordType
      * (in this case PlainMetadataSourceDto.class) and Metadata
      *
      * @return The configured MetadataFieldMapping
+=======
+     * Set the MetadataFieldMapping containing the mapping between RecordType
+     * (in this case PlainMetadataSourceDto.class) and Metadata
+     *
+     * @param metadataFieldMap The configured MetadataFieldMapping
+>>>>>>> ec0853ddad290f20cf4b7d647891df2011f1eafb
      */
     @Override
     @SuppressWarnings("unchecked")

@@ -24,8 +24,11 @@ import org.dspace.authorize.AuthorizeException;
 import org.dspace.authorize.ResourcePolicy;
 import org.dspace.authorize.service.AuthorizeService;
 import org.dspace.content.dao.WorkspaceItemDAO;
+<<<<<<< HEAD
 import org.dspace.content.logic.Filter;
 import org.dspace.content.logic.FilterUtils;
+=======
+>>>>>>> ec0853ddad290f20cf4b7d647891df2011f1eafb
 import org.dspace.content.service.CollectionService;
 import org.dspace.content.service.ItemService;
 import org.dspace.content.service.WorkspaceItemService;
@@ -34,6 +37,7 @@ import org.dspace.core.Context;
 import org.dspace.core.LogHelper;
 import org.dspace.eperson.EPerson;
 import org.dspace.event.Event;
+<<<<<<< HEAD
 import org.dspace.identifier.DOI;
 import org.dspace.identifier.DOIIdentifierProvider;
 import org.dspace.identifier.Identifier;
@@ -41,6 +45,8 @@ import org.dspace.identifier.IdentifierException;
 import org.dspace.identifier.factory.IdentifierServiceFactory;
 import org.dspace.identifier.service.DOIService;
 import org.dspace.services.factory.DSpaceServicesFactory;
+=======
+>>>>>>> ec0853ddad290f20cf4b7d647891df2011f1eafb
 import org.dspace.workflow.WorkflowItem;
 import org.dspace.workflow.WorkflowService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -67,8 +73,11 @@ public class WorkspaceItemServiceImpl implements WorkspaceItemService {
     protected ItemService itemService;
     @Autowired(required = true)
     protected WorkflowService workflowService;
+<<<<<<< HEAD
     @Autowired(required = true)
     protected DOIService doiService;
+=======
+>>>>>>> ec0853ddad290f20cf4b7d647891df2011f1eafb
 
 
     protected WorkspaceItemServiceImpl() {
@@ -171,6 +180,7 @@ public class WorkspaceItemServiceImpl implements WorkspaceItemService {
         }
 
         itemService.update(context, item);
+<<<<<<< HEAD
 
         // If configured, register identifiers (eg handle, DOI) now. This is typically used with the Show Identifiers
         // submission step which previews minted handles and DOIs during the submission process. Default: false
@@ -191,6 +201,8 @@ public class WorkspaceItemServiceImpl implements WorkspaceItemService {
             }
         }
 
+=======
+>>>>>>> ec0853ddad290f20cf4b7d647891df2011f1eafb
         workspaceItem.setItem(item);
 
         log.info(LogHelper.getHeader(context, "create_workspace_item",
@@ -284,6 +296,10 @@ public class WorkspaceItemServiceImpl implements WorkspaceItemService {
          * Authorisation is a special case. The submitter won't have REMOVE
          * permission on the collection, so our policy is this: Only the
          * original submitter or an administrator can delete a workspace item.
+<<<<<<< HEAD
+=======
+
+>>>>>>> ec0853ddad290f20cf4b7d647891df2011f1eafb
          */
         Item item = workspaceItem.getItem();
         if (!authorizeService.isAdmin(context)
@@ -368,4 +384,8 @@ public class WorkspaceItemServiceImpl implements WorkspaceItemService {
 
     }
 
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> ec0853ddad290f20cf4b7d647891df2011f1eafb

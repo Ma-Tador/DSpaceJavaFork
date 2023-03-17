@@ -28,8 +28,13 @@ public class ClaimedTaskMatcher {
     /**
      * Check if the returned json expose all the required links and properties
      * 
+<<<<<<< HEAD
      * @param ptask
      *            the pool task
+=======
+     * @param cTask
+     *            the claimed task
+>>>>>>> ec0853ddad290f20cf4b7d647891df2011f1eafb
      * @param step
      *            the step name
      * @return

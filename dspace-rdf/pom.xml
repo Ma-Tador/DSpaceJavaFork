@@ -9,7 +9,11 @@
     <parent>
         <groupId>org.dspace</groupId>
         <artifactId>dspace-parent</artifactId>
+<<<<<<< HEAD
         <version>7.4</version>
+=======
+        <version>7.5-SNAPSHOT</version>
+>>>>>>> ec0853ddad290f20cf4b7d647891df2011f1eafb
         <relativePath>..</relativePath>
     </parent>
 
@@ -70,6 +74,7 @@
             </exclusions>
         </dependency>
 
+<<<<<<< HEAD
         
         <dependency>
             <groupId>javax.servlet</groupId>
@@ -79,6 +84,13 @@
             -->
         </dependency>
                 
+=======
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <scope>provided</scope>
+        </dependency>
+>>>>>>> ec0853ddad290f20cf4b7d647891df2011f1eafb
 
         <dependency>
             <groupId>org.apache.logging.log4j</groupId>

@@ -26,10 +26,13 @@ import com.fasterxml.jackson.annotation.JsonProperty;
                 method = "getBundles"
         ),
         @LinkRest(
+<<<<<<< HEAD
                 name = ItemRest.IDENTIFIERS,
                 method = "getIdentifiers"
         ),
         @LinkRest(
+=======
+>>>>>>> ec0853ddad290f20cf4b7d647891df2011f1eafb
                 name = ItemRest.MAPPED_COLLECTIONS,
                 method = "getMappedCollections"
         ),
@@ -61,7 +64,10 @@ public class ItemRest extends DSpaceObjectRest {
 
     public static final String ACCESS_STATUS = "accessStatus";
     public static final String BUNDLES = "bundles";
+<<<<<<< HEAD
     public static final String IDENTIFIERS = "identifiers";
+=======
+>>>>>>> ec0853ddad290f20cf4b7d647891df2011f1eafb
     public static final String MAPPED_COLLECTIONS = "mappedCollections";
     public static final String OWNING_COLLECTION = "owningCollection";
     public static final String RELATIONSHIPS = "relationships";
@@ -126,4 +132,8 @@ public class ItemRest extends DSpaceObjectRest {
     public void setEntityType(String entityType) {
         this.entityType = entityType;
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> ec0853ddad290f20cf4b7d647891df2011f1eafb

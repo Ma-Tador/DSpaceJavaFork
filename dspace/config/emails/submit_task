@@ -4,7 +4,11 @@
 ## {1}  Name of collection
 ## {2}  submitter's name
 ## {3}  Description of task
+<<<<<<< HEAD
 ## {4}  link to 'my DSpace' page (changed, direct link to workflowItem @Steli)
+=======
+## {4}  link to 'my DSpace' page
+>>>>>>> ec0853ddad290f20cf4b7d647891df2011f1eafb
 ##
 #set($subject = 'DSpace: You have a new task')
 
@@ -16,11 +20,16 @@ Submitted by: ${params[2]}
 
 ${params[3]}
 
+<<<<<<< HEAD
 To claim this task, please visit your "FAU Repositorium"
+=======
+To claim this task, please visit your "My DSpace"
+>>>>>>> ec0853ddad290f20cf4b7d647891df2011f1eafb
 page:  ${params[4]}
 
 Many thanks!
 
+<<<<<<< HEAD
 OPEN FAU Repository Team
 
 
@@ -41,3 +50,6 @@ Seite: ${params[4]}
 Vielen Dank!
 
 Das Repositorium-Team der OPEN FAU
+=======
+DSpace
+>>>>>>> ec0853ddad290f20cf4b7d647891df2011f1eafb

@@ -38,7 +38,10 @@ public interface DataProcessingStep extends RestProcessingStep {
     public static final String CCLICENSE_STEP_OPERATION_ENTRY = "cclicense/uri";
     public static final String ACCESS_CONDITION_STEP_OPERATION_ENTRY = "discoverable";
     public static final String ACCESS_CONDITION_POLICY_STEP_OPERATION_ENTRY = "accessConditions";
+<<<<<<< HEAD
     public static final String SHOW_IDENTIFIERS_ENTRY = "identifiers";
+=======
+>>>>>>> ec0853ddad290f20cf4b7d647891df2011f1eafb
 
     public static final String UPLOAD_STEP_METADATA_PATH = "metadata";
 

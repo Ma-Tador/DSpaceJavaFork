@@ -118,7 +118,11 @@ public class SimpleJsonPathMetadataContributor implements MetadataContributor<St
      * Retrieve the metadata associated with the given object.
      * The toString() of the resulting object will be used.
      * 
+<<<<<<< HEAD
      * @param t A class to retrieve metadata from.
+=======
+     * @param fullJson A class to retrieve metadata from.
+>>>>>>> ec0853ddad290f20cf4b7d647891df2011f1eafb
      * @return a collection of import records. Only the identifier of the found records may be put in the record.
      */
     @Override

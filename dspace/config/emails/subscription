@@ -9,6 +9,7 @@ New items are available in the collections you have subscribed to:
 
 ${params[0]}
 
+<<<<<<< HEAD
 The OPEN FAU Repository Team
 
 
@@ -21,3 +22,6 @@ In den von Ihnen abonnierten Sammlungen sind neue Artikel verfügbar:
 ${params[0]}
 
 Das Repositorium-Team der OPEN FAU
+=======
+DSpace
+>>>>>>> ec0853ddad290f20cf4b7d647891df2011f1eafb
