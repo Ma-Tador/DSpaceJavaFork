@@ -352,7 +352,6 @@
             <class>org.dspace.iiif.canvasdimension.CanvasDimensionCLI</class>
         </step>
     </command>
-<<<<<<< HEAD
     <command>
         <name>resend-to-matomo</name>
         <description>Create Matomo DB for Missing Usage Events</description>
@@ -377,6 +376,4 @@
             <class>org.dspace.statistics.export.OpenAireUsageTrackerUnreportedDB</class>
         </step>
     </command>    
-=======
->>>>>>> ec0853ddad290f20cf4b7d647891df2011f1eafb
 </commands>

@@ -12,14 +12,9 @@
 ##
 #set($subject = "DSpace: Error ${params[0]} DOI ${params[3]}")
 
-<<<<<<< HEAD
 ***************************** DOI Maintenance Error ************************
 Date:    ${params[1]}
 
 
-=======
-Date:    ${params[1]}
-
->>>>>>> ec0853ddad290f20cf4b7d647891df2011f1eafb
 ${params[0]} DOI ${params[4]} for ${params[2]} with ID ${params[3]} failed:
 ${params[5]}

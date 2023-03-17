@@ -13,12 +13,10 @@ import java.sql.SQLException;
 import org.apache.logging.log4j.Logger;
 import org.dspace.content.DSpaceObject;
 import org.dspace.content.Item;
-<<<<<<< HEAD
 import org.dspace.content.logic.Filter;
 import org.dspace.content.logic.FilterUtils;
 import org.dspace.content.logic.TrueFilter;
-=======
->>>>>>> ec0853ddad290f20cf4b7d647891df2011f1eafb
+
 import org.dspace.curate.AbstractCurationTask;
 import org.dspace.curate.Curator;
 import org.dspace.identifier.DOIIdentifierProvider;
@@ -52,11 +50,6 @@ public class RegisterDOI extends AbstractCurationTask {
     @Override
     public void init(Curator curator, String taskId) throws IOException {
         super.init(curator, taskId);
-<<<<<<< HEAD
-=======
-        // Get 'skip filter' behaviour from configuration, with a default value of 'true'
-        skipFilter = configurationService.getBooleanProperty(PLUGIN_PREFIX + ".skip-filter", true);
->>>>>>> ec0853ddad290f20cf4b7d647891df2011f1eafb
         // Get distribution behaviour from configuration, with a default value of 'false'
         distributed = configurationService.getBooleanProperty(PLUGIN_PREFIX + ".distributed", false);
         log.debug("PLUGIN_PREFIX = " + PLUGIN_PREFIX + ", skipFilter = " + skipFilter +
@@ -127,14 +120,9 @@ public class RegisterDOI extends AbstractCurationTask {
         String doi = null;
         // Attempt DOI registration and report successes and failures
         try {
-<<<<<<< HEAD
             Filter filter = FilterUtils.getFilterFromConfiguration("identifiers.submission.filter.curation",
                     new TrueFilter());
             doi = provider.register(Curator.curationContext(), item, filter);
-=======
-            log.debug("Registering DOI with skipFilter = " + skipFilter);
-            doi = provider.register(Curator.curationContext(), item, skipFilter);
->>>>>>> ec0853ddad290f20cf4b7d647891df2011f1eafb
             if (doi != null) {
                 String message = "New DOI minted in database for item " + item.getHandle() + ": " + doi
                     + ". This DOI will be registered online with the DOI provider when the queue is next run";
@@ -162,8 +150,4 @@ public class RegisterDOI extends AbstractCurationTask {
         return doi;
     }
 
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> ec0853ddad290f20cf4b7d647891df2011f1eafb

@@ -14,12 +14,9 @@ import java.io.InputStream;
 import java.util.regex.Pattern;
 import java.util.regex.PatternSyntaxException;
 
-<<<<<<< HEAD
-=======
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.pdmodel.PDPage;
 import org.apache.pdfbox.pdmodel.common.PDRectangle;
->>>>>>> ec0853ddad290f20cf4b7d647891df2011f1eafb
 import org.dspace.content.Bitstream;
 import org.dspace.content.Bundle;
 import org.dspace.content.Item;
@@ -125,8 +122,6 @@ public abstract class ImageMagickThumbnailFilter extends MediaFilter {
         f2.deleteOnExit();
         ConvertCmd cmd = new ConvertCmd();
         IMOperation op = new IMOperation();
-<<<<<<< HEAD
-=======
 
         // Optionally override ImageMagick's default density of 72 DPI to use a
         // "supersample" when creating the PDF thumbnail. Note that I prefer to
@@ -160,7 +155,6 @@ public abstract class ImageMagickThumbnailFilter extends MediaFilter {
             op.define("pdf:use-cropbox=true");
         }
 
->>>>>>> ec0853ddad290f20cf4b7d647891df2011f1eafb
         String s = "[" + page + "]";
         op.addImage(f.getAbsolutePath() + s);
         if (configurationService.getBooleanProperty(PRE + ".flatten", true)) {

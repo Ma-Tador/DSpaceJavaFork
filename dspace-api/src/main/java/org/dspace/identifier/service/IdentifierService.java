@@ -9,17 +9,14 @@ package org.dspace.identifier.service;
 
 import java.sql.SQLException;
 import java.util.List;
-<<<<<<< HEAD
 import java.util.Map;
 
 import org.dspace.authorize.AuthorizeException;
 import org.dspace.content.DSpaceObject;
 import org.dspace.content.logic.Filter;
-=======
 
 import org.dspace.authorize.AuthorizeException;
 import org.dspace.content.DSpaceObject;
->>>>>>> ec0853ddad290f20cf4b7d647891df2011f1eafb
 import org.dspace.core.Context;
 import org.dspace.identifier.Identifier;
 import org.dspace.identifier.IdentifierException;
@@ -112,7 +109,6 @@ public interface IdentifierService {
     void register(Context context, DSpaceObject dso) throws AuthorizeException, SQLException, IdentifierException;
 
     /**
-<<<<<<< HEAD
      * @param context The relevant DSpace Context.
      * @param dso     DSpace object to be registered
      * @param typeFilters   If a service supports a given Identifier implementation, apply the associated filter
@@ -147,8 +143,6 @@ public interface IdentifierService {
             throws AuthorizeException, SQLException, IdentifierException;
 
     /**
-=======
->>>>>>> ec0853ddad290f20cf4b7d647891df2011f1eafb
      * Used to Register a specific Identifier (for example a Handle, hdl:1234.5/6).
      * The provider is responsible for detecting and processing the appropriate
      * identifier.  All Providers are interrogated.  Multiple providers
@@ -191,8 +185,4 @@ public interface IdentifierService {
     void delete(Context context, DSpaceObject dso, String identifier)
         throws AuthorizeException, SQLException, IdentifierException;
 
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> ec0853ddad290f20cf4b7d647891df2011f1eafb

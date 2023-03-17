@@ -106,11 +106,7 @@ public class CCLicenseConnectorServiceImpl implements CCLicenseConnectorService,
 
         for (String license : licenses) {
 
-<<<<<<< HEAD
-            String licenseUri = ccLicenseUrl + "/license/" + license;
-=======
             String licenseUri = ccLicenseUrl + "/license/" + license + "?locale=" + language;
->>>>>>> ec0853ddad290f20cf4b7d647891df2011f1eafb
             HttpGet licenseHttpGet = new HttpGet(licenseUri);
             try (CloseableHttpResponse response = client.execute(licenseHttpGet)) {
                 CCLicense ccLicense = retrieveLicenseObject(license, response);

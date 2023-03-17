@@ -6,28 +6,19 @@
 ##
 #set($subject = "${config.get('dspace.name')} Account Registration")
 #set($phone = ${config.get('mail.message.helpdesk.telephone')})
-<<<<<<< HEAD
 To complete registration for a Test-FAU-Repository account, please click the link
-=======
-To complete registration for a DSpace account, please click the link
->>>>>>> ec0853ddad290f20cf4b7d647891df2011f1eafb
 below:
 
   ${params[0]}
 
 If you need assistance with your account, please email
 
-<<<<<<< HEAD
   ${config.get("mail.admin")}
-=======
-  ${config.get("mail.helpdesk")}
->>>>>>> ec0853ddad290f20cf4b7d647891df2011f1eafb
 #if( $phone )
 
 or call us at ${phone}.
 #end
 
-<<<<<<< HEAD
 The OPEN FAU Repository Team
 
 
@@ -42,6 +33,3 @@ Wenn Sie Hilfe bei Ihrem Konto benötigen, senden Sie bitte eine E-Mail
 ${config.get("mail.admin")}.
 
 Das Repositorium-Team der OPEN FAU
-=======
-The DSpace Team
->>>>>>> ec0853ddad290f20cf4b7d647891df2011f1eafb

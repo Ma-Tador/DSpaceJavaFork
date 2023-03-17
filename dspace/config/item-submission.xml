@@ -142,25 +142,16 @@
             <scope visibilityOutside="read-only">submission</scope>
         </step-definition>
 
-<<<<<<< HEAD
 
  <!-- This optional step may allow the user to select a Creative Commons license ***Steli*** created other config in submission-forms.xml, that allow CC License and FAU license 
-=======
-        <!-- This optional step may allow the user to select a Creative Commons license -->
->>>>>>> ec0853ddad290f20cf4b7d647891df2011f1eafb
         <step-definition id="cclicense" mandatory="false">
             <heading>submit.progressbar.CClicense</heading>
             <processing-class>org.dspace.app.rest.submit.step.CCLicenseStep</processing-class>
 	        <type>cclicense</type>
         </step-definition>
-<<<<<<< HEAD
 -->
 
 	<!-- This optional step may allow the user to select access conditions on the item -->
-=======
-
-		<!-- This optional step may allow the user to select access conditions on the item -->
->>>>>>> ec0853ddad290f20cf4b7d647891df2011f1eafb
         <step-definition id="itemAccessConditions">
             <heading>submit.progressbar.accessCondition</heading>
             <processing-class>org.dspace.app.rest.submit.step.AccessConditionStep</processing-class>
@@ -220,7 +211,6 @@
             <processing-class>org.dspace.app.rest.submit.step.SherpaPolicyStep</processing-class>
             <type>sherpaPolicy</type>
         </step-definition>
-<<<<<<< HEAD
         
         
          <!-- New step for show / mint identifiers @Steli-->
@@ -230,8 +220,6 @@
             <type>identifiers</type>
         </step-definition>
         
-=======
->>>>>>> ec0853ddad290f20cf4b7d647891df2011f1eafb
     </step-definitions>
 
     <!-- The submission-definitions map lays out the detailed definition of -->
@@ -256,18 +244,14 @@
             <!--<step id="sample"/> -->
 
             <step id="collection"/>
-<<<<<<< HEAD
             
             <!-- added pre-register DOI @Steli -->
             <step id="identifiers"/>
-=======
->>>>>>> ec0853ddad290f20cf4b7d647891df2011f1eafb
 
             <!--Step will be to Describe the item. -->
             <step id="traditionalpageone"/>
             <step id="traditionalpagetwo"/>
 
-<<<<<<< HEAD
             <!-- Uncomment this step to allow the user to embargo or access restrict the entire item  -->
             <step id="itemAccessConditions"/>
 
@@ -275,24 +259,13 @@
           <!-- Uncomment this step to show when appropriate publisher policies retrieved from SHERPA/RoMEO
             <step id="sherpaPolicies"/>
           -->
-=======
-            <!-- Uncomment this step to allow the user to embargo or access restrict the entire item -->
-            <!-- <step id="itemAccessConditions"/> -->
-
-            <!-- Uncomment this step to show when appropriate publisher policies retrieved from SHERPA/RoMEO -->
-            <!-- <step id="sherpaPolicies"/> -->
->>>>>>> ec0853ddad290f20cf4b7d647891df2011f1eafb
 
             <!--Step will be to Upload the item -->
             <step id="upload"/>
 
-<<<<<<< HEAD
 	    <!--
              <step id="extractionstep"/> 
 	    -->
-=======
-            <!-- <step id="extractionstep"/> -->
->>>>>>> ec0853ddad290f20cf4b7d647891df2011f1eafb
 
             <!-- Uncomment this step to allow the user to select a Creative Commons License -->
             <!-- <step id="cclicense"/> -->

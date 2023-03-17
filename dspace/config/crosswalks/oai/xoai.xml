@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<<<<<<< HEAD
 <!-- 
     The contents of this file are subject to the license and copyright
     detailed in the LICENSE and NOTICE files at the root of the source
@@ -10,16 +9,11 @@
 <Configuration indented="true" maxListIdentifiersSize="200" maxListRecordsSize="200"
                maxListSetsSize="200" stylesheet="static/style.xsl"
                xmlns="http://www.lyncode.com/XOAIConfiguration">
-=======
-<Configuration indented="false" maxListIdentifiersSize="100" maxListRecordsSize="100"
-    maxListSetsSize="100" stylesheet="static/style.xsl" xmlns="http://www.lyncode.com/XOAIConfiguration">
->>>>>>> ec0853ddad290f20cf4b7d647891df2011f1eafb
 
     <Contexts>
         <Context baseurl="request" name="Default Context">
             <!-- Restrict access to hidden items by default -->
             <Filter ref="defaultFilter"/>
-<<<<<<< HEAD
             <Format ref="oaidc"/>
             <Format ref="qdc"/>
             <Format ref="mets"/>
@@ -34,21 +28,6 @@
             <Format ref="etdms"/>
             <Format ref="uketd_dc"/>
             -->
-=======
-
-            <Format ref="oaidc"/>
-            <Format ref="mets"/>
-            <Format ref="xoai"/>
-            <Format ref="didl"/>
-            <Format ref="dim"/>
-            <Format ref="ore"/>
-            <Format ref="rdf"/>
-            <Format ref="etdms"/>
-            <Format ref="mods"/>
-            <Format ref="qdc"/>
-            <Format ref="marc"/>
-            <Format ref="uketd_dc"/>
->>>>>>> ec0853ddad290f20cf4b7d647891df2011f1eafb
             <!--<Format ref="junii2" />-->
             <Description>
                 This is the default context of the DSpace OAI-PMH data provider.
@@ -57,7 +36,6 @@
 
         <!--
             Driver Guidelines:
-<<<<<<< HEAD
             - http://www.driver-support.eu/documents/DRIVER_Guidelines_v2_Final_2008-11-13.pdf
             Page 57 - 58
             https://guidelines.openaire.eu/en/latest/literature/use_of_oai_pmh.html
@@ -66,19 +44,6 @@
             <Transformer ref="driverTransformer"/>
             <Filter ref="driverFilter"/>
             <Set ref="driverSet"/>
-=======
-
-            - https://guidelines.openaire.eu/en/latest/literature/use_of_oai_pmh.html
-         -->
-        <Context baseurl="driver" name="Driver Context">
-            <!-- Date format, field prefixes, etc are ensured by the transformer -->
-            <Transformer ref="driverTransformer"/>
-            <!-- The driver filter -->
-            <Filter ref="driverFilter"/>
-            <!-- Just an alias, in fact it returns all items within the driver context -->
-            <Set ref="driverSet"/>
-            <!-- Metadata Formats -->
->>>>>>> ec0853ddad290f20cf4b7d647891df2011f1eafb
             <Format ref="oaidc"/>
             <Format ref="mets"/>
             <Format ref="didl"/>
@@ -86,7 +51,6 @@
                 This context complies with Driver rules.
             </Description>
         </Context>
-<<<<<<< HEAD
         -->
         
         <!--
@@ -125,33 +89,11 @@
             <Filter ref="tubOpenAireFilter"/>
             <Set ref="openaireSet"/>
             <Format ref="oaidc_tub"/>
-=======
-
-        <!--
-            OpenAIRE Guidelines 3.0:
-
-            - https://guidelines.openaire.eu/
-
-            There is a limitation over the embargoedEndDate parameter:
-
-            - Predefined DSpace fields don't allow to set this up with a default.
-         -->
-        <Context baseurl="openaire" name="OpenAIRE Context">
-            <!-- Date format, field prefixes, etc are ensured by the transformer -->
-            <Transformer ref="openaireTransformer"/>
-            <!-- OpenAIRE filter -->
-            <Filter ref="openAireFilter"/>
-            <!-- Just an alias, in fact it returns all items within the driver context -->
-            <Set ref="openaireSet"/>
-            <!-- Metadata Formats -->
-            <Format ref="oaidc"/>
->>>>>>> ec0853ddad290f20cf4b7d647891df2011f1eafb
             <Format ref="mets"/>
             <Description>
                 This contexts complies with OpenAIRE Guidelines for Literature Repositories v3.0.
             </Description>
         </Context>
-<<<<<<< HEAD
         -->
 
         <!--
@@ -172,35 +114,10 @@
             </Description>
         </Context>
         
-=======
-
-        <!--
-            OpenAIRE Guidelines 4.0:
-
-            - https://openaire-guidelines-for-literature-repository-managers.readthedocs.io/en/v4.0.0/
-
-            There is a limitation over the embargoedEndDate parameter:
-
-            - Predefined DSpace fields don't allow to set this up with a default.
-         -->
-        <Context baseurl="openaire4" name="OpenAIRE 4 Context">
-            <!-- Date format, field prefixes, etc are ensured by the transformer -->
-            <Transformer ref="openaire4Transformer"/>
-            <!-- OpenAIRE filter -->
-            <Filter ref="openAIRE4Filter"/>
-            <!-- Metadata Formats -->
-            <Format ref="oaiopenaire"/>
-            <Description>
-                This contexts complies with OpenAIRE Guidelines for Literature Repositories v4.0.
-            </Description>
-        </Context>
-
->>>>>>> ec0853ddad290f20cf4b7d647891df2011f1eafb
     </Contexts>
 
 
     <Formats>
-<<<<<<< HEAD
     <!-- @Steli Format for OPEN-AIRE4  Renamed to persist in config, when move to new DSpace system  -->
         <Format id="fau_openaire4">
             <Prefix>oai_openaire</Prefix>
@@ -223,8 +140,6 @@
             <SchemaLocation>http://files.dnb.de/standards/xmetadissplus/xmetadissplus.xsd</SchemaLocation>
         </Format>
         
-=======
->>>>>>> ec0853ddad290f20cf4b7d647891df2011f1eafb
         <Format id="oaidc">
             <Prefix>oai_dc</Prefix>
             <XSLT>metadataFormats/oai_dc.xsl</XSLT>
@@ -306,20 +221,13 @@
             <Namespace>http://irdb.nii.ac.jp/oai</Namespace>
             <SchemaLocation>http://irdb.nii.ac.jp/oai/junii2-3-1.xsd</SchemaLocation>
         </Format>
-<<<<<<< HEAD
         <!--
-=======
-        <!-- Metadata format based on the OpenAIRE 4.0 guidelines
-             https://openaire-guidelines-for-literature-repository-managers.readthedocs.io/en/v4.0.0/use_of_oai_pmh.html
-        -->
->>>>>>> ec0853ddad290f20cf4b7d647891df2011f1eafb
         <Format id="oaiopenaire">
             <Prefix>oai_openaire</Prefix>
             <XSLT>metadataFormats/oai_openaire.xsl</XSLT>
             <Namespace>http://namespace.openaire.eu/schema/oaire/</Namespace>
             <SchemaLocation>https://www.openaire.eu/schema/repo-lit/4.0/openaire.xsd</SchemaLocation>
         </Format>
-<<<<<<< HEAD
         -->
     </Formats>
 
@@ -327,11 +235,6 @@
     	<Transformer id="tubOpenaireTransformer">
             <XSLT>transformers/tub_openaire.xsl</XSLT>
         </Transformer>
-=======
-    </Formats>
-
-    <Transformers>
->>>>>>> ec0853ddad290f20cf4b7d647891df2011f1eafb
         <Transformer id="driverTransformer">
             <XSLT>transformers/driver.xsl</XSLT>
         </Transformer>
@@ -393,12 +296,8 @@
                 </And>
             </Definition>
         </Filter>
-<<<<<<< HEAD
         
         
-=======
-
->>>>>>> ec0853ddad290f20cf4b7d647891df2011f1eafb
         <!-- OpenAIRE filter for records returned by OAI-PMH.
              By default, return an Item record:
                * If a Title & Author field both exist
@@ -455,7 +354,6 @@
             </Definition>
         </Filter>
 
-<<<<<<< HEAD
         <!-- TUB OpenAIRE filter.
              Return an Item record:
                * If a Title & Author field both exist
@@ -585,12 +483,6 @@
         <!-- UKETD Filter for records returned by OAI-PMH.
              By default, return an Item record:
                 * If it is a "thesis"
-=======
-        <!-- UKETD Filter for records returned by OAI-PMH.
-             By default, return an Item record:
-                * If it is a "thesis"
-
->>>>>>> ec0853ddad290f20cf4b7d647891df2011f1eafb
              This filter is appended to any existing filter
              when "metadataPrefix=uketd_dc" is specified.
         -->
@@ -599,11 +491,7 @@
                 <Custom ref="thesisDocumentTypeCondition"/>
             </Definition>
         </Filter>
-<<<<<<< HEAD
         
-=======
-
->>>>>>> ec0853ddad290f20cf4b7d647891df2011f1eafb
         <!-- OpenAIRE4 filter for records returned by OAI-PMH.
              By default, return an Item record:
                 * If it is publicly accessible
@@ -644,10 +532,7 @@
             </Definition>
         </Filter>
 
-<<<<<<< HEAD
 
-=======
->>>>>>> ec0853ddad290f20cf4b7d647891df2011f1eafb
         <!-- Default filter for records returned by OAI-PMH.
              By default, return an Item record:
                 * If it is publicly accessible
@@ -663,11 +548,7 @@
                     <LeftCondition>
                         <Or>
                             <LeftCondition>
-<<<<<<< HEAD
 				<Custom ref="itemAccessCondition"/>
-=======
-                                <Custom ref="itemAccessCondition"/>
->>>>>>> ec0853ddad290f20cf4b7d647891df2011f1eafb
                             </LeftCondition>
                             <RightCondition>
                                 <Custom ref="itemWithdrawnCondition"/>
@@ -691,7 +572,6 @@
                 </And>
             </Definition>
         </Filter>
-<<<<<<< HEAD
         
         
         <!-- TUB Condition for publications only (no research data). 
@@ -735,8 +615,6 @@
             </Configuration>
         </CustomCondition>
 
-=======
->>>>>>> ec0853ddad290f20cf4b7d647891df2011f1eafb
 
         <!-- This condition determines if an Item has a "dc.type" field
              which contains "Thesis". -->
@@ -745,11 +623,7 @@
             <Configuration>
                 <string name="field">dc.type</string>
                 <string name="operator">contains</string>
-<<<<<<< HEAD
                 <string name="value">thesis</string>
-=======
-                <string name="value">Thesis</string>
->>>>>>> ec0853ddad290f20cf4b7d647891df2011f1eafb
             </Configuration>
         </CustomCondition>
 
@@ -768,7 +642,6 @@
                 <string name="field">dc.title</string>
             </Configuration>
         </CustomCondition>
-<<<<<<< HEAD
         
         <!-- This condition determines if an Item has a "dc.identifier.eugrant" -->
         <CustomCondition id="eugrantExistsCondition">
@@ -778,8 +651,6 @@
             </Configuration>
         </CustomCondition>
 
-=======
->>>>>>> ec0853ddad290f20cf4b7d647891df2011f1eafb
 
         <!-- This condition determines if an Item has a "dc.type" field
              specifying one of the valid DRIVER document types. -->
@@ -809,10 +680,7 @@
                 </list>
             </Configuration>
         </CustomCondition>
-<<<<<<< HEAD
         
-=======
->>>>>>> ec0853ddad290f20cf4b7d647891df2011f1eafb
 
         <!-- This condition determines if an Item has a "dc.rights" field
              specifying "open access", which is required for DRIVER
@@ -851,7 +719,6 @@
                 <string name="value">info:eu-repo/grantAgreement/</string>
             </Configuration>
         </CustomCondition>
-<<<<<<< HEAD
         
         
         <!-- @Steli Determines if the item is embargoed -->
@@ -865,9 +732,6 @@
         </CustomCondition>
         
         
-=======
-
->>>>>>> ec0853ddad290f20cf4b7d647891df2011f1eafb
         <!-- This condition determines if an Item has a "dspace.entity.type" -->
         <CustomCondition id="relationshipTypeExistsCondition">
             <Class>org.dspace.xoai.filter.DSpaceMetadataExistsFilter</Class>
@@ -890,10 +754,6 @@
                 </list>
             </Configuration>
         </CustomCondition>
-<<<<<<< HEAD
-=======
-
->>>>>>> ec0853ddad290f20cf4b7d647891df2011f1eafb
     </Filters>
 
     <Sets>
@@ -907,7 +767,6 @@
             <Name>OpenAIRE</Name>
             <!-- Just an alias -->
         </Set>
-<<<<<<< HEAD
         <Set id="openaire4Set">
             <Spec>openaire4</Spec>
             <Name>OpenAIRE4</Name>
@@ -918,7 +777,5 @@
             <Name>DNB</Name>
             <!-- Just an alias -->
         </Set>
-=======
->>>>>>> ec0853ddad290f20cf4b7d647891df2011f1eafb
     </Sets>
 </Configuration>

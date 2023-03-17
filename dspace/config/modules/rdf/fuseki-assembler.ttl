@@ -52,11 +52,7 @@ tdb:GraphTDB    rdfs:subClassOf  ja:Model .
     .
 
 <#dspace-triplestore>  rdf:type    tdb:DatasetTDB ;
-<<<<<<< HEAD
     tdb:location "/usr/local/dspace/triplestore" ;
-=======
-    tdb:location "${dspace.dir}/triplestore" ;
->>>>>>> ec0853ddad290f20cf4b7d647891df2011f1eafb
     # Make the default graph be the union of all named graphs.
     tdb:unionDefaultGraph true ;
     .

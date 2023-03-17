@@ -185,20 +185,11 @@ public class Application extends SpringBootServletInitializer {
                 boolean corsAllowCredentials = configuration.getCorsAllowCredentials();
                 boolean iiifAllowCredentials = configuration.getIiifAllowCredentials();
                 if (corsAllowedOrigins != null) {
-<<<<<<< HEAD
-                    registry.addMapping("/api/**")                       
-                            .allowedMethods(CorsConfiguration.ALL)
-                            // Set Access-Control-Allow-Credentials to "true" and specify which origins are valid
-                            // for our Access-Control-Allow-Origin header
-                            .allowCredentials(corsAllowCredentials)
-                            .allowedOrigins(corsAllowedOrigins)
-=======
                     registry.addMapping("/api/**").allowedMethods(CorsConfiguration.ALL)
                             // Set Access-Control-Allow-Credentials to "true" and specify which origins are valid
                             // for our Access-Control-Allow-Origin header
                             // for our Access-Control-Allow-Origin header
                             .allowCredentials(corsAllowCredentials).allowedOrigins(corsAllowedOrigins)
->>>>>>> ec0853ddad290f20cf4b7d647891df2011f1eafb
                             // Allow list of request preflight headers allowed to be sent to us from the client
                             .allowedHeaders("Accept", "Authorization", "Content-Type", "Origin", "X-On-Behalf-Of",
                                 "X-Requested-With", "X-XSRF-TOKEN", "X-CORRELATION-ID", "X-REFERRER",
@@ -207,19 +198,10 @@ public class Application extends SpringBootServletInitializer {
                             .exposedHeaders("Authorization", "DSPACE-XSRF-TOKEN", "Location", "WWW-Authenticate");
                 }
                 if (iiifAllowedOrigins != null) {
-<<<<<<< HEAD
-                    registry.addMapping("/iiif/**")
-                            .allowedMethods(CorsConfiguration.ALL)
-                            // Set Access-Control-Allow-Credentials to "true" and specify which origins are valid
-                            // for our Access-Control-Allow-Origin header
-                            .allowCredentials(iiifAllowCredentials)
-                            .allowedOrigins(iiifAllowedOrigins)
-=======
                     registry.addMapping("/iiif/**").allowedMethods(CorsConfiguration.ALL)
                             // Set Access-Control-Allow-Credentials to "true" and specify which origins are valid
                             // for our Access-Control-Allow-Origin header
                             .allowCredentials(iiifAllowCredentials).allowedOrigins(iiifAllowedOrigins)
->>>>>>> ec0853ddad290f20cf4b7d647891df2011f1eafb
                             // Allow list of request preflight headers allowed to be sent to us from the client
                             .allowedHeaders("Accept", "Authorization", "Content-Type", "Origin", "X-On-Behalf-Of",
                                 "X-Requested-With", "X-XSRF-TOKEN", "X-CORRELATION-ID", "X-REFERRER",

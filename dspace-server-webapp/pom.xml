@@ -15,11 +15,7 @@
     <parent>
         <groupId>org.dspace</groupId>
         <artifactId>dspace-parent</artifactId>
-<<<<<<< HEAD
         <version>7.4</version>
-=======
-        <version>7.5-SNAPSHOT</version>
->>>>>>> ec0853ddad290f20cf4b7d647891df2011f1eafb
         <relativePath>..</relativePath>
     </parent>
 
@@ -434,14 +430,12 @@
             <artifactId>commons-collections4</artifactId>
         </dependency>
         <dependency>
-<<<<<<< HEAD
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-text</artifactId>
             <version>1.9</version>
         </dependency>
         <dependency>
-=======
->>>>>>> ec0853ddad290f20cf4b7d647891df2011f1eafb
+
             <groupId>commons-validator</groupId>
             <artifactId>commons-validator</artifactId>
         </dependency>
@@ -497,19 +491,16 @@
             <version>${spring-security.version}</version>
             <scope>test</scope>
         </dependency>
-<<<<<<< HEAD
+
         <!--
-=======
->>>>>>> ec0853ddad290f20cf4b7d647891df2011f1eafb
+
         <dependency>
             <groupId>com.jayway.jsonpath</groupId>
             <artifactId>json-path</artifactId>
             <scope>test</scope>
         </dependency>
-<<<<<<< HEAD
         -->
-=======
->>>>>>> ec0853ddad290f20cf4b7d647891df2011f1eafb
+
         <dependency>
             <groupId>com.jayway.jsonpath</groupId>
             <artifactId>json-path-assert</artifactId>
@@ -542,7 +533,7 @@
             <artifactId>solr-core</artifactId>
             <version>${solr.client.version}</version>
             <scope>test</scope>
-<<<<<<< HEAD
+
             <exclusions>
                 <!-- Newer version brought in by opencsv -->
                 <exclusion>
@@ -550,8 +541,7 @@
                     <artifactId>commons-text</artifactId>
                 </exclusion>
             </exclusions>
-=======
->>>>>>> ec0853ddad290f20cf4b7d647891df2011f1eafb
+
         </dependency>
         <dependency>
             <groupId>org.apache.lucene</groupId>

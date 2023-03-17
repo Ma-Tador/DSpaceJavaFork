@@ -278,7 +278,6 @@
   <dc-type>
 	<schema>dc</schema>
     <element>identifier</element>
-<<<<<<< HEAD
     <qualifier>handle</qualifier>
     <scope_note>Handle Identifier</scope_note>
   </dc-type>
@@ -394,11 +393,6 @@
 
  <!-- **************************************************** -->
 
-=======
-    <qualifier>uri</qualifier>
-    <scope_note>Uniform Resource Identifier</scope_note>
-  </dc-type>
->>>>>>> ec0853ddad290f20cf4b7d647891df2011f1eafb
 
   <!-- Used by system: do not remove -->
   <dc-type>

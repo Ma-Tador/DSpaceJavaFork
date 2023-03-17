@@ -45,11 +45,8 @@ import org.dspace.discovery.SearchUtils;
 import org.dspace.discovery.configuration.DiscoveryConfiguration;
 import org.dspace.discovery.configuration.DiscoveryConfigurationService;
 import org.dspace.discovery.configuration.DiscoverySearchFilter;
-<<<<<<< HEAD
-=======
 import org.dspace.discovery.configuration.DiscoverySortConfiguration;
 import org.dspace.discovery.configuration.DiscoverySortFieldConfiguration;
->>>>>>> ec0853ddad290f20cf4b7d647891df2011f1eafb
 import org.dspace.discovery.indexobject.IndexableItem;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -146,18 +143,6 @@ public class OpenSearchController {
             queryArgs.setStart(start);
             queryArgs.setMaxResults(count);
             queryArgs.setDSpaceObjectFilter(IndexableItem.TYPE);
-<<<<<<< HEAD
-            if (sort != null) {
-                //this is the default sort so we want to switch this to date accessioned
-                if (sortDirection != null && sortDirection.equals("DESC")) {
-                    queryArgs.setSortField(sort + "_sort", SORT_ORDER.desc);
-                } else {
-                    queryArgs.setSortField(sort + "_sort", SORT_ORDER.asc);
-                }
-            } else {
-                queryArgs.setSortField("dc.date.accessioned_dt", SORT_ORDER.desc);
-            }
-=======
 
             if (sort != null) {
                 DiscoveryConfiguration discoveryConfiguration =
@@ -188,7 +173,6 @@ public class OpenSearchController {
                 queryArgs.setSortField("dc.date.accessioned_dt", SORT_ORDER.desc);
             }
 
->>>>>>> ec0853ddad290f20cf4b7d647891df2011f1eafb
             if (dsoObject != null) {
                 container = scopeResolver.resolveScope(context, dsoObject);
                 DiscoveryConfiguration discoveryConfiguration = searchConfigurationService

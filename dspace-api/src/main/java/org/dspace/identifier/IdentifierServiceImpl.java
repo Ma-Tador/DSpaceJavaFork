@@ -10,10 +10,7 @@ package org.dspace.identifier;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-<<<<<<< HEAD
 import java.util.Map;
-=======
->>>>>>> ec0853ddad290f20cf4b7d647891df2011f1eafb
 
 import org.apache.commons.lang3.StringUtils;
 import org.apache.logging.log4j.LogManager;
@@ -21,10 +18,7 @@ import org.apache.logging.log4j.Logger;
 import org.dspace.authorize.AuthorizeException;
 import org.dspace.content.DSpaceObject;
 import org.dspace.content.factory.ContentServiceFactory;
-<<<<<<< HEAD
 import org.dspace.content.logic.Filter;
-=======
->>>>>>> ec0853ddad290f20cf4b7d647891df2011f1eafb
 import org.dspace.core.Context;
 import org.dspace.handle.service.HandleService;
 import org.dspace.identifier.service.IdentifierService;
@@ -106,11 +100,8 @@ public class IdentifierServiceImpl implements IdentifierService {
 
     @Override
     public void register(Context context, DSpaceObject dso)
-<<<<<<< HEAD
             throws AuthorizeException, SQLException, IdentifierException {
-=======
-        throws AuthorizeException, SQLException, IdentifierException {
->>>>>>> ec0853ddad290f20cf4b7d647891df2011f1eafb
+
         //We need to commit our context because one of the providers might require the handle created above
         // Next resolve all other services
         for (IdentifierProvider service : providers) {
@@ -125,7 +116,6 @@ public class IdentifierServiceImpl implements IdentifierService {
     }
 
     @Override
-<<<<<<< HEAD
     public void register(Context context, DSpaceObject dso, Class<? extends Identifier> type, Filter filter)
             throws AuthorizeException, SQLException, IdentifierException {
         //We need to commit our context because one of the providers might require the handle created above
@@ -218,8 +208,6 @@ public class IdentifierServiceImpl implements IdentifierService {
 
 
     @Override
-=======
->>>>>>> ec0853ddad290f20cf4b7d647891df2011f1eafb
     public void register(Context context, DSpaceObject object, String identifier)
         throws AuthorizeException, SQLException, IdentifierException {
         //We need to commit our context because one of the providers might require the handle created above
@@ -370,8 +358,5 @@ public class IdentifierServiceImpl implements IdentifierService {
             }
         }
     }
-<<<<<<< HEAD
+
 }
-=======
-}
->>>>>>> ec0853ddad290f20cf4b7d647891df2011f1eafb

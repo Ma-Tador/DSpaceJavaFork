@@ -23,7 +23,6 @@
     <namespace>http://dspace.org/namespace/local/</namespace>
   </dc-schema>
 
-<<<<<<< HEAD
 
 
 <dc-type>
@@ -427,15 +426,4 @@
 </dc-type>
 
 
-=======
-<!--
-  <dc-type>
-    <schema>local</schema>
-    <element></element>
-    <qualifier></qualifier>
-    <scope_note>Description of example metadata field.</scope_note>
-  </dc-type>
--->
-
->>>>>>> ec0853ddad290f20cf4b7d647891df2011f1eafb
 </dspace-dc-types>

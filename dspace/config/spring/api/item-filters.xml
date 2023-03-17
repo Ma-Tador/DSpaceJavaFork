@@ -21,11 +21,8 @@
 
     <context:annotation-config /> <!-- allows us to use spring annotations in beans -->
 
-<<<<<<< HEAD
 	<!-- added DOI pre-registration @Steli -->
 	<bean id="always_true_filter" class="org.dspace.content.logic.TrueFilter"/>
-=======
->>>>>>> ec0853ddad290f20cf4b7d647891df2011f1eafb
 
     <!-- DEFINE CONDITIONS
         Define condition beans below for use as sub-statements in operator and filter beans
@@ -37,11 +34,7 @@
         like "^Exact Match$".
         Special characters used in Java regular expressions will need escaping.
         The below condition returns true if dc.title contains "demo" (case insensitive)
-<<<<<<< HEAD
      -->
-=======
-    -->
->>>>>>> ec0853ddad290f20cf4b7d647891df2011f1eafb
     <bean id="title-contains-demo_condition"
           class="org.dspace.content.logic.condition.MetadataValueMatchCondition">
         <property name="parameters">
@@ -51,7 +44,6 @@
             </map>
         </property>
     </bean>
-<<<<<<< HEAD
    
     
     <!-- Added steli. Checks if local.identifier.doi is empty. If Empty returns false, if not empty returns true.
@@ -86,9 +78,6 @@
             </map>
         </property>
     </bean>
-=======
-
->>>>>>> ec0853ddad290f20cf4b7d647891df2011f1eafb
 
     <bean id="item-is-public_condition"
           class="org.dspace.content.logic.condition.ReadableByGroupCondition">
@@ -135,17 +124,12 @@
 
     <!--
          A filter that checks if any value of dc.identifier.uri contains "10.12345/".
-<<<<<<< HEAD
    
-=======
-    -->
->>>>>>> ec0853ddad290f20cf4b7d647891df2011f1eafb
     <bean id="dc-identifier-uri-contains-doi_condition"
           class="org.dspace.content.logic.condition.MetadataValueMatchCondition">
         <property name="parameters">
             <map>
                 <entry key="field" value="dc.identifier.uri" />
-<<<<<<< HEAD
                 <entry key="pattern" value="10." />
             </map>
         </property>
@@ -153,12 +137,6 @@
     -->
     
     
-=======
-                <entry key="pattern" value="10.12345/" />
-            </map>
-        </property>
-    </bean>
->>>>>>> ec0853ddad290f20cf4b7d647891df2011f1eafb
 
     <!-- dc.type ends with any of the listed values, as per XOAI "driverDocumentTypeCondition" -->
     <bean id="driver-document-type_condition"
@@ -227,7 +205,6 @@
             </map>
         </property>
     </bean>
-<<<<<<< HEAD
     
     
     <!-- added DOI pre-registrataion @Steli -->
@@ -242,8 +219,6 @@
         </property>
     </bean>
     
-=======
->>>>>>> ec0853ddad290f20cf4b7d647891df2011f1eafb
 
     <!-- DEFINE OPERATORS
         Operators can be defined too, if a particular AND or OR statement needs to be re-used a lot, though
@@ -267,26 +242,17 @@
 
     <!-- Example DOI Filter. An item has to pass the filter (filter returns true) to get a DOI.
          If the filter returns false on an item, minting of a new DOI for that item is prevented. -->
-<<<<<<< HEAD
     <bean id="doi_filter" class="org.dspace.content.logic.DefaultFilter">
-=======
-    <bean id="doi-filter" class="org.dspace.content.logic.DefaultFilter">
->>>>>>> ec0853ddad290f20cf4b7d647891df2011f1eafb
         <property name="statement">
             <bean class="org.dspace.content.logic.operator.And">
                 <property name="statements">
                     <list>
-<<<<<<< HEAD
                         <!-- Don't create new DOIs for items that already have one saved in dc.identifier.uri  -->
-=======
-                        <!-- Don't create new DOIs for items that already have one  -->
->>>>>>> ec0853ddad290f20cf4b7d647891df2011f1eafb
                         <bean class="org.dspace.content.logic.operator.Not">
                             <property name="statements">
                                 <ref bean="dc-identifier-uri-contains-doi_condition"/>
                             </property>
                         </bean>
-<<<<<<< HEAD
                         
                         <!-- Create DOIs for items only that do have at least one bitstream. -->
                         <ref bean="has-at-least-one-bitstream_condition"/>
@@ -315,19 +281,12 @@
                      	</bean>
                      	 
                      	
-=======
-                        <!-- Create DOIs for items only that do have at least one bitstream. -->
-                        <ref bean="has-at-least-one-bitstream_condition"/>
->>>>>>> ec0853ddad290f20cf4b7d647891df2011f1eafb
                     </list>
                 </property>
             </bean>
         </property>
     </bean>
-<<<<<<< HEAD
     
-=======
->>>>>>> ec0853ddad290f20cf4b7d647891df2011f1eafb
 
     <bean id="type_filter" class="org.dspace.content.logic.DefaultFilter">
         <property name="statement">
@@ -454,10 +413,6 @@
             </bean>
         </property>
     </bean>
-<<<<<<< HEAD
     
-=======
-
->>>>>>> ec0853ddad290f20cf4b7d647891df2011f1eafb
 
 </beans>

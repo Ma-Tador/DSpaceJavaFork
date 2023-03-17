@@ -131,7 +131,6 @@ $ scp MODS-2-DIM.xslt athena.dialup.mit.edu:~/Private/
         -->
                         <xsl:apply-templates/>
                 </xsl:element>
-<<<<<<< HEAD
                 
 	<!-- Get document license if available, otherwise provide standard license -->
 	<xsl:variable name="defaultLicense" select="'https://rightsstatements.org/page/CNE/1.0/?language=de'" />
@@ -146,7 +145,14 @@ $ scp MODS-2-DIM.xslt athena.dialup.mit.edu:~/Private/
 		<xsl:value-of select="$defaultLicense"/>
 	</xsl:if>
 	<xsl:if test="normalize-space($license) != ''">
-		<xsl:value-of select="$license"/>
+  	  <xsl:choose>	
+ 	   <xsl:when test="contains( normalize-space($license), '(http' )">
+		<xsl:value-of select="substring-before(substring-after($license, '('), ')')"/>
+	   </xsl:when>
+	   <xsl:otherwise>
+	   	<xsl:value-of select="normalize-space($license)"/>
+	   </xsl:otherwise>
+	  </xsl:choose>
 	</xsl:if>
 	</xsl:element>
 	
@@ -208,9 +214,6 @@ $ scp MODS-2-DIM.xslt athena.dialup.mit.edu:~/Private/
 	</xsl:template>
 	
 	
-=======
-        </xsl:template>
->>>>>>> ec0853ddad290f20cf4b7d647891df2011f1eafb
 
 <!-- **** MODS   titleInfo/title ====> DC title **** -->
         <xsl:template match="*[local-name()='titleInfo']/*[local-name()='title']">
@@ -256,7 +259,6 @@ $ scp MODS-2-DIM.xslt athena.dialup.mit.edu:~/Private/
 
 
 
-<<<<<<< HEAD
 <!-- **** MODS  name ====> DC  contributor.{role/roleTerm} **** <xsl:if test="*[local-name()='name']"> </xsl:if>-->
 <xsl:template match="*[local-name()='name'][@type='personal']">
         <xsl:variable name="contributorFamName" select="*[local-name()='namePart'][@type='family']"/>
@@ -275,27 +277,6 @@ $ scp MODS-2-DIM.xslt athena.dialup.mit.edu:~/Private/
 -->
                         
                         <xsl:value-of select="$contributorName"/>
-=======
-<!-- **** MODS  name ====> DC  contributor.{role/roleTerm} **** -->
-        <xsl:template match="*[local-name()='name']">
-                <xsl:element name="dim:field">
-                        <xsl:attribute name="mdschema">dc</xsl:attribute>
-                        <xsl:attribute name="element">contributor</xsl:attribute>
-                        <!-- Important assumption: That the string value used
-                                in the MODS role/roleTerm is indeed a DC Qualifier.
-                                e.g. contributor.illustrator
-                                (Using this assumption, rather than coding in
-                                a more controlled vocabulary via xsl:choose etc.)
-                                -->
-                        <xsl:attribute name="qualifier"><xsl:value-of select="*[local-name()='role']/*[local-name()='roleTerm']"/></xsl:attribute>
-                        <xsl:attribute name="lang">en_US</xsl:attribute>
-<!-- TODO: Logic (xsl:choose) re: format of names in source XML (e.g. Smith, John; or Fname and Lname in separate elements, etc.) -->
-<!-- Used for CSAIL == simply:
-                        <namePart>Lname, Fname</namePart>
--->
-                        <xsl:value-of select="*[local-name()='namePart']"/>
-
->>>>>>> ec0853ddad290f20cf4b7d647891df2011f1eafb
 <!-- Not Used for CSAIL
                         <namePart type="family">Lname</namePart> <namePart type="given">Fname</namePart>
 -->
@@ -306,11 +287,7 @@ $ scp MODS-2-DIM.xslt athena.dialup.mit.edu:~/Private/
 </xsl:template>
 
 
-<<<<<<< HEAD
 <!-- **** MODS   originInfo/dateCreated ====> DC  date.created **** 
-=======
-<!-- **** MODS   originInfo/dateCreated ====> DC  date.created **** -->
->>>>>>> ec0853ddad290f20cf4b7d647891df2011f1eafb
         <xsl:template match="*[local-name()='originInfo']/*[local-name()='dateCreated']">
                 <xsl:element name="dim:field">
                         <xsl:attribute name="mdschema">dc</xsl:attribute>
@@ -320,7 +297,6 @@ $ scp MODS-2-DIM.xslt athena.dialup.mit.edu:~/Private/
                         <xsl:value-of select="."/>
                 </xsl:element>
         </xsl:template>
-<<<<<<< HEAD
         -->
         
         <!-- save year issued in dc.date.created -> request from Opus Team  Error java illegal date format + 
@@ -334,8 +310,6 @@ $ scp MODS-2-DIM.xslt athena.dialup.mit.edu:~/Private/
                 </xsl:element>
         </xsl:template>
         -->
-=======
->>>>>>> ec0853ddad290f20cf4b7d647891df2011f1eafb
 
 <!-- **** MODS   originInfo/dateIssued ====> DC  date.issued **** -->
         <xsl:template match="*[local-name()='originInfo']/*[local-name()='dateIssued']">
@@ -347,7 +321,6 @@ $ scp MODS-2-DIM.xslt athena.dialup.mit.edu:~/Private/
                         <xsl:value-of select="."/>
                 </xsl:element>
         </xsl:template>
-<<<<<<< HEAD
         
                  
         
@@ -362,15 +335,12 @@ $ scp MODS-2-DIM.xslt athena.dialup.mit.edu:~/Private/
                 </xsl:element>
         </xsl:template>
         -->
-=======
->>>>>>> ec0853ddad290f20cf4b7d647891df2011f1eafb
 
 
 <!-- **** MODS   physicalDescription/extent ====> DC  format.extent **** -->
         <xsl:template match="*[local-name()='physicalDescription']/*[local-name()='extent']">
                 <xsl:element name="dim:field">
                         <xsl:attribute name="mdschema">dc</xsl:attribute>
-<<<<<<< HEAD
                         <xsl:attribute name="element">format</xsl:attribute>                    
                         <xsl:attribute name="qualifier">extent</xsl:attribute>
                         <xsl:attribute name="lang">en_US</xsl:attribute>
@@ -392,24 +362,10 @@ $ scp MODS-2-DIM.xslt athena.dialup.mit.edu:~/Private/
                         <xsl:attribute name="mdschema">dc</xsl:attribute>
                         <xsl:attribute name="element">description</xsl:attribute>                       
                         <xsl:attribute name="qualifier">abstract</xsl:attribute>
-=======
-                        <xsl:attribute name="element">format</xsl:attribute>                    <xsl:attribute name="qualifier">extent</xsl:attribute>
-                        <xsl:attribute name="lang">en_US</xsl:attribute>
-                        <xsl:value-of select="."/>
-                </xsl:element>
-        </xsl:template>
-
-<!-- **** MODS   abstract  ====> DC  description.abstract **** -->
-        <xsl:template match="*[local-name()='abstract']">
-                <xsl:element name="dim:field">
-                        <xsl:attribute name="mdschema">dc</xsl:attribute>
-                        <xsl:attribute name="element">description</xsl:attribute>                       <xsl:attribute name="qualifier">abstract</xsl:attribute>
->>>>>>> ec0853ddad290f20cf4b7d647891df2011f1eafb
                         <xsl:attribute name="lang">en_US</xsl:attribute>
                         <xsl:value-of select="normalize-space(.)"/>
                 </xsl:element>
         </xsl:template>
-<<<<<<< HEAD
 -->
 
 
@@ -418,47 +374,12 @@ $ scp MODS-2-DIM.xslt athena.dialup.mit.edu:~/Private/
                 <xsl:element name="dim:field">
                         <xsl:attribute name="mdschema">dc</xsl:attribute>
                         <xsl:attribute name="element">subject</xsl:attribute>                   
-=======
-
-
-<!-- **** MODS   subject/topic ====> DC  subject **** -->
-        <xsl:template match="*[local-name()='subject']/*[local-name()='topic']">
-                <xsl:element name="dim:field">
-                        <xsl:attribute name="mdschema">dc</xsl:attribute>
-                        <xsl:attribute name="element">subject</xsl:attribute>                   <xsl:attribute name="lang">en_US</xsl:attribute>
-                        <xsl:value-of select="normalize-space(.)"/>
-                </xsl:element>
-        </xsl:template>
-
-
-<!-- **** MODS   subject/geographic ====> DC  coverage.spatial **** -->
-        <!-- (Not anticipated for CSAIL.) -->
-        <xsl:template match="*[local-name()='subject']/*[local-name()='geographic']">
-                <xsl:element name="dim:field">
-                        <xsl:attribute name="mdschema">dc</xsl:attribute>
-                        <xsl:attribute name="element">coverage</xsl:attribute>                                                  <xsl:attribute name="qualifier">spatial</xsl:attribute>
                         <xsl:attribute name="lang">en_US</xsl:attribute>
                         <xsl:value-of select="normalize-space(.)"/>
                 </xsl:element>
         </xsl:template>
-
-<!-- **** MODS   subject/temporal ====> DC  coverage.temporal **** -->
-        <!-- (Not anticipated for CSAIL.) -->
-        <xsl:template match="*[local-name()='subject']/*[local-name()='temporal']">
-                <xsl:element name="dim:field">
-                        <xsl:attribute name="mdschema">dc</xsl:attribute>
-                        <xsl:attribute name="element">coverage</xsl:attribute>                                                  <xsl:attribute name="qualifier">temporal</xsl:attribute>
->>>>>>> ec0853ddad290f20cf4b7d647891df2011f1eafb
-                        <xsl:attribute name="lang">en_US</xsl:attribute>
-                        <xsl:value-of select="normalize-space(.)"/>
-                </xsl:element>
-        </xsl:template>
-<<<<<<< HEAD
 -->
         
-=======
-
->>>>>>> ec0853ddad290f20cf4b7d647891df2011f1eafb
 
 <!-- **** MODS   relatedItem...    **** -->
         <!-- NOTE -
@@ -468,7 +389,6 @@ $ scp MODS-2-DIM.xslt athena.dialup.mit.edu:~/Private/
                 2) DC  relation.___
                 MODS [@type='____'] {/titleInfo/title} ====> DC  relation.{ series | host | other...}
         -->
-<<<<<<< HEAD
         <xsl:template match="*[local-name()='relatedItem'][@type='host']">
                         <!-- 1)  DC  identifier.citation  -->
                            <!-- Note: CSAIL Assumption (and for now, generally):
@@ -477,17 +397,10 @@ $ scp MODS-2-DIM.xslt athena.dialup.mit.edu:~/Private/
                                         e.g. <text>Journal of Physics, v. 53, no. 9, pp. 34-55, Aug. 15, 2004</text>
                                         
                         <xsl:if test="*[local-name()='part']/*[local-name()='text']">
-=======
-        <xsl:template match="*[local-name()='relatedItem']">
-                <xsl:choose>
-                        <!-- 1)  DC  identifier.citation  -->
-                        <xsl:when test="./@type='host'  and   *[local-name()='part']/*[local-name()='text']">
->>>>>>> ec0853ddad290f20cf4b7d647891df2011f1eafb
                                 <xsl:element name="dim:field">
                                         <xsl:attribute name="mdschema">dc</xsl:attribute>
                                         <xsl:attribute name="element">identifier</xsl:attribute>
                                         <xsl:attribute name="qualifier">citation</xsl:attribute>
-<<<<<<< HEAD
                                         <xsl:value-of select="normalize-space(*[local-name()='part']/*[local-name()='text'])"/>
                                 </xsl:element>
                         </xsl:if>
@@ -706,88 +619,16 @@ $ scp MODS-2-DIM.xslt athena.dialup.mit.edu:~/Private/
                 </xsl:element>
         </xsl:template>  
                                                     
-=======
-                                        <xsl:attribute name="lang">en_US</xsl:attribute>
-                                        <xsl:value-of select="normalize-space(*[local-name()='part']/*[local-name()='text'])"/>
-                                </xsl:element>
-                                <!-- Note: CSAIL Assumption (and for now, generally):
-                                        The bibliographic citation is _not_ parsed further,
-                                        and one single 'text' element will contain it.
-                                        e.g. <text>Journal of Physics, v. 53, no. 9, pp. 34-55, Aug. 15, 2004</text>
-                                        -->
-                        </xsl:when>
-                        <!-- 2)  DC  relation._____  -->
-                        <xsl:otherwise>
-                                <xsl:element name="dim:field">
-                                        <xsl:attribute name="mdschema">dc</xsl:attribute>
-                                        <xsl:attribute name="element">relation</xsl:attribute>
-                                        <xsl:choose>
-                                                <xsl:when test="./@type='series'">
-                                                        <xsl:attribute name="qualifier">ispartofseries</xsl:attribute>
-                                                </xsl:when>
-                                                <xsl:when test="./@type='host'">
-                                                        <xsl:attribute name="qualifier">ispartof</xsl:attribute>
-                                                </xsl:when>
-                                                <!-- 10 more... TODO
-http://cwspace.mit.edu/docs/WorkActivity/Metadata/Crosswalks/MODSmapping2MB.html
-                                                http://www.loc.gov/standards/mods/mods-outline.html#relatedItem
-                                                        -->
-                                        </xsl:choose>
-                                        <xsl:attribute name="lang">en_US</xsl:attribute>
-                                        <xsl:value-of select="normalize-space(*[local-name()='titleInfo']/*[local-name()='title'])"/>
-                                </xsl:element>
-                        </xsl:otherwise>
-                </xsl:choose>
-
-        </xsl:template>
-
-
-
-<!-- **** MODS   identifier/@type  ====> DC identifier.other  **** -->
-        <xsl:template match="*[local-name()='identifier']"> <!-- [@type='series']"> -->
-                <xsl:element name="dim:field">
-                        <xsl:attribute name="mdschema">dc</xsl:attribute>
-                        <xsl:attribute name="element">identifier</xsl:attribute>
-                        <xsl:choose>
-                                <xsl:when test="./@type='local'">
-                                        <xsl:attribute name="qualifier">other</xsl:attribute>
-                                </xsl:when>
-                                <xsl:when test="./@type='uri'">
-                                        <xsl:attribute name="qualifier">uri</xsl:attribute>
-                                </xsl:when>
-                                <!-- 6 (?) more... TODO
-                                        http://cwspace.mit.edu/docs/WorkActivity/Metadata/Crosswalks/MODSmapping2MB.html
-                                        http://www.loc.gov/standards/mods/mods-outline.html#identifier
-                                        
-                                        (but see also MODS relatedItem[@type="host"]/part/text == identifier.citation)
-                                -->
-                        </xsl:choose>
-                        <xsl:attribute name="lang">en_US</xsl:attribute>
-                        <xsl:value-of select="normalize-space(.)"/>
-                </xsl:element>
-        </xsl:template>
->>>>>>> ec0853ddad290f20cf4b7d647891df2011f1eafb
 
 
 <!-- **** MODS   originInfo/publisher  ====> DC  publisher  **** -->
         <xsl:template match="*[local-name()='originInfo']/*[local-name()='publisher']">
                 <xsl:element name="dim:field">
                         <xsl:attribute name="mdschema">dc</xsl:attribute>
-<<<<<<< HEAD
                         <xsl:attribute name="element">publisher</xsl:attribute>                 
-=======
-                        <xsl:attribute name="element">publisher</xsl:attribute>                 <xsl:attribute name="lang">en_US</xsl:attribute>
->>>>>>> ec0853ddad290f20cf4b7d647891df2011f1eafb
                         <xsl:value-of select="normalize-space(.)"/>
                 </xsl:element>
         </xsl:template>
 
-<<<<<<< HEAD
 </xsl:stylesheet>
 
-=======
-
-
-
-</xsl:stylesheet>
->>>>>>> ec0853ddad290f20cf4b7d647891df2011f1eafb

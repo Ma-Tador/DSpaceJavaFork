@@ -157,7 +157,6 @@
         <!--Which sidebar facets are to be displayed-->
         <property name="sidebarFacets">
             <list>
-<<<<<<< HEAD
             <!-- add facet filter by Series @Steli -->
 		<ref bean="searchFilterSeries" /> 
 		
@@ -182,21 +181,6 @@
                 <!-- add series facet and filter @Steli   -->
                 <ref bean="searchFilterSeries" />
                 
-=======
-                <ref bean="searchFilterAuthor" />
-                <ref bean="searchFilterSubject" />
-                <ref bean="searchFilterIssued" />
-                <ref bean="searchFilterContentInOriginalBundle"/>
-                <ref bean="searchFilterEntityType"/>
-            </list>
-        </property>
-        <!-- Set TagCloud configuration per discovery configuration -->
-        <property name="tagCloudFacetConfiguration" ref="defaultTagCloudFacetConfiguration"/>
-        <!--The search filters which can be used on the discovery search page-->
-        <property name="searchFilters">
-            <list>
-                <ref bean="searchFilterTitle" />
->>>>>>> ec0853ddad290f20cf4b7d647891df2011f1eafb
                 <ref bean="searchFilterAuthor" />
                 <ref bean="searchFilterSubject" />
                 <ref bean="searchFilterIssued" />
@@ -274,7 +258,6 @@
                             <property name="field" value="dc.title"/>
                             <property name="snippets" value="5"/>
                         </bean>
-<<<<<<< HEAD
                         <!-- add hitHighlight also for series @Steli -->
                         <bean class="org.dspace.discovery.configuration.DiscoveryHitHighlightFieldConfiguration">
                             <property name="field" value="local.series.name"/>
@@ -282,8 +265,6 @@
                             <property name="snippets" value="2"/>
                         </bean>
                         
-=======
->>>>>>> ec0853ddad290f20cf4b7d647891df2011f1eafb
                         <!-- By default, full text snippets are disabled, as snippets of embargoed/restricted bitstreams
                              may appear in search results when the Item is public. See DS-3498
                         <bean class="org.dspace.discovery.configuration.DiscoveryHitHighlightFieldConfiguration">
@@ -326,11 +307,8 @@
         <property name="spellCheckEnabled" value="true"/>
     </bean>
 
-<<<<<<< HEAD
 
 
-=======
->>>>>>> ec0853ddad290f20cf4b7d647891df2011f1eafb
     <bean id="defaultRelationshipsConfiguration" class="org.dspace.discovery.configuration.DiscoveryConfiguration" scope="prototype">
         <!--Which sidebar facets are to be displayed-->
         <property name="sidebarFacets">
@@ -339,10 +317,6 @@
                 <ref bean="searchFilterSubject" />
                 <ref bean="searchFilterIssued" />
                 <ref bean="searchFilterContentInOriginalBundle"/>
-<<<<<<< HEAD
-=======
-                <ref bean="searchFilterEntityType"/>
->>>>>>> ec0853ddad290f20cf4b7d647891df2011f1eafb
             </list>
         </property>
         <!-- Set TagCloud configuration per discovery configuration -->
@@ -480,15 +454,10 @@
                 <ref bean="searchFilterAuthor" />
                 <ref bean="searchFilterSubject" />
                 <ref bean="searchFilterIssued" />
-<<<<<<< HEAD
 		<!-- add title @Steli 
 		<ref bean="searchFilterTitle" />  -->
                 <ref bean="searchFilterContentInOriginalBundle"/>
              <!--   <ref bean="searchFilterEntityType"/> -->
-=======
-                <ref bean="searchFilterContentInOriginalBundle"/>
-                <ref bean="searchFilterEntityType"/>
->>>>>>> ec0853ddad290f20cf4b7d647891df2011f1eafb
             </list>
         </property>
         <!-- Set TagCloud configuration per discovery configuration -->
@@ -627,15 +596,10 @@
                 <ref bean="searchFilterAuthor" />
                 <ref bean="searchFilterSubject" />
                 <ref bean="searchFilterIssued" />
-<<<<<<< HEAD
 		<!-- add title @Steli 
 		<ref bean="searchFilterTitle" />  -->
                 <ref bean="searchFilterContentInOriginalBundle"/>
                 <!-- <ref bean="searchFilterEntityType"/> -->
-=======
-                <ref bean="searchFilterContentInOriginalBundle"/>
-                <ref bean="searchFilterEntityType"/>
->>>>>>> ec0853ddad290f20cf4b7d647891df2011f1eafb
             </list>
         </property>
         <!-- Set TagCloud configuration per discovery configuration -->
@@ -772,15 +736,10 @@
                 <ref bean="searchFilterAuthor" />
                 <ref bean="searchFilterSubject" />
                 <ref bean="searchFilterIssued" />
-<<<<<<< HEAD
 		<!-- add title @Steli 
 		<ref bean="searchFilterTitle" />  -->
                 <ref bean="searchFilterContentInOriginalBundle"/>
    	      <!--  <ref bean="searchFilterEntityType"/> -->
-=======
-                <ref bean="searchFilterContentInOriginalBundle"/>
-                <ref bean="searchFilterEntityType"/>
->>>>>>> ec0853ddad290f20cf4b7d647891df2011f1eafb
             </list>
         </property>
         <!-- Set TagCloud configuration per discovery configuration -->
@@ -1118,15 +1077,10 @@
                 <ref bean="searchFilterAuthor" />
                 <ref bean="searchFilterSubject" />
                 <ref bean="searchFilterIssued" />
-<<<<<<< HEAD
 		<!-- add title @Steli 
 		<ref bean="searchFilterTitle" />  -->
                 <ref bean="searchFilterContentInOriginalBundle"/>
               <!--  <ref bean="searchFilterEntityType"/> -->
-=======
-                <ref bean="searchFilterContentInOriginalBundle"/>
-                <ref bean="searchFilterEntityType"/>
->>>>>>> ec0853ddad290f20cf4b7d647891df2011f1eafb
             </list>
         </property>
         <!-- Set TagCloud configuration per discovery configuration -->
@@ -2252,10 +2206,7 @@
         <property name="pageSize" value="10"/>
     </bean>
 
-<<<<<<< HEAD
 <!-- replace with filter + facet by title @Steli 
-=======
->>>>>>> ec0853ddad290f20cf4b7d647891df2011f1eafb
     <bean id="searchFilterTitle" class="org.dspace.discovery.configuration.DiscoverySearchFilter">
         <property name="indexFieldName" value="title"/>
         <property name="metadataFields">
@@ -2266,7 +2217,6 @@
         <property name="isOpenByDefault" value="true"/>
         <property name="pageSize" value="10"/>
     </bean>
-<<<<<<< HEAD
 -->
 
 <!-- Search title with facet @Steli -->
@@ -2319,8 +2269,6 @@
     <property name="skipFirstNodeLevel" value="true"/>
 </bean>
 -->
-=======
->>>>>>> ec0853ddad290f20cf4b7d647891df2011f1eafb
 
     <bean id="searchFilterIsAuthorOfPublicationRelation" class="org.dspace.discovery.configuration.DiscoverySearchFilter">
         <property name="indexFieldName" value="isAuthorOfPublication"/>
@@ -2378,10 +2326,7 @@
         <property name="pageSize" value="10"/>
     </bean>
 
-<<<<<<< HEAD
 
-=======
->>>>>>> ec0853ddad290f20cf4b7d647891df2011f1eafb
     <bean id="searchFilterAuthor" class="org.dspace.discovery.configuration.DiscoverySearchFilterFacet">
         <property name="indexFieldName" value="author"/>
         <property name="metadataFields">
@@ -2398,10 +2343,7 @@
         <property name="exposeMinAndMaxValue" value="true"/>
     </bean>
 
-<<<<<<< HEAD
 
-=======
->>>>>>> ec0853ddad290f20cf4b7d647891df2011f1eafb
     <bean id="searchFilterEntityType" class="org.dspace.discovery.configuration.DiscoverySearchFilterFacet">
         <property name="indexFieldName" value="entityType"/>
         <property name="metadataFields">
@@ -2416,10 +2358,7 @@
 
     </bean>
 
-<<<<<<< HEAD
 
-=======
->>>>>>> ec0853ddad290f20cf4b7d647891df2011f1eafb
     <bean id="searchFilterSubject" class="org.dspace.discovery.configuration.HierarchicalSidebarFacetConfiguration">
         <property name="indexFieldName" value="subject"/>
         <property name="metadataFields">
@@ -2430,7 +2369,6 @@
         <property name="facetLimit" value="5"/>
         <property name="sortOrderSidebar" value="COUNT"/>
         <property name="sortOrderFilterPage" value="COUNT"/>
-<<<<<<< HEAD
         <property name="skipFirstNodeLevel" value="true"/>
         <property name="splitter" value="/"/>
     </bean>
@@ -2451,11 +2389,6 @@
         <property name="exposeMinAndMaxValue" value="true"/>
     </bean>
 -->
-=======
-        <property name="splitter" value="::"/>
-
-    </bean>
->>>>>>> ec0853ddad290f20cf4b7d647891df2011f1eafb
 
     <bean id="searchFilterIssued" class="org.dspace.discovery.configuration.DiscoverySearchFilterFacet">
         <property name="indexFieldName" value="dateIssued"/>

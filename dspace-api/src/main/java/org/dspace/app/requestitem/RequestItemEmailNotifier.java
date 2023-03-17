@@ -154,15 +154,9 @@ public class RequestItemEmailNotifier {
         email.setContent("body", message);
         email.setSubject(subject);
         email.addRecipient(ri.getReqEmail());
-<<<<<<< HEAD
-        if (ri.isAccept_request()) {
-            // Attach bitstreams.
-            try {
-=======
         // Attach bitstreams.
         try {
             if (ri.isAccept_request()) {
->>>>>>> ec0853ddad290f20cf4b7d647891df2011f1eafb
                 if (ri.isAllfiles()) {
                     Item item = ri.getItem();
                     List<Bundle> bundles = item.getBundles("ORIGINAL");
@@ -185,13 +179,6 @@ public class RequestItemEmailNotifier {
                             bitstream.getFormat(context).getMIMEType());
                 }
                 email.send();
-<<<<<<< HEAD
-            } catch (MessagingException | IOException | SQLException | AuthorizeException e) {
-                LOG.warn(LogHelper.getHeader(context,
-                        "error_mailing_requestItem", e.getMessage()));
-                throw new IOException("Reply not sent:  " + e.getMessage());
-            }
-=======
             } else {
                 boolean sendRejectEmail = configurationService
                     .getBooleanProperty("request.item.reject.email", true);
@@ -205,7 +192,6 @@ public class RequestItemEmailNotifier {
             LOG.warn(LogHelper.getHeader(context,
                     "error_mailing_requestItem", e.getMessage()));
             throw new IOException("Reply not sent:  " + e.getMessage());
->>>>>>> ec0853ddad290f20cf4b7d647891df2011f1eafb
         }
         LOG.info(LogHelper.getHeader(context,
                 "sent_attach_requestItem", "token={}"), ri.getToken());

@@ -50,6 +50,10 @@ public class AccountServiceImpl implements AccountService {
     protected RegistrationDataService registrationDataService;
     @Autowired
     private ConfigurationService configurationService;
+    @Autowired
+    private AuthenticationService authenticationService;
+
+
 
     protected AccountServiceImpl() {
 
@@ -78,6 +82,9 @@ public class AccountServiceImpl implements AccountService {
         AuthorizeException {
         if (!configurationService.getBooleanProperty("user.registration", true)) {
             throw new IllegalStateException("The user.registration parameter was set to false");
+        }
+        if (!configurationService.canSelfRegister(context, null, email)) {
+            throw new IllegalStateException("Self registration not allowed with this email address.");
         }
         sendInfo(context, email, true, true);
     }

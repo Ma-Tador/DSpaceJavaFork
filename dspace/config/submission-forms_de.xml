@@ -67,8 +67,8 @@
           <row>
              <field>
              <dc-schema>local</dc-schema>
-             <dc-element>fakultaet</dc-element>
-             <dc-qualifier>lehrstuhl</dc-qualifier>
+             <dc-element>subject</dc-element>
+             <dc-qualifier>fakultaet</dc-qualifier>
              <repeatable>true</repeatable>
              <label>Organisationseinheit</label>
              <input-type>onebox</input-type>

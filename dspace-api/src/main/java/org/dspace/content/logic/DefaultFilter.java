@@ -22,10 +22,9 @@ import org.dspace.core.Context;
  */
 public class DefaultFilter implements Filter {
     private LogicalStatement statement;
-<<<<<<< HEAD
+
     private String name;
-=======
->>>>>>> ec0853ddad290f20cf4b7d647891df2011f1eafb
+
     private final static Logger log = LogManager.getLogger();
 
     /**
@@ -48,7 +47,6 @@ public class DefaultFilter implements Filter {
     public boolean getResult(Context context, Item item) throws LogicalStatementException {
         return this.statement.getResult(context, item);
     }
-<<<<<<< HEAD
 
     @Override
     public void setBeanName(String name) {
@@ -61,6 +59,4 @@ public class DefaultFilter implements Filter {
         return name;
     }
 }
-=======
-}
->>>>>>> ec0853ddad290f20cf4b7d647891df2011f1eafb
+

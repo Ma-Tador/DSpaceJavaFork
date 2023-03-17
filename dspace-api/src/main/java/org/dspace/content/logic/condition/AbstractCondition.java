@@ -12,10 +12,7 @@ import java.util.Map;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.dspace.content.Item;
-<<<<<<< HEAD
 import org.dspace.content.factory.ContentServiceFactory;
-=======
->>>>>>> ec0853ddad290f20cf4b7d647891df2011f1eafb
 import org.dspace.content.logic.LogicalStatementException;
 import org.dspace.content.service.CollectionService;
 import org.dspace.content.service.ItemService;
@@ -36,15 +33,14 @@ public abstract class AbstractCondition implements Condition {
 
     // Declare and instantiate spring services
     @Autowired(required = true)
-<<<<<<< HEAD
     protected ItemService itemService = ContentServiceFactory.getInstance().getItemService();
     @Autowired(required = true)
     protected CollectionService collectionService = ContentServiceFactory.getInstance().getCollectionService();
-=======
+/*  ORG
     protected ItemService itemService;
     @Autowired(required = true)
     protected CollectionService collectionService;
->>>>>>> ec0853ddad290f20cf4b7d647891df2011f1eafb
+*/
     @Autowired(required = true)
     protected HandleService handleService;
 

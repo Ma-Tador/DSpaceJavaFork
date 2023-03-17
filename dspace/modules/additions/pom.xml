@@ -17,11 +17,7 @@
    <parent>
       <groupId>org.dspace</groupId>
       <artifactId>modules</artifactId>
-<<<<<<< HEAD
       <version>7.4</version>
-=======
-      <version>7.5-SNAPSHOT</version>
->>>>>>> ec0853ddad290f20cf4b7d647891df2011f1eafb
       <relativePath>..</relativePath>
    </parent>
 
@@ -242,25 +238,16 @@
           <groupId>org.dspace</groupId>
           <artifactId>dspace-services</artifactId>
       </dependency>
-<<<<<<< HEAD
-      
          
       <dependency>
          <groupId>javax.servlet</groupId>
          <artifactId>javax.servlet-api</artifactId>
-          <!-- steli   
+          <!-- steli   -->
          <scope>provided</scope>
-            -->
+            
       </dependency>
 
       
-=======
-      <dependency>
-         <groupId>javax.servlet</groupId>
-         <artifactId>javax.servlet-api</artifactId>
-         <scope>provided</scope>
-      </dependency>
->>>>>>> ec0853ddad290f20cf4b7d647891df2011f1eafb
       <dependency>
          <groupId>ant-contrib</groupId>
          <artifactId>ant-contrib</artifactId>
@@ -284,7 +271,7 @@
          <artifactId>solr-core</artifactId>
          <version>${solr.client.version}</version>
          <scope>test</scope>
-<<<<<<< HEAD
+
          <exclusions>
             <!-- Newer version brought in by opencsv -->
             <exclusion>
@@ -292,8 +279,7 @@
                <artifactId>commons-text</artifactId>
             </exclusion>
          </exclusions>
-=======
->>>>>>> ec0853ddad290f20cf4b7d647891df2011f1eafb
+
       </dependency>
       <dependency>
          <groupId>org.apache.lucene</groupId>
