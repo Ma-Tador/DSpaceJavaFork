@@ -58,7 +58,7 @@ public class CollectionLicenseLinkRepository extends AbstractDSpaceRestRepositor
                 licenseRest.setCustom(true);
                 licenseRest.setText(text);
             } else {
-                licenseRest.setText(licenseService.getDefaultSubmissionLicense());
+                  licenseRest.setText(licenseService.getDefaultSubmissionLicenseWithLocale(context));
             }
             return licenseRest;
         } catch (SQLException e) {

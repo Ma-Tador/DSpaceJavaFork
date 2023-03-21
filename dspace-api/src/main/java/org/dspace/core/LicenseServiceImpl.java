@@ -17,6 +17,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
+import java.util.Locale;
 
 import org.dspace.core.service.LicenseService;
 import org.dspace.services.factory.DSpaceServicesFactory;
@@ -110,9 +111,77 @@ public class LicenseServiceImpl implements LicenseService {
         }
         return license;
     }
+    
+    
+    //Get default submission and consider also the locale @Steli
+    @Override
+    public String getDefaultSubmissionLicenseWithLocale(Context context) {
+        initWithLocale(context);
+        return license;
+    }
 
+    
     /**
-     * Load in the default license.
+     * Load in the default license considering the locale  Steli
+     * @param context
+     */
+    protected void initWithLocale(Context context) {
+        
+        File licenseFile = new File( I18nUtil.getDefaultLicense(context));      
+        FileInputStream fir = null;
+        InputStreamReader ir = null;
+        BufferedReader br = null;
+        try {
+
+            fir = new FileInputStream(licenseFile);
+            ir = new InputStreamReader(fir, "UTF-8");
+            br = new BufferedReader(ir);
+            String lineIn;
+            license = "";
+
+            while ((lineIn = br.readLine()) != null) {
+                license = license + lineIn + '\n';
+            }
+
+            br.close();
+
+        } catch (IOException e) {
+            log.error("Can't load license: " + licenseFile.toString(), e);
+
+            // FIXME: Maybe something more graceful here, but with the
+            // configuration we can't do anything
+            throw new IllegalStateException("Cannot load license: "
+                                                + licenseFile.toString(), e);
+        } finally {
+            if (br != null) {
+                try {
+                    br.close();
+                } catch (IOException ioe) {
+                    // ignore
+                }
+            }
+
+            if (ir != null) {
+                try {
+                    ir.close();
+                } catch (IOException ioe) {
+                    // ignore
+                }
+            }
+
+            if (fir != null) {
+                try {
+                    fir.close();
+                } catch (IOException ioe) {
+                    // ignore
+                }
+            }
+        }
+    }
+    
+    
+    /**
+     * Load in the default license considering the locale
      */
     protected void init() {
         File licenseFile = new File(

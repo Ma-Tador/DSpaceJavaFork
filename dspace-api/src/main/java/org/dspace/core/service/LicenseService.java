@@ -7,6 +7,8 @@
  */
 package org.dspace.core.service;
 
+import org.dspace.core.Context;
+
 /**
  * Encapsulate the deposit license.
  *
@@ -38,4 +40,14 @@ public interface LicenseService {
      * @return the default license
      */
     public String getDefaultSubmissionLicense();
+    
+    
+/**
+     * Get the site-wide default license that submitters need to grant considering the locale from current context
+     *
+     * @return the default license
+     */
+    public String getDefaultSubmissionLicenseWithLocale(Context context);
+    
+    
 }
