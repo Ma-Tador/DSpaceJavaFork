@@ -1,0 +1,429 @@
+<?xml version="1.0"?>
+<!--
+  - local-types.xml
+  -
+  - An empty registry for instance-specific, local metadata. Any non-standard
+  - metadata fields should be added here to avoid polluting the standard
+  - namespaces.
+  - 
+  -->
+<dspace-dc-types>
+
+  <dspace-header>
+    <title>Registry of instance-specific metadata fields</title>
+    <contributor.author>Ivan Mas&#xE1;r</contributor.author>
+    <contributor.editor>$Author$</contributor.editor>
+    <date.created>$Date$</date.created>
+    <description>$Log$</description>
+    <description.version>$Revision$</description.version>
+  </dspace-header>
+
+  <dc-schema>
+    <name>local</name>
+    <namespace>http://dspace.org/namespace/local/</namespace>
+  </dc-schema>
+
+
+
+<dc-type>
+    <schema>local</schema>
+    <element>document</element>
+    <qualifier>pageend</qualifier>
+    <scope_note>To enter the last page of a document from Opus.</scope_note>
+</dc-type>
+
+<dc-type>
+    <schema>local</schema>
+    <element>document</element>
+    <qualifier>pagestart</qualifier>
+    <scope_note>To enter the start page of a document from Opus.</scope_note>
+</dc-type>
+
+<dc-type>
+    <schema>local</schema>
+    <element>thesis</element>
+    <qualifier>grantor</qualifier>
+    <scope_note>To enter the thesis-grantor (Name and Department) of a document from Opus.</scope_note>
+</dc-type>
+
+<dc-type>
+    <schema>local</schema>
+    <element>notesOpus</element>
+    <qualifier></qualifier>
+    <scope_note>To keep the notes of a document from Opus.</scope_note>
+  </dc-type>
+
+<dc-type>
+    <schema>local</schema>
+    <element>relatedSerie</element>
+    <qualifier></qualifier>
+    <scope_note>To enter the TextSeries value(enrichment in Opus) of a document from.</scope_note>
+  </dc-type>
+
+<dc-type>
+    <schema>local</schema>
+    <element>crisid</element>
+    <qualifier></qualifier>
+    <scope_note>To sync/exchange data with CRIS-FAU.</scope_note>
+  </dc-type>
+
+<dc-type>
+    <schema>local</schema>
+    <element>fakultaet</element>
+    <qualifier>lehrstuhl</qualifier>
+    <scope_note>To enter the chair(dept) of a document from Opus.</scope_note>
+</dc-type>
+
+<dc-type>
+    <schema>local</schema>
+    <element>subject</element>
+    <qualifier>gnd</qualifier>
+    <scope_note>To enter the GND-subject of a document from Opus.</scope_note>
+</dc-type>
+
+<dc-type>
+    <schema>local</schema>
+    <element>title</element>
+    <qualifier>additional</qualifier>
+    <scope_note>To enter the TitleAdditional of a document from Opus.</scope_note>
+  </dc-type>
+
+<dc-type>
+    <schema>local</schema>
+    <element>sendToDnb</element>
+    <qualifier></qualifier>
+    <scope_note>To send/not send to DNB via OAI-PMH.</scope_note>
+</dc-type>
+
+<dc-type>
+    <schema>local</schema>
+    <element>conferencename</element>
+    <qualifier></qualifier>
+    <scope_note>To enter the ConferenceName(enrichment) of a document from Opus.</scope_note>
+  </dc-type>
+
+<dc-type>
+    <schema>local</schema>
+    <element>thesissource</element>
+    <qualifier></qualifier>
+    <scope_note>To enter the thesissource of a document from Opus.</scope_note>
+  </dc-type>
+
+<dc-type>
+    <schema>local</schema>
+    <element>volumesource</element>
+    <qualifier></qualifier>
+    <scope_note>To enter the url of a document from Opus.</scope_note>
+</dc-type>
+
+<dc-type>
+    <schema>local</schema>
+    <element>visibleinoai</element>
+    <qualifier></qualifier>
+    <scope_note>To send/not send document to DNB via OAI-PMH (OPUS import).</scope_note>
+</dc-type>
+
+<dc-type>
+    <schema>local</schema>
+    <element>document</element>
+    <qualifier>doc-id</qualifier>
+    <scope_note>To enter the doc-id of a document from Opus.</scope_note>
+</dc-type>
+
+<dc-type>
+    <schema>local</schema>
+    <element>document</element>
+    <qualifier>articlenumber</qualifier>
+    <scope_note>To enter the article nr of a document from Opus.</scope_note>
+</dc-type>
+
+<dc-type>
+    <schema>local</schema>
+    <element>document</element>
+    <qualifier>edition</qualifier>
+    <scope_note>To enter the edition of a document from Opus.</scope_note>
+</dc-type>
+
+<dc-type>
+    <schema>local</schema>
+    <element>document</element>
+    <qualifier>creatingcorporation</qualifier>
+    <scope_note>To enter the creating corporation of a document from Opus.</scope_note>
+</dc-type>
+
+<dc-type>
+    <schema>local</schema>
+    <element>document</element>
+    <qualifier>embargo-date</qualifier>
+    <scope_note>To enter the embargo-date of a document from Opus.</scope_note>
+</dc-type>
+
+<dc-type>
+    <schema>local</schema>
+    <element>subject</element>
+    <qualifier>fakultaet</qualifier>
+    <scope_note>To enter the faculty corporation of a document from Opus.</scope_note>
+</dc-type>
+
+<dc-type>
+    <schema>local</schema>
+    <element>subject</element>
+    <qualifier>sammlung</qualifier>
+    <scope_note>To enter the collections of a document from Opus.</scope_note>
+  </dc-type>
+
+<dc-type>
+    <schema>local</schema>
+    <element>subject</element>
+    <qualifier>import</qualifier>
+    <scope_note>To enter the import of a document from Opus.</scope_note>
+</dc-type>
+
+<dc-type>
+    <schema>local</schema>
+    <element>subject</element>
+    <qualifier>openaccess</qualifier>
+    <scope_note>To enter the OpenAccess of a document from Opus.</scope_note>
+</dc-type>
+
+<dc-type>
+    <schema>local</schema>
+    <element>subject</element>
+    <qualifier>openaire</qualifier>
+    <scope_note>To enter the Open Aire of a document from Opus.</scope_note>
+</dc-type>
+
+<dc-type>
+    <schema>local</schema>
+    <element>filename-opus</element>
+    <qualifier></qualifier>
+    <scope_note>To enter the filename-opus of a document from Opus.</scope_note>
+</dc-type>
+
+<dc-type>
+    <schema>local</schema>
+    <element>publisherplace</element>
+    <qualifier></qualifier>
+    <scope_note>To enter the publisher-place of a document from Opus.</scope_note>
+</dc-type>
+
+<!-- Transfered from created.*.* bec we can import only from this local-types.xml in registries -->
+
+<dc-type>
+    <schema>local</schema>
+    <element>journal</element>
+    <qualifier>title</qualifier>
+    <scope_note>To enter the TitleParent of a document from Opus.</scope_note>
+</dc-type>
+
+<dc-type>
+    <schema>local</schema>
+    <element>journal</element>
+    <qualifier>volume</qualifier>
+    <scope_note>To enter the Volume of a journal from Opus.</scope_note>
+</dc-type>
+
+
+<dc-type>
+    <schema>local</schema>
+    <element>journal</element>
+    <qualifier>issue</qualifier>
+    <scope_note>To enter the issue of a journal from Opus.</scope_note>
+</dc-type>
+
+
+<!-- ***************Moved to dc namespace instead of local************** -->
+<!--
+<dc-type>
+    <schema>local</schema>
+    <element>identifier</element>
+    <qualifier>cris-link</qualifier>
+    <scope_note>To enter the cris-link of a document from Opus.</scope_note>
+</dc-type>
+
+<dc-type>
+    <schema>local</schema>
+    <element>identifier</element>
+    <qualifier>splash-url</qualifier>
+    <scope_note>To enter the splash-url of a document from Opus.</scope_note>
+</dc-type>
+
+<dc-type>
+    <schema>local</schema>
+    <element>identifier</element>
+    <qualifier>opac-id</qualifier>
+    <scope_note>To enter the opac-id of a document from Opus.</scope_note>
+</dc-type>
+
+<dc-type>
+    <schema>local</schema>
+    <element>identifier</element>
+    <qualifier>pmid</qualifier>
+    <scope_note>To enter the pmid of a document from Opus.</scope_note>
+</dc-type>
+
+<dc-type>
+    <schema>local</schema>
+    <element>identifier</element>
+    <qualifier>arxiv</qualifier>
+    <scope_note>To enter the arxiv of a document from Opus.</scope_note>
+</dc-type>
+
+<dc-type>
+    <schema>local</schema>
+    <element>identifier</element>
+    <qualifier>opus-id</qualifier>
+    <scope_note>To enter the opus-id of a document from Opus.</scope_note>
+</dc-type>
+
+<dc-type>
+    <schema>local</schema>
+    <element>identifier</element>
+    <qualifier>serial</qualifier>
+    <scope_note>To enter the serial of a document from Opus.</scope_note>
+</dc-type>
+
+<dc-type>
+    <schema>local</schema>
+    <element>identifier</element>
+    <qualifier>uuid</qualifier>
+    <scope_note>To enter the uuid of a document from Opus.</scope_note>
+</dc-type>
+
+<dc-type>
+    <schema>local</schema>
+    <element>identifier</element>
+    <qualifier>urn</qualifier>
+    <scope_note>To enter the urn of a document from Opus.</scope_note>
+</dc-type>
+
+<dc-type>
+    <schema>local</schema>
+    <element>identifier</element>
+    <qualifier>handle</qualifier>
+    <scope_note>To enter the handle of a document from Opus.</scope_note>
+</dc-type>
+
+<dc-type>
+    <schema>local</schema>
+    <element>identifier</element>
+    <qualifier>doi</qualifier>
+    <scope_note>To enter the doi of a document from Opus.</scope_note>
+</dc-type>
+
+<dc-type>
+    <schema>local</schema>
+    <element>identifier</element>
+    <qualifier>url</qualifier>
+    <scope_note>To enter the url of a document from Opus.</scope_note>
+</dc-type>
+
+<dc-type>
+    <schema>local</schema>
+    <element>identifier</element>
+    <qualifier>std-doi</qualifier>
+    <scope_note>To enter the std-doi of a document from Opus.</scope_note>
+</dc-type>
+
+<dc-type>
+    <schema>local</schema>
+    <element>identifier</element>
+    <qualifier>fau-id</qualifier>
+    <scope_note>To enter the fau-id of a document from Opus.</scope_note>
+</dc-type>
+
+<dc-type>
+    <schema>local</schema>
+    <element>identifier</element>
+    <qualifier>issn</qualifier>
+    <scope_note>To enter the issn of a document from Opus.</scope_note>
+</dc-type>
+
+<dc-type>
+    <schema>local</schema>
+    <element>identifier</element>
+    <qualifier>uri</qualifier>
+    <scope_note>To enter the uri of a document from Opus.</scope_note>
+</dc-type>
+
+<dc-type>
+    <schema>local</schema>
+    <element>identifier</element>
+    <qualifier>isbn</qualifier>
+    <scope_note>To enter the isbn of a document from Opus.</scope_note>
+</dc-type>
+
+<dc-type>
+    <schema>local</schema>
+    <element>identifier</element>
+    <qualifier>other</qualifier>
+    <scope_note>To enter other id of a document from Opus.</scope_note>
+</dc-type>
+
+<dc-type>
+    <schema>local</schema>
+    <element>identifier</element>
+    <qualifier>eugrant</qualifier>
+    <scope_note>To enter the EU-GrantNr of a document from Opus.</scope_note>
+</dc-type>
+-->
+
+
+<dc-type>
+    <schema>local</schema>
+    <element>series</element>
+    <qualifier>name</qualifier>
+    <scope_note>To enter the SeriesName of a document from Opus.</scope_note>
+</dc-type>
+
+<dc-type>
+    <schema>local</schema>
+    <element>series</element>
+    <qualifier>number</qualifier>
+    <scope_note>To enter the SeriesNr of a document from Opus.</scope_note>
+</dc-type>
+
+<dc-type>
+    <schema>local</schema>
+    <element>series</element>
+    <qualifier>mapping</qualifier>
+    <scope_note>To save the Series mapping (collection uuid).</scope_note>
+</dc-type>
+
+<dc-type>
+    <schema>local</schema>
+    <element>series</element>
+    <qualifier>id</qualifier>
+    <scope_note>To enter the SeriesId given by DNB for series registered by Opus.</scope_note>
+</dc-type>
+
+<dc-type>
+    <schema>local</schema>
+    <element>series</element>
+    <qualifier>showVolNr</qualifier>
+    <scope_note>To display/not display the Volume Nr in a Collection (only for Series-Collection from Opus).</scope_note>
+</dc-type>
+
+<dc-type>
+    <schema>local</schema>
+    <element>date</element>
+    <qualifier>accepted</qualifier>
+    <scope_note>To enter the accepted Date of the Thesis.</scope_note>
+</dc-type>
+
+<dc-type>
+    <schema>local</schema>
+    <element>title</element>
+    <qualifier>subtitle</qualifier>
+    <scope_note>To enter the TitleSub from Opus.</scope_note>
+</dc-type>
+
+<dc-type>
+    <schema>local</schema>
+    <element>date</element>
+    <qualifier>prevpublished</qualifier>
+    <scope_note>To enter the PusblishedDate (DeepGreen) from Opus.</scope_note>
+</dc-type>
+
+
+</dspace-dc-types>
